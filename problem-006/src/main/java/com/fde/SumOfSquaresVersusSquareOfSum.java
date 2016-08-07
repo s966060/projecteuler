@@ -1,8 +1,5 @@
 package com.fde;
 
-/**
- * Created by filipdelbaen on 08/08/16.
- */
 public class SumOfSquaresVersusSquareOfSum {
     public static void main(String[] args) {
         int max = 100;

@@ -5,9 +5,6 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-/**
- * Created by filip on 7/08/2016.
- */
 public class NumberPalindrome {
     public static void main(String[] args) {
         List<Palindrome> list = new ArrayList<>();

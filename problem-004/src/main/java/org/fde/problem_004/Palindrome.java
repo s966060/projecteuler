@@ -1,8 +1,5 @@
 package org.fde.problem_004;
 
-/**
- * Created by filip on 7/08/2016.
- */
 public class Palindrome {
     private final int firstFactor;
     private final int secondFactor;
