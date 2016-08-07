@@ -48,7 +48,7 @@ public class PrimeBuilderTest {
         Primes primes = new Primes();
         PrimeBuilder builder = primes.getPrimeBuilder();
 
-        String fileName = "org/fde/problem_003/primes_1000.txt";
+        String fileName = "src/test/resources/primes_1000.txt";
         InputStream is = getClass().getClassLoader().getResourceAsStream(fileName);
         assertNotNull(is);
 
