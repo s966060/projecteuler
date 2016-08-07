@@ -20,7 +20,6 @@ public abstract class LineReader {
         }
 
         br.close();
-
     }
 
     public abstract void readLine(String line) throws Exception;
