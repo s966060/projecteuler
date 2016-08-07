@@ -1,12 +1,10 @@
 package org.fde.problem_003;
 
 import org.fde.util.ClassUtil;
+import org.fde.util.LineReader;
 import org.junit.Test;
 
-import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -45,23 +43,21 @@ public class PrimeBuilderTest {
     }
 
     @Test
-    public void theFirst_1000_primes() throws IOException {
+    public void theFirst_1000_primes() throws Exception {
         Primes primes = new Primes();
         PrimeBuilder builder = primes.getPrimeBuilder();
 
         InputStream is = ClassUtil.getInputStream(this, "primes_1000.txt");
         assertNotNull(is);
 
-        BufferedReader br = new BufferedReader(new InputStreamReader(is));
+        new LineReader(is) {
+            @Override
+            public void readLine(String line) {
+                long prime = Long.valueOf(line);
+                System.out.println("prime = " + prime);
 
-        String line = null;
-        while ((line = br.readLine()) != null) {
-            long prime = Long.valueOf(line);
-            System.out.println("prime = " + prime);
-
-            assertEquals(prime, builder.next());
-        }
-
-        br.close();
+                assertEquals(prime, builder.next());
+            }
+        }.readAll();
     }
 }
