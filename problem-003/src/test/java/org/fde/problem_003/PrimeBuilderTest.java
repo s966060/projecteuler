@@ -1,5 +1,6 @@
 package org.fde.problem_003;
 
+import org.fde.util.ClassUtil;
 import org.junit.Test;
 
 import java.io.BufferedReader;
@@ -48,8 +49,7 @@ public class PrimeBuilderTest {
         Primes primes = new Primes();
         PrimeBuilder builder = primes.getPrimeBuilder();
 
-        String fileName = "src/test/resources/primes_1000.txt";
-        InputStream is = getClass().getClassLoader().getResourceAsStream(fileName);
+        InputStream is = ClassUtil.getInputStream(this, "primes_1000.txt");
         assertNotNull(is);
 
         BufferedReader br = new BufferedReader(new InputStreamReader(is));
