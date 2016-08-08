@@ -24,6 +24,11 @@
             <artifactId>util</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.fde</groupId>
+            <artifactId>problem-003</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 
 </project>

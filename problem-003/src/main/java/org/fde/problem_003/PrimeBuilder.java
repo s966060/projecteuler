@@ -6,6 +6,7 @@ public class PrimeBuilder {
     private final Primes primes;
     private int index;
     private final Squares squares;
+    private long currentPrime;
 
     public PrimeBuilder(Primes primes) {
         this.primes = primes;
@@ -59,5 +60,9 @@ public class PrimeBuilder {
     private long getLimit(long suspectPrime) {
         this.squares.forward(suspectPrime);
         return this.squares.getCurrentBase();
+    }
+
+    public long getLastPrime() {
+        return this.primes.last();
     }
 }
