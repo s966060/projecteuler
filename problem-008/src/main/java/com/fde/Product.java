@@ -18,8 +18,8 @@ public class Product {
                 '}';
     }
 
-    public int getTotal() {
-        int total = 1;
+    public long getTotal() {
+        long total = 1;
 
         for (Integer factor : factors) {
             total *= factor;
