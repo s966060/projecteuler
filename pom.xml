@@ -19,6 +19,7 @@
         <module>problem-006</module>
         <module>problem-007</module>
         <module>problem-008</module>
+        <module>problem-009</module>
     </modules>
 
     <dependencyManagement>
