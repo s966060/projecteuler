@@ -8,12 +8,11 @@
     <artifactId>util</artifactId>
     <packaging>jar</packaging>
     <version>1.0-SNAPSHOT</version>
-    <name>Problem 3</name>
+    <name>Project Euler Utilities</name>
 
     <parent>
         <groupId>org.fde</groupId>
         <artifactId>project-euler</artifactId>
-        <relativePath>../pom.xml</relativePath>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
