@@ -31,7 +31,7 @@ public class LargestProductInASeries {
         System.out.println("list = " + list);
 
         Collections.sort(list, (o1, o2) -> {
-            int compare = Integer.compare(o1.getTotal(), o2.getTotal());
+            int compare = Long.compare(o1.getTotal(), o2.getTotal());
             return -compare;
         });
 
