@@ -4,11 +4,11 @@ import java.util.List;
 
 public class CombinationFactory {
     private final CombinationsList list;
-    private final List<Long> input;
+    private final List<Long> elements;
 
-    public CombinationFactory(List<Long> input) {
+    public CombinationFactory(List<Long> elements) {
         this.list = new CombinationsList();
-        this.input = input;
+        this.elements = elements;
     }
 
     public CombinationsList getCombinations() {
@@ -20,7 +20,7 @@ public class CombinationFactory {
     }
 
     private void combine(int size) {
-        int max = input.size() - size + 1;
+        int max = getMax(size);
 
         for(int index = 0; index < max; ++index) {
             Combination combination = new Combination(getElement(index));
@@ -28,27 +28,31 @@ public class CombinationFactory {
         }
     }
 
-    private void combine(Combination combination, int size, int index) {
+    private int getMax(int size) {
+        return elements.size() - size + 1;
+    }
+
+    private void combine(Combination input, int size, int index) {
         if(size == 0) {
-            Combination gotcha = new Combination(combination);
+            Combination gotcha = new Combination(input);
             list.add(gotcha);
             return;
         }
 
-        int max = input.size() - size + 1;
+        int max = getMax(size);
 
         for(; index < max; ++index) {
-            Combination tryThisOne = new Combination(combination);
+            Combination tryThisOne = new Combination(input);
             tryThisOne.add(getElement(index));
             combine(tryThisOne, size - 1, index + 1);
         }
     }
 
     private Long getElement(int index) {
-        return input.get(index);
+        return elements.get(index);
     }
 
     private int getN() {
-        return input.size();
+        return elements.size();
     }
 }
