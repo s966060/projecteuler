@@ -13,19 +13,10 @@ public class CombinationFactory {
 
     public CombinationsList getCombinations() {
         for (int size = 1; size <= getN(); ++size) {
-            combine(size);
+            combine(new Combination(), size, 0);
         }
 
         return list;
-    }
-
-    private void combine(int size) {
-        int max = getMax(size);
-
-        for(int index = 0; index < max; ++index) {
-            Combination combination = new Combination(getElement(index));
-            combine(combination, size - 1, index + 1);
-        }
     }
 
     private int getMax(int size) {
