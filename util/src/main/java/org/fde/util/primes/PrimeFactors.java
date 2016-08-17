@@ -7,7 +7,7 @@ import java.util.List;
  * Created by filip on 17/08/2016.
  */
 public class PrimeFactors {
-    static List<Long> getPrimeFactors(long target) {
+    public static List<Long> getPrimeFactors(long target) {
         PrimeBuilder builder = new PrimeBuilder();
 
         List<Long> factors = new ArrayList<>();
