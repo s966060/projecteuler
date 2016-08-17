@@ -21,6 +21,12 @@ public class Combination {
         return this;
     }
 
+    public void add(Combination other) {
+        for(Long element: other.combination) {
+            add(element);
+        }
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

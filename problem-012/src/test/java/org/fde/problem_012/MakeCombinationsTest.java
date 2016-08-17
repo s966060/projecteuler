@@ -7,15 +7,12 @@ import java.util.List;
 import static java.util.Arrays.asList;
 import static org.junit.Assert.assertEquals;
 
-/**
- * Created by filip on 17/08/2016.
- */
 public class MakeCombinationsTest {
     @Test
     public void one_theCombinationsOf() {
         List<Long> input = asList(1L);
 
-        CombinationsList actual = new CombinationFactory().getCombinations(input);
+        CombinationsList actual = new CombinationFactory(input).getCombinations();
 
         CombinationsList expected = new CombinationsList().add(new Combination(1L));
 
@@ -26,7 +23,7 @@ public class MakeCombinationsTest {
     public void two_theCombinationsOf() {
         List<Long> input = asList(1L, 2L);
 
-        CombinationsList actual = new CombinationFactory().getCombinations(input);
+        CombinationsList actual = new CombinationFactory(input).getCombinations();
 
         CombinationsList expected = new CombinationsList()
                 .add(new Combination(1L))
@@ -40,7 +37,7 @@ public class MakeCombinationsTest {
     public void three_theCombinationsOf() {
         List<Long> input = asList(1L, 2L, 3L);
 
-        CombinationsList actual = new CombinationFactory().getCombinations(input);
+        CombinationsList actual = new CombinationFactory(input).getCombinations();
 
         CombinationsList expected = new CombinationsList()
                 .add(new Combination(1L))
