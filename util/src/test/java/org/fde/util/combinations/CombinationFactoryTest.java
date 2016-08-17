@@ -12,9 +12,9 @@ public class CombinationFactoryTest {
     public void one_theCombinationsOf() {
         List<Long> input = asList(1L);
 
-        CombinationsList actual = new CombinationFactory(input).getCombinations();
+        CombinationList actual = new CombinationFactory(input).getCombinations();
 
-        CombinationsList expected = new CombinationsList().add(new Combination(1L));
+        CombinationList expected = new CombinationList().add(new Combination(1L));
 
         assertEquals(expected, actual);
     }
@@ -23,9 +23,9 @@ public class CombinationFactoryTest {
     public void two_theCombinationsOf() {
         List<Long> input = asList(1L, 2L);
 
-        CombinationsList actual = new CombinationFactory(input).getCombinations();
+        CombinationList actual = new CombinationFactory(input).getCombinations();
 
-        CombinationsList expected = new CombinationsList()
+        CombinationList expected = new CombinationList()
                 .add(new Combination(1L))
                 .add(new Combination(2L))
                 .add(new Combination(1L, 2L));
@@ -37,9 +37,9 @@ public class CombinationFactoryTest {
     public void three_theCombinationsOf() {
         List<Long> input = asList(1L, 2L, 3L);
 
-        CombinationsList actual = new CombinationFactory(input).getCombinations();
+        CombinationList actual = new CombinationFactory(input).getCombinations();
 
-        CombinationsList expected = new CombinationsList()
+        CombinationList expected = new CombinationList()
                 .add(new Combination(1L))
                 .add(new Combination(2L))
                 .add(new Combination(3L))
@@ -55,9 +55,9 @@ public class CombinationFactoryTest {
     public void four_theCombinationsOf() {
         List<Long> input = asList(1L, 2L, 3L, 4L);
 
-        CombinationsList actual = new CombinationFactory(input).getCombinations();
+        CombinationList actual = new CombinationFactory(input).getCombinations();
 
-        CombinationsList expected = new CombinationsList()
+        CombinationList expected = new CombinationList()
                 .add(new Combination(1L))
                 .add(new Combination(2L))
                 .add(new Combination(3L))

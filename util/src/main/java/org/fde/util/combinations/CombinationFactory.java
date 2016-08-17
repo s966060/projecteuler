@@ -3,15 +3,15 @@ package org.fde.util.combinations;
 import java.util.List;
 
 public class CombinationFactory {
-    private final CombinationsList list;
+    private final CombinationList list;
     private final List<Long> elements;
 
     public CombinationFactory(List<Long> elements) {
-        this.list = new CombinationsList();
+        this.list = new CombinationList();
         this.elements = elements;
     }
 
-    public CombinationsList getCombinations() {
+    public CombinationList getCombinations() {
         for (int size = 1; size <= getN(); ++size) {
             combine(new Combination(), size, 0);
         }

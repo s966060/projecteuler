@@ -1,7 +1,7 @@
 package org.fde.problem_012;
 
 import org.fde.util.combinations.CombinationFactory;
-import org.fde.util.combinations.CombinationsList;
+import org.fde.util.combinations.CombinationList;
 import org.fde.util.TriangleNumbers;
 import org.fde.util.primes.PrimeFactors;
 import org.junit.Test;
@@ -20,8 +20,8 @@ public class TriangleNumbersTest {
         long number = 0;
         int countAllUniqueCombinedPrimeDivisors = 0;
         int countAllCombinedPrimeDivisors = 0;
-        CombinationsList combinations = new CombinationsList();
-        CombinationsList uniqueCombinations = new CombinationsList();
+        CombinationList combinations = new CombinationList();
+        CombinationList uniqueCombinations = new CombinationList();
 
         // one is not included, so we step at 500 and thus total divisors = 501
         while (countAllUniqueCombinedPrimeDivisors <= 500) {

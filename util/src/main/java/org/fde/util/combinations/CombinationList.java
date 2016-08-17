@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 
-public class CombinationsList {
+public class CombinationList {
     private final List<Combination> list;
 
-    public CombinationsList() {
+    public CombinationList() {
         this.list = new ArrayList<>();
     }
 
-    public CombinationsList add(Combination combination) {
+    public CombinationList add(Combination combination) {
         this.list.add(combination);
         return this;
     }
@@ -21,7 +21,7 @@ public class CombinationsList {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        CombinationsList that = (CombinationsList) o;
+        CombinationList that = (CombinationList) o;
 
         return list.equals(that.list);
 
@@ -34,7 +34,7 @@ public class CombinationsList {
 
     @Override
     public String toString() {
-        return "CombinationsList{" +
+        return "CombinationList{" +
                 "list=" + list +
                 '}';
     }
@@ -43,14 +43,14 @@ public class CombinationsList {
         return this.list.size();
     }
 
-    public CombinationsList getUnique() {
+    public CombinationList getUnique() {
         LinkedHashSet<Combination> unique = new LinkedHashSet<>();
 
         for (Combination c : this.list) {
             unique.add(c);
         }
 
-        CombinationsList uniqueList = new CombinationsList();
+        CombinationList uniqueList = new CombinationList();
 
         for (Combination c : unique) {
             uniqueList.add(c);
