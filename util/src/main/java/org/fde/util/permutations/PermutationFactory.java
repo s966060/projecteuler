@@ -15,7 +15,7 @@ public class PermutationFactory {
         return result;
     }
 
-    private PermutationList makePermutation(PermutationList current, int size) {
+    private PermutationList makePermutation(PermutationList start, int size) {
         if(size <= getN()) {
             int index = size - 1;
 
@@ -23,11 +23,11 @@ public class PermutationFactory {
 
             PermutationList newPermutations = new PermutationList();
 
-            if(current.isEmpty()) {
+            if(start.isEmpty()) {
                 newPermutations.add(new Permutation(el));
             }
             else {
-                for(Permutation p : current) {
+                for(Permutation p : start) {
                     PermutationList list = p.createNewPermutations(el);
                     newPermutations.add(list);
                 }
@@ -36,7 +36,7 @@ public class PermutationFactory {
             return makePermutation(newPermutations, size + 1);
         }
         else {
-            return current;
+            return start;
         }
     }
 
