@@ -24,7 +24,7 @@ public class CombinationFactory {
     }
 
     private void combine(Combination input, int size, int index) {
-        if(size == 0) {
+        if (size == 0) {
             Combination gotcha = new Combination(input);
             list.add(gotcha);
             return;
@@ -32,7 +32,7 @@ public class CombinationFactory {
 
         int max = getMax(size);
 
-        for(; index < max; ++index) {
+        for (; index < max; ++index) {
             Combination tryThisOne = new Combination(input);
             tryThisOne.add(getElement(index));
             combine(tryThisOne, size - 1, index + 1);

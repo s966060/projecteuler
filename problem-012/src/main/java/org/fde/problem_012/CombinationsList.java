@@ -1,6 +1,7 @@
 package org.fde.problem_012;
 
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 public class CombinationsList {
@@ -36,5 +37,25 @@ public class CombinationsList {
         return "CombinationsList{" +
                 "list=" + list +
                 '}';
+    }
+
+    public int size() {
+        return this.list.size();
+    }
+
+    public CombinationsList getUnique() {
+        LinkedHashSet<Combination> unique = new LinkedHashSet<>();
+
+        for (Combination c : this.list) {
+            unique.add(c);
+        }
+
+        CombinationsList uniqueList = new CombinationsList();
+
+        for (Combination c : unique) {
+            uniqueList.add(c);
+        }
+
+        return uniqueList;
     }
 }
