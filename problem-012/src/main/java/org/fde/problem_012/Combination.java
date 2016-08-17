@@ -5,24 +5,28 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Combination {
-    private final List<Long> combination;
+    private final List<Long> list;
 
     public Combination() {
-        this.combination = new ArrayList<>();
+        this.list = new ArrayList<>();
     }
 
-    public Combination(Long... args) {
+    public Combination(Long... elements) {
         this();
-        this.combination.addAll(Arrays.asList(args));
+        this.list.addAll(Arrays.asList(elements));
+    }
+
+    public Combination(Combination other) {
+        this.list = new ArrayList<>(other.list);
     }
 
     public Combination add(Long element) {
-        this.combination.add(element);
+        this.list.add(element);
         return this;
     }
 
     public void add(Combination other) {
-        for(Long element: other.combination) {
+        for (Long element : other.list) {
             add(element);
         }
     }
@@ -34,19 +38,19 @@ public class Combination {
 
         Combination that = (Combination) o;
 
-        return combination.equals(that.combination);
+        return list.equals(that.list);
 
     }
 
     @Override
     public int hashCode() {
-        return combination.hashCode();
+        return list.hashCode();
     }
 
     @Override
     public String toString() {
         return "Combination{" +
-                "combination=" + combination +
+                "list=" + list +
                 '}';
     }
 }

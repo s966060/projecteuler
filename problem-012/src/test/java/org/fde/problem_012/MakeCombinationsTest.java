@@ -50,4 +50,31 @@ public class MakeCombinationsTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    public void four_theCombinationsOf() {
+        List<Long> input = asList(1L, 2L, 3L, 4L);
+
+        CombinationsList actual = new CombinationFactory(input).getCombinations();
+
+        CombinationsList expected = new CombinationsList()
+                .add(new Combination(1L))
+                .add(new Combination(2L))
+                .add(new Combination(3L))
+                .add(new Combination(4L))
+                .add(new Combination(1L, 2L))
+                .add(new Combination(1L, 3L))
+                .add(new Combination(1L, 4L))
+                .add(new Combination(2L, 3L))
+                .add(new Combination(2L, 4L))
+                .add(new Combination(3L, 4L))
+                .add(new Combination(1L, 2L, 3L))
+                .add(new Combination(1L, 2L, 4L))
+                .add(new Combination(1L, 3L, 4L))
+                .add(new Combination(2L, 3L, 4L))
+                .add(new Combination(1L, 2L, 3L, 4L)
+                );
+
+        assertEquals(expected, actual);
+    }
 }

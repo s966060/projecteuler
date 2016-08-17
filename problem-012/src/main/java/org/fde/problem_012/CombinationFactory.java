@@ -23,28 +23,29 @@ public class CombinationFactory {
         int max = input.size() - size + 1;
 
         for(int index = 0; index < max; ++index) {
-            Combination combination = new Combination(input.get(index));
-            Combination other = combine(size - 1, index + 1);
-
-            combination.add(other);
-            list.add(combination);
+            Combination combination = new Combination(getElement(index));
+            combine(combination, size - 1, index + 1);
         }
     }
 
-    private Combination combine(int size, int index) {
-        Combination combination = new Combination();
-
+    private void combine(Combination combination, int size, int index) {
         if(size == 0) {
-            return combination;
+            Combination gotcha = new Combination(combination);
+            list.add(gotcha);
+            return;
         }
 
         int max = input.size() - size + 1;
 
         for(; index < max; ++index) {
-            combination.add(input.get(index));
+            Combination tryThisOne = new Combination(combination);
+            tryThisOne.add(getElement(index));
+            combine(tryThisOne, size - 1, index + 1);
         }
+    }
 
-        return combination;
+    private Long getElement(int index) {
+        return input.get(index);
     }
 
     private int getN() {
