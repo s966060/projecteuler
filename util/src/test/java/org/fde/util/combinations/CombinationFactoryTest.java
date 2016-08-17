@@ -1,8 +1,5 @@
 package org.fde.util.combinations;
 
-import org.fde.util.combinations.Combination;
-import org.fde.util.combinations.CombinationFactory;
-import org.fde.util.combinations.CombinationsList;
 import org.junit.Test;
 
 import java.util.List;
