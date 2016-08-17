@@ -1,9 +1,7 @@
 package org.fde.problem_003;
 
-import org.fde.util.primes.PrimeBuilder;
-import org.fde.util.primes.Primes;
+import org.fde.util.primes.PrimeFactors;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class LargestPrimeFactor {
@@ -17,17 +15,7 @@ public class LargestPrimeFactor {
     private static void findPrimeFactors(long target) {
         final long TARGET = target;
 
-        Primes primes = new Primes();
-        PrimeBuilder builder = primes.getPrimeBuilder();
-
-        List<Long> factors = new ArrayList<>();
-
-        for (long prime = builder.next(); prime <= target; prime = builder.next()) {
-            while ((target % prime) == 0) {
-                target /= prime;
-                factors.add(prime);
-            }
-        }
+        List<Long> factors = PrimeFactors.getPrimeFactors(target);
 
         System.out.println("factors = " + factors);
 
@@ -44,4 +32,5 @@ public class LargestPrimeFactor {
             throw new IllegalArgumentException("factorization failure");
         }
     }
+
 }
