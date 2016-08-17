@@ -15,7 +15,7 @@ public class LargestPrimeFactor {
     private static void findPrimeFactors(long target) {
         final long TARGET = target;
 
-        List<Long> factors = PrimeFactors.getPrimeFactors(target);
+        List<Long> factors = new PrimeFactors().getPrimeFactors(target);
 
         System.out.println("factors = " + factors);
 
