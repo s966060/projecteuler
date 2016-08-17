@@ -1,4 +1,4 @@
-package org.fde.problem_003;
+package org.fde.util.primes;
 
 public class Squares {
     private long base;

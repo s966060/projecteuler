@@ -2,6 +2,8 @@ package org.fde.problem_003;
 
 import org.fde.util.ClassUtil;
 import org.fde.util.LineReader;
+import org.fde.util.primes.PrimeBuilder;
+import org.fde.util.primes.Primes;
 import org.junit.Test;
 
 import java.io.InputStream;

@@ -1,4 +1,4 @@
-package org.fde.problem_003;
+package org.fde.util.primes;
 
 import java.util.Iterator;
 

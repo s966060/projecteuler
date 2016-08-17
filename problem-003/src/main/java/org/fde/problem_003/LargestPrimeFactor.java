@@ -1,5 +1,8 @@
 package org.fde.problem_003;
 
+import org.fde.util.primes.PrimeBuilder;
+import org.fde.util.primes.Primes;
+
 import java.util.ArrayList;
 import java.util.List;
 

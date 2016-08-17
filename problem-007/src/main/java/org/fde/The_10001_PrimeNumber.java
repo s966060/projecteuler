@@ -1,6 +1,6 @@
 package org.fde;
 
-import org.fde.problem_003.PrimeBuilder;
+import org.fde.util.primes.PrimeBuilder;
 
 public class The_10001_PrimeNumber {
     public static void main(String[] args) {

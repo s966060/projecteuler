@@ -1,6 +1,6 @@
 package com.fde;
 
-import org.fde.problem_003.PrimeBuilder;
+import org.fde.util.primes.PrimeBuilder;
 
 /**
  * Created by filipdelbaen on 14/08/16.
