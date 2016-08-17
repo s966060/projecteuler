@@ -10,7 +10,7 @@ import java.util.List;
 import static java.util.Arrays.asList;
 import static org.junit.Assert.assertEquals;
 
-public class MakeCombinationsTest {
+public class CombinationFactoryTest {
     @Test
     public void one_theCombinationsOf() {
         List<Long> input = asList(1L);
