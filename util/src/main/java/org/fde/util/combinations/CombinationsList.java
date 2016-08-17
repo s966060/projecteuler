@@ -1,4 +1,4 @@
-package org.fde.problem_012;
+package org.fde.util.combinations;
 
 import java.util.ArrayList;
 import java.util.LinkedHashSet;

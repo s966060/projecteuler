@@ -1,5 +1,8 @@
 package org.fde.problem_012;
 
+import org.fde.util.combinations.CombinationFactory;
+import org.fde.util.combinations.CombinationsList;
+import org.fde.util.TriangleNumbers;
 import org.fde.util.primes.PrimeFactors;
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package org.fde.problem_012;
+package org.fde.util;
 
 /**
  * Created by filip on 17/08/2016.
