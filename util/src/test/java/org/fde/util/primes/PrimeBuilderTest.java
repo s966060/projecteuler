@@ -56,7 +56,6 @@ public class PrimeBuilderTest {
             @Override
             public void readLine(String line) {
                 long prime = Long.valueOf(line);
-                System.out.println("prime = " + prime);
 
                 assertEquals(prime, builder.next());
             }
