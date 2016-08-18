@@ -1,8 +1,5 @@
 package org.fde.util.permutations;
 
-import org.fde.util.permutations.Permutation;
-import org.fde.util.permutations.PermutationFactory;
-import org.fde.util.permutations.PermutationList;
 import org.junit.Test;
 
 import java.util.List;
@@ -88,8 +85,7 @@ public class PermutationFactoryTest {
                 .add(new Permutation(3L, 2L, 1L, 4L))
                 .add(new Permutation(3L, 2L, 4L, 1L))
                 .add(new Permutation(3L, 4L, 2L, 1L))
-                .add(new Permutation(4L, 3L, 2L, 1L))
-                ;
+                .add(new Permutation(4L, 3L, 2L, 1L));
 
         assertEquals(expected, actual);
     }
