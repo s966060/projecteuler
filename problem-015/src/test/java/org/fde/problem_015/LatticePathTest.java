@@ -3,7 +3,8 @@ package org.fde.problem_015;
 import org.junit.Test;
 
 public class LatticePathTest {
-    private static final int LIMIT = 20;
+    private static final int LIMIT_DOWN = 3;
+    private static final int LIMIT_RIGHT = 1;
 
     @Test
     public void amountOfRoutesIn_20_x_20_Grid() {
@@ -14,15 +15,15 @@ public class LatticePathTest {
     }
 
     private void findRoute(Result result, Context ctx) {
-        if (ctx.getDown() > LIMIT) {
+        if (ctx.getDown() > LIMIT_DOWN) {
             return;
         }
 
-        if (ctx.getRight() > LIMIT) {
+        if (ctx.getRight() > LIMIT_RIGHT) {
             return;
         }
 
-        if (ctx.getDown() == LIMIT && ctx.getRight() == LIMIT) {
+        if (ctx.getDown() == LIMIT_DOWN && ctx.getRight() == LIMIT_RIGHT) {
             result.count++;
 
             if((result.count % 10_000_000) == 0) {
