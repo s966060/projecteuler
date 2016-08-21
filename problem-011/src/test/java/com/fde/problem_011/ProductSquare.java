@@ -6,11 +6,11 @@ import java.util.List;
 /**
  * Created by filipdelbaen on 14/08/16.
  */
-public class Square {
+public class ProductSquare {
     private final int size;
     private final List<Integer> cells;
 
-    public Square(int size) {
+    public ProductSquare(int size) {
         this.size = size;
         this.cells = new ArrayList<>();
     }

@@ -21,7 +21,7 @@ public class LargestProductIn_20_20_Square {
     public void main() throws Exception {
         InputStream is = ClassUtil.getInputStream(LargestProductIn_20_20_Square.class, "theSquare.txt");
 
-        final Square square = new Square(SIZE);
+        final ProductSquare square = new ProductSquare(SIZE);
 
         Scanner scanner = new Scanner(is);
 
