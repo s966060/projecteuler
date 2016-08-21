@@ -5,6 +5,8 @@ import org.junit.Test;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
+import static org.junit.Assert.assertEquals;
+
 public class PowerDigitSum {
     @Test
     public void thePowerDigitSumOf_2_Power_1000() {
@@ -25,5 +27,7 @@ public class PowerDigitSum {
         }
 
         System.out.println("powerSum = " + powerSum);
+
+        assertEquals(1366L, powerSum);
     }
 }
