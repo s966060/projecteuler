@@ -1,4 +1,4 @@
-package org.fde.problem_15;
+package org.fde.problem_015;
 
 import org.fde.util.permutations.PermutationFactory;
 import org.fde.util.permutations.PermutationList;
