@@ -51,6 +51,7 @@ public class LargestProductIn_20_20_Square {
 
         System.out.println("products = " + products);
 
-        assertEquals(70600674L, products.get(0).getProduct());
+        long largestProduct = products.get(0).getProduct();
+        assertEquals(70600674L, largestProduct);
     }
 }
