@@ -2,21 +2,18 @@ package org.fde.problem_015;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class LatticePathTest {
     private static final int LIMIT = 20;
 
     @Test
     public void amountOfRoutesIn_20_x_20_Grid() {
-        List<Context> routes = new ArrayList<>();
+        Result result = new Result();
 
-        findRoute(routes, new Context());
-        System.out.println("routes.size() = " + routes.size());
+        findRoute(result, new Context());
+        System.out.println("*** result = " + result);
     }
 
-    private void findRoute(List<Context> routes, Context ctx) {
+    private void findRoute(Result result, Context ctx) {
         if (ctx.getDown() > LIMIT) {
             return;
         }
@@ -26,17 +23,17 @@ public class LatticePathTest {
         }
 
         if (ctx.getDown() == LIMIT && ctx.getRight() == LIMIT) {
-            routes.add(ctx);
+            result.count++;
 
-            if((routes.size() % 10000) == 0) {
-                System.out.println("RUNNING routes.size() = " + routes.size());
+            if((result.count % 10_000_000) == 0) {
+                System.out.println("RUNNING result = " + result);
             }
 
             return;
         }
 
         for (Direction d : Direction.values()) {
-            findRoute(routes, ctx.add(d));
+            findRoute(result, ctx.add(d));
         }
     }
 }

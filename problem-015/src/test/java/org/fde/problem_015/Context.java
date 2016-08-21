@@ -4,26 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Context {
-    private final List<Direction> route;
     private final int down;
     private final int right;
 
     public Context() {
-        this.route = new ArrayList<>();
         this.down = 0;
         this.right = 0;
     };
 
-    public Context(List<Direction> route, int down, int right) {
-        this.route = route;
+    public Context(int down, int right) {
         this.down = down;
         this.right = right;
     }
 
     public Context add(Direction direction) {
-        List<Direction> newRoute = new ArrayList<>(this.route);
-        newRoute.add(direction);
-
         int down = this.down;
 
         if(direction == Direction.DOWN) {
@@ -36,7 +30,7 @@ public class Context {
             ++right;
         }
 
-        return new Context(newRoute, down, right);
+        return new Context(down, right);
     }
 
     public int getDown() {
@@ -50,8 +44,7 @@ public class Context {
     @Override
     public String toString() {
         return "Context{" +
-                "route=" + route +
-                ", down=" + down +
+                "down=" + down +
                 ", right=" + right +
                 '}';
     }
