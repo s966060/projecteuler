@@ -1,4 +1,4 @@
-package org.fde.problem_015.naive;
+package org.fde.problem_015.naive_recursive;
 
 public class Result {
     long count = 0;
