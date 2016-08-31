@@ -1,7 +1,4 @@
-package org.fde.problem_015;
-
-import java.util.ArrayList;
-import java.util.List;
+package org.fde.problem_015.naive;
 
 public class Context {
     private final int down;
