@@ -1,12 +1,19 @@
-package org.fde.problem_015;
+package org.fde.problem_015.naive;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class LatticePathTest {
-    private static final int LIMIT_DOWN = 3;
-    private static final int LIMIT_RIGHT = 1;
+    private static final int LIMIT_DOWN = 20;
+    private static final int LIMIT_RIGHT = 20;
 
+    // will take many hours... do not do this for "large values"
+    // the result is (n+n) ! / (n ! *n !)
+    // n = 20 ---> 137846528820 paths
+    // this implementation will at least compute that many paths
+    // because also paths will be computed that dont reach the goal in the right bottom corner
     @Test
+    @Ignore
     public void amountOfRoutesIn_20_x_20_Grid() {
         Result result = new Result();
 

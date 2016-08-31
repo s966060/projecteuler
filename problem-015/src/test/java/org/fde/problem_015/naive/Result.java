@@ -1,4 +1,4 @@
-package org.fde.problem_015;
+package org.fde.problem_015.naive;
 
 public class Result {
     long count = 0;
