@@ -6,7 +6,6 @@ public class PrimeBuilder {
     private final Primes primes;
     private final Squares squares;
     private int index;
-    private long currentPrime;
 
     public PrimeBuilder(Primes primes) {
         this.primes = primes;
