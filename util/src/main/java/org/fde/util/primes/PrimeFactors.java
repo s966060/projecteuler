@@ -27,4 +27,11 @@ public class PrimeFactors {
 
         return factors;
     }
+
+    @Override
+    public String toString() {
+        return "PrimeFactors{" +
+                "primes=" + primes +
+                '}';
+    }
 }
