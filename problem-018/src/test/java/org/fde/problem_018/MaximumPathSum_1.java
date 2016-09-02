@@ -97,7 +97,7 @@ class Triangle {
                 long valueChildOne = last.get(i);
                 long valueChildTwo = last.get(i + 1);
 
-                long sum = value + valueChildOne + valueChildTwo;
+                long sum = value + Math.max(valueChildOne, valueChildTwo);
                 newLine.add(sum);
             }
 
@@ -170,6 +170,6 @@ public class MaximumPathSum_1 {
             System.out.println();
         }
 
-        assertEquals(1929961, newTriangle.getTopValue());
+        assertEquals(1074, newTriangle.getTopValue());
     }
 }
