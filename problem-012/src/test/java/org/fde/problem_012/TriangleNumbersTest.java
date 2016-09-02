@@ -1,5 +1,6 @@
 package org.fde.problem_012;
 
+import org.fde.util.ListOfLong;
 import org.fde.util.combinations.CombinationFactory;
 import org.fde.util.combinations.CombinationList;
 import org.fde.util.TriangleNumbers;
@@ -20,7 +21,7 @@ public class TriangleNumbersTest {
         Divisors divisors = new Divisors();
 
         long number = 0;
-        List<Long> divisorList = new ArrayList<>();
+        ListOfLong divisorList = new ListOfLong();
 
         // one is not included, so we step at 500 and thus total divisors = 501
         while (divisorList.size() <= 500) {
