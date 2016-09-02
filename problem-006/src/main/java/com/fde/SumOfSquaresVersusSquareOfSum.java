@@ -7,7 +7,7 @@ public class SumOfSquaresVersusSquareOfSum {
         int sumOfSquares = 0;
         int squareOfSum = 0;
 
-        for(int abc = 0; abc <= max; ++abc) {
+        for (int abc = 0; abc <= max; ++abc) {
             sumOfSquares += abc * abc;
             squareOfSum += abc;
         }

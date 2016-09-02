@@ -3,10 +3,6 @@ package org.fde.problem_14;
 import org.fde.util.ListOfLong;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 import static org.junit.Assert.assertEquals;
 
 public class ColatzProblemTest {
@@ -15,10 +11,10 @@ public class ColatzProblemTest {
         ListOfLong longestSequence = new ListOfLong();
         long longestSequenceNumber = 0;
 
-        for(long number = 1L; number < 1_000_000L; ++number) {
+        for (long number = 1L; number < 1_000_000L; ++number) {
             ListOfLong sequence = getSequence(number);
 
-            if(sequence.size() > longestSequence.size()) {
+            if (sequence.size() > longestSequence.size()) {
                 longestSequence = sequence;
                 longestSequenceNumber = number;
             }
@@ -40,17 +36,14 @@ public class ColatzProblemTest {
         do {
             sequence.add(number);
 
-            if(number == 1) {
+            if (number == 1) {
                 done = true;
-            }
-            else
-            if((number %2) == 0) {
+            } else if ((number % 2) == 0) {
                 number = number / 2;
-            }
-            else {
+            } else {
                 number = number * 3 + 1;
             }
-        } while(!done);
+        } while (!done);
 
         return sequence;
     }

@@ -7,7 +7,9 @@ public class Context {
     public Context() {
         this.down = 0;
         this.right = 0;
-    };
+    }
+
+    ;
 
     public Context(int down, int right) {
         this.down = down;
@@ -17,13 +19,13 @@ public class Context {
     public Context add(Direction direction) {
         int down = this.down;
 
-        if(direction == Direction.DOWN) {
+        if (direction == Direction.DOWN) {
             ++down;
         }
 
         int right = this.right;
 
-        if(direction == Direction.RIGHT) {
+        if (direction == Direction.RIGHT) {
             ++right;
         }
 

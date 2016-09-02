@@ -12,7 +12,7 @@ public class SumOfPrimes {
         long sum = 0;
         long prime;
 
-        while((prime = builder.next()) < 2_000_000) {
+        while ((prime = builder.next()) < 2_000_000) {
             sum += prime;
         }
 

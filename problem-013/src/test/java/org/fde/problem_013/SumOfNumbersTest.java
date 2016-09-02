@@ -10,14 +10,6 @@ import java.math.BigDecimal;
 import static org.junit.Assert.assertEquals;
 
 public class SumOfNumbersTest {
-    class ReferenceToBigDecimal {
-        BigDecimal number;
-
-        public ReferenceToBigDecimal(long value) {
-            this.number = new BigDecimal(value);
-        }
-    }
-
     @Test
     public void computeTheFirstTenDigits() throws Exception {
         InputStream is = ClassUtil.getInputStream(this, "theNumbers.txt");
@@ -38,5 +30,13 @@ public class SumOfNumbersTest {
         String actual = sum.number.toString();
         assertEquals("5537376230390876637302048746832985971773659831892672", actual);
         assertEquals("5537376230", actual.substring(0, 10));
+    }
+
+    class ReferenceToBigDecimal {
+        BigDecimal number;
+
+        public ReferenceToBigDecimal(long value) {
+            this.number = new BigDecimal(value);
+        }
     }
 }

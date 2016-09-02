@@ -2,7 +2,6 @@ package org.fde.problem_016;
 
 import org.junit.Test;
 
-import java.math.BigDecimal;
 import java.math.BigInteger;
 
 import static org.junit.Assert.assertEquals;
@@ -19,7 +18,7 @@ public class PowerDigitSum {
 
         long powerSum = 0;
 
-        for(char ch : powerAsString.toCharArray()) {
+        for (char ch : powerAsString.toCharArray()) {
             int digit = ch;
             digit -= '0';
 

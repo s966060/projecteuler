@@ -12,7 +12,7 @@ public class PythagorianTriplet {
         // 332 + 333 + 334 = 1000
         int xLimit = 332;
 
-        for(int x = 1; x <= xLimit; ++x) {
+        for (int x = 1; x <= xLimit; ++x) {
             // say x = 100
             // then yLimit = (1000 - 100) / 2 = 900 / 2 = 450
             // but x < y < z
@@ -25,7 +25,7 @@ public class PythagorianTriplet {
                 --yLimit;
             }
 
-            for(int y = x + 1; y <= yLimit; ++y) {
+            for (int y = x + 1; y <= yLimit; ++y) {
                 int z = 1000 - x - y;
 
                 if (z <= 0) {
@@ -35,7 +35,7 @@ public class PythagorianTriplet {
                 int sumOfSquares = x * x + y * y;
                 int square = z * z;
 
-                if(sumOfSquares == square) {
+                if (sumOfSquares == square) {
                     System.out.println("square = " + square);
                     System.out.println("sumOfSquares = " + sumOfSquares);
                     System.out.println("x = " + x);

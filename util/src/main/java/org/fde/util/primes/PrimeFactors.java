@@ -2,9 +2,6 @@ package org.fde.util.primes;
 
 import org.fde.util.ListOfLong;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Created by filip on 17/08/2016.
  */

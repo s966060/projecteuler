@@ -5,10 +5,6 @@ import org.fde.util.combinations.Combination;
 import org.fde.util.combinations.CombinationFactory;
 import org.fde.util.combinations.CombinationList;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 /**
  * Created by filip on 2/09/2016.
  */

@@ -33,7 +33,7 @@ public class LatticePathTest {
         if (ctx.getDown() == LIMIT_DOWN && ctx.getRight() == LIMIT_RIGHT) {
             result.count++;
 
-            if((result.count % 10_000_000) == 0) {
+            if ((result.count % 10_000_000) == 0) {
                 System.out.println("RUNNING result = " + result);
             }
 

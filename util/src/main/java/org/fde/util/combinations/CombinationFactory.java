@@ -2,8 +2,6 @@ package org.fde.util.combinations;
 
 import org.fde.util.ListOfLong;
 
-import java.util.List;
-
 public class CombinationFactory {
     private final CombinationList list;
     private final ListOfLong elements;

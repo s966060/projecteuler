@@ -7,8 +7,6 @@ import org.fde.util.ListOfLong;
 import org.junit.Test;
 
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 import java.util.Stack;
 
@@ -108,8 +106,7 @@ class Triangle {
             newTriangle.add(newLine);
 
             return newTriangle;
-        }
-        else {
+        } else {
             return this;
         }
     }
@@ -163,7 +160,7 @@ public class MaximumPathSum_1 {
 
         Triangle newTriangle = new Triangle(triangle);
 
-        while(newTriangle.canRollUp()) {
+        while (newTriangle.canRollUp()) {
             newTriangle = newTriangle.rollUp();
 
             System.out.println("newTriangle = " + newTriangle);

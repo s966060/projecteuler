@@ -3,9 +3,6 @@ package org.fde.util.primes;
 import org.fde.util.ListOfLong;
 import org.junit.Test;
 
-import java.util.List;
-
-import static java.util.Arrays.asList;
 import static org.fde.util.ListOfLong.createListOfLong;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertEquals;

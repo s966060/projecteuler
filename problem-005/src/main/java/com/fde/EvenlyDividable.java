@@ -7,13 +7,13 @@ public class EvenlyDividable {
         int suspect = 0;
 
         nextSuspect:
-        while(true) {
+        while (true) {
             suspect += 2;
 
-            for(int factor = 1; factor <= maxFactor; ++factor) {
+            for (int factor = 1; factor <= maxFactor; ++factor) {
                 int remainder = suspect % factor;
 
-                if(remainder != 0) {
+                if (remainder != 0) {
                     continue nextSuspect;
                 }
             }

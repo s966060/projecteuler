@@ -16,26 +16,24 @@ public class PermutationFactory {
     }
 
     private PermutationList makePermutation(PermutationList start, int size) {
-        if(size <= getN()) {
+        if (size <= getN()) {
             int index = size - 1;
 
             Long el = elements.get(index);
 
             PermutationList newPermutations = new PermutationList();
 
-            if(start.isEmpty()) {
+            if (start.isEmpty()) {
                 newPermutations.add(new Permutation(el));
-            }
-            else {
-                for(Permutation p : start) {
+            } else {
+                for (Permutation p : start) {
                     PermutationList list = p.createNewPermutations(el);
                     newPermutations.add(list);
                 }
             }
 
             return makePermutation(newPermutations, size + 1);
-        }
-        else {
+        } else {
             return start;
         }
     }

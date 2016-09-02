@@ -23,8 +23,8 @@ public class ProductSquare {
     public String toString() {
         String result = "";
 
-        for(int index = 0; index < this.cells.size(); ++index) {
-            if((index>0) && (index%size == 0)) {
+        for (int index = 0; index < this.cells.size(); ++index) {
+            if ((index > 0) && (index % size == 0)) {
                 result += "\r\n";
             }
 
@@ -58,7 +58,7 @@ public class ProductSquare {
     }
 
     long get(int row, int col) {
-        if(row >= 0 && row < this.size && col >= 0 && col < this.size) {
+        if (row >= 0 && row < this.size && col >= 0 && col < this.size) {
             int index = row * size + col;
 
             return this.cells.get(index);
@@ -85,7 +85,7 @@ public class ProductSquare {
         int column = startColumn;
         int row = startRow;
 
-        for(int index = 0; index < 4; ++index) {
+        for (int index = 0; index < 4; ++index) {
             p.add(get(row, column));
 
             --column;
@@ -102,7 +102,7 @@ public class ProductSquare {
         int column = startColumn;
         int row = startRow;
 
-        for(int index = 0; index < 4; ++index) {
+        for (int index = 0; index < 4; ++index) {
             p.add(get(row, column));
 
             ++column;

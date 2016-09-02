@@ -16,7 +16,7 @@ public class Squares {
     }
 
     public void forward(long toNumber) {
-        while(toNumber > getCurrentSquare()) {
+        while (toNumber > getCurrentSquare()) {
             nextSquare();
         }
     }

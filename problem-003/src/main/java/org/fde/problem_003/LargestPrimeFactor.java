@@ -3,8 +3,6 @@ package org.fde.problem_003;
 import org.fde.util.ListOfLong;
 import org.fde.util.primes.PrimeFactors;
 
-import java.util.List;
-
 public class LargestPrimeFactor {
     public static void main(String[] args) {
         findPrimeFactors(600_851_475_143L);

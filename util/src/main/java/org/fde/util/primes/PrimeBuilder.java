@@ -4,8 +4,8 @@ import java.util.Iterator;
 
 public class PrimeBuilder {
     private final Primes primes;
-    private int index;
     private final Squares squares;
+    private int index;
     private long currentPrime;
 
     public PrimeBuilder(Primes primes) {
