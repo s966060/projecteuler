@@ -1,5 +1,6 @@
 package org.fde.problem_14;
 
+import org.fde.util.ListOfLong;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -8,17 +9,14 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-/**
- * Created by filip on 18/08/2016.
- */
 public class ColatzProblemTest {
     @Test
     public void theLargestSequenceAnyNumberUnderAMillion() {
-        List<Long> longestSequence = Collections.emptyList();
+        ListOfLong longestSequence = new ListOfLong();
         long longestSequenceNumber = 0;
 
         for(long number = 1L; number < 1_000_000L; ++number) {
-            List<Long> sequence = getSequence(number);
+            ListOfLong sequence = getSequence(number);
 
             if(sequence.size() > longestSequence.size()) {
                 longestSequence = sequence;
@@ -34,8 +32,8 @@ public class ColatzProblemTest {
         assertEquals(837799, longestSequenceNumber);
     }
 
-    private List<Long> getSequence(long number) {
-        List<Long> sequence = new ArrayList<>();
+    private ListOfLong getSequence(long number) {
+        ListOfLong sequence = new ListOfLong();
 
         boolean done = false;
 

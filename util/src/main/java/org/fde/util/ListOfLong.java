@@ -10,6 +10,10 @@ public class ListOfLong implements Iterable<Long> {
         this.numbers = new ArrayList<>();
     }
 
+    public ListOfLong(ListOfLong other) {
+        this.numbers = new ArrayList<>(other.numbers);
+    }
+
     public ListOfLong(Long... numbers) {
         this.numbers = new ArrayList<>(Arrays.asList(numbers));
     }

@@ -3,6 +3,7 @@ package org.fde.problem_018;
 import org.apache.commons.lang3.Validate;
 import org.fde.util.ClassUtil;
 import org.fde.util.LineReader;
+import org.fde.util.ListOfLong;
 import org.junit.Test;
 
 import java.io.InputStream;
@@ -14,14 +15,14 @@ import java.util.Stack;
 import static org.junit.Assert.assertEquals;
 
 class Line {
-    private final List<Long> line;
+    private final ListOfLong line;
 
     public Line() {
-        this.line = new ArrayList<>();
+        this.line = new ListOfLong();
     }
 
     public Line(Line line) {
-        this.line = new ArrayList<>(line.line);
+        this.line = new ListOfLong(line.line);
     }
 
     public int size() {

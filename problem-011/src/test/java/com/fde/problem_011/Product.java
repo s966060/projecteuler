@@ -1,13 +1,12 @@
 package com.fde.problem_011;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.fde.util.ListOfLong;
 
 public class Product {
-    private final List<Long> factors;
+    private final ListOfLong factors;
 
     public Product() {
-        this.factors = new ArrayList<>();
+        this.factors = new ListOfLong();
     }
 
     public void add(long factor) {
@@ -21,7 +20,7 @@ public class Product {
     public long getProduct() {
         long product = 1;
 
-        for(Long factor: factors) {
+        for (Long factor : factors) {
             product *= factor;
         }
 
