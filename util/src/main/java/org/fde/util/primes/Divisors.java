@@ -1,5 +1,6 @@
 package org.fde.util.primes;
 
+import org.fde.util.ListOfLong;
 import org.fde.util.combinations.Combination;
 import org.fde.util.combinations.CombinationFactory;
 import org.fde.util.combinations.CombinationList;
@@ -18,8 +19,8 @@ public class Divisors {
         this.primeFactors = new PrimeFactors();
     }
 
-    public List<Long> getDivisors(long number) {
-        List<Long> result = new ArrayList<>();
+    public ListOfLong getDivisors(long number) {
+        ListOfLong result = new ListOfLong();
 
         if (number == 0) {
             return result;
@@ -36,17 +37,13 @@ public class Divisors {
             result.add(product);
         }
 
-        Collections.sort(result);
+        result.sort();
         return result;
     }
 
-    public List<Long> getProperDivisors(long number) {
-        List<Long> divisors = getDivisors(number);
-
-        if (!divisors.isEmpty()) {
-            divisors.remove(divisors.size() - 1);
-        }
-
+    public ListOfLong getProperDivisors(long number) {
+        ListOfLong divisors = getDivisors(number);
+        divisors.removeLast();
         return divisors;
     }
 }

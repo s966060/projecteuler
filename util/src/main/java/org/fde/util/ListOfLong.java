@@ -1,6 +1,7 @@
 package org.fde.util;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -35,5 +36,19 @@ public class ListOfLong {
         }
 
         return product;
+    }
+
+    public void sort() {
+        Collections.sort(this.numbers);
+    }
+
+    public boolean isEmpty() {
+        return this.numbers.isEmpty();
+    }
+
+    public void removeLast() {
+        if (!isEmpty()) {
+            this.numbers.remove(this.numbers.size() - 1);
+        }
     }
 }
