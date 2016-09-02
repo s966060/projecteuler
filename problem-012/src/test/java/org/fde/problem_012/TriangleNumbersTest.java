@@ -1,15 +1,9 @@
 package org.fde.problem_012;
 
 import org.fde.util.ListOfLong;
-import org.fde.util.combinations.CombinationFactory;
-import org.fde.util.combinations.CombinationList;
 import org.fde.util.TriangleNumbers;
 import org.fde.util.primes.Divisors;
-import org.fde.util.primes.PrimeFactors;
 import org.junit.Test;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
