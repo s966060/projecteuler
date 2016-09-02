@@ -1,16 +1,18 @@
 package org.fde.util.combinations;
 
+import org.fde.util.ListOfLong;
 import org.junit.Test;
 
 import java.util.List;
 
 import static java.util.Arrays.asList;
+import static org.fde.util.ListOfLong.createListOfLong;
 import static org.junit.Assert.assertEquals;
 
 public class CombinationFactoryTest {
     @Test
     public void one_theCombinationsOf() {
-        List<Long> input = asList(1L);
+        ListOfLong input = createListOfLong(1L);
 
         CombinationList actual = new CombinationFactory(input).getCombinations();
 
@@ -21,7 +23,7 @@ public class CombinationFactoryTest {
 
     @Test
     public void two_theCombinationsOf() {
-        List<Long> input = asList(1L, 2L);
+        ListOfLong input = createListOfLong(1L, 2L);
 
         CombinationList actual = new CombinationFactory(input).getCombinations();
 
@@ -35,7 +37,7 @@ public class CombinationFactoryTest {
 
     @Test
     public void three_theCombinationsOf() {
-        List<Long> input = asList(1L, 2L, 3L);
+        ListOfLong input = createListOfLong(1L, 2L, 3L);
 
         CombinationList actual = new CombinationFactory(input).getCombinations();
 
@@ -53,7 +55,7 @@ public class CombinationFactoryTest {
 
     @Test
     public void four_theCombinationsOf() {
-        List<Long> input = asList(1L, 2L, 3L, 4L);
+        ListOfLong input = createListOfLong(1L, 2L, 3L, 4L);
 
         CombinationList actual = new CombinationFactory(input).getCombinations();
 

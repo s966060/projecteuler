@@ -1,12 +1,14 @@
 package org.fde.util.combinations;
 
+import org.fde.util.ListOfLong;
+
 import java.util.List;
 
 public class CombinationFactory {
     private final CombinationList list;
-    private final List<Long> elements;
+    private final ListOfLong elements;
 
-    public CombinationFactory(List<Long> elements) {
+    public CombinationFactory(ListOfLong elements) {
         this.list = new CombinationList();
         this.elements = elements;
     }

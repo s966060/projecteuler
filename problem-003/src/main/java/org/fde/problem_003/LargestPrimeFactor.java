@@ -1,5 +1,6 @@
 package org.fde.problem_003;
 
+import org.fde.util.ListOfLong;
 import org.fde.util.primes.PrimeFactors;
 
 import java.util.List;
@@ -15,7 +16,7 @@ public class LargestPrimeFactor {
     private static void findPrimeFactors(long target) {
         final long TARGET = target;
 
-        List<Long> factors = new PrimeFactors().getPrimeFactors(target);
+        ListOfLong factors = new PrimeFactors().getPrimeFactors(target);
 
         System.out.println("factors = " + factors);
 

@@ -28,7 +28,7 @@ public class Divisors {
 
         result.add(1L);
 
-        List<Long> factors = primeFactors.getPrimeFactors(number);
+        ListOfLong factors = primeFactors.getPrimeFactors(number);
         CombinationList combinations = new CombinationFactory(factors).getCombinations();
         CombinationList uniqueCombinations = combinations.getUnique();
 

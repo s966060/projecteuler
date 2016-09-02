@@ -1,11 +1,9 @@
 package org.fde.util;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
+import java.util.function.Consumer;
 
-public class ListOfLong {
+public class ListOfLong implements Iterable<Long> {
     private final List<Long> numbers;
 
     public ListOfLong() {
@@ -66,6 +64,10 @@ public class ListOfLong {
         return this.numbers.size();
     }
 
+    public Long get(int index) {
+        return this.numbers.get(index);
+    }
+
     @Override
     public String toString() {
         return "ListOfLong{" +
@@ -87,5 +89,20 @@ public class ListOfLong {
     @Override
     public int hashCode() {
         return numbers.hashCode();
+    }
+
+    @Override
+    public Iterator<Long> iterator() {
+        return this.numbers.iterator();
+    }
+
+    @Override
+    public void forEach(Consumer<? super Long> action) {
+        this.numbers.forEach(action);
+    }
+
+    @Override
+    public Spliterator<Long> spliterator() {
+        return this.numbers.spliterator();
     }
 }

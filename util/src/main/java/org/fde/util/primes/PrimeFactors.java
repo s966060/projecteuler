@@ -1,5 +1,7 @@
 package org.fde.util.primes;
 
+import org.fde.util.ListOfLong;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,10 +15,10 @@ public class PrimeFactors {
         this.primes = new Primes();
     }
 
-    public List<Long> getPrimeFactors(long target) {
+    public ListOfLong getPrimeFactors(long target) {
         PrimeBuilder builder = new PrimeBuilder(this.primes);
 
-        List<Long> factors = new ArrayList<>();
+        ListOfLong factors = new ListOfLong();
 
         for (long prime = builder.next(); prime <= target; prime = builder.next()) {
             while ((target % prime) == 0) {
