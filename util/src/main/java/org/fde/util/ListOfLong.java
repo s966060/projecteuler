@@ -55,4 +55,11 @@ public class ListOfLong {
     public int size() {
         return this.numbers.size();
     }
+
+    @Override
+    public String toString() {
+        return "ListOfLong{" +
+                "numbers=" + numbers +
+                '}';
+    }
 }
