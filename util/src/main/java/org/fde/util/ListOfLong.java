@@ -35,7 +35,11 @@ public class ListOfLong {
     }
 
     public long getProduct() {
-        long product = 0;
+        if (isEmpty()) {
+            return 0;
+        }
+
+        long product = 1;
 
         for (Long number : numbers) {
             product *= number;
