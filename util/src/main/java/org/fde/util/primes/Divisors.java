@@ -6,6 +6,7 @@ import org.fde.util.combinations.CombinationList;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -37,6 +38,7 @@ public class Divisors {
             result.add(product);
         }
 
+        Collections.sort(result);
         return result;
     }
 }
