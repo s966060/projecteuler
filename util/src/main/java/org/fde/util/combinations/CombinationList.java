@@ -1,10 +1,9 @@
 package org.fde.util.combinations;
 
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
-import java.util.List;
+import java.util.*;
+import java.util.function.Consumer;
 
-public class CombinationList {
+public class CombinationList implements Iterable<Combination> {
     private final List<Combination> list;
 
     public CombinationList() {
@@ -51,11 +50,25 @@ public class CombinationList {
         CombinationList that = (CombinationList) o;
 
         return list.equals(that.list);
-
     }
 
     @Override
     public int hashCode() {
         return list.hashCode();
+    }
+
+    @Override
+    public Iterator<Combination> iterator() {
+        return this.list.iterator();
+    }
+
+    @Override
+    public void forEach(Consumer<? super Combination> action) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public Spliterator<Combination> spliterator() {
+        throw new UnsupportedOperationException();
     }
 }

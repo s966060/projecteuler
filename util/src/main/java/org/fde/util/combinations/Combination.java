@@ -31,6 +31,20 @@ public class Combination {
         }
     }
 
+    public long multiply() {
+        if (list.isEmpty()) {
+            return 0;
+        } else {
+            long result = 1;
+
+            for (Long number : this.list) {
+                result *= number;
+            }
+
+            return result;
+        }
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
