@@ -1,17 +1,23 @@
 package org.fde.util;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * Created by filip on 2/09/2016.
- */
 public class ListOfLong {
     private final List<Long> numbers;
 
     public ListOfLong() {
         this.numbers = new ArrayList<>();
+    }
+
+    public ListOfLong(Long... numbers) {
+        this.numbers = new ArrayList<>(Arrays.asList(numbers));
+    }
+
+    public static ListOfLong createListOfLong(Long... numbers) {
+        return new ListOfLong(numbers);
     }
 
     public void add(Long number) {
