@@ -51,4 +51,8 @@ public class ListOfLong {
             this.numbers.remove(this.numbers.size() - 1);
         }
     }
+
+    public int size() {
+        return this.numbers.size();
+    }
 }
