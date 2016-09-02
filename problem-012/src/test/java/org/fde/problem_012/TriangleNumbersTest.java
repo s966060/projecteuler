@@ -19,7 +19,6 @@ public class TriangleNumbersTest {
 
         long number = 0;
         int countAllUniqueCombinedPrimeDivisors = 0;
-        int countAllCombinedPrimeDivisors = 0;
         CombinationList combinations = new CombinationList();
         CombinationList uniqueCombinations = new CombinationList();
 
@@ -29,13 +28,8 @@ public class TriangleNumbersTest {
             List<Long> factors = primeFactors.getPrimeFactors(number);
             combinations = new CombinationFactory(factors).getCombinations();
 
-            System.out.println("number = " + number);
-            countAllCombinedPrimeDivisors = combinations.size();
-            System.out.println("countAllCombinedPrimeDivisors = " + countAllCombinedPrimeDivisors);
-
             uniqueCombinations = combinations.getUnique();
             countAllUniqueCombinedPrimeDivisors = uniqueCombinations.size();
-            System.out.println("countAllUniqueCombinedPrimeDivisors = " + countAllUniqueCombinedPrimeDivisors);
         }
 
         System.out.println("primeFactors = " + primeFactors);
