@@ -6,6 +6,7 @@ import org.junit.Test;
 import java.util.List;
 
 import static java.util.Arrays.asList;
+import static org.fde.util.ListOfLong.createListOfLong;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
@@ -29,30 +30,30 @@ public class ProperDivisorsTest {
     @Test
     public void two() {
         ListOfLong divisors = new Divisors().getProperDivisors(2);
-        assertThat(asList(1L), is(divisors));
+        assertThat(createListOfLong(1L), is(divisors));
     }
 
     @Test
     public void three() {
         ListOfLong divisors = new Divisors().getProperDivisors(3);
-        assertThat(asList(1L), is(divisors));
+        assertThat(createListOfLong(1L), is(divisors));
     }
 
     @Test
     public void four() {
         ListOfLong divisors = new Divisors().getProperDivisors(4);
-        assertThat(asList(1L, 2L), is(divisors));
+        assertThat(createListOfLong(1L, 2L), is(divisors));
     }
 
     @Test
     public void twenty_eight() {
         ListOfLong divisors = new Divisors().getProperDivisors(28);
-        assertThat(asList(1L, 2L, 4L, 7L, 14L), is(divisors));
+        assertThat(createListOfLong(1L, 2L, 4L, 7L, 14L), is(divisors));
     }
 
     @Test
     public void hundred() {
         ListOfLong divisors = new Divisors().getProperDivisors(100);
-        assertThat(asList(1L, 2L, 4L, 5L, 10L, 20L, 25L, 50L), is(divisors));
+        assertThat(createListOfLong(1L, 2L, 4L, 5L, 10L, 20L, 25L, 50L), is(divisors));
     }
 }
