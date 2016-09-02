@@ -2,9 +2,6 @@ package org.fde.util.primes;
 
 import org.fde.util.ListOfLong;
 
-/**
- * Created by filip on 17/08/2016.
- */
 public class PrimeFactors {
     private final Primes primes;
 

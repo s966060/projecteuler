@@ -5,9 +5,6 @@ import org.fde.util.combinations.Combination;
 import org.fde.util.combinations.CombinationFactory;
 import org.fde.util.combinations.CombinationList;
 
-/**
- * Created by filip on 2/09/2016.
- */
 public class Divisors {
     private final PrimeFactors primeFactors;
 
