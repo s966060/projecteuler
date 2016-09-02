@@ -5,6 +5,7 @@ import org.fde.util.combinations.CombinationFactory;
 import org.fde.util.combinations.CombinationList;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -18,11 +19,18 @@ public class Divisors {
     }
 
     public List<Long> getDivisors(long number) {
+        List<Long> result = new ArrayList<>();
+
+        if(number == 0) {
+            return result;
+        }
+
+        result.add(1L);
+
         List<Long> factors = primeFactors.getPrimeFactors(number);
         CombinationList combinations = new CombinationFactory(factors).getCombinations();
         CombinationList uniqueCombinations = combinations.getUnique();
 
-        List<Long> result = new ArrayList<>();
 
         for(Combination c : uniqueCombinations) {
             long product = c.multiply();
