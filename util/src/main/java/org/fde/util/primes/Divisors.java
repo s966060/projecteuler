@@ -32,7 +32,6 @@ public class Divisors {
         CombinationList combinations = new CombinationFactory(factors).getCombinations();
         CombinationList uniqueCombinations = combinations.getUnique();
 
-
         for(Combination c : uniqueCombinations) {
             long product = c.multiply();
             result.add(product);
