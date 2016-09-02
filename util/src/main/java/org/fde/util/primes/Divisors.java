@@ -5,7 +5,6 @@ import org.fde.util.combinations.CombinationFactory;
 import org.fde.util.combinations.CombinationList;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -22,7 +21,7 @@ public class Divisors {
     public List<Long> getDivisors(long number) {
         List<Long> result = new ArrayList<>();
 
-        if(number == 0) {
+        if (number == 0) {
             return result;
         }
 
@@ -32,12 +31,22 @@ public class Divisors {
         CombinationList combinations = new CombinationFactory(factors).getCombinations();
         CombinationList uniqueCombinations = combinations.getUnique();
 
-        for(Combination c : uniqueCombinations) {
+        for (Combination c : uniqueCombinations) {
             long product = c.multiply();
             result.add(product);
         }
 
         Collections.sort(result);
         return result;
+    }
+
+    public List<Long> getProperDivisors(long number) {
+        List<Long> divisors = getDivisors(number);
+
+        if (!divisors.isEmpty()) {
+            divisors.remove(divisors.size() - 1);
+        }
+
+        return divisors;
     }
 }
