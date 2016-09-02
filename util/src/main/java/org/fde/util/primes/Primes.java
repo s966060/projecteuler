@@ -42,4 +42,11 @@ public class Primes {
     public void add(long prime) {
         this.primes.add(prime);
     }
+
+    @Override
+    public String toString() {
+        return "Primes{" +
+                "primes=" + primes +
+                '}';
+    }
 }
