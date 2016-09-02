@@ -1,6 +1,7 @@
 package org.fde.problem_14;
 
 import org.fde.util.ListOfLong;
+import org.fde.util.Logger;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -20,9 +21,9 @@ public class ColatzProblemTest {
             }
         }
 
-        System.out.println("longestSequence = " + longestSequence);
-        System.out.println("longestSequence.size() = " + longestSequence.size());
-        System.out.println("longestSequenceNumber = " + longestSequenceNumber);
+        Logger.log("longestSequence = " + longestSequence);
+        Logger.log("longestSequence.size() = " + longestSequence.size());
+        Logger.log("longestSequenceNumber = " + longestSequenceNumber);
 
         assertEquals(525, longestSequence.size());
         assertEquals(837799, longestSequenceNumber);

@@ -1,5 +1,7 @@
 package org.fde.problem_004;
 
+import org.fde.util.Logger;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -30,6 +32,6 @@ public class NumberPalindrome {
             }
         });
 
-        System.out.println("list = " + list);
+        Logger.log("list = " + list);
     }
 }

@@ -1,5 +1,7 @@
 package com.fde;
 
+import org.fde.util.Logger;
+
 public class EvenlyDividable {
     public static void main(String[] args) {
         int maxFactor = 20;
@@ -22,6 +24,6 @@ public class EvenlyDividable {
 
         }
 
-        System.out.println("suspect = " + suspect);
+        Logger.log("suspect = " + suspect);
     }
 }

@@ -2,6 +2,7 @@ package org.fde.problem_013;
 
 import org.fde.util.ClassUtil;
 import org.fde.util.LineReader;
+import org.fde.util.Logger;
 import org.junit.Test;
 
 import java.io.InputStream;
@@ -25,7 +26,7 @@ public class SumOfNumbersTest {
             }
         }.readAll();
 
-        System.out.println("sum.number = " + sum.number);
+        Logger.log("sum.number = " + sum.number);
 
         String actual = sum.number.toString();
         assertEquals("5537376230390876637302048746832985971773659831892672", actual);

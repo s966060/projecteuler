@@ -1,6 +1,7 @@
 package com.fde.problem_011;
 
 import org.fde.util.ClassUtil;
+import org.fde.util.Logger;
 import org.junit.Test;
 
 import java.io.InputStream;
@@ -30,7 +31,7 @@ public class LargestProductIn_20_20_Square {
         }
 
 
-        System.out.println("square = \r\n" + square);
+        Logger.log("square = \r\n" + square);
 
         List<Product> products = new ArrayList<>();
 
@@ -40,7 +41,7 @@ public class LargestProductIn_20_20_Square {
             }
         }
 
-        System.out.println("products = " + products);
+        Logger.log("products = " + products);
 
         products.sort(new Comparator<Product>() {
             @Override
@@ -49,7 +50,7 @@ public class LargestProductIn_20_20_Square {
             }
         });
 
-        System.out.println("products = " + products);
+        Logger.log("products = " + products);
 
         long largestProduct = products.get(0).getProduct();
         assertEquals(70600674L, largestProduct);

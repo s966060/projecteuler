@@ -1,5 +1,6 @@
 package com.fde;
 
+import org.fde.util.Logger;
 import org.fde.util.primes.PrimeBuilder;
 
 /**
@@ -16,6 +17,6 @@ public class SumOfPrimes {
             sum += prime;
         }
 
-        System.out.println("sum = " + sum);
+        Logger.log("sum = " + sum);
     }
 }

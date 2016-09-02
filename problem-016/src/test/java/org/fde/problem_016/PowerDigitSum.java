@@ -1,5 +1,6 @@
 package org.fde.problem_016;
 
+import org.fde.util.Logger;
 import org.junit.Test;
 
 import java.math.BigInteger;
@@ -11,10 +12,10 @@ public class PowerDigitSum {
     public void thePowerDigitSumOf_2_Power_1000() {
         BigInteger two = BigInteger.valueOf(2L);
         BigInteger power = two.pow(1000);
-        System.out.println("power = " + power);
+        Logger.log("power = " + power);
 
         String powerAsString = power.toString();
-        System.out.println("powerAsString = " + powerAsString);
+        Logger.log("powerAsString = " + powerAsString);
 
         long powerSum = 0;
 
@@ -25,7 +26,7 @@ public class PowerDigitSum {
             powerSum += digit;
         }
 
-        System.out.println("powerSum = " + powerSum);
+        Logger.log("powerSum = " + powerSum);
 
         assertEquals(1366L, powerSum);
     }

@@ -1,5 +1,6 @@
 package org.fde.problem_020;
 
+import org.fde.util.Logger;
 import org.junit.Test;
 
 import java.math.BigInteger;
@@ -21,7 +22,7 @@ public class SumDigitsOfTheResultOfFactorial_100 {
     @Test
     public void sumOfDigits() {
         BigInteger factorial = factorial(BigInteger.valueOf(100L));
-        System.out.println("factorial = " + factorial);
+        Logger.log("factorial = " + factorial);
 
         String asString = factorial.toString();
 
@@ -31,7 +32,7 @@ public class SumDigitsOfTheResultOfFactorial_100 {
             sum += (ch - '0');
         }
 
-        System.out.println("sum = " + sum);
+        Logger.log("sum = " + sum);
         assertEquals(648, sum);
     }
 }

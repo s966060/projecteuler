@@ -1,5 +1,6 @@
 package org.fde;
 
+import org.fde.util.Logger;
 import org.fde.util.primes.PrimeBuilder;
 
 public class The_10001_PrimeNumber {
@@ -11,6 +12,6 @@ public class The_10001_PrimeNumber {
         }
 
         long prime = builder.getLastPrime();
-        System.out.println("prime = " + prime);
+        Logger.log("prime = " + prime);
     }
 }

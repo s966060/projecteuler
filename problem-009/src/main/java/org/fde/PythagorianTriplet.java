@@ -1,5 +1,7 @@
 package org.fde;
 
+import org.fde.util.Logger;
+
 /**
  * Created by filipdelbaen on 13/08/16.
  */
@@ -36,15 +38,15 @@ public class PythagorianTriplet {
                 int square = z * z;
 
                 if (sumOfSquares == square) {
-                    System.out.println("square = " + square);
-                    System.out.println("sumOfSquares = " + sumOfSquares);
-                    System.out.println("x = " + x);
-                    System.out.println("y = " + y);
-                    System.out.println("z = " + z);
+                    Logger.log("square = " + square);
+                    Logger.log("sumOfSquares = " + sumOfSquares);
+                    Logger.log("x = " + x);
+                    Logger.log("y = " + y);
+                    Logger.log("z = " + z);
 
-                    System.out.println("x *y *z = " + x * y * z);
-                    System.out.println();
-                    System.out.println();
+                    Logger.log("x *y *z = " + x * y * z);
+                    Logger.log();
+                    Logger.log();
                 }
             }
         }

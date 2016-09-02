@@ -1,5 +1,6 @@
 package org.fde.problem_015.naive_recursive;
 
+import org.fde.util.Logger;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -18,7 +19,7 @@ public class LatticePathTest {
         Result result = new Result();
 
         findRoute(result, new Context());
-        System.out.println("*** result = " + result);
+        Logger.log("*** result = " + result);
     }
 
     private void findRoute(Result result, Context ctx) {
@@ -34,7 +35,7 @@ public class LatticePathTest {
             result.count++;
 
             if ((result.count % 10_000_000) == 0) {
-                System.out.println("RUNNING result = " + result);
+                Logger.log("RUNNING result = " + result);
             }
 
             return;

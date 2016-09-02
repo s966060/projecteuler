@@ -2,6 +2,7 @@ package com.fde;
 
 import org.fde.util.ClassUtil;
 import org.fde.util.LineReader;
+import org.fde.util.Logger;
 
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -11,7 +12,7 @@ import java.util.List;
 public class LargestProductInASeries {
     public static void main(String[] args) throws Exception {
         String thousandDigitNumber = getNumber();
-        System.out.println("thousandDigitNumber = " + thousandDigitNumber.toString());
+        Logger.log("thousandDigitNumber = " + thousandDigitNumber.toString());
 
         List<Product> list = new ArrayList<>();
 
@@ -28,14 +29,14 @@ public class LargestProductInASeries {
             list.add(p);
         }
 
-        System.out.println("list = " + list);
+        Logger.log("list = " + list);
 
         Collections.sort(list, (o1, o2) -> {
             int compare = Long.compare(o1.getTotal(), o2.getTotal());
             return -compare;
         });
 
-        System.out.println("list = " + list);
+        Logger.log("list = " + list);
     }
 
     private static String getNumber() throws Exception {

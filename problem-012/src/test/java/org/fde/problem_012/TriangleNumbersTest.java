@@ -1,6 +1,7 @@
 package org.fde.problem_012;
 
 import org.fde.util.ListOfLong;
+import org.fde.util.Logger;
 import org.fde.util.TriangleNumbers;
 import org.fde.util.primes.Divisors;
 import org.junit.Test;
@@ -23,8 +24,8 @@ public class TriangleNumbersTest {
             divisorList = divisors.getDivisors(number);
         }
 
-        System.out.println("divisorList = " + divisorList);
-        System.out.println("number = " + number);
+        Logger.log("divisorList = " + divisorList);
+        Logger.log("number = " + number);
 
         assertEquals(76576500L, number);
     }

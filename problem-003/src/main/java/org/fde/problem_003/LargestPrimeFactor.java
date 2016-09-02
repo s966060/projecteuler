@@ -1,6 +1,7 @@
 package org.fde.problem_003;
 
 import org.fde.util.ListOfLong;
+import org.fde.util.Logger;
 import org.fde.util.primes.PrimeFactors;
 
 public class LargestPrimeFactor {
@@ -16,7 +17,7 @@ public class LargestPrimeFactor {
 
         ListOfLong factors = new PrimeFactors().getPrimeFactors(target);
 
-        System.out.println("factors = " + factors);
+        Logger.log("factors = " + factors);
 
         target = 1;
 
@@ -24,8 +25,8 @@ public class LargestPrimeFactor {
             target *= factor;
         }
 
-        System.out.println("target = " + target);
-        System.out.println("TARGET = " + TARGET);
+        Logger.log("target = " + target);
+        Logger.log("TARGET = " + TARGET);
 
         if (target != TARGET) {
             throw new IllegalArgumentException("factorization failure");

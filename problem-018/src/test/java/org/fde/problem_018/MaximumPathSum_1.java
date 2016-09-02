@@ -4,6 +4,7 @@ import org.apache.commons.lang3.Validate;
 import org.fde.util.ClassUtil;
 import org.fde.util.LineReader;
 import org.fde.util.ListOfLong;
+import org.fde.util.Logger;
 import org.junit.Test;
 
 import java.io.InputStream;
@@ -154,18 +155,18 @@ public class MaximumPathSum_1 {
             }
         }.readAll();
 
-        System.out.println("triangle = " + triangle);
-        System.out.println();
-        System.out.println();
+        Logger.log("triangle = " + triangle);
+        Logger.log();
+        Logger.log();
 
         Triangle newTriangle = new Triangle(triangle);
 
         while (newTriangle.canRollUp()) {
             newTriangle = newTriangle.rollUp();
 
-            System.out.println("newTriangle = " + newTriangle);
-            System.out.println();
-            System.out.println();
+            Logger.log("newTriangle = " + newTriangle);
+            Logger.log();
+            Logger.log();
         }
 
         assertEquals(1074, newTriangle.getTopValue());

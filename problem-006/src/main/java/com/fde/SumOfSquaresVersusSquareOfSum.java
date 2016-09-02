@@ -1,5 +1,7 @@
 package com.fde;
 
+import org.fde.util.Logger;
+
 public class SumOfSquaresVersusSquareOfSum {
     public static void main(String[] args) {
         int max = 100;
@@ -14,11 +16,11 @@ public class SumOfSquaresVersusSquareOfSum {
 
         squareOfSum *= squareOfSum;
 
-        System.out.println("squareOfSum = " + squareOfSum);
-        System.out.println("sumOfSquares = " + sumOfSquares);
+        Logger.log("squareOfSum = " + squareOfSum);
+        Logger.log("sumOfSquares = " + sumOfSquares);
 
         int difference = squareOfSum - sumOfSquares;
 
-        System.out.println("difference = " + difference);
+        Logger.log("difference = " + difference);
     }
 }

@@ -1,5 +1,7 @@
 package org.fde.problem_002;
 
+import org.fde.util.Logger;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,22 +32,22 @@ public class SumOfEvenFibonacciNumbers {
 
             list.add(fibonacci);
 
-            System.out.println("fibonacci = " + fibonacci);
+            Logger.log("fibonacci = " + fibonacci);
 
             if ((fibonacci <= LIMIT_4M) && ((fibonacci & 1) == 0)) {
                 sum += fibonacci;
             }
 
             ratio = (double) list.get(index) / (double) list.get(index - 1);
-            System.out.println("ratio = " + ratio);
+            Logger.log("ratio = " + ratio);
         } while (fibonacci <= LIMIT_1G);
 
-        System.out.println("sum = " + sum);
+        Logger.log("sum = " + sum);
 
         double goldenRatio = (1 + Math.sqrt(5)) / 2.0;
-        System.out.println("goldenRatio = " + goldenRatio);
+        Logger.log("goldenRatio = " + goldenRatio);
 
         double diffRatios = Math.abs(goldenRatio - ratio);
-        System.out.println("diffRatios = " + diffRatios);
+        Logger.log("diffRatios = " + diffRatios);
     }
 }
