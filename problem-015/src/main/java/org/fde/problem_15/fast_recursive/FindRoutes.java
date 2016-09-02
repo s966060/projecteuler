@@ -2,7 +2,16 @@ package org.fde.problem_15.fast_recursive;
 
 import org.apache.commons.lang3.Validate;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class FindRoutes {
+    private final Map<Lattice, Long> cachedResults;
+
+    public FindRoutes() {
+        this.cachedResults = new HashMap<>();
+    }
+
     public long findRoute(Lattice lattice) {
         long result;
 
@@ -12,8 +21,11 @@ public class FindRoutes {
             result = lattice.getRows() + lattice.getColumns();
         } else if ((lattice.getRows() == 2) && (lattice.getColumns() == 2)) {
             result = 6;
+        } else if (cachedResults.containsKey(lattice)) {
+            result = cachedResults.get(lattice);
         } else {
             result = findRouteRecursive(lattice);
+            cachedResults.put(lattice, result);
         }
 
         Validate.isTrue(result == lattice.getRoutes());
@@ -28,7 +40,7 @@ public class FindRoutes {
         result = 0;
 
         for (int i = 0; i <= min; ++i) {
-            long subRoute = findRoute(new Lattice(max, i, lattice.getLevel() + 1));
+            long subRoute = findRoute(new Lattice(max, i));
             result += subRoute;
         }
 

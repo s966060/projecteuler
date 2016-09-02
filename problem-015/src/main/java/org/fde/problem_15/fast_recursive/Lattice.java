@@ -5,12 +5,10 @@ import static org.apache.commons.math3.util.CombinatoricsUtils.binomialCoefficie
 public class Lattice {
     private final int rows;
     private final int columns;
-    private final int level;
 
-    public Lattice(int rows, int columns, int level) {
+    public Lattice(int rows, int columns) {
         this.rows = rows;
         this.columns = columns;
-        this.level = level;
     }
 
     public int getRows() {
@@ -31,11 +29,25 @@ public class Lattice {
         return "Lattice{" +
                 "rows=" + rows +
                 ", columns=" + columns +
-                ", level=" + level +
                 '}';
     }
 
-    public int getLevel() {
-        return level;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Lattice lattice = (Lattice) o;
+
+        if (rows != lattice.rows) return false;
+        return columns == lattice.columns;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = rows;
+        result = 31 * result + columns;
+        return result;
     }
 }

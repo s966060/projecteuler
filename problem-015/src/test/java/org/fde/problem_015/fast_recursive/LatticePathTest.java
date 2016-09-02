@@ -9,9 +9,10 @@ import static org.junit.Assert.assertEquals;
 public class LatticePathTest {
     @Test
     public void amountOfRoutesIn_20_x_20_Grid() {
-        Lattice lattice = new Lattice(20, 20, 0);
+        Lattice lattice = new Lattice(20, 20);
         long result = new FindRoutes().findRoute(lattice);
 
         System.out.println("msg = " + "lattice = " + lattice + " : " + result);
+        assertEquals(137846528820L, result);
     }
 }
