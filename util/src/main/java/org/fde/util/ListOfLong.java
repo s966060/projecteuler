@@ -18,6 +18,12 @@ public class ListOfLong implements Iterable<Long> {
         this.numbers = new ArrayList<>(Arrays.asList(numbers));
     }
 
+    public ListOfLong(Long first, ListOfLong other) {
+        this();
+        add(first);
+        addAll(other);
+    }
+
     public static ListOfLong createListOfLong(Long... numbers) {
         return new ListOfLong(numbers);
     }
@@ -116,5 +122,9 @@ public class ListOfLong implements Iterable<Long> {
     @Override
     public Spliterator<Long> spliterator() {
         return this.numbers.spliterator();
+    }
+
+    public void removeAt(int index) {
+        this.numbers.remove(index);
     }
 }
