@@ -3,12 +3,13 @@ package org.fde.util.permutations;
 import org.fde.util.ListOfLong;
 import org.junit.Test;
 
+import static org.fde.util.ListOfLong.*;
 import static org.junit.Assert.assertEquals;
 
 public class PermutationFactoryTest {
     @Test
     public void one_thePermutationsOf() {
-        ListOfLong input = ListOfLong.createListOfLong(1L);
+        ListOfLong input = createListOfLong(1L);
 
         PermutationList actual = new PermutationFactory(input).getPermutations();
 
@@ -20,7 +21,7 @@ public class PermutationFactoryTest {
 
     @Test
     public void two_thePermutationsOf() {
-        ListOfLong input = ListOfLong.createListOfLong(1L, 2L);
+        ListOfLong input = createListOfLong(1L, 2L);
 
         PermutationList actual = new PermutationFactory(input).getPermutations();
 
@@ -33,7 +34,7 @@ public class PermutationFactoryTest {
 
     @Test
     public void three_thePermutationsOf() {
-        ListOfLong input = ListOfLong.createListOfLong(1L, 2L, 3L);
+        ListOfLong input = createListOfLong(1L, 2L, 3L);
 
         PermutationList actual = new PermutationFactory(input).getPermutations();
 
@@ -50,7 +51,7 @@ public class PermutationFactoryTest {
 
     @Test
     public void four_thePermutationsOf() {
-        ListOfLong input = ListOfLong.createListOfLong(1L, 2L, 3L, 4L);
+        ListOfLong input = createListOfLong(1L, 2L, 3L, 4L);
 
         PermutationList actual = new PermutationFactory(input).getPermutations();
 
