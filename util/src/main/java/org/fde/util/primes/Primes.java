@@ -1,14 +1,15 @@
 package org.fde.util.primes;
 
-import java.util.ArrayList;
+import org.fde.util.ListOfLong;
+
 import java.util.Iterator;
-import java.util.List;
 
 public class Primes {
-    private final List<Long> primes;
+
+    private final ListOfLong primes;
 
     public Primes() {
-        this.primes = new ArrayList<>();
+        this.primes = new ListOfLong();
         this.primes.add(2L);
         this.primes.add(3L);
         this.primes.add(5L);

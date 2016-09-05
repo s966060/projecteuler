@@ -1,23 +1,21 @@
 package org.fde.util.combinations;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import org.fde.util.ListOfLong;
 
 public class Combination {
-    private final List<Long> list;
+    private final ListOfLong list;
 
     public Combination() {
-        this.list = new ArrayList<>();
+        this.list = new ListOfLong();
     }
 
     public Combination(Long... elements) {
         this();
-        this.list.addAll(Arrays.asList(elements));
+        this.list.addAll(ListOfLong.createListOfLong(elements));
     }
 
     public Combination(Combination other) {
-        this.list = new ArrayList<>(other.list);
+        this.list = new ListOfLong(other.list);
     }
 
     public Combination add(Long element) {

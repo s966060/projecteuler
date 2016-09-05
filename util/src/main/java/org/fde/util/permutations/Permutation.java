@@ -1,13 +1,12 @@
 package org.fde.util.permutations;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.fde.util.ListOfLong;
 
 public class Permutation {
-    private final List<Long> list;
+    private final ListOfLong list;
 
     public Permutation() {
-        this.list = new ArrayList<>();
+        this.list = new ListOfLong();
     }
 
     public Permutation(long... elements) {
@@ -18,7 +17,7 @@ public class Permutation {
         }
     }
 
-    private Permutation(List<Long> list) {
+    private Permutation(ListOfLong list) {
         this.list = list;
     }
 
@@ -55,7 +54,7 @@ public class Permutation {
         // the backwards loops is just for the output order
         // nothing special
         for (int index = list.size(); index >= 0; --index) {
-            List<Long> newList = new ArrayList<>(this.list);
+            ListOfLong newList = new ListOfLong(this.list);
 
             newList.add(index, el);
 

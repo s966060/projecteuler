@@ -26,6 +26,14 @@ public class ListOfLong implements Iterable<Long> {
         this.numbers.add(number);
     }
 
+    public void add(int index, Long el) {
+        this.numbers.add(index, el);
+    }
+
+    public void addAll(ListOfLong other) {
+        this.numbers.addAll(other.numbers);
+    }
+
     public long getSum() {
         long sum = 0;
 

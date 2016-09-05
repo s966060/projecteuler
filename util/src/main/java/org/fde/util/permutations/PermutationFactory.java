@@ -1,11 +1,11 @@
 package org.fde.util.permutations;
 
-import java.util.List;
+import org.fde.util.ListOfLong;
 
 public class PermutationFactory {
-    private final List<Long> elements;
+    private final ListOfLong elements;
 
-    public PermutationFactory(List<Long> elements) {
+    public PermutationFactory(ListOfLong elements) {
         this.elements = elements;
     }
 
