@@ -11,7 +11,7 @@ public class PermutationFactoryTest {
     public void one_thePermutationsOf() {
         ListOfLong input = createListOfLong(1L);
 
-        PermutationList actual = new PermutationFactory(input).getPermutations();
+        PermutationList actual = getPermutations(input);
 
         PermutationList expected = new PermutationList()
                 .add(new Permutation(1L));
@@ -23,7 +23,7 @@ public class PermutationFactoryTest {
     public void two_thePermutationsOf() {
         ListOfLong input = createListOfLong(1L, 2L);
 
-        PermutationList actual = new PermutationFactory(input).getPermutations();
+        PermutationList actual = getPermutations(input);
 
         PermutationList expected = new PermutationList()
                 .add(new Permutation(1L, 2L))
@@ -36,7 +36,7 @@ public class PermutationFactoryTest {
     public void three_thePermutationsOf() {
         ListOfLong input = createListOfLong(1L, 2L, 3L);
 
-        PermutationList actual = new PermutationFactory(input).getPermutations();
+        PermutationList actual = getPermutations(input);
 
         PermutationList expected = new PermutationList()
                 .add(new Permutation(1L, 2L, 3L))
@@ -53,7 +53,7 @@ public class PermutationFactoryTest {
     public void four_thePermutationsOf() {
         ListOfLong input = createListOfLong(1L, 2L, 3L, 4L);
 
-        PermutationList actual = new PermutationFactory(input).getPermutations();
+        PermutationList actual = getPermutations(input);
 
         PermutationList expected = new PermutationList()
                 .add(new Permutation(1L, 2L, 3L, 4L))
@@ -87,5 +87,9 @@ public class PermutationFactoryTest {
                 .add(new Permutation(4L, 3L, 2L, 1L));
 
         assertEquals(expected, actual);
+    }
+
+    private PermutationList getPermutations(ListOfLong input) {
+        return new PermutationFactory(input).getPermutations();
     }
 }
