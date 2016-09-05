@@ -13,7 +13,8 @@ public class NonAbundantNumberTest {
         Divisors divisors = new Divisors();
         ListOfLong abundantNumbers = new ListOfLong();
 
-        long LIMIT = 30_000; // 28_123;
+        long LIMIT = 20_200; // 30_000; // 28_123;
+
         for (long number = 1; number <= LIMIT; ++number) {
             ListOfLong properDivisors = divisors.getProperDivisors(number);
 
@@ -29,7 +30,7 @@ public class NonAbundantNumberTest {
         for (int index = 0; index < abundantNumbers.size(); ++index) {
             long a = abundantNumbers.get(index);
 
-            for (int index2 = index + 1; index2 < abundantNumbers.size(); ++index2) {
+            for (int index2 = index; index2 < abundantNumbers.size(); ++index2) {
                 long b = abundantNumbers.get(index2);
 
                 long sum = a + b;
@@ -51,6 +52,6 @@ public class NonAbundantNumberTest {
         long totalSum = all - minus;
         System.out.println("totalSum = " + totalSum);
 
-        assertEquals(4179935L, totalSum);
+        assertEquals(4_179_871L, totalSum);
     }
 }
