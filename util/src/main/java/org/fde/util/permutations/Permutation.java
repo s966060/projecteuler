@@ -52,7 +52,7 @@ public class Permutation implements Iterable<Long> {
         return list.hashCode();
     }
 
-    public PermutationList createNewPermutations(Long el) {
+    PermutationList createNewPermutations(Long el) {
         PermutationList newPermutations = new PermutationList();
 
         // the backwards loops is just for the output order
