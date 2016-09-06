@@ -24,7 +24,7 @@ public class PermutationFactory {
             PermutationList newPermutations = new PermutationList();
 
             if (start.isEmpty()) {
-                newPermutations.add(new Permutation(el));
+                newPermutations.add(new Permutation().add(el));
             } else {
                 for (Permutation p : start) {
                     PermutationList list = p.createNewPermutations(el);

@@ -13,20 +13,27 @@ public class Permutation implements Iterable<Long> {
         this.list = new ListOfLong();
     }
 
-    public Permutation(long... elements) {
-        this();
-
-        for (long el : elements) {
-            add(el);
-        }
+    public Permutation(Permutation other) {
+        this.list = new ListOfLong(other.list);
     }
 
-    private Permutation(ListOfLong list) {
+    Permutation(ListOfLong list) {
         this.list = list;
     }
 
-    public void add(long el) {
+    public static Permutation createPermutation(long... elements) {
+        Permutation p = new Permutation();
+
+        for (long el : elements) {
+            p.add(el);
+        }
+
+        return p;
+    }
+
+    public Permutation add(long el) {
         this.list.add(el);
+        return this;
     }
 
     @Override

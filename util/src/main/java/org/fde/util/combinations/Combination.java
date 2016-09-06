@@ -10,8 +10,7 @@ public class Combination {
     }
 
     public Combination(Long... elements) {
-        this();
-        this.list.addAll(ListOfLong.createListOfLong(elements));
+        this.list = new ListOfLong(elements);
     }
 
     public Combination(Combination other) {
