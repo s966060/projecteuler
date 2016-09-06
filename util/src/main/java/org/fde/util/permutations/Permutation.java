@@ -2,7 +2,11 @@ package org.fde.util.permutations;
 
 import org.fde.util.ListOfLong;
 
-public class Permutation {
+import java.util.Iterator;
+import java.util.Spliterator;
+import java.util.function.Consumer;
+
+public class Permutation implements Iterable<Long> {
     private final ListOfLong list;
 
     public Permutation() {
@@ -62,5 +66,20 @@ public class Permutation {
         }
 
         return newPermutations;
+    }
+
+    @Override
+    public Iterator<Long> iterator() {
+        return list.getUnModifiableListOfLong().iterator();
+    }
+
+    @Override
+    public void forEach(Consumer<? super Long> action) {
+        list.getUnModifiableListOfLong().forEach(action);
+    }
+
+    @Override
+    public Spliterator<Long> spliterator() {
+        throw new UnsupportedOperationException();
     }
 }
