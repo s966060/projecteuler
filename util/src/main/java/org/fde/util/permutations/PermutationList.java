@@ -67,4 +67,8 @@ public class PermutationList implements Iterable<Permutation> {
     public Spliterator<Permutation> spliterator() {
         throw new UnsupportedOperationException();
     }
+
+    public Permutation get(int index) {
+        return this.list.get(index);
+    }
 }
