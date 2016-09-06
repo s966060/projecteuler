@@ -4,20 +4,31 @@ import org.fde.util.ListOfLong;
 
 public class OrderedPermutationFactory {
     private final ListOfLong input;
+    private final PermutationList result;
 
     public OrderedPermutationFactory(ListOfLong input) {
         this.input = input;
+        this.result = new PermutationList();
     }
 
     public PermutationList getPermutations() {
-        ListOfLong original = new ListOfLong(input);
+        makePermutations(new Permutation(), this.input);
+        return this.result;
+    }
 
-        for(int index = 0; index < original.size(); ++index) {
-            ListOfLong next = new ListOfLong(original);
+    private void makePermutations(Permutation target, ListOfLong input) {
+        if (input.size() == 0) {
+            this.result.add(target);
+        }
+
+        for (int index = 0; index < input.size(); ++index) {
+            ListOfLong next = new ListOfLong(input);
             Long first = next.get(index);
             next.removeAt(index);
-            next = new ListOfLong(first, next);
+
+            Permutation newPermutation = new Permutation(target).add(first);
+
+            makePermutations(newPermutation, next);
         }
-        return null;
     }
 }
