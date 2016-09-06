@@ -24,8 +24,16 @@ public class ListOfLong implements Iterable<Long> {
         addAll(other);
     }
 
+    private ListOfLong(List<Long> other) {
+        this.numbers = other;
+    }
+
     public static ListOfLong createListOfLong(Long... numbers) {
         return new ListOfLong(numbers);
+    }
+
+    public ListOfLong getUnModifiableListOfLong() {
+        return new ListOfLong(Collections.unmodifiableList(this.numbers));
     }
 
     public void add(Long number) {
