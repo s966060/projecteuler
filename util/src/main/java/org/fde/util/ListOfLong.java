@@ -48,6 +48,10 @@ public class ListOfLong implements Iterable<Long> {
         this.numbers.addAll(other.numbers);
     }
 
+    public void addAll(Long... other) {
+        this.numbers.addAll(Arrays.asList(other));
+    }
+
     public long getSum() {
         long sum = 0;
 
