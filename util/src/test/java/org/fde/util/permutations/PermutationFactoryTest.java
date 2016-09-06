@@ -4,6 +4,7 @@ import org.fde.util.ListOfLong;
 import org.junit.Test;
 
 import static org.fde.util.ListOfLong.*;
+import static org.fde.util.permutations.Permutation.createPermutation;
 import static org.junit.Assert.assertEquals;
 
 public class PermutationFactoryTest {
@@ -14,7 +15,7 @@ public class PermutationFactoryTest {
         PermutationList actual = getPermutations(input);
 
         PermutationList expected = new PermutationList()
-                .add(new Permutation(1L));
+                .add(createPermutation(1L));
 
         assertEquals(expected, actual);
     }
@@ -26,8 +27,8 @@ public class PermutationFactoryTest {
         PermutationList actual = getPermutations(input);
 
         PermutationList expected = new PermutationList()
-                .add(new Permutation(1L, 2L))
-                .add(new Permutation(2L, 1L));
+                .add(createPermutation(1L, 2L))
+                .add(createPermutation(2L, 1L));
 
         assertEquals(expected, actual);
     }
@@ -39,12 +40,12 @@ public class PermutationFactoryTest {
         PermutationList actual = getPermutations(input);
 
         PermutationList expected = new PermutationList()
-                .add(new Permutation(1L, 2L, 3L))
-                .add(new Permutation(1L, 3L, 2L))
-                .add(new Permutation(3L, 1L, 2L))
-                .add(new Permutation(2L, 1L, 3L))
-                .add(new Permutation(2L, 3L, 1L))
-                .add(new Permutation(3L, 2L, 1L));
+                .add(createPermutation(1L, 2L, 3L))
+                .add(createPermutation(1L, 3L, 2L))
+                .add(createPermutation(3L, 1L, 2L))
+                .add(createPermutation(2L, 1L, 3L))
+                .add(createPermutation(2L, 3L, 1L))
+                .add(createPermutation(3L, 2L, 1L));
 
         assertEquals(expected, actual);
     }
@@ -56,35 +57,35 @@ public class PermutationFactoryTest {
         PermutationList actual = getPermutations(input);
 
         PermutationList expected = new PermutationList()
-                .add(new Permutation(1L, 2L, 3L, 4L))
-                .add(new Permutation(1L, 2L, 4L, 3L))
-                .add(new Permutation(1L, 4L, 2L, 3L))
-                .add(new Permutation(4L, 1L, 2L, 3L))
+                .add(createPermutation(1L, 2L, 3L, 4L))
+                .add(createPermutation(1L, 2L, 4L, 3L))
+                .add(createPermutation(1L, 4L, 2L, 3L))
+                .add(createPermutation(4L, 1L, 2L, 3L))
 
-                .add(new Permutation(1L, 3L, 2L, 4L))
-                .add(new Permutation(1L, 3L, 4L, 2L))
-                .add(new Permutation(1L, 4L, 3L, 2L))
-                .add(new Permutation(4L, 1L, 3L, 2L))
+                .add(createPermutation(1L, 3L, 2L, 4L))
+                .add(createPermutation(1L, 3L, 4L, 2L))
+                .add(createPermutation(1L, 4L, 3L, 2L))
+                .add(createPermutation(4L, 1L, 3L, 2L))
 
-                .add(new Permutation(3L, 1L, 2L, 4L))
-                .add(new Permutation(3L, 1L, 4L, 2L))
-                .add(new Permutation(3L, 4L, 1L, 2L))
-                .add(new Permutation(4L, 3L, 1L, 2L))
+                .add(createPermutation(3L, 1L, 2L, 4L))
+                .add(createPermutation(3L, 1L, 4L, 2L))
+                .add(createPermutation(3L, 4L, 1L, 2L))
+                .add(createPermutation(4L, 3L, 1L, 2L))
 
-                .add(new Permutation(2L, 1L, 3L, 4L))
-                .add(new Permutation(2L, 1L, 4L, 3L))
-                .add(new Permutation(2L, 4L, 1L, 3L))
-                .add(new Permutation(4L, 2L, 1L, 3L))
+                .add(createPermutation(2L, 1L, 3L, 4L))
+                .add(createPermutation(2L, 1L, 4L, 3L))
+                .add(createPermutation(2L, 4L, 1L, 3L))
+                .add(createPermutation(4L, 2L, 1L, 3L))
 
-                .add(new Permutation(2L, 3L, 1L, 4L))
-                .add(new Permutation(2L, 3L, 4L, 1L))
-                .add(new Permutation(2L, 4L, 3L, 1L))
-                .add(new Permutation(4L, 2L, 3L, 1L))
+                .add(createPermutation(2L, 3L, 1L, 4L))
+                .add(createPermutation(2L, 3L, 4L, 1L))
+                .add(createPermutation(2L, 4L, 3L, 1L))
+                .add(createPermutation(4L, 2L, 3L, 1L))
 
-                .add(new Permutation(3L, 2L, 1L, 4L))
-                .add(new Permutation(3L, 2L, 4L, 1L))
-                .add(new Permutation(3L, 4L, 2L, 1L))
-                .add(new Permutation(4L, 3L, 2L, 1L));
+                .add(createPermutation(3L, 2L, 1L, 4L))
+                .add(createPermutation(3L, 2L, 4L, 1L))
+                .add(createPermutation(3L, 4L, 2L, 1L))
+                .add(createPermutation(4L, 3L, 2L, 1L));
 
         assertEquals(expected, actual);
     }
