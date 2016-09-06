@@ -28,8 +28,24 @@ public class ListOfLong implements Iterable<Long> {
         this.numbers = other;
     }
 
-    public static ListOfLong createListOfLong(Long... numbers) {
-        return new ListOfLong(numbers);
+    public static ListOfLong createListOfLong(long... numbers) {
+        ListOfLong result = new ListOfLong();
+
+        for(long n : numbers) {
+            result.add(Long.valueOf(n));
+        }
+
+        return result;
+    }
+
+    public static ListOfLong createListOfLong(int... numbers) {
+        ListOfLong result = new ListOfLong();
+
+        for(int n : numbers) {
+            result.add(Long.valueOf(n));
+        }
+
+        return result;
     }
 
     public ListOfLong getUnModifiableListOfLong() {
