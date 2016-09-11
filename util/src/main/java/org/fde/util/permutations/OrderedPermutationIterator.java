@@ -8,33 +8,69 @@ import java.util.List;
 
 public class OrderedPermutationIterator implements Iterator<Permutation> {
     private final ListOfLong input;
-    private final List<Context> context;
+    private final ContextList context;
 
     class Context {
+        Permutation current;
         int index;
         ListOfLong input;
 
-        public Context(int index, ListOfLong input) {
+        public Context(Permutation current, int index, ListOfLong input) {
+            this.current = current;
             this.index = index;
             this.input = input;
         }
     }
 
-    class ContextListFactory {
-        private final List<Context> context;
+    class ContextList {
+        private List<Context> context;
 
-        public ContextListFactory() {
+        ContextList() {
             this.context = new ArrayList<>();
         }
 
-        public List<Context> create(ListOfLong input) {
+        void add(Context ctx) {
+            this.context.add(ctx);
+        }
+
+        Context getLast() {
+            return this.context.get(size() - 1);
+        }
+
+        boolean hasLast() {
+            return !this.context.isEmpty();
+        }
+
+        public int size() {
+            return this.context.size();
+        }
+    }
+
+    class ContextListFactory {
+        private final ContextList context;
+
+        public ContextListFactory() {
+            this.context = new ContextList();
+        }
+
+        public ContextList create(ListOfLong input) {
             if (input.size() == 0) {
                 return this.context;
             }
 
-            this.context.add(new Context(0, new ListOfLong(input)));
+            Permutation newPermutation;
+
+            if (context.hasLast()) {
+                newPermutation = new Permutation(context.getLast().current);
+            } else {
+                newPermutation = new Permutation();
+            }
+
+            this.context.add(new Context(newPermutation, 0, new ListOfLong(input)));
 
             ListOfLong next = new ListOfLong(input);
+
+            newPermutation.add(next.get(0));
             next.removeAt(0);
 
             create(next);
@@ -51,7 +87,7 @@ public class OrderedPermutationIterator implements Iterator<Permutation> {
 
     @Override
     public boolean hasNext() {
-        return false;
+        return this.context.size() == this.input.size();
     }
 
     @Override
