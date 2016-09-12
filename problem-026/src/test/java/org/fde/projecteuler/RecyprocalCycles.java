@@ -27,7 +27,7 @@ class Cycle {
     }
 
     BigDecimal getFraction() {
-        if(fraction == null) {
+        if (fraction == null) {
             fraction = BigDecimal.ONE.divide(d, 2000, BigDecimal.ROUND_UP);
         }
 
@@ -70,7 +70,7 @@ public class RecyprocalCycles {
 
         System.out.println("largestCycle = " + largestCycle);
 
-        assertEquals(largestCycle.getD(), 983);
+        assertEquals(largestCycle.getD(), BigDecimal.valueOf(983));
     }
 
     private Cycle getCycle(Cycle suspect) {
@@ -84,7 +84,6 @@ public class RecyprocalCycles {
                 BigDecimal number = getNumber(cycle);
 
                 if (number != null && !number.equals(BigDecimal.ZERO)) {
-
                     boolean isCycle = isCycle(asString, begin, cycle);
 
                     if (isCycle) {
