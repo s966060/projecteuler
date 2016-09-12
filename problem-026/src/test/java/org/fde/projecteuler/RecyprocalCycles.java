@@ -1,5 +1,7 @@
 package org.fde.projecteuler;
 
+import org.apache.commons.lang3.time.StopWatch;
+import org.fde.util.primes.PrimeBuilder;
 import org.junit.Test;
 
 import java.math.BigDecimal;
@@ -11,7 +13,7 @@ class Cycle {
     private final String cycle;
     private BigDecimal fraction;
 
-    public Cycle(int d) {
+    public Cycle(long d) {
         this.d = BigDecimal.valueOf(d);
         this.cycle = "";
     }
@@ -55,9 +57,14 @@ class Cycle {
 public class RecyprocalCycles {
     @Test
     public void recyprocalCycles() {
+        StopWatch stopWatch = new StopWatch();
+        stopWatch.start();
+
         Cycle largestCycle = new Cycle(1);
 
-        for (int d = 1; d < 1000; ++d) {
+        PrimeBuilder builder = new PrimeBuilder();
+
+        for (long d = builder.next(); d < 1000; d = builder.next()) {
             System.out.println("d = " + d);
             Cycle cycle = getCycle(new Cycle(d));
             // System.out.println("cycle = " + cycle);
@@ -69,6 +76,7 @@ public class RecyprocalCycles {
         }
 
         System.out.println("largestCycle = " + largestCycle);
+        System.out.println("stopWatch = " + stopWatch);
 
         assertEquals(largestCycle.getD(), BigDecimal.valueOf(983));
     }
