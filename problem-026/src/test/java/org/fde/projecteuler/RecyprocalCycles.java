@@ -4,26 +4,34 @@ import org.junit.Test;
 
 import java.math.BigDecimal;
 
+import static org.junit.Assert.assertEquals;
+
 class Cycle {
     private final BigDecimal d;
     private final String cycle;
+    private BigDecimal fraction;
 
     public Cycle(int d) {
         this.d = BigDecimal.valueOf(d);
         this.cycle = "";
     }
 
-    private Cycle(BigDecimal d, String cycle) {
+    private Cycle(BigDecimal d, String cycle, BigDecimal fraction) {
         this.d = d;
         this.cycle = cycle;
+        this.fraction = fraction;
     }
 
     Cycle addCycle(String cycle) {
-        return new Cycle(d, cycle);
+        return new Cycle(d, cycle, fraction);
     }
 
     BigDecimal getFraction() {
-        return BigDecimal.ONE.divide(d, 100, BigDecimal.ROUND_UP);
+        if(fraction == null) {
+            fraction = BigDecimal.ONE.divide(d, 2000, BigDecimal.ROUND_UP);
+        }
+
+        return fraction;
     }
 
     boolean isLarger(Cycle other) {
@@ -35,8 +43,12 @@ class Cycle {
         return "Cycle{" +
                 "d=" + d +
                 ", cycle='" + cycle + '\'' +
-                ", fraction='" + getFraction() + '\'' +
+                ", fraction=" + fraction +
                 '}';
+    }
+
+    public BigDecimal getD() {
+        return d;
     }
 }
 
@@ -46,15 +58,19 @@ public class RecyprocalCycles {
         Cycle largestCycle = new Cycle(1);
 
         for (int d = 1; d < 1000; ++d) {
+            System.out.println("d = " + d);
             Cycle cycle = getCycle(new Cycle(d));
-            System.out.println("cycle = " + cycle);
+            // System.out.println("cycle = " + cycle);
 
-            if(cycle.isLarger(largestCycle)) {
+            if (cycle.isLarger(largestCycle)) {
                 largestCycle = cycle;
+                System.out.println("largestCycle = " + largestCycle);
             }
         }
 
         System.out.println("largestCycle = " + largestCycle);
+
+        assertEquals(largestCycle.getD(), 983);
     }
 
     private Cycle getCycle(Cycle suspect) {
@@ -90,7 +106,7 @@ public class RecyprocalCycles {
     }
 
     private boolean isCycle(String fraction, int index, String cycle) {
-        for (int i = 0; i < 4; ++i) {
+        for (int i = 0; i < 2; ++i) {
             int begin = index + cycle.length() * i;
             int end = begin + cycle.length();
 
