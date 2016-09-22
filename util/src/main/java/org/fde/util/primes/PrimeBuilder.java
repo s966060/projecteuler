@@ -73,4 +73,12 @@ public class PrimeBuilder {
         boolean isPrime = this.primes.contains(suspect);
         return isPrime;
     }
+
+    @Override
+    public String toString() {
+        return "PrimeBuilder{" +
+                "index=" + index +
+                ", getLastPrime()=" + getLastPrime() +
+                '}';
+    }
 }
