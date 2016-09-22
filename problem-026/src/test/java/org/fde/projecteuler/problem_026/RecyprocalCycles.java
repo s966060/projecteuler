@@ -1,4 +1,4 @@
-package org.fde.projecteuler;
+package org.fde.projecteuler.problem_026;
 
 import org.apache.commons.lang3.time.StopWatch;
 import org.fde.util.primes.PrimeBuilder;
