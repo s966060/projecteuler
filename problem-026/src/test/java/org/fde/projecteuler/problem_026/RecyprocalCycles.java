@@ -32,7 +32,7 @@ public class RecyprocalCycles {
         System.out.println("largestCycle = " + largestCycle);
         System.out.println("stopWatch = " + stopWatch);
 
-        assertEquals(largestCycle.getD(), BigDecimal.valueOf(983));
+        assertEquals(BigDecimal.valueOf(983), largestCycle.getD());
     }
 
     private Cycle getCycle(Cycle suspect) {
