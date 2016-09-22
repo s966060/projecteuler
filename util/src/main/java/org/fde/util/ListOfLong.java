@@ -155,4 +155,9 @@ public class ListOfLong implements Iterable<Long> {
     public void removeAt(int index) {
         this.numbers.remove(index);
     }
+
+    public boolean contains(long suspect) {
+        boolean isContained = this.numbers.contains(suspect);
+        return isContained;
+    }
 }

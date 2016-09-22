@@ -50,4 +50,9 @@ public class Primes {
                 "primes=" + primes +
                 '}';
     }
+
+    public boolean contains(long suspect) {
+        boolean isKnownPrime = this.primes.contains(suspect);
+        return isKnownPrime;
+    }
 }

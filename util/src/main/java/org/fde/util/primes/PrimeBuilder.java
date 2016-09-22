@@ -64,4 +64,13 @@ public class PrimeBuilder {
     public long getLastPrime() {
         return this.primes.last();
     }
+
+    public boolean isPrime(long suspect) {
+        while(suspect > getLastPrime()) {
+            next();
+        }
+
+        boolean isPrime = this.primes.contains(suspect);
+        return isPrime;
+    }
 }
