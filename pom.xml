@@ -36,6 +36,7 @@
         <module>problem-026</module>
         <module>problem-027</module>
         <module>problem-028</module>
+        <module>solutions</module>
     </modules>
 
     <dependencyManagement>
