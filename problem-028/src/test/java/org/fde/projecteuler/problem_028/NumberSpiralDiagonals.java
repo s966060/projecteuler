@@ -7,6 +7,8 @@ import static org.junit.Assert.assertEquals;
 public class NumberSpiralDiagonals {
     @Test
     public void numberSpiralDiagonals() {
-        assertEquals(1048374705L, new NumberSpiralSquare(new Size(1001)).getDiagonalSum());
+        Size size = new Size(1001);
+        long actual = new NumberSpiralSquare(size).getDiagonalSum();
+        assertEquals(669171001, actual);
     }
 }
