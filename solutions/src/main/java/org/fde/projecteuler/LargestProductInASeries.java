@@ -1,4 +1,4 @@
-package com.fde;
+package org.fde.projecteuler;
 
 import org.fde.util.ClassUtil;
 import org.fde.util.LineReader;

@@ -1,4 +1,4 @@
-package org.fde;
+package org.fde.projecteuler;
 
 import org.fde.util.Logger;
 import org.fde.util.primes.PrimeBuilder;

@@ -1,4 +1,4 @@
-package com.fde;
+package org.fde.projecteuler;
 
 import java.util.ArrayList;
 import java.util.List;
