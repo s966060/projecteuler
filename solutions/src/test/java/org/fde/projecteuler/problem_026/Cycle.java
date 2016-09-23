@@ -45,7 +45,7 @@ class Cycle {
     public String toString() {
         return "Cycle{" +
                 "d=" + d +
-                ", cycle='" + cycle + '\'' +
+                ", (" + cycle.length() + ") cycle = '" + cycle + '\'' +
                 ", fraction=" + fraction +
                 '}';
     }
