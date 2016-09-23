@@ -1,4 +1,4 @@
-package org.fde.problem_015.naive_recursive;
+package org.fde.projecteuler.problem_015.naive_recursive;
 
 public class Context {
     private final int down;

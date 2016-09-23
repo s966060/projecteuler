@@ -1,4 +1,4 @@
-package org.fde.problem_015.fast_recursive;
+package org.fde.projecteuler.problem_015.fast_recursive;
 
 import org.fde.problem_15.fast_recursive.FindRoutes;
 import org.fde.problem_15.fast_recursive.Lattice;

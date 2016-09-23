@@ -1,4 +1,4 @@
-package com.fde.problem_011;
+package org.fde.projecteuler.problem_011;
 
 import org.fde.util.ClassUtil;
 import org.fde.util.Logger;

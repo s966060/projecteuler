@@ -1,4 +1,4 @@
-package org.fde.problem_021;
+package org.fde.projecteuler.problem_021;
 
 import org.fde.util.ListOfLong;
 import org.fde.util.primes.Divisors;

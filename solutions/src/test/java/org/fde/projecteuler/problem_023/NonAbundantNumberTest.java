@@ -1,4 +1,4 @@
-package org.fde.problem_023;
+package org.fde.projecteuler.problem_023;
 
 import org.fde.util.ListOfLong;
 import org.fde.util.SetOfLong;

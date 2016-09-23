@@ -1,4 +1,4 @@
-package org.fde.problem_013;
+package org.fde.projecteuler.problem_013;
 
 import org.fde.util.ClassUtil;
 import org.fde.util.LineReader;

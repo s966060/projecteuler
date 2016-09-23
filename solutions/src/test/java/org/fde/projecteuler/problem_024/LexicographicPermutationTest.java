@@ -1,4 +1,4 @@
-package org.fde.problem_024;
+package org.fde.projecteuler.problem_024;
 
 import org.fde.util.ListOfLong;
 import org.fde.util.permutations.OrderedPermutationFactory;

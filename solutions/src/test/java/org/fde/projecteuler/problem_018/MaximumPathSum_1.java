@@ -1,4 +1,4 @@
-package org.fde.problem_018;
+package org.fde.projecteuler.problem_018;
 
 import org.apache.commons.lang3.Validate;
 import org.fde.util.ClassUtil;

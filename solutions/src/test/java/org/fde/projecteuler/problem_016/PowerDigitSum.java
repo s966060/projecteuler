@@ -1,4 +1,4 @@
-package org.fde.problem_016;
+package org.fde.projecteuler.problem_016;
 
 import org.fde.util.Logger;
 import org.junit.Test;
