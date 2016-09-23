@@ -1,9 +1,12 @@
 package org.fde.projecteuler.problem_002;
 
 import org.fde.util.Logger;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * Created by filipdelbaen on 26/07/16.
@@ -50,5 +53,7 @@ public class SumOfEvenFibonacciNumbers {
 
         double diffRatios = Math.abs(goldenRatio - ratio);
         Logger.log("diffRatios = " + diffRatios);
+
+        assertEquals(1134903170, fibonacci);
     }
 }
