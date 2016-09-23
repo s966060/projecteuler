@@ -4,8 +4,12 @@ public class NumberSpiralSquare {
     private final int step;
     private Long largest;
 
-    public NumberSpiralSquare(int size) {
-        this.step = 1 + (size / 2);
+    public NumberSpiralSquare(Size size) {
+        this.step = size.getStep();
+    }
+
+    public NumberSpiralSquare(Step step) {
+        this.step = step.getStep();
     }
 
     public long getDiagonalSum() {
@@ -14,7 +18,7 @@ public class NumberSpiralSquare {
             return 1;
         }
 
-        NumberSpiralSquare child = new NumberSpiralSquare(step - 1);
+        NumberSpiralSquare child = new NumberSpiralSquare(new Step(step - 1));
 
         long sumOfChild = child.getDiagonalSum();
 
