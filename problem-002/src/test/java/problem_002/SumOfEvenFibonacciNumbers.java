@@ -13,7 +13,8 @@ public class SumOfEvenFibonacciNumbers {
     public static final int LIMIT_4M = 4_000_000;
     public static final int LIMIT_1G = 1_000_000_000;
 
-    public static void main(String[] args) {
+    @Test
+    public void sumOfEvenFibonacciNumbers() {
         List<Integer> list = new ArrayList<Integer>();
 
         list.add(1);
