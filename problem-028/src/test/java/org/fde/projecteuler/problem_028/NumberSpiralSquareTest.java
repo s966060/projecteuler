@@ -10,21 +10,29 @@ import static org.junit.Assert.assertEquals;
 public class NumberSpiralSquareTest {
     @Test
     public void sizeOne() {
-        assertEquals(1, new NumberSpiralSquare(new Size(1)).getDiagonalSum());
+        Size size = new Size(1);
+        assertEquals(1, getDiagonalSum(size));
     }
 
     @Test
     public void sizeThree() {
-        assertEquals(25, new NumberSpiralSquare(new Size(3)).getDiagonalSum());
+        Size size = new Size(3);
+        assertEquals(25, getDiagonalSum(size));
     }
 
     @Test
     public void sizeFive() {
-        assertEquals(101, new NumberSpiralSquare(new Size(5)).getDiagonalSum());
+        Size size = new Size(5);
+        assertEquals(101, getDiagonalSum(size));
     }
 
     @Test
     public void sizeSeven() {
-        assertEquals(261, new NumberSpiralSquare(new Size(7)).getDiagonalSum());
+        Size size = new Size(7);
+        assertEquals(261, getDiagonalSum(size));
+    }
+
+    private long getDiagonalSum(Size size) {
+        return new NumberSpiralSquare(size).getDiagonalSum();
     }
 }
