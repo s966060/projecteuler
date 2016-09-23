@@ -12,30 +12,6 @@
 
     <modules>
         <module>util</module>
-        <module>problem-002</module>
-        <module>problem-003</module>
-        <module>problem-004</module>
-        <module>problem-005</module>
-        <module>problem-006</module>
-        <module>problem-007</module>
-        <module>problem-008</module>
-        <module>problem-009</module>
-        <module>problem-010</module>
-        <module>problem-011</module>
-        <module>problem-012</module>
-        <module>problem-013</module>
-        <module>problem-014</module>
-        <module>problem-015</module>
-        <module>problem-016</module>
-        <module>problem-018</module>
-        <module>problem-020</module>
-        <module>problem-021</module>
-        <module>problem-023</module>
-        <module>problem-024</module>
-        <module>problem-025</module>
-        <module>problem-026</module>
-        <module>problem-027</module>
-        <module>problem-028</module>
         <module>solutions</module>
     </modules>
 
