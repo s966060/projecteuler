@@ -1,4 +1,4 @@
-package org.fde.problem_003;
+package org.fde.projecteuler.problem_003;
 
 import org.fde.util.ListOfLong;
 import org.fde.util.Logger;
