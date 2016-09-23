@@ -160,4 +160,12 @@ public class ListOfLong implements Iterable<Long> {
         boolean isContained = this.numbers.contains(suspect);
         return isContained;
     }
+
+    public Long first() {
+        return get(0);
+    }
+
+    public Long last() {
+        return get(size()-1);
+    }
 }

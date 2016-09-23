@@ -3,16 +3,18 @@ package org.fde.projecteuler.problem_003;
 import org.fde.util.ListOfLong;
 import org.fde.util.Logger;
 import org.fde.util.primes.PrimeFactors;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 public class LargestPrimeFactor {
-    public static void main(String[] args) {
-        findPrimeFactors(600_851_475_143L);
-        findPrimeFactors(1024 * 1024 * 1024);
-        findPrimeFactors(13);
-        findPrimeFactors(1_082_801);
+    @Test
+    public void largestPrimeFactor() {
+        long actual = findPrimeFactors(600_851_475_143L);
+        assertEquals(6857, actual);
     }
 
-    private static void findPrimeFactors(long target) {
+    private long findPrimeFactors(long target) {
         final long TARGET = target;
 
         ListOfLong factors = new PrimeFactors().getPrimeFactors(target);
@@ -25,12 +27,10 @@ public class LargestPrimeFactor {
             target *= factor;
         }
 
-        Logger.log("target = " + target);
-        Logger.log("TARGET = " + TARGET);
-
         if (target != TARGET) {
             throw new IllegalArgumentException("factorization failure");
         }
-    }
 
+        return factors.last();
+    }
 }
