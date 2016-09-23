@@ -1,4 +1,4 @@
-package org.fde.problem_15.fast_recursive;
+package org.fde.projecteuler.problem_15.fast_recursive;
 
 import static org.apache.commons.math3.util.CombinatoricsUtils.binomialCoefficient;
 

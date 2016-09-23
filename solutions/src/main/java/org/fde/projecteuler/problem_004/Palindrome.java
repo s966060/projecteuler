@@ -1,4 +1,4 @@
-package org.fde.problem_004;
+package org.fde.projecteuler.problem_004;
 
 public class Palindrome {
     private final int firstFactor;
