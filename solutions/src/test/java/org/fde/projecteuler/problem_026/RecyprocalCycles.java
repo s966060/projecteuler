@@ -36,52 +36,53 @@ public class RecyprocalCycles {
     }
 
     private Cycle getCycle(Cycle suspect) {
-        String asString = suspect.getFraction().toString();
+        String fraction = suspect.getFraction().toString().substring(2);
 
+        int cycleLength = suspect.getMaximumTheoreticalCycleLength();
+        String cycleAsString = fraction.substring(0, cycleLength);
+
+        for (int begin = 0, end = begin + cycleLength;
+             begin < fraction.length() && end < fraction.length();
+             begin = end, end = end + cycleLength) {
+
+            String fractionPart = fraction.substring(begin, end);
+
+            if (!fractionPart.equals(cycleAsString)) {
+                return suspect;
+            }
+        }
+
+        // here now we know that we have a cycle... but now we still have to compute the size of the cyle
+
+        String subCycle = getSubCycle(cycleAsString);
+
+        return suspect.addCycle(subCycle);
+    }
+
+    private String getSubCycle(String suspectCycle) {
         next:
-        for (int begin = 0; begin < asString.length(); ++begin) {
-            for (int end = begin + 1; end < asString.length(); ++end) {
-                String cycle = asString.substring(begin, end);
+        for (int cycleLength = 1; cycleLength <= suspectCycle.length(); ++cycleLength) {
+            String subCycle = suspectCycle.substring(0, cycleLength);
 
-                BigDecimal number = getNumber(cycle);
+            for (int begin = 0, end = begin + cycleLength;
+                 begin < suspectCycle.length() && end <= suspectCycle.length();
+                 begin = end, end = end + cycleLength) {
 
-                if (number != null && !number.equals(BigDecimal.ZERO)) {
-                    boolean isCycle = isCycle(asString, begin, cycle);
+                String subCyclePart = suspectCycle.substring(begin, end);
 
-                    if (isCycle) {
-                        return suspect.addCycle(cycle);
-                    }
+                if (!subCyclePart.equals(subCycle)) {
+                    continue next;
                 }
             }
-        }
 
-        return suspect;
-    }
-
-    private BigDecimal getNumber(String number) {
-        try {
-            return new BigDecimal(number);
-        } catch (Exception ex) {
-            return null;
-        }
-    }
-
-    private boolean isCycle(String fraction, int index, String cycle) {
-        for (int i = 0; i < 2; ++i) {
-            int begin = index + cycle.length() * i;
-            int end = begin + cycle.length();
-
-            if (begin >= fraction.length() || end >= fraction.length()) {
-                return false;
+            if(subCycle.length() * 2 > suspectCycle.length()) {
+                return suspectCycle;
             }
-
-            String suspect = fraction.substring(begin, end);
-
-            if (!cycle.equals(suspect)) {
-                return false;
+            else {
+                return subCycle;
             }
         }
 
-        return true;
+        throw new IllegalArgumentException();
     }
 }

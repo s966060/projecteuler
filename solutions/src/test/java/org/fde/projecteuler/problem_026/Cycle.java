@@ -37,6 +37,10 @@ class Cycle {
         return this.cycle.length() > other.cycle.length();
     }
 
+    int getMaximumTheoreticalCycleLength() {
+        return this.d.intValue() - 1;
+    }
+
     @Override
     public String toString() {
         return "Cycle{" +
