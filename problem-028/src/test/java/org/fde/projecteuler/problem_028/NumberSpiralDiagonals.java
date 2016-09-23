@@ -9,6 +9,6 @@ public class NumberSpiralDiagonals {
     public void numberSpiralDiagonals() {
         Size size = new Size(1001);
         long actual = new NumberSpiralSquare(size).getDiagonalSum();
-        assertEquals(669171001, actual);
+        assertEquals(669171001L, actual);
     }
 }
