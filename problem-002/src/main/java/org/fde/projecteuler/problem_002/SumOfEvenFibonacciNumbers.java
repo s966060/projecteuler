@@ -1,4 +1,4 @@
-package org.fde.problem_002;
+package org.fde.projecteuler.problem_002;
 
 import org.fde.util.Logger;
 
