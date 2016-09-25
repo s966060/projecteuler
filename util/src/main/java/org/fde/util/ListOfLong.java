@@ -31,7 +31,7 @@ public class ListOfLong implements Iterable<Long> {
     public static ListOfLong createListOfLong(long... numbers) {
         ListOfLong result = new ListOfLong();
 
-        for(long n : numbers) {
+        for (long n : numbers) {
             result.add(Long.valueOf(n));
         }
 
@@ -41,7 +41,7 @@ public class ListOfLong implements Iterable<Long> {
     public static ListOfLong createListOfLong(int... numbers) {
         ListOfLong result = new ListOfLong();
 
-        for(int n : numbers) {
+        for (int n : numbers) {
             result.add(Long.valueOf(n));
         }
 
@@ -166,6 +166,6 @@ public class ListOfLong implements Iterable<Long> {
     }
 
     public Long last() {
-        return get(size()-1);
+        return get(size() - 1);
     }
 }
