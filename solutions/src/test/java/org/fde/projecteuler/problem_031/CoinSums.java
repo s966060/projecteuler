@@ -7,6 +7,7 @@ import java.util.List;
 
 import static org.fde.projecteuler.problem_031.CoinSumProducer.createCoinSumProducer;
 import static org.fde.util.ListOfLong.createListOfLong;
+import static org.junit.Assert.assertEquals;
 
 public class CoinSums {
     @Test
@@ -16,6 +17,7 @@ public class CoinSums {
 
         List<CoinCombination> result = producer.produce();
         System.out.println("result = " + result);
+        assertEquals(1, result.size());
     }
 
     @Test
@@ -25,6 +27,7 @@ public class CoinSums {
 
         List<CoinCombination> result = producer.produce();
         System.out.println("result = " + result);
+        assertEquals(2, result.size());
     }
 
     @Test
@@ -34,6 +37,7 @@ public class CoinSums {
 
         List<CoinCombination> result = producer.produce();
         System.out.println("result = " + result);
+        assertEquals(4, result.size());
     }
 
     @Test
@@ -43,6 +47,7 @@ public class CoinSums {
 
         List<CoinCombination> result = producer.produce();
         System.out.println("result = " + result);
+        assertEquals(11, result.size());
     }
 
     @Test
@@ -51,7 +56,7 @@ public class CoinSums {
         CoinSumProducer producer = createCoinSumProducer(20L, participants);
 
         List<CoinCombination> result = producer.produce();
-        System.out.println("result = " + result);
+        assertEquals(41, result.size());
     }
 
     @Test
@@ -60,7 +65,7 @@ public class CoinSums {
         CoinSumProducer producer = createCoinSumProducer(50L, participants);
 
         List<CoinCombination> result = producer.produce();
-        System.out.println("result = " + result);
+        assertEquals(451, result.size());
     }
 
     @Test
@@ -69,7 +74,7 @@ public class CoinSums {
         CoinSumProducer producer = createCoinSumProducer(100L, participants);
 
         List<CoinCombination> result = producer.produce();
-        System.out.println("result = " + result);
+        assertEquals(4563, result.size());
     }
 
     @Test
@@ -79,5 +84,6 @@ public class CoinSums {
 
         List<CoinCombination> result = producer.produce();
         System.out.println("result = " + result);
+        assertEquals(73682, result.size());
     }
 }

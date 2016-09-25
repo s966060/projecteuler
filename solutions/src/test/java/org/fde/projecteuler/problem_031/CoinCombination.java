@@ -18,7 +18,7 @@ class CoinCombination {
         this.combination.add(p);
     }
 
-    public Long sum() {
+    public long sum() {
         long sum = 0;
 
         for (Participant p : combination) {

@@ -6,12 +6,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 class CoinSumProducer {
-    private final Long target;
+    private final long target;
     private final ListOfLong coins;
     private final List<Participant> allParticipants;
     private final List<CoinCombination> combinations;
 
-    private CoinSumProducer(Long target, ListOfLong coins) {
+    private CoinSumProducer(long target, ListOfLong coins) {
         this.target = target;
         this.coins = coins;
 
