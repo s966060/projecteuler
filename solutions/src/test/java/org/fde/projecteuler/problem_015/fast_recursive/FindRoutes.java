@@ -1,4 +1,4 @@
-package org.fde.projecteuler.problem_15.fast_recursive;
+package org.fde.projecteuler.problem_015.fast_recursive;
 
 import org.apache.commons.lang3.Validate;
 

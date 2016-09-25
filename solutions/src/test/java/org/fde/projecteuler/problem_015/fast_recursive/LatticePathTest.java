@@ -1,7 +1,5 @@
 package org.fde.projecteuler.problem_015.fast_recursive;
 
-import org.fde.projecteuler.problem_15.fast_recursive.FindRoutes;
-import org.fde.projecteuler.problem_15.fast_recursive.Lattice;
 import org.fde.util.Logger;
 import org.junit.Test;
 
