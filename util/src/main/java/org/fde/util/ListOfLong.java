@@ -1,5 +1,7 @@
 package org.fde.util;
 
+import org.apache.commons.lang3.Validate;
+
 import java.util.*;
 import java.util.function.Consumer;
 
@@ -25,6 +27,10 @@ public class ListOfLong implements Iterable<Long> {
     }
 
     private ListOfLong(List<Long> other) {
+        for (Long number : other) {
+            Validate.notNull(number);
+        }
+
         this.numbers = other;
     }
 
@@ -53,11 +59,13 @@ public class ListOfLong implements Iterable<Long> {
     }
 
     public void add(Long number) {
+        Validate.notNull(number);
         this.numbers.add(number);
     }
 
-    public void add(int index, Long el) {
-        this.numbers.add(index, el);
+    public void add(int index, Long number) {
+        Validate.notNull(number);
+        this.numbers.add(index, number);
     }
 
     public void addAll(ListOfLong other) {
@@ -65,6 +73,10 @@ public class ListOfLong implements Iterable<Long> {
     }
 
     public void addAll(Long... other) {
+        for (Long number : other) {
+            Validate.notNull(number);
+        }
+
         this.numbers.addAll(Arrays.asList(other));
     }
 
