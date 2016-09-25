@@ -26,12 +26,12 @@ public class ListOfLong implements Iterable<Long> {
         addAll(other);
     }
 
-    private ListOfLong(List<Long> other) {
+    public ListOfLong(Collection<Long> other) {
         for (Long number : other) {
             Validate.notNull(number);
         }
 
-        this.numbers = other;
+        this.numbers = new ArrayList<>(other);
     }
 
     public static ListOfLong createListOfLong(long... numbers) {
