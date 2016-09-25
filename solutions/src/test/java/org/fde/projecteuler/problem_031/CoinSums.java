@@ -83,7 +83,6 @@ public class CoinSums {
         CoinSumProducer producer = createCoinSumProducer(200L, participants);
 
         List<CoinCombination> result = producer.produce();
-        System.out.println("result = " + result);
         assertEquals(73682, result.size());
     }
 }
