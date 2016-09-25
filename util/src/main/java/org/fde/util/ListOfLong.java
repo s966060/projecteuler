@@ -27,6 +27,10 @@ public class ListOfLong implements Iterable<Long> {
     }
 
     private ListOfLong(List<Long> other) {
+        for (Long number : other) {
+            Validate.notNull(number);
+        }
+
         this.numbers = other;
     }
 
@@ -69,6 +73,10 @@ public class ListOfLong implements Iterable<Long> {
     }
 
     public void addAll(Long... other) {
+        for (Long number : other) {
+            Validate.notNull(number);
+        }
+
         this.numbers.addAll(Arrays.asList(other));
     }
 
