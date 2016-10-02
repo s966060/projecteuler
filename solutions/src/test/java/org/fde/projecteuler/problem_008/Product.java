@@ -1,4 +1,4 @@
-package org.fde.projecteuler;
+package org.fde.projecteuler.problem_008;
 
 import java.util.ArrayList;
 import java.util.List;

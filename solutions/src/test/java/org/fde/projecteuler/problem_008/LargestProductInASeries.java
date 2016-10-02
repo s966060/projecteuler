@@ -1,6 +1,5 @@
 package org.fde.projecteuler.problem_008;
 
-import org.fde.projecteuler.Product;
 import org.fde.util.ClassUtil;
 import org.fde.util.LineReader;
 import org.fde.util.Logger;
