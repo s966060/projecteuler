@@ -1,8 +1,5 @@
 package org.fde.util;
 
-/**
- * Created by filip on 17/08/2016.
- */
 public class TriangleNumbers {
     private long number;
     private long sum;

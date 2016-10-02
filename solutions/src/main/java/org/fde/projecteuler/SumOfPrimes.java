@@ -3,9 +3,6 @@ package org.fde.projecteuler;
 import org.fde.util.Logger;
 import org.fde.util.primes.PrimeBuilder;
 
-/**
- * Created by filipdelbaen on 14/08/16.
- */
 public class SumOfPrimes {
     public static void main(String[] args) {
         PrimeBuilder builder = new PrimeBuilder();
