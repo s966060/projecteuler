@@ -1,16 +1,21 @@
-package org.fde.projecteuler;
+package org.fde.projecteuler.problem_008;
 
+import org.fde.projecteuler.Product;
 import org.fde.util.ClassUtil;
 import org.fde.util.LineReader;
 import org.fde.util.Logger;
+import org.junit.Test;
 
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import static org.junit.Assert.assertEquals;
+
 public class LargestProductInASeries {
-    public static void main(String[] args) throws Exception {
+    @Test
+    public void largestProductInASeries() throws Exception {
         String thousandDigitNumber = getNumber();
         Logger.log("thousandDigitNumber = " + thousandDigitNumber.toString());
 
@@ -37,6 +42,8 @@ public class LargestProductInASeries {
         });
 
         Logger.log("list = " + list);
+
+        assertEquals(23514624000L, list.get(0).getTotal());
     }
 
     private static String getNumber() throws Exception {
