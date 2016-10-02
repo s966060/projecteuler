@@ -1,14 +1,18 @@
 package org.fde.projecteuler.problem_004;
 
 import org.fde.util.Logger;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import static org.junit.Assert.assertEquals;
+
 public class NumberPalindrome {
-    public static void main(String[] args) {
+    @Test
+    public void numberPalindrome() {
         List<Palindrome> list = new ArrayList<>();
 
         for (int i = 999; i >= 100; --i) {
@@ -33,5 +37,7 @@ public class NumberPalindrome {
         });
 
         Logger.log("list = " + list);
+
+        assertEquals(906609, list.get(0).getPalindrome());
     }
 }
