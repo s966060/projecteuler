@@ -1,9 +1,15 @@
-package org.fde.projecteuler;
+package org.fde.projecteuler.problem_009;
 
 import org.fde.util.Logger;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 public class PythagorianTriplet {
-    public static void main(String[] args) {
+    @Test
+    public void pythagorianTriplet() {
+        Integer triplet = null;
+
         int equalsCondition = 1000;
 
         // because x + y + z = 1000
@@ -41,11 +47,14 @@ public class PythagorianTriplet {
                     Logger.log("y = " + y);
                     Logger.log("z = " + z);
 
-                    Logger.log("x *y *z = " + x * y * z);
+                    triplet = x * y * z;
+                    Logger.log("x * y *z = " + triplet);
                     Logger.log();
                     Logger.log();
                 }
             }
         }
+
+        assertEquals(Integer.valueOf(31875000), triplet);
     }
 }
