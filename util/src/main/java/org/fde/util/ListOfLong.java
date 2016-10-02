@@ -180,4 +180,37 @@ public class ListOfLong implements Iterable<Long> {
     public Long last() {
         return get(size() - 1);
     }
+
+    public ListOfLong getIntersection(ListOfLong other) {
+        ListOfLong newThis = new ListOfLong(this);
+        ListOfLong newOther = new ListOfLong(other);
+
+        ListOfLong intersection = new ListOfLong();
+
+        for(Iterator<Long> thisIterator = newThis.iterator(); thisIterator.hasNext(); ) {
+            Long value = thisIterator.next();
+
+            for(Iterator<Long> otherIterator = newOther.iterator(); otherIterator.hasNext(); ) {
+                if(value.equals(otherIterator.next())) {
+                    thisIterator.remove();
+                    otherIterator.remove();
+                    intersection.add(value);
+                    break;
+                }
+            }
+        }
+
+        return intersection;
+    }
+
+    public void remove(ListOfLong other) {
+        for(Long value : other) {
+            for(Iterator<Long> it = iterator(); it.hasNext(); ) {
+                if(value.equals(it.next())) {
+                    it.remove();
+                    break;
+                }
+            }
+        }
+    }
 }

@@ -67,4 +67,12 @@ public class Division {
 
         return divisions;
     }
+
+    public Number getNumerator() {
+        return numerator;
+    }
+
+    public Number getDenumerator() {
+        return denumerator;
+    }
 }
