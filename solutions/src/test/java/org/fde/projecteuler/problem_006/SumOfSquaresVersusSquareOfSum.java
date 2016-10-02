@@ -1,9 +1,13 @@
-package org.fde.projecteuler;
+package org.fde.projecteuler.problem_006;
 
 import org.fde.util.Logger;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 public class SumOfSquaresVersusSquareOfSum {
-    public static void main(String[] args) {
+    @Test
+    public void sumOfSquaresVersusSquareOfSum() {
         int max = 100;
 
         int sumOfSquares = 0;
@@ -22,5 +26,7 @@ public class SumOfSquaresVersusSquareOfSum {
         int difference = squareOfSum - sumOfSquares;
 
         Logger.log("difference = " + difference);
+
+        assertEquals(25164150, difference);
     }
 }
