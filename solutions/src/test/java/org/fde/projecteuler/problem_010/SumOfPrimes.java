@@ -1,10 +1,14 @@
-package org.fde.projecteuler;
+package org.fde.projecteuler.problem_010;
 
 import org.fde.util.Logger;
 import org.fde.util.primes.PrimeBuilder;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 public class SumOfPrimes {
-    public static void main(String[] args) {
+    @Test
+    public void sumOfPrimes() {
         PrimeBuilder builder = new PrimeBuilder();
 
         long sum = 0;
@@ -15,5 +19,6 @@ public class SumOfPrimes {
         }
 
         Logger.log("sum = " + sum);
+        assertEquals(142913828922L, sum);
     }
 }
