@@ -2,7 +2,6 @@ package org.fde.projecteuler.problem_012;
 
 import org.fde.util.ListOfLong;
 import org.fde.util.Logger;
-import org.fde.util.TriangleNumbers;
 import org.fde.util.primes.Divisors;
 import org.junit.Test;
 

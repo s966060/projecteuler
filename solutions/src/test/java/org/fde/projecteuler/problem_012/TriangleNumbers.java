@@ -1,4 +1,4 @@
-package org.fde.util;
+package org.fde.projecteuler.problem_012;
 
 public class TriangleNumbers {
     private long number;
