@@ -2,7 +2,6 @@ package org.fde.projecteuler.problem_033;
 
 import org.fde.util.ListOfLong;
 import org.fde.util.primes.PrimeFactors;
-import org.fde.util.primes.Primes;
 import org.junit.Test;
 
 import java.util.ArrayList;
