@@ -1,9 +1,13 @@
-package org.fde.projecteuler;
+package org.fde.projecteuler.problem_005;
 
 import org.fde.util.Logger;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 public class EvenlyDividable {
-    public static void main(String[] args) {
+    @Test
+    public void evenlyDividable() {
         int maxFactor = 20;
 
         int suspect = 0;
@@ -25,5 +29,6 @@ public class EvenlyDividable {
         }
 
         Logger.log("suspect = " + suspect);
+        assertEquals(232792560, suspect);
     }
 }
