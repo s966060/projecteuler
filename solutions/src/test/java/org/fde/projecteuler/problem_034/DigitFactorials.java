@@ -1,5 +1,6 @@
 package org.fde.projecteuler.problem_034;
 
+import org.fde.util.DigitList;
 import org.fde.util.ListOfLong;
 import org.fde.util.LongUtil;
 import org.junit.Test;
@@ -14,7 +15,7 @@ public class DigitFactorials {
         // 2_540_160 = 7 * 9 ! = 9! + 9! + 9! ... + 9!
         // we cannot make more than this value using digit factorials
         for (int value = 10; value <= 2_540_160; ++value) {
-            ListOfLong digits = LongUtil.getDigits(value);
+            DigitList digits = LongUtil.getDigits(value);
 
             long sum = 0;
 

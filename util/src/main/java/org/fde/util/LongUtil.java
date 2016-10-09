@@ -1,12 +1,13 @@
 package org.fde.util;
 
 public class LongUtil {
-    public static ListOfLong getDigits(final long value) {
-        if (value == 0) {
-            return ListOfLong.createListOfLong(0);
-        }
+    public static DigitList getDigits(final long value) {
+        DigitList digitList = new DigitList();
 
-        ListOfLong digitsAsList = new ListOfLong();
+        if (value == 0) {
+            digitList.add(0);
+            return digitList;
+        }
 
         int digits = (int) Math.floor(Math.log10(value)) + 1;
 
@@ -15,10 +16,27 @@ public class LongUtil {
         for (int i = 1; i <= digits; ++i) {
             long digit = newValue % 10;
             newValue /= 10;
-            digitsAsList.add(digit);
+            digitList.add(digit);
         }
 
-        digitsAsList.reverse();
-        return digitsAsList;
+        digitList.reverse();
+        return digitList;
+    }
+
+    public static ListOfLong getRotatedValues(final long value) {
+        ListOfLong numbers = new ListOfLong();
+        numbers.add(value);
+
+        DigitList digits = getDigits(value);
+        digits.rotateRight();
+        long number = digits.getValue();
+
+        while (number != value) {
+            numbers.add(number);
+            digits.rotateRight();
+            number = digits.getValue();
+        }
+
+        return numbers;
     }
 }
