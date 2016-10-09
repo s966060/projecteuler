@@ -46,4 +46,33 @@ public class LongUtil {
 
         return a.equals(b);
     }
+
+    public static ListOfLong getTruncatedRightValues(final long value) {
+        ListOfLong numbers = new ListOfLong();
+
+        DigitList digits = getDigits(value);
+
+        do {
+            long number = digits.getValue();
+            numbers.add(number);
+            digits.truncateRight();
+        } while (!digits.isEmpty());
+
+
+        return numbers;
+    }
+
+    public static ListOfLong getTruncatedLeftValues(final long value) {
+        ListOfLong numbers = new ListOfLong();
+
+        DigitList digits = getDigits(value);
+
+        do {
+            long number = digits.getValue();
+            numbers.add(number);
+            digits.truncateLeft();
+        } while (!digits.isEmpty());
+
+        return numbers;
+    }
 }

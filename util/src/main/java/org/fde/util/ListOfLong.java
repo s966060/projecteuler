@@ -114,7 +114,14 @@ public class ListOfLong implements Iterable<Long> {
 
     public void removeLast() {
         if (!isEmpty()) {
-            this.numbers.remove(this.numbers.size() - 1);
+            removeAt(size() - 1);
+        }
+    }
+
+
+    public void removeFirst() {
+        if (!isEmpty()) {
+            removeAt(0);
         }
     }
 

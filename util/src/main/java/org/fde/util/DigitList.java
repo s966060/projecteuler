@@ -39,4 +39,16 @@ public class DigitList implements Iterable<Long> {
 
         return total;
     }
+
+    public boolean isEmpty() {
+        return this.digits.isEmpty();
+    }
+
+    public void truncateRight() {
+        this.digits.removeLast();
+    }
+
+    public void truncateLeft() {
+        this.digits.removeFirst();
+    }
 }
