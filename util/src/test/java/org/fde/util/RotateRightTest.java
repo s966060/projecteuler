@@ -2,6 +2,7 @@ package org.fde.util;
 
 import org.junit.Test;
 
+import static org.fde.util.ListOfLong.createListOfLong;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -17,28 +18,28 @@ public class RotateRightTest {
     public void oneElement() {
         ListOfLong one = new ListOfLong(1L);
         one.rotateRight();
-        assertEquals(ListOfLong.createListOfLong(1), one);
+        assertEquals(createListOfLong(1), one);
         one.rotateRight();
-        assertEquals(ListOfLong.createListOfLong(1), one);
+        assertEquals(createListOfLong(1), one);
     }
 
     @Test
     public void twoElements() {
         ListOfLong two = new ListOfLong(1L, 2L);
         two.rotateRight();
-        assertEquals(ListOfLong.createListOfLong(2, 1), two);
+        assertEquals(createListOfLong(2, 1), two);
         two.rotateRight();
-        assertEquals(ListOfLong.createListOfLong(1, 2), two);
+        assertEquals(createListOfLong(1, 2), two);
     }
 
     @Test
     public void threeElements() {
-        ListOfLong three = new ListOfLong(1L, 2L,3L);
+        ListOfLong three = new ListOfLong(1L, 2L, 3L);
         three.rotateRight();
-        assertEquals(ListOfLong.createListOfLong(3, 1, 2), three);
+        assertEquals(three, createListOfLong(3, 1, 2));
         three.rotateRight();
-        assertEquals(ListOfLong.createListOfLong(2, 3, 1), three);
+        assertEquals(createListOfLong(2, 3, 1), three);
         three.rotateRight();
-        assertEquals(ListOfLong.createListOfLong(1, 2, 3), three);
+        assertEquals(createListOfLong(1, 2, 3), three);
     }
 }
