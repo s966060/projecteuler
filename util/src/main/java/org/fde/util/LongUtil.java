@@ -39,4 +39,11 @@ public class LongUtil {
 
         return numbers;
     }
+
+    public static boolean isPalinDrome(long value, int base) {
+        String a = Long.toString(value, base);
+        String b = new StringBuilder(a).reverse().toString();
+
+        return a.equals(b);
+    }
 }

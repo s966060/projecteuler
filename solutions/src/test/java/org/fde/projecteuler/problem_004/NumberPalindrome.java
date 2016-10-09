@@ -1,6 +1,7 @@
 package org.fde.projecteuler.problem_004;
 
 import org.fde.util.Logger;
+import org.fde.util.LongUtil;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -19,10 +20,7 @@ public class NumberPalindrome {
             for (int j = 999; j >= 100; --j) {
                 int r = i * j;
 
-                String a = Integer.toString(r);
-                String b = new StringBuilder(a).reverse().toString();
-
-                if (a.equals(b)) {
+                if(LongUtil.isPalinDrome(r, 10)) {
                     list.add(new Palindrome(i, j));
                 }
             }
