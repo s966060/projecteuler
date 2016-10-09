@@ -217,4 +217,12 @@ public class ListOfLong implements Iterable<Long> {
     public void reverse() {
         Collections.reverse(this.numbers);
     }
+
+    public void rotateRight() {
+        if (!isEmpty()) {
+            Long last = last();
+            removeAt(size() - 1);
+            add(0, last);
+        }
+    }
 }
