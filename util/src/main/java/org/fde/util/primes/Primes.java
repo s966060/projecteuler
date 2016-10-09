@@ -52,7 +52,7 @@ public class Primes {
     }
 
     public boolean contains(long suspect) {
-        boolean isKnownPrime = this.primes.contains(suspect);
+        boolean isKnownPrime = this.primes.containsByBinarySearch(suspect);
         return isKnownPrime;
     }
 }

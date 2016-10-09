@@ -173,6 +173,11 @@ public class ListOfLong implements Iterable<Long> {
         return isContained;
     }
 
+    public boolean containsByBinarySearch(long suspect) {
+        int index = Collections.binarySearch(this.numbers, suspect);
+        return index >= 0;
+    }
+
     public Long first() {
         return get(0);
     }
