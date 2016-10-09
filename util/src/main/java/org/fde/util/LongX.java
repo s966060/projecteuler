@@ -15,7 +15,7 @@ public class LongX implements Comparable<LongX> {
         return LongX.valueOf(this.value * other.value);
     }
 
-    private static LongX valueOf(long value) {
+    public static LongX valueOf(long value) {
         return new LongX(value);
     }
 
