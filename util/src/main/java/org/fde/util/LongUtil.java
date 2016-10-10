@@ -77,7 +77,7 @@ public class LongUtil {
     }
 
     public static boolean isPandigital(final long value) {
-        return isPandigital(Long.valueOf(value));
+        return isPandigital(Long.toString(value));
     }
 
     public static boolean isPandigital(final String value) {
