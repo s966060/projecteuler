@@ -75,4 +75,24 @@ public class LongUtil {
 
         return numbers;
     }
+
+    public static boolean isPandigital(final long value) {
+        return isPandigital(Long.valueOf(value));
+    }
+
+    public static boolean isPandigital(final String value) {
+        if (value.length() == 9) {
+            if (!value.contains("0")) {
+                for (int digit = 1; digit <= 9; ++digit) {
+                    if (!value.contains(String.valueOf(digit))) {
+                        return false;
+                    }
+                }
+
+                return true;
+            }
+        }
+
+        return false;
+    }
 }

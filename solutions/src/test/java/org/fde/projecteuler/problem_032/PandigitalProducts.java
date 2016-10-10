@@ -6,6 +6,7 @@ import org.junit.Test;
 import java.util.HashSet;
 import java.util.Set;
 
+import static org.fde.util.LongUtil.isPandigital;
 import static org.junit.Assert.assertEquals;
 
 public class PandigitalProducts {
@@ -32,19 +33,4 @@ public class PandigitalProducts {
         assertEquals(45228L, sumOfProducts);
     }
 
-    private boolean isPandigital(final String pandigital) {
-        if (pandigital.length() == 9) {
-            if (!pandigital.contains("0")) {
-                for (int digit = 1; digit <= 9; ++digit) {
-                    if (!pandigital.contains(String.valueOf(digit))) {
-                        return false;
-                    }
-                }
-
-                return true;
-            }
-        }
-
-        return false;
-    }
 }
