@@ -15,29 +15,45 @@ public class PandigitalPrime {
     public void pandigitalPrime() {
         long target = 0;
 
+        for (int N = 1; N <= 9; ++N) {
+            target = pandigitalPrime(target, N);
+        }
+
+        assertEquals(7_652_413L, target);
+    }
+
+    private long pandigitalPrime(long target, int N) {
         IsPrime isPrime = new IsPrime();
 
-        for (int N = 1; N <= 9; ++N) {
-            ListOfLong digits = new ListOfLong();
+        PermutationList numbers = getNumbers(N);
 
-            for (long digit = 1; digit <= N; ++digit) {
-                digits.add(digit);
-            }
+        for (Permutation number : numbers) {
+            DigitList digitList = new DigitList(number.getList());
+            long suspect = digitList.getValue();
 
-            PermutationList list = new PermutationFactory(digits).getPermutations();
-
-            for (Permutation c : list) {
-                DigitList digitList = new DigitList(c.getList());
-                long suspect = digitList.getValue();
-
-                if (isPrime.isPrime(suspect)) {
-                    if (suspect > target) {
-                        target = suspect;
-                    }
+            if (isPrime.isPrime(suspect)) {
+                if (suspect > target) {
+                    target = suspect;
                 }
             }
         }
 
-        assertEquals(7_652_413L, target);
+        return target;
+    }
+
+    private PermutationList getNumbers(int N) {
+        ListOfLong digits = createDigits(N);
+
+        return new PermutationFactory(digits).getPermutations();
+    }
+
+    private ListOfLong createDigits(int N) {
+        ListOfLong digits = new ListOfLong();
+
+        for (long digit = 1; digit <= N; ++digit) {
+            digits.add(digit);
+        }
+
+        return digits;
     }
 }
