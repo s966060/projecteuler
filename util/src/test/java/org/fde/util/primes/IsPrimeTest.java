@@ -58,4 +58,40 @@ public class IsPrimeTest {
         assertTrue(false == builder.isPrime(1));
         assertTrue(false == builder.isPrime(0));
     }
+
+    @Test
+    public void isAPrime2() {
+        IsPrime isPrime = new IsPrime();
+
+        assertTrue(false == isPrime.isPrime(0));
+        assertTrue(false == isPrime.isPrime(1));
+        assertTrue(true == isPrime.isPrime(2));
+        assertTrue(true == isPrime.isPrime(3));
+        assertTrue(false == isPrime.isPrime(4));
+        assertTrue(true == isPrime.isPrime(5));
+        assertTrue(false == isPrime.isPrime(6));
+
+        assertTrue(true == isPrime.isPrime(101));
+        assertTrue(false == isPrime.isPrime(102));
+        assertTrue(true == isPrime.isPrime(103));
+        assertTrue(false == isPrime.isPrime(104));
+        assertTrue(false == isPrime.isPrime(105));
+        assertTrue(false == isPrime.isPrime(106));
+
+        assertTrue(true == isPrime.isPrime(1619));
+        assertTrue(true == isPrime.isPrime(1621));
+        assertTrue(false == isPrime.isPrime(1623));
+        assertTrue(false == isPrime.isPrime(1625));
+        assertTrue(true == isPrime.isPrime(1627));
+        assertTrue(false == isPrime.isPrime(1629));
+
+        assertTrue(false == isPrime.isPrime(393_342_741));
+        assertTrue(true == isPrime.isPrime(393_342_743));
+
+        assertTrue(true == isPrime.isPrime(413_158_511));
+        assertTrue(false == isPrime.isPrime(413_158_513));
+
+        assertTrue(true == isPrime.isPrime(899_809_363));
+        assertTrue(true == isPrime.isPrime(920_419_813));
+    }
 }
