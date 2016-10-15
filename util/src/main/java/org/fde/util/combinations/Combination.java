@@ -42,6 +42,10 @@ public class Combination {
         }
     }
 
+    public ListOfLong getList () {
+        return this.list.getUnModifiableListOfLong();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

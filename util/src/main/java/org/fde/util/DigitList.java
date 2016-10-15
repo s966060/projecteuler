@@ -11,6 +11,14 @@ public class DigitList implements Iterable<Long> {
         this.digits = new ListOfLong();
     }
 
+    public DigitList(ListOfLong list) {
+        this();
+
+        for (long value : list) {
+            add(value);
+        }
+    }
+
     public void add(long digit) {
         Validate.inclusiveBetween(0, 9, digit);
         this.digits.add(digit);

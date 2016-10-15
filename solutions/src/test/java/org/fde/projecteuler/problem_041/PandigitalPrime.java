@@ -1,7 +1,10 @@
 package org.fde.projecteuler.problem_041;
 
-import org.apache.commons.lang3.time.StopWatch;
-import org.fde.util.LongUtil;
+import org.fde.util.DigitList;
+import org.fde.util.ListOfLong;
+import org.fde.util.permutations.Permutation;
+import org.fde.util.permutations.PermutationFactory;
+import org.fde.util.permutations.PermutationList;
 import org.fde.util.primes.IsPrime;
 import org.junit.Test;
 
@@ -10,28 +13,31 @@ import static org.junit.Assert.assertEquals;
 public class PandigitalPrime {
     @Test
     public void pandigitalPrime() {
-        StopWatch stopWatch = new StopWatch();
-        stopWatch.start();
-
-        Long target = null;
+        long target = 0;
 
         IsPrime isPrime = new IsPrime();
 
-        for (long suspect = 987_654_321; suspect >= 100_000_000; --suspect) {
-            if (suspect % 1_000_000 == 0) {
-                System.out.println("stopWatch = " + stopWatch);
-                System.out.println("suspect = " + suspect);
+        for (int N = 1; N <= 9; ++N) {
+            ListOfLong digits = new ListOfLong();
+
+            for (long digit = 1; digit <= N; ++digit) {
+                digits.add(digit);
             }
 
-            if (isPrime.isPrime(suspect)) {
-                if (LongUtil.isPandigital(suspect)) {
-                    target = suspect;
-                    break;
+            PermutationList list = new PermutationFactory(digits).getPermutations();
+
+            for (Permutation c : list) {
+                DigitList digitList = new DigitList(c.getList());
+                long suspect = digitList.getValue();
+
+                if (isPrime.isPrime(suspect)) {
+                    if (suspect > target) {
+                        target = suspect;
+                    }
                 }
             }
         }
 
-        System.out.println("stopWatch = " + stopWatch);
-        assertEquals(987_654_321L, target.longValue());
+        assertEquals(7_652_413L, target);
     }
 }

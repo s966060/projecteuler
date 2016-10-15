@@ -89,4 +89,8 @@ public class Permutation implements Iterable<Long> {
     public Spliterator<Long> spliterator() {
         throw new UnsupportedOperationException();
     }
+
+    public ListOfLong getList() {
+        return list.getUnModifiableListOfLong();
+    }
 }
