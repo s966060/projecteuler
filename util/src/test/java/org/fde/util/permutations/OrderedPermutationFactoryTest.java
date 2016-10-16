@@ -79,7 +79,7 @@ public class OrderedPermutationFactoryTest {
         assertEquals(expected, actual);
     }
 
-    private PermutationList createActual(long... values) {
+    static PermutationList createActual(long... values) {
         ListOfLong input = new ListOfLong();
 
         for (long value : values) {

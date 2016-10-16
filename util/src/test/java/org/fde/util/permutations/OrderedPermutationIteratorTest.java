@@ -3,16 +3,14 @@ package org.fde.util.permutations;
 import org.fde.util.ListOfLong;
 import org.junit.Test;
 
-import static org.fde.util.ListOfLong.createListOfLong;
+import static org.fde.util.permutations.OrderedPermutationFactoryTest.createActual;
 import static org.fde.util.permutations.Permutation.createPermutation;
 import static org.junit.Assert.assertEquals;
 
 public class OrderedPermutationIteratorTest {
     @Test
     public void one_thePermutationsOf() {
-        ListOfLong input = createListOfLong(1);
-
-        PermutationList actual = getPermutations(input);
+        PermutationList actual = createActual(1);
 
         PermutationList expected = new PermutationList()
                 .add(createPermutation(1));
@@ -22,9 +20,7 @@ public class OrderedPermutationIteratorTest {
 
     @Test
     public void two_thePermutationsOf() {
-        ListOfLong input = createListOfLong(1, 2);
-
-        PermutationList actual = getPermutations(input);
+        PermutationList actual = createActual(1, 2);
 
         PermutationList expected = new PermutationList()
                 .add(createPermutation(1, 2))
@@ -35,9 +31,7 @@ public class OrderedPermutationIteratorTest {
 
     @Test
     public void three_thePermutationsOf() {
-        ListOfLong input = createListOfLong(1, 2, 3);
-
-        PermutationList actual = getPermutations(input);
+        PermutationList actual = createActual(1, 2, 3);
 
         PermutationList expected = new PermutationList()
                 .add(createPermutation(1, 2, 3))
@@ -52,9 +46,7 @@ public class OrderedPermutationIteratorTest {
 
     @Test
     public void four_thePermutationsOf() {
-        ListOfLong input = createListOfLong(1, 2, 3, 4);
-
-        PermutationList actual = getPermutations(input);
+        PermutationList actual = createActual(1, 2, 3, 4);
 
         PermutationList expected = new PermutationList()
                 .add(createPermutation(1, 2, 3, 4))
