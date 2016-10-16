@@ -1,9 +1,8 @@
 package org.fde.projecteuler.problem_041;
 
 import org.fde.util.DigitList;
-import org.fde.util.ListOfLong;
+import org.fde.util.PandigitalUtil;
 import org.fde.util.permutations.Permutation;
-import org.fde.util.permutations.PermutationFactory;
 import org.fde.util.permutations.PermutationList;
 import org.fde.util.primes.IsPrime;
 import org.junit.Test;
@@ -25,7 +24,7 @@ public class PandigitalPrime {
     private long pandigitalPrime(long target, int N) {
         IsPrime isPrime = new IsPrime();
 
-        PermutationList numbers = getNumbers(N);
+        PermutationList numbers = PandigitalUtil.getNumbers(1, N);
 
         for (Permutation number : numbers) {
             DigitList digitList = new DigitList(number.getList());
@@ -39,21 +38,5 @@ public class PandigitalPrime {
         }
 
         return target;
-    }
-
-    private PermutationList getNumbers(int N) {
-        ListOfLong digits = createDigits(N);
-
-        return new PermutationFactory(digits).getPermutations();
-    }
-
-    private ListOfLong createDigits(int N) {
-        ListOfLong digits = new ListOfLong();
-
-        for (long digit = 1; digit <= N; ++digit) {
-            digits.add(digit);
-        }
-
-        return digits;
     }
 }
