@@ -10,9 +10,7 @@ import static org.junit.Assert.assertEquals;
 public class PermutationFactoryTest {
     @Test
     public void one_thePermutationsOf() {
-        ListOfLong input = createListOfLong(1);
-
-        PermutationList actual = getPermutations(input);
+        PermutationList actual = createActual(1);
 
         PermutationList expected = new PermutationList()
                 .add(createPermutation(1));
@@ -22,9 +20,7 @@ public class PermutationFactoryTest {
 
     @Test
     public void two_thePermutationsOf() {
-        ListOfLong input = createListOfLong(1, 2);
-
-        PermutationList actual = getPermutations(input);
+        PermutationList actual = createActual(1, 2);
 
         PermutationList expected = new PermutationList()
                 .add(createPermutation(1, 2))
@@ -35,9 +31,7 @@ public class PermutationFactoryTest {
 
     @Test
     public void three_thePermutationsOf() {
-        ListOfLong input = createListOfLong(1, 2, 3);
-
-        PermutationList actual = getPermutations(input);
+        PermutationList actual = createActual(1, 2, 3);
 
         PermutationList expected = new PermutationList()
                 .add(createPermutation(1, 2, 3))
@@ -52,9 +46,7 @@ public class PermutationFactoryTest {
 
     @Test
     public void four_thePermutationsOf() {
-        ListOfLong input = createListOfLong(1, 2, 3, 4);
-
-        PermutationList actual = getPermutations(input);
+        PermutationList actual = createActual(1, 2, 3, 4);
 
         PermutationList expected = new PermutationList()
                 .add(createPermutation(1, 2, 3, 4))
@@ -92,5 +84,15 @@ public class PermutationFactoryTest {
 
     private PermutationList getPermutations(ListOfLong input) {
         return new PermutationFactory(input).getPermutations();
+    }
+
+    private PermutationList createActual(long... values) {
+        ListOfLong input = new ListOfLong();
+
+        for (long value : values) {
+            input.add(value);
+        }
+
+        return getPermutations(input);
     }
 }
