@@ -26,6 +26,10 @@ public class ListOfLong implements Iterable<Long> {
         addAll(other);
     }
 
+    private ListOfLong(List<Long> numbers) {
+        this.numbers = numbers;
+    }
+
     public ListOfLong(Collection<Long> other) {
         for (Long number : other) {
             Validate.notNull(number);
@@ -199,11 +203,11 @@ public class ListOfLong implements Iterable<Long> {
 
         ListOfLong intersection = new ListOfLong();
 
-        for(Iterator<Long> thisIterator = newThis.iterator(); thisIterator.hasNext(); ) {
+        for (Iterator<Long> thisIterator = newThis.iterator(); thisIterator.hasNext(); ) {
             Long value = thisIterator.next();
 
-            for(Iterator<Long> otherIterator = newOther.iterator(); otherIterator.hasNext(); ) {
-                if(value.equals(otherIterator.next())) {
+            for (Iterator<Long> otherIterator = newOther.iterator(); otherIterator.hasNext(); ) {
+                if (value.equals(otherIterator.next())) {
                     thisIterator.remove();
                     otherIterator.remove();
                     intersection.add(value);
@@ -216,9 +220,9 @@ public class ListOfLong implements Iterable<Long> {
     }
 
     public void remove(ListOfLong other) {
-        for(Long value : other) {
-            for(Iterator<Long> it = iterator(); it.hasNext(); ) {
-                if(value.equals(it.next())) {
+        for (Long value : other) {
+            for (Iterator<Long> it = iterator(); it.hasNext(); ) {
+                if (value.equals(it.next())) {
                     it.remove();
                     break;
                 }
@@ -236,5 +240,9 @@ public class ListOfLong implements Iterable<Long> {
             removeAt(size() - 1);
             add(0, last);
         }
+    }
+
+    public ListOfLong subList(int fromIndex, int toIndex) {
+        return new ListOfLong(this.numbers.subList(fromIndex, toIndex));
     }
 }
