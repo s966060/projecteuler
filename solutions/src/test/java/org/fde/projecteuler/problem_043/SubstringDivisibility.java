@@ -5,6 +5,7 @@ import org.fde.util.PandigitalUtil;
 import org.fde.util.VariableLong;
 import org.fde.util.permutations.Permutation;
 import org.fde.util.permutations.PermutationList;
+import org.fde.util.primes.PrimeBuilder;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -30,10 +31,12 @@ public class SubstringDivisibility {
         }
 
         System.out.println("total = " + total);
-        assertEquals(90_847_249_920L, total);
+        assertEquals(16_695_334_890L, total);
     }
 
     private boolean isSubstringDividable(Permutation p) {
+        PrimeBuilder builder = new PrimeBuilder();
+
         ListOfLong list = p.getList();
 
         for (int index = 2; index <= 8; ++index) {
@@ -41,7 +44,7 @@ public class SubstringDivisibility {
 
             VariableLong number = getNumber(subList);
 
-            int divider = index;
+            long divider = builder.next();
 
             if ((number.get() % divider) != 0) {
                 return false;
