@@ -245,4 +245,12 @@ public class ListOfLong implements Iterable<Long> {
     public ListOfLong subList(int fromIndex, int toIndex) {
         return new ListOfLong(this.numbers.subList(fromIndex, toIndex));
     }
+
+    public void swap(int fromIndex, int toIndex) {
+        Long aValue = this.numbers.get(fromIndex);
+        Long otherValue = this.numbers.get(toIndex);
+
+        this.numbers.set(fromIndex, otherValue);
+        this.numbers.set(toIndex, aValue);
+    }
 }
