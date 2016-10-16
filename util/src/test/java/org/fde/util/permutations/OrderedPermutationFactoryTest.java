@@ -9,7 +9,7 @@ import static org.junit.Assert.assertEquals;
 public class OrderedPermutationFactoryTest {
     @Test
     public void one_thePermutationsOf() {
-        PermutationList actual = createPermutations(1);
+        PermutationList actual = createActual(1);
 
         PermutationList expected = new PermutationList()
                 .add(createPermutation(1));
@@ -19,7 +19,7 @@ public class OrderedPermutationFactoryTest {
 
     @Test
     public void two_thePermutationsOf() {
-        PermutationList actual = createPermutations(1, 2);
+        PermutationList actual = createActual(1, 2);
 
         PermutationList expected = new PermutationList()
                 .add(createPermutation(1, 2))
@@ -30,7 +30,7 @@ public class OrderedPermutationFactoryTest {
 
     @Test
     public void three_thePermutationsOf() {
-        PermutationList actual = createPermutations(1, 2, 3);
+        PermutationList actual = createActual(1, 2, 3);
 
         PermutationList expected = new PermutationList()
                 .add(createPermutation(1, 2, 3))
@@ -45,7 +45,7 @@ public class OrderedPermutationFactoryTest {
 
     @Test
     public void four_thePermutationsOf() {
-        PermutationList actual = createPermutations(1, 2, 3, 4);
+        PermutationList actual = createActual(1, 2, 3, 4);
 
         PermutationList expected = new PermutationList()
                 .add(createPermutation(1, 2, 3, 4))
@@ -79,7 +79,7 @@ public class OrderedPermutationFactoryTest {
         assertEquals(expected, actual);
     }
 
-    private PermutationList createPermutations(long... values) {
+    private PermutationList createActual(long... values) {
         ListOfLong input = new ListOfLong();
 
         for (long value : values) {
