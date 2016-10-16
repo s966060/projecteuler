@@ -13,16 +13,7 @@ import static org.junit.Assert.assertEquals;
 public class CodedTriangleNumbers {
     @Test
     public void codedTriangleNumbers() throws Exception {
-        InputStream is = ClassUtil.getInputStream(this, "p042_words.txt");
-
-        List<String> words = new ArrayList<>();
-
-        new LineReader(is) {
-            @Override
-            public void readLine(String line) throws Exception {
-                words.add(line.toUpperCase());
-            }
-        }.readAll();
+        List<String> words = getWords();
 
         System.out.println("words = " + words);
         System.out.println("words.size() = " + words.size());
@@ -40,6 +31,20 @@ public class CodedTriangleNumbers {
 
         System.out.println("count = " + count);
         assertEquals(162, count);
+    }
+
+    private List<String> getWords() throws Exception {
+        InputStream is = ClassUtil.getInputStream(this, "p042_words.txt");
+
+        List<String> words = new ArrayList<>();
+
+        new LineReader(is) {
+            @Override
+            public void readLine(String line) throws Exception {
+                words.add(line.toUpperCase());
+            }
+        }.readAll();
+        return words;
     }
 
     private long getValue(String word) {
