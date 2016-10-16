@@ -3,7 +3,6 @@ package org.fde.util.permutations;
 import org.fde.util.ListOfLong;
 import org.junit.Test;
 
-import static org.fde.util.permutations.OrderedPermutationFactoryTest.createActual;
 import static org.fde.util.permutations.Permutation.createPermutation;
 import static org.junit.Assert.assertEquals;
 
@@ -90,5 +89,15 @@ public class OrderedPermutationIteratorTest {
         }
 
         return list;
+    }
+
+    private PermutationList createActual(long... values) {
+        ListOfLong input = new ListOfLong();
+
+        for (long value : values) {
+            input.add(value);
+        }
+
+        return getPermutations(input);
     }
 }
