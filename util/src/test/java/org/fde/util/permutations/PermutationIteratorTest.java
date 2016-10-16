@@ -49,21 +49,24 @@ public class PermutationIteratorTest {
 
         PermutationList expected = new PermutationList()
                 .add(createPermutation(1, 2, 3, 4))
-                .add(createPermutation(1, 2, 4, 3))
-                .add(createPermutation(1, 4, 2, 3))
-                .add(createPermutation(4, 1, 2, 3))
-
-                .add(createPermutation(1, 3, 2, 4))
-                .add(createPermutation(1, 3, 4, 2))
-                .add(createPermutation(1, 4, 3, 2))
-                .add(createPermutation(4, 1, 3, 2))
-
-                .add(createPermutation(3, 1, 2, 4))
-                .add(createPermutation(3, 1, 4, 2))
-                .add(createPermutation(3, 4, 1, 2))
-                .add(createPermutation(4, 3, 1, 2))
 
                 .add(createPermutation(2, 1, 3, 4))
+                .add(createPermutation(2, 3, 1, 4))
+                .add(createPermutation(2, 3, 4, 1))
+
+                .add(createPermutation(3, 2, 4, 1))
+                .add(createPermutation(3, 4, 2, 1))
+                .add(createPermutation(3, 4, 1, 2))
+
+                .add(createPermutation(4, 3, 1, 2))
+                .add(createPermutation(4, 1, 3, 2))
+                .add(createPermutation(4, 1, 2, 3))
+
+                .add(createPermutation(1, 4, 2, 3))
+                .add(createPermutation(1, 2, 4, 3))
+                // AARGH .... KAPUTSCH
+                .add(createPermutation(1, 2, 3, 4))
+
                 .add(createPermutation(2, 1, 4, 3))
                 .add(createPermutation(2, 4, 1, 3))
                 .add(createPermutation(4, 2, 1, 3))
