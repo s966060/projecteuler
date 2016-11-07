@@ -7,7 +7,7 @@ public class TriangleNumberGenerator extends FigurativeNumberGenerator {
 
     @Override
     protected long compute(long index) {
-        long triangle = index * (index + 1 / 2;
+        long triangle = index * (index + 1) / 2;
         return triangle;
     }
 }
