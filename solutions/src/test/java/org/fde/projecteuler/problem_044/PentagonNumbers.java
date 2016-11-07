@@ -1,6 +1,6 @@
 package org.fde.projecteuler.problem_044;
 
-import org.fde.util.PentagonalList;
+import org.fde.util.figurativenumbers.PentagonalList;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

@@ -1,4 +1,6 @@
-package org.fde.util;
+package org.fde.util.figurativenumbers;
+
+import org.fde.util.ListOfLong;
 
 public class PentagonalList {
     private final ListOfLong list;
