@@ -1,6 +1,6 @@
 package org.fde.projecteuler.problem_044;
 
-import org.fde.util.ListOfLong;
+import org.fde.util.PentagonalList;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -8,7 +8,7 @@ import static org.junit.Assert.assertEquals;
 public class PentagonNumbers {
     @Test
     public void pentagonNumbers() {
-        X x = new X();
+        PentagonalList x = new PentagonalList();
 
         Long D = null;
 
@@ -43,34 +43,4 @@ public class PentagonNumbers {
         assertEquals(5482660L, D.longValue());
     }
 
-    class X {
-        private final ListOfLong list;
-
-        X() {
-            this.list = new ListOfLong();
-        }
-
-        long getByIndex(int index) {
-            while (index >= this.list.size()) {
-                long pentagonal = compute(this.list.size());
-                this.list.add(pentagonal);
-            }
-
-            return this.list.get(index);
-        }
-
-        long compute(long index) {
-            long pentagonal = index * ((3 * index) - 1) / 2;
-            return pentagonal;
-        }
-
-        boolean isPentagonal(long value) {
-            while (value > this.list.last()) {
-                long pentagonal = compute(this.list.size());
-                this.list.add(pentagonal);
-            }
-
-            return this.list.containsByBinarySearch(value);
-        }
-    }
 }
