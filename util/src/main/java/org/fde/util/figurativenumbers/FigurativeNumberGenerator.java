@@ -11,8 +11,8 @@ public abstract class FigurativeNumberGenerator {
 
     public long getByIndex(int index) {
         while (index >= this.list.size()) {
-            long pentagonal = compute(this.list.size());
-            this.list.add(pentagonal);
+            long number = compute(this.list.size());
+            this.list.add(number);
         }
 
         return this.list.get(index);
@@ -22,8 +22,8 @@ public abstract class FigurativeNumberGenerator {
 
     public boolean isPentagonal(long value) {
         while (value > this.list.last()) {
-            long pentagonal = compute(this.list.size());
-            this.list.add(pentagonal);
+            long number = compute(this.list.size());
+            this.list.add(number);
         }
 
         return this.list.containsByBinarySearch(value);
