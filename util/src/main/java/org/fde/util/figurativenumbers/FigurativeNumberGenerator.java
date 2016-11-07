@@ -21,6 +21,10 @@ public abstract class FigurativeNumberGenerator {
     protected abstract long compute(long index);
 
     public boolean isFigurativeNumber(long value) {
+        if(this.list.isEmpty()) {
+            getByIndex(0);
+        }
+
         while (value > this.list.last()) {
             long number = compute(this.list.size());
             this.list.add(number);
