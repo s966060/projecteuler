@@ -12,8 +12,8 @@ public class PentagonNumbers {
 
         Long D = null;
 
-        for (int n = 1; D==null; ++n) {
-            if(n % 1000 == 0) {
+        for (int n = 1; D == null; ++n) {
+            if (n % 1000 == 0) {
                 System.out.println("progress ... @ n = " + n);
             }
 
@@ -24,10 +24,10 @@ public class PentagonNumbers {
 
                 long diff = one - two;
 
-                if(x.isPentagonal(diff)) {
+                if (x.isPentagonal(diff)) {
                     long sum = one + two;
 
-                    if(x.isPentagonal(sum)) {
+                    if (x.isPentagonal(sum)) {
                         System.out.println("n = " + n);
                         System.out.println("k = " + k);
                         System.out.println("one = " + one);
