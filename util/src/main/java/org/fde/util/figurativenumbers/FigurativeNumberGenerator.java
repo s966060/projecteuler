@@ -20,7 +20,7 @@ public abstract class FigurativeNumberGenerator {
 
     protected abstract long compute(long index);
 
-    public boolean isPentagonal(long value) {
+    public boolean isFigurativeNumber(long value) {
         while (value > this.list.last()) {
             long number = compute(this.list.size());
             this.list.add(number);

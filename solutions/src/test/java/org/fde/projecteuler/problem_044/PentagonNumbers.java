@@ -24,10 +24,10 @@ public class PentagonNumbers {
 
                 long diff = one - two;
 
-                if (x.isPentagonal(diff)) {
+                if (x.isFigurativeNumber(diff)) {
                     long sum = one + two;
 
-                    if (x.isPentagonal(sum)) {
+                    if (x.isFigurativeNumber(sum)) {
                         System.out.println("n = " + n);
                         System.out.println("k = " + k);
                         System.out.println("one = " + one);
