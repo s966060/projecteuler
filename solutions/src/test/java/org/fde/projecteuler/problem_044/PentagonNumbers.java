@@ -1,6 +1,6 @@
 package org.fde.projecteuler.problem_044;
 
-import org.fde.util.figurativenumbers.PentagonalList;
+import org.fde.util.figurativenumbers.PentagonalNumberGenerator;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -8,7 +8,7 @@ import static org.junit.Assert.assertEquals;
 public class PentagonNumbers {
     @Test
     public void pentagonNumbers() {
-        PentagonalList x = new PentagonalList();
+        PentagonalNumberGenerator x = new PentagonalNumberGenerator();
 
         Long D = null;
 
