@@ -1,5 +1,7 @@
 package org.fde.projecteuler.problem_046;
 
+import org.fde.util.LongUtil;
+import org.fde.util.primes.CompositeIterator;
 import org.fde.util.primes.PrimeBuilder;
 import org.fde.util.primes.Primes;
 import org.junit.Test;
@@ -16,8 +18,12 @@ public class GoldBachOtherConjecture {
         boolean found = false;
         Long target = null;
 
-        for (long composite = 3; !found; composite += 2) {
-            if (!builder.isPrime(composite)) {
+        CompositeIterator it = new CompositeIterator(builder, 3);
+
+        while(!found) {
+            long composite = it.next();
+
+            if(!LongUtil.isEven(composite)) {
                 found = !isGoldBach(composite, primes);
 
                 if (found) {

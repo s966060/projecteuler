@@ -95,4 +95,8 @@ public class LongUtil {
 
         return false;
     }
+
+    public static boolean isEven(long value) {
+        return (value & 1) == 0;
+    }
 }
