@@ -2,6 +2,8 @@ package org.fde.projecteuler.problem_048;
 
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
+
 public class SelfPowers {
     @Test
     public void selfPowers() {
@@ -23,5 +25,6 @@ public class SelfPowers {
 
         System.out.println("sum = " + sum);
         System.out.println("lastTenDigits = " + lastTenDigits);
+        assertEquals(9_110_846_700L, lastTenDigits);
     }
 }
