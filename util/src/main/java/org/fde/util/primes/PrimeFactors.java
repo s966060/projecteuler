@@ -15,11 +15,20 @@ public class PrimeFactors {
 
         ListOfLong factors = new ListOfLong();
 
-        for (long prime = builder.next(); prime <= target; prime = builder.next()) {
+        long squareOfPrime = 0;
+        long prime = builder.next();
+
+        for (; prime <= target && target > squareOfPrime; prime = builder.next()) {
             while ((target % prime) == 0) {
                 target /= prime;
                 factors.add(prime);
             }
+
+            squareOfPrime = prime * prime;
+        }
+
+        if(target > 1) {
+            factors.add(target);
         }
 
         return factors;
