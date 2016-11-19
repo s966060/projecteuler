@@ -59,4 +59,30 @@ public class DigitList implements Iterable<Long> {
     public void truncateLeft() {
         this.digits.removeFirst();
     }
+
+    public static DigitList createDigitList(Integer... digits) {
+        DigitList list = new DigitList();
+
+        for(Integer digit: digits) {
+            list.add(digit);
+        }
+
+        return list;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        DigitList longs = (DigitList) o;
+
+        return digits.equals(longs.digits);
+
+    }
+
+    @Override
+    public int hashCode() {
+        return digits.hashCode();
+    }
 }
