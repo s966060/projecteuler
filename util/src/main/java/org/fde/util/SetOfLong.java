@@ -18,6 +18,10 @@ public class SetOfLong implements Iterable<Long> {
         this.numbers = new HashSet<>(Arrays.asList(numbers));
     }
 
+    public SetOfLong(ListOfLong list) {
+        this.numbers = new HashSet<>(list.getInternalList());
+    }
+
     public static SetOfLong createSetOfLong(Long... numbers) {
         return new SetOfLong(numbers);
     }

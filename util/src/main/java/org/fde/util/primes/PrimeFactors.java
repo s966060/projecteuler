@@ -1,6 +1,7 @@
 package org.fde.util.primes;
 
 import org.fde.util.ListOfLong;
+import org.fde.util.SetOfLong;
 
 public class PrimeFactors {
     private final Primes primes;
@@ -22,6 +23,12 @@ public class PrimeFactors {
         }
 
         return factors;
+    }
+
+    public SetOfLong getDistinctPrimeFactors(long target) {
+        ListOfLong list = getPrimeFactors(target);
+
+        return new SetOfLong(list);
     }
 
     @Override

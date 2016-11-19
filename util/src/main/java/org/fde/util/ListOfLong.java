@@ -253,4 +253,8 @@ public class ListOfLong implements Iterable<Long> {
         this.numbers.set(fromIndex, otherValue);
         this.numbers.set(toIndex, aValue);
     }
+
+    public List<Long> getInternalList() {
+        return Collections.unmodifiableList(this.numbers);
+    }
 }
