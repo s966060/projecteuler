@@ -1,44 +1,59 @@
 package org.fde.util.combinations;
 
-import java.util.*;
+import java.util.Iterator;
 import java.util.function.Consumer;
 
 public class CombinationList implements Iterable<Combination> {
-    private final List<Combination> list;
+    private final GenericCombinationList<Long> internal;
 
     public CombinationList() {
-        this.list = new ArrayList<>();
+        this.internal = new GenericCombinationList<>();
+    }
+
+    CombinationList(GenericCombinationList<Long> other) {
+        this.internal = other;
     }
 
     public CombinationList add(Combination combination) {
-        this.list.add(combination);
+        this.internal.add(combination.getInternal());
         return this;
     }
 
     public int size() {
-        return this.list.size();
+        return internal.size();
     }
 
     public CombinationList getUnique() {
-        LinkedHashSet<Combination> unique = new LinkedHashSet<>();
+        return new CombinationList(this.internal.getUnique());
+    }
 
-        for (Combination c : this.list) {
-            unique.add(c);
-        }
 
-        CombinationList uniqueList = new CombinationList();
+    @Override
+    public Iterator<Combination> iterator() {
+        final Iterator<GenericCombination<Long>> it = this.internal.iterator();
 
-        for (Combination c : unique) {
-            uniqueList.add(c);
-        }
+        return new Iterator<Combination>() {
+            @Override
+            public boolean hasNext() {
+                return it.hasNext();
+            }
 
-        return uniqueList;
+            @Override
+            public Combination next() {
+                return new Combination(it.next());
+            }
+        };
+    }
+
+    @Override
+    public void forEach(Consumer<? super Combination> action) {
+
     }
 
     @Override
     public String toString() {
         return "CombinationList{" +
-                "list=" + list +
+                "internal=" + internal +
                 '}';
     }
 
@@ -49,26 +64,12 @@ public class CombinationList implements Iterable<Combination> {
 
         CombinationList that = (CombinationList) o;
 
-        return list.equals(that.list);
+        return internal.equals(that.internal);
+
     }
 
     @Override
     public int hashCode() {
-        return list.hashCode();
-    }
-
-    @Override
-    public Iterator<Combination> iterator() {
-        return this.list.iterator();
-    }
-
-    @Override
-    public void forEach(Consumer<? super Combination> action) {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
-    public Spliterator<Combination> spliterator() {
-        throw new UnsupportedOperationException();
+        return internal.hashCode();
     }
 }

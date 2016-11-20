@@ -3,38 +3,32 @@ package org.fde.util.combinations;
 import org.fde.util.ListOfLong;
 
 public class Combination {
-    private final ListOfLong list;
-
-    public Combination() {
-        this.list = new ListOfLong();
-    }
+    private final GenericCombination<Long> internal;
 
     public Combination(Long... elements) {
-        this.list = new ListOfLong(elements);
+        this.internal = new GenericCombination<>(elements);
     }
 
-    public Combination(Combination other) {
-        this.list = new ListOfLong(other.list);
+    Combination(GenericCombination<Long> other) {
+        this.internal = other;
     }
 
     public Combination add(Long element) {
-        this.list.add(element);
+        this.internal.add(element);
         return this;
     }
 
     public void add(Combination other) {
-        for (Long element : other.list) {
-            add(element);
-        }
+        other.internal.getList().forEach(this::add);
     }
 
     public long multiply() {
-        if (list.isEmpty()) {
+        if (internal.getList().isEmpty()) {
             return 0;
         } else {
             long result = 1;
 
-            for (Long number : this.list) {
+            for (Long number : this.internal.getList()) {
                 result *= number;
             }
 
@@ -43,7 +37,18 @@ public class Combination {
     }
 
     public ListOfLong getList () {
-        return this.list.getUnModifiableListOfLong();
+        return new ListOfLong(this.internal.getList());
+    }
+
+    GenericCombination<Long> getInternal() {
+        return internal;
+    }
+
+    @Override
+    public String toString() {
+        return "Combination{" +
+                "internal=" + internal +
+                '}';
     }
 
     @Override
@@ -53,19 +58,12 @@ public class Combination {
 
         Combination that = (Combination) o;
 
-        return list.equals(that.list);
+        return internal.equals(that.internal);
 
     }
 
     @Override
     public int hashCode() {
-        return list.hashCode();
-    }
-
-    @Override
-    public String toString() {
-        return "Combination{" +
-                "list=" + list +
-                '}';
+        return internal.hashCode();
     }
 }
