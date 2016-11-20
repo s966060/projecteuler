@@ -41,7 +41,7 @@ class GenericCombinationList<T>
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        GenericCombinationList that = (GenericCombinationList) o;
+        GenericCombinationList<T> that = (GenericCombinationList<T>) o;
 
         return list.equals(that.list);
     }

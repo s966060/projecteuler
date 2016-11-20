@@ -5,25 +5,24 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class GenericCombination<T> {
+class GenericCombination<T> {
     private final List<T> list;
 
-    public GenericCombination() {
+    GenericCombination() {
         this.list = new ArrayList<>();
     }
 
     @SafeVarargs
-    public GenericCombination(T... elements) {
+    GenericCombination(T... elements) {
         this.list = Arrays.asList(elements);
     }
 
-    public GenericCombination(GenericCombination<T> other) {
+    GenericCombination(GenericCombination<T> other) {
         this.list = new ArrayList<>(other.list);
     }
 
-    public GenericCombination<T> add(T element) {
+    public void add(T element) {
         this.list.add(element);
-        return this;
     }
 
     public List<T> getList () {
