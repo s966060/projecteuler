@@ -12,10 +12,10 @@ public class GenericCombinationFactoryTest {
     public void one_theCombinationsOf() {
         List<Long> input = createListOfLong(1L);
 
-        GenericCombinationList actual = new GenericCombinationFactory<>(input)
+        GenericCombinationList<Long> actual = new GenericCombinationFactory<>(input)
                 .getCombinations();
 
-        GenericCombinationList expected = new GenericCombinationList()
+        GenericCombinationList<Long> expected = new GenericCombinationList<Long>()
                 .add(new GenericCombination<>(1L));
 
         assertEquals(expected, actual);
@@ -25,10 +25,10 @@ public class GenericCombinationFactoryTest {
     public void two_theCombinationsOf() {
         List<Long> input = createListOfLong(1L, 2L);
 
-        GenericCombinationList actual = new GenericCombinationFactory<>(input)
+        GenericCombinationList<Long> actual = new GenericCombinationFactory<>(input)
                 .getCombinations();
 
-        GenericCombinationList expected = new GenericCombinationList()
+        GenericCombinationList<Long> expected = new GenericCombinationList<Long>()
                 .add(new GenericCombination<>(1L))
                 .add(new GenericCombination<>(2L))
                 .add(new GenericCombination<>(1L, 2L));
@@ -40,7 +40,7 @@ public class GenericCombinationFactoryTest {
     public void three_theCombinationsOf() {
         List<Long> input = createListOfLong(1L, 2L, 3L);
 
-        GenericCombinationList actual = new GenericCombinationFactory<>(input)
+        GenericCombinationList<Long> actual = new GenericCombinationFactory<>(input)
                 .getCombinations();
 
         GenericCombinationList expected = new GenericCombinationList<>()
@@ -59,10 +59,10 @@ public class GenericCombinationFactoryTest {
     public void four_theCombinationsOf() {
         List<Long> input = createListOfLong(1L, 2L, 3L, 4L);
 
-        GenericCombinationList actual = new GenericCombinationFactory<>(input)
+        GenericCombinationList<Long> actual = new GenericCombinationFactory<>(input)
                 .getCombinations();
 
-        GenericCombinationList expected = new GenericCombinationList()
+        GenericCombinationList<Long> expected = new GenericCombinationList<Long>()
                 .add(new GenericCombination<>(1L))
                 .add(new GenericCombination<>(2L))
                 .add(new GenericCombination<>(3L))
