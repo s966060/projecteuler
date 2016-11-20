@@ -1,11 +1,8 @@
 package org.fde.util.combinations;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
-class GenericCombination<T> {
+public class GenericCombination<T> implements Iterable<T> {
     private final List<T> list;
 
     GenericCombination() {
@@ -34,6 +31,18 @@ class GenericCombination<T> {
     }
 
     @Override
+    public Iterator<T> iterator() {
+        return this.list.iterator();
+    }
+
+    @Override
+    public String toString() {
+        return "GenericCombination{" +
+                "list=" + list +
+                '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -47,12 +56,5 @@ class GenericCombination<T> {
     @Override
     public int hashCode() {
         return list.hashCode();
-    }
-
-    @Override
-    public String toString() {
-        return "GenericCombination{" +
-                "list=" + list +
-                '}';
     }
 }

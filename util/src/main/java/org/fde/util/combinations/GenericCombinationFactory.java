@@ -2,11 +2,11 @@ package org.fde.util.combinations;
 
 import java.util.List;
 
-class GenericCombinationFactory<T> {
+public class GenericCombinationFactory<T> {
     private final GenericCombinationList<T> list;
     private final List<T> elements;
 
-    GenericCombinationFactory(List<T> elements) {
+    public GenericCombinationFactory(List<T> elements) {
         this.list = new GenericCombinationList<>();
         this.elements = elements;
     }

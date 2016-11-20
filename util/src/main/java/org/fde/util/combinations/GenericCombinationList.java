@@ -3,7 +3,7 @@ package org.fde.util.combinations;
 import java.util.*;
 import java.util.function.Consumer;
 
-class GenericCombinationList<T>
+public class GenericCombinationList<T>
         implements Iterable<GenericCombination<T>> {
 
     private final List<GenericCombination<T>> list;

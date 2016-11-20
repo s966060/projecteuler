@@ -1,7 +1,6 @@
 package org.fde.projecteuler.problem_049;
 
-import java.util.Iterator;
-import java.util.TreeSet;
+import java.util.*;
 import java.util.function.Consumer;
 
 class TargetSet implements Iterable<Target> {
@@ -56,5 +55,9 @@ class TargetSet implements Iterable<Target> {
                 }));
 
         return differences;
+    }
+
+    public List<Target> getInternalSetAsList() {
+        return new ArrayList<>(this.set);
     }
 }
