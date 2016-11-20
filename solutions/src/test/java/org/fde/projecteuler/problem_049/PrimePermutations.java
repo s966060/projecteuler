@@ -30,7 +30,7 @@ public class PrimePermutations {
         TargetMap atLeastThree = retainAtLeastWithThreeTargets(sameCanonicals);
         // out.println("atLeastThree = " + atLeastThree);
 
-        List<String> twelveDigitNumbers = hasCorrectDifference(atLeastThree);
+        List<String> twelveDigitNumbers = haveCorrectDifferences(atLeastThree);
 
         System.out.println("twelveDigitNumbers = " + twelveDigitNumbers);
 
@@ -38,7 +38,7 @@ public class PrimePermutations {
         assertEquals("296962999629", twelveDigitNumbers.get(1));
     }
 
-    private List<String> hasCorrectDifference(TargetMap atLeastThree) {
+    private List<String> haveCorrectDifferences(TargetMap atLeastThree) {
         List<String> twelveDigitNumbers = new ArrayList<>();
 
         atLeastThree.forEach((canonical, targets) -> {
