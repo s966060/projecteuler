@@ -9,17 +9,19 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import static java.lang.System.out;
+
 public class PrimePermutations {
     @Test
     public void primePermutations() {
         List<Target> suspects = getAllSuspects();
-        System.out.println("suspects = " + suspects);
+        out.println("suspects = " + suspects);
 
         TargetMap sameCanonicals = getWithSameCanonical(suspects);
-        System.out.println("sameCanonicals = " + sameCanonicals);
+        out.println("sameCanonicals = " + sameCanonicals);
 
         TargetMap atLeastThree = retainAtLeastWithThreeTargets(sameCanonicals);
-        System.out.println("atLeastThree = " + atLeastThree);
+        out.println("atLeastThree = " + atLeastThree);
 
         atLeastThree.forEach((canonical, targets) -> {
             TargetMap differences[] = {new TargetMap()};
