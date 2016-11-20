@@ -19,10 +19,6 @@ public class CombinationList implements Iterable<Combination> {
         return this;
     }
 
-    public int size() {
-        return internal.size();
-    }
-
     public CombinationList getUnique() {
         return new CombinationList(this.internal.getUnique());
     }

@@ -17,10 +17,6 @@ public class GenericCombinationList<T>
         return this;
     }
 
-    public int size() {
-        return this.list.size();
-    }
-
     public GenericCombinationList getUnique() {
         LinkedHashSet<GenericCombination> unique = new LinkedHashSet<>();
 

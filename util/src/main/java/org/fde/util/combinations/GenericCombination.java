@@ -12,6 +12,7 @@ public class GenericCombination<T> {
         this.list = new ArrayList<>();
     }
 
+    @SafeVarargs
     public GenericCombination(T... elements) {
         this.list = Arrays.asList(elements);
     }
@@ -23,10 +24,6 @@ public class GenericCombination<T> {
     public GenericCombination<T> add(T element) {
         this.list.add(element);
         return this;
-    }
-
-    public void add(GenericCombination<T> other) {
-        other.list.forEach(this::add);
     }
 
     public List<T> getList () {
