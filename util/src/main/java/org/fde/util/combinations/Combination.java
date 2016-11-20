@@ -13,7 +13,7 @@ public class Combination {
         this.internal = other;
     }
 
-    public Combination add(Long element) {
+    private Combination add(Long element) {
         this.internal.add(element);
         return this;
     }
