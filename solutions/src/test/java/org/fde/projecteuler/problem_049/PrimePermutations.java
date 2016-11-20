@@ -6,6 +6,7 @@ import org.fde.util.primes.PrimeBuilder;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -14,24 +15,23 @@ import static java.lang.System.out;
 public class PrimePermutations {
     @Test
     public void primePermutations() {
-        List<Target> suspects = getAllSuspects();
-        out.println("suspects = " + suspects);
+        // List<Target> suspects = getAllSuspects();
+        List<Target> suspects = Arrays.asList(new Target(1487, 1), new Target(4817, 1), new Target(8147, 1));
+        // out.println("suspects = " + suspects);
 
         TargetMap sameCanonicals = getWithSameCanonical(suspects);
-        out.println("sameCanonicals = " + sameCanonicals);
+        // out.println("sameCanonicals = " + sameCanonicals);
 
         TargetMap atLeastThree = retainAtLeastWithThreeTargets(sameCanonicals);
-        out.println("atLeastThree = " + atLeastThree);
+        // out.println("atLeastThree = " + atLeastThree);
 
         atLeastThree.forEach((canonical, targets) -> {
-            TargetMap differences[] = {new TargetMap()};
+            DifferenceMap differences = targets.getDifferenceMap();
 
-            targets.forEach((target) -> {
-                targets.forEach((otherTarget) -> {
-                    if (!target.equals(otherTarget)) {
-
-                    }
-                });
+            differences.forEach((difference, suspectTargets) -> {
+                if (suspectTargets.size() > 2) {
+                    out.println(suspectTargets);
+                }
             });
         });
     }

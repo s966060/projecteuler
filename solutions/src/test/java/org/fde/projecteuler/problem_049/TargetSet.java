@@ -45,4 +45,20 @@ class TargetSet implements Iterable<Target> {
         toString[0] += String.format(")%n");
         return toString[0];
     }
+
+    DifferenceMap getDifferenceMap() {
+        DifferenceMap differences = new DifferenceMap();
+
+        forEach((target) -> {
+            forEach((otherTarget) -> {
+                if (!target.equals(otherTarget)) {
+                    long diff = Math.abs(target.getPrime() - otherTarget.getPrime());
+
+                    differences.put(diff, target, otherTarget);
+                }
+            });
+        });
+
+        return differences;
+    }
 }
