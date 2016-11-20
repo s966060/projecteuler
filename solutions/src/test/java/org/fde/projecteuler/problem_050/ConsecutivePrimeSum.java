@@ -42,6 +42,7 @@ public class ConsecutivePrimeSum {
             done = isUseFull(suspect, builder);
 
             if (done) {
+                System.out.println("is not useful anymore starting from waste primes = " + wastePrimes);
                 break;
             }
 
