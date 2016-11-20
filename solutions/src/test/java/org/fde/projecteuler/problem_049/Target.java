@@ -1,22 +1,19 @@
 package org.fde.projecteuler.problem_049;
 
-/**
- * Created by filip on 20/11/2016.
- */
 class Target implements Comparable<Target> {
     private final long prime;
     private final long canonical;
 
-    public Target(long prime, long canonical) {
+    Target(long prime, long canonical) {
         this.prime = prime;
         this.canonical = canonical;
     }
 
-    public long getCanonical() {
+    long getCanonical() {
         return canonical;
     }
 
-    public long getPrime() {
+    long getPrime() {
         return prime;
     }
 
@@ -58,7 +55,7 @@ class Target implements Comparable<Target> {
         }
     }
 
-    int comparePrime(Target other) {
+    private int comparePrime(Target other) {
         return Long.compare(this.prime, other.prime);
     }
 

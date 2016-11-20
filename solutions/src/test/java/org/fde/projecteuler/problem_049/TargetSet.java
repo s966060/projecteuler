@@ -47,13 +47,13 @@ class TargetSet implements Iterable<Target> {
         DifferenceMap differences = new DifferenceMap();
 
         forEach((target) ->
-            forEach((otherTarget) -> {
-                if (!target.equals(otherTarget)) {
-                    long diff = Math.abs(target.getPrime() - otherTarget.getPrime());
+                forEach((otherTarget) -> {
+                    if (!target.equals(otherTarget)) {
+                        long diff = Math.abs(target.getPrime() - otherTarget.getPrime());
 
-                    differences.put(diff, target, otherTarget);
-                }
-        }));
+                        differences.put(diff, target, otherTarget);
+                    }
+                }));
 
         return differences;
     }

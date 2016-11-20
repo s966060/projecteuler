@@ -52,7 +52,7 @@ class TargetMap {
         this.map.put(canonical, targets);
     }
 
-    int size() {
+    private int size() {
         return this.map.size();
     }
 }
