@@ -16,7 +16,7 @@ public class IsPrime {
             return true;
         }
 
-        PrimeBuilder factorIterator = new PrimeBuilder(factors);
+        PrimeBuilder factorIterator = new PrimeBuilder(factors.getPrimes());
 
         long factor = factorIterator.next();
 

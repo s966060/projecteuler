@@ -17,12 +17,6 @@ public class PrimeBuilder {
         this(new Primes());
     }
 
-    public PrimeBuilder(PrimeBuilder other) {
-        this.primes = other.primes;
-        this.index = 0;
-        this.squares = new Squares();
-    }
-
     public long next() {
         if (index < primes.size()) {
             return primes.get(index++);
@@ -100,5 +94,9 @@ public class PrimeBuilder {
 
     public boolean contains(long suspect) {
         return this.primes.contains(suspect);
+    }
+
+    public Primes getPrimes() {
+        return primes;
     }
 }
