@@ -16,7 +16,7 @@ public class GenericCombinationFactoryTest {
                 .getCombinations();
 
         GenericCombinationList expected = new GenericCombinationList()
-                .add(new GenericCombination(1L));
+                .add(new GenericCombination<>(1L));
 
         assertEquals(expected, actual);
     }
@@ -25,13 +25,13 @@ public class GenericCombinationFactoryTest {
     public void two_theCombinationsOf() {
         List<Long> input = createListOfLong(1L, 2L);
 
-        GenericCombinationList actual = new GenericCombinationFactory(input)
+        GenericCombinationList actual = new GenericCombinationFactory<>(input)
                 .getCombinations();
 
         GenericCombinationList expected = new GenericCombinationList()
-                .add(new GenericCombination(1L))
-                .add(new GenericCombination(2L))
-                .add(new GenericCombination(1L, 2L));
+                .add(new GenericCombination<>(1L))
+                .add(new GenericCombination<>(2L))
+                .add(new GenericCombination<>(1L, 2L));
 
         assertEquals(expected, actual);
     }
@@ -40,17 +40,17 @@ public class GenericCombinationFactoryTest {
     public void three_theCombinationsOf() {
         List<Long> input = createListOfLong(1L, 2L, 3L);
 
-        GenericCombinationList actual = new GenericCombinationFactory(input)
+        GenericCombinationList actual = new GenericCombinationFactory<>(input)
                 .getCombinations();
 
-        GenericCombinationList expected = new GenericCombinationList()
-                .add(new GenericCombination(1L))
-                .add(new GenericCombination(2L))
-                .add(new GenericCombination(3L))
-                .add(new GenericCombination(1L, 2L))
-                .add(new GenericCombination(1L, 3L))
-                .add(new GenericCombination(2L, 3L))
-                .add(new GenericCombination(1L, 2L, 3L));
+        GenericCombinationList expected = new GenericCombinationList<>()
+                .add(new GenericCombination<>(1L))
+                .add(new GenericCombination<>(2L))
+                .add(new GenericCombination<>(3L))
+                .add(new GenericCombination<>(1L, 2L))
+                .add(new GenericCombination<>(1L, 3L))
+                .add(new GenericCombination<>(2L, 3L))
+                .add(new GenericCombination<>(1L, 2L, 3L));
 
         assertEquals(expected, actual);
     }
@@ -59,25 +59,25 @@ public class GenericCombinationFactoryTest {
     public void four_theCombinationsOf() {
         List<Long> input = createListOfLong(1L, 2L, 3L, 4L);
 
-        GenericCombinationList actual = new GenericCombinationFactory(input)
+        GenericCombinationList actual = new GenericCombinationFactory<>(input)
                 .getCombinations();
 
         GenericCombinationList expected = new GenericCombinationList()
-                .add(new GenericCombination(1L))
-                .add(new GenericCombination(2L))
-                .add(new GenericCombination(3L))
-                .add(new GenericCombination(4L))
-                .add(new GenericCombination(1L, 2L))
-                .add(new GenericCombination(1L, 3L))
-                .add(new GenericCombination(1L, 4L))
-                .add(new GenericCombination(2L, 3L))
-                .add(new GenericCombination(2L, 4L))
-                .add(new GenericCombination(3L, 4L))
-                .add(new GenericCombination(1L, 2L, 3L))
-                .add(new GenericCombination(1L, 2L, 4L))
-                .add(new GenericCombination(1L, 3L, 4L))
-                .add(new GenericCombination(2L, 3L, 4L))
-                .add(new GenericCombination(1L, 2L, 3L, 4L)
+                .add(new GenericCombination<>(1L))
+                .add(new GenericCombination<>(2L))
+                .add(new GenericCombination<>(3L))
+                .add(new GenericCombination<>(4L))
+                .add(new GenericCombination<>(1L, 2L))
+                .add(new GenericCombination<>(1L, 3L))
+                .add(new GenericCombination<>(1L, 4L))
+                .add(new GenericCombination<>(2L, 3L))
+                .add(new GenericCombination<>(2L, 4L))
+                .add(new GenericCombination<>(3L, 4L))
+                .add(new GenericCombination<>(1L, 2L, 3L))
+                .add(new GenericCombination<>(1L, 2L, 4L))
+                .add(new GenericCombination<>(1L, 3L, 4L))
+                .add(new GenericCombination<>(2L, 3L, 4L))
+                .add(new GenericCombination<>(1L, 2L, 3L, 4L)
                 );
 
         assertEquals(expected, actual);
@@ -87,7 +87,7 @@ public class GenericCombinationFactoryTest {
         List<Long> result = new ArrayList<>();
 
         for (long n : numbers) {
-            result.add(Long.valueOf(n));
+            result.add(n);
         }
 
         return result;
