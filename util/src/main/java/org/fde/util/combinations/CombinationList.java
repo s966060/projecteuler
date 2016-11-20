@@ -23,7 +23,6 @@ public class CombinationList implements Iterable<Combination> {
         return new CombinationList(this.internal.getUnique());
     }
 
-
     @Override
     public Iterator<Combination> iterator() {
         final Iterator<GenericCombination<Long>> it = this.internal.iterator();
