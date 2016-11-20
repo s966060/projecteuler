@@ -85,4 +85,8 @@ public class DigitList implements Iterable<Long> {
     public int hashCode() {
         return digits.hashCode();
     }
+
+    public void sort() {
+        this.digits.sort();
+    }
 }

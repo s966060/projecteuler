@@ -24,7 +24,7 @@ public class CompositeIterator implements Iterator<Long> {
 
     @Override
     public Long next() {
-        while(builder.isPrime(current)) {
+        while (builder.isPrime(current)) {
             ++current;
         }
 

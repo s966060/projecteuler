@@ -62,6 +62,16 @@ public class PrimeBuilder {
         }
     }
 
+    public long next(long target) {
+        long next = next();
+
+        while(next < target) {
+            next = next();
+        }
+
+        return next;
+    }
+
     private long getLimit(long suspectPrime) {
         this.squares.forward(suspectPrime);
         return this.squares.getCurrentBase();
