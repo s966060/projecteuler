@@ -17,6 +17,12 @@ public class PrimeBuilder {
         this(new Primes());
     }
 
+    public PrimeBuilder(PrimeBuilder other) {
+        this.primes = other.primes;
+        this.index = other.index;
+        this.squares = new Squares(other.squares);
+    }
+
     public long next() {
         if (index < primes.size()) {
             return primes.get(index++);

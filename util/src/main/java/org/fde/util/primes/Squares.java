@@ -7,6 +7,10 @@ public class Squares {
         this.base = 0;
     }
 
+    public Squares(Squares other) {
+        this.base = other.base;
+    }
+
     public long getCurrentSquare() {
         return this.base * this.base;
     }
