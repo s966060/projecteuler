@@ -30,7 +30,7 @@ public class ConsecutivePrimeSum {
         for (long wastePrimes = 0; !done; ++wastePrimes) {
             PrimeBuilder builder = new PrimeBuilder(primes);
 
-            if(wastePrimes % 1000 == 0) {
+            if (wastePrimes % 1000 == 0) {
                 System.out.println("wastePrimes = " + wastePrimes + " @ " + stopWatch);
             }
 
@@ -40,7 +40,7 @@ public class ConsecutivePrimeSum {
 
             done = isUseFull(suspect, builder);
 
-            if(done) {
+            if (done) {
                 break;
             }
 
@@ -89,8 +89,8 @@ public class ConsecutivePrimeSum {
         PrimeBuilder useful = new PrimeBuilder(builder);
         long sum2 = 0;
 
-        for(long i = 1; i <= suspect.getTerms(); ++i) {
-                      sum2 += useful.next();
+        for (long i = 1; i <= suspect.getTerms(); ++i) {
+            sum2 += useful.next();
 
         }
 
