@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
+// DAMN UGLY THING OMG
 public class ConsecutivePrimeSum {
     private final static long ANSWER = 997651;
 
