@@ -92,7 +92,7 @@ public class PrimeBuilder {
                 '}';
     }
 
-    public boolean contains(long suspect) {
+    boolean contains(long suspect) {
         return this.primes.contains(suspect);
     }
 
