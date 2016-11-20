@@ -5,159 +5,9 @@ import org.fde.util.LongUtil;
 import org.fde.util.primes.PrimeBuilder;
 import org.junit.Test;
 
-import java.util.*;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-
-class Target implements Comparable<Target> {
-    private final long prime;
-    private final long canonical;
-
-    public Target(long prime, long canonical) {
-        this.prime = prime;
-        this.canonical = canonical;
-    }
-
-    public long getCanonical() {
-        return canonical;
-    }
-
-    public long getPrime() {
-        return prime;
-    }
-
-    @Override
-    public String toString() {
-        return "Target{" +
-                "prime=" + prime +
-                ", canonical=" + canonical +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Target target = (Target) o;
-
-        if (prime != target.prime) return false;
-        return canonical == target.canonical;
-
-    }
-
-    @Override
-    public int hashCode() {
-        int result = (int) (prime ^ (prime >>> 32));
-        result = 31 * result + (int) (canonical ^ (canonical >>> 32));
-        return result;
-    }
-
-    @Override
-    public int compareTo(Target other) {
-        int compare = compareCanonical(other);
-
-        if (compare != 0) {
-            return compare;
-        } else {
-            return comparePrime(other);
-        }
-    }
-
-    int comparePrime(Target other) {
-        return Long.compare(this.prime, other.prime);
-    }
-
-    int compareCanonical(Target other) {
-        return Long.compare(this.canonical, other.canonical);
-    }
-}
-
-class TargetSet implements Iterable<Target> {
-    private final TreeSet<Target> set;
-
-    public TargetSet() {
-        this.set = new TreeSet<> ();
-    }
-
-    public void add(Target t) {
-        this.set.add(t);
-    }
-
-    @Override
-    public Iterator<Target> iterator() {
-        return this.set.iterator();
-    }
-
-    @Override
-    public void forEach(Consumer<? super Target> action) {
-        this.set.forEach(action);
-    }
-
-    public int size() {
-        return this.set.size();
-    }
-
-    @Override
-    public String toString() {
-        final String[] toString = {""};
-        toString[0] += String.format("TargetSet{%n");
-        toString[0] += String.format("    size = %s%n", size());
-
-        forEach((target) -> {
-            toString[0] += String.format("    target = %s%n", target);
-        });
-
-        toString[0] += String.format(")%n");
-        return toString[0];
-    }
-}
-
-class TargetMap {
-    private final TreeMap<Long, TargetSet> map;
-
-    public TargetMap() {
-        this.map = new TreeMap<>();
-    }
-
-    public void add(Target t) {
-        if (!this.map.containsKey(t.getCanonical())) {
-            this.map.put(t.getCanonical(), new TargetSet());
-        }
-
-        this.map.get(t.getCanonical()).add(t);
-    }
-
-    @Override
-    public String toString() {
-        final String[] toString = {""};
-        toString[0] += String.format("TargetMap{%n");
-        toString[0] += String.format("    size = %s%n", size());
-
-        forEach((canonical, targets) -> {
-            toString[0] += String.format("    canonical = %s%n", canonical);
-
-            for (Target t : targets) {
-                toString[0] += String.format("        target = %s%n", t);
-            }
-        });
-
-        toString[0] += String.format(")%n");
-        return toString[0];
-    }
-
-    public void forEach(BiConsumer<Long, TargetSet> action) {
-        this.map.forEach(action);
-    }
-
-    public void put(Long canonical, TargetSet targets) {
-        this.map.put(canonical, targets);
-    }
-
-    public int size() {
-        return this.map.size();
-    }
-}
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class PrimePermutations {
     @Test
@@ -172,29 +22,23 @@ public class PrimePermutations {
         System.out.println("atLeastThree = " + atLeastThree);
 
         atLeastThree.forEach((canonical, targets) -> {
-            Set<Long> differences = new TreeSet<>();
-            final Target[] lastOne = {null};
+            TargetMap differences[] = {new TargetMap()};
 
             targets.forEach((target) -> {
-                if(lastOne[0] != null) {
-                    long diff = target.getPrime() - lastOne[0].getPrime();
-                    differences.add(diff);
-                }
+                targets.forEach((otherTarget) -> {
+                    if (!target.equals(otherTarget)) {
 
-                lastOne[0] = target;
+                    }
+                });
             });
-
-            if(differences.size() == 1) {
-                System.out.println("targets = " + targets);
-            }
         });
     }
 
     private TargetMap retainAtLeastWithThreeTargets(TargetMap sameCanonicals) {
-        TargetMap onlyThree = new TargetMap ();
+        TargetMap onlyThree = new TargetMap();
 
         sameCanonicals.forEach((k, v) -> {
-            if(v.size() == 3) {
+            if (v.size() == 3) {
                 onlyThree.put(k, v);
             }
         });
