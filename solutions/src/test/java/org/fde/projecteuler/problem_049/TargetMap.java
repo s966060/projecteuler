@@ -3,17 +3,14 @@ package org.fde.projecteuler.problem_049;
 import java.util.TreeMap;
 import java.util.function.BiConsumer;
 
-/**
- * Created by filip on 20/11/2016.
- */
 class TargetMap {
     private final TreeMap<Long, TargetSet> map;
 
-    public TargetMap() {
+    TargetMap() {
         this.map = new TreeMap<>();
     }
 
-    public void add(Target t) {
+    void add(Target t) {
         if (!containsKey(t.getCanonical())) {
             put(t.getCanonical(), new TargetSet());
         }
@@ -47,15 +44,15 @@ class TargetMap {
         return toString[0];
     }
 
-    public void forEach(BiConsumer<Long, TargetSet> action) {
+    void forEach(BiConsumer<Long, TargetSet> action) {
         this.map.forEach(action);
     }
 
-    public void put(Long canonical, TargetSet targets) {
+    void put(Long canonical, TargetSet targets) {
         this.map.put(canonical, targets);
     }
 
-    public int size() {
+    int size() {
         return this.map.size();
     }
 }
