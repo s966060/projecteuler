@@ -29,6 +29,10 @@ class GenericCombination<T> {
         return Collections.unmodifiableList(this.list);
     }
 
+    public int size() {
+        return this.list.size();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

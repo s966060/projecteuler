@@ -19,6 +19,24 @@ class GenericCombinationFactory<T> {
         return list;
     }
 
+    public GenericCombinationList<T> getCombinations(int sizeToRetain) {
+        return getCombinations(sizeToRetain, sizeToRetain);
+    }
+
+    public GenericCombinationList<T> getCombinations(int beginSize, int endSize) {
+        GenericCombinationList<T> list = getCombinations();
+
+        GenericCombinationList<T> retained = new GenericCombinationList<>();
+
+        list.forEach((c) -> {
+            if (c.size() >= beginSize && c.size() <= endSize) {
+                retained.add(c);
+            }
+        });
+
+        return retained;
+    }
+
     private int getMax(int size) {
         return elements.size() - size + 1;
     }

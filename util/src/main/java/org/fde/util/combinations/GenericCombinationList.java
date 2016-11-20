@@ -30,6 +30,11 @@ class GenericCombinationList<T>
     }
 
     @Override
+    public Iterator<GenericCombination<T>> iterator() {
+        return this.list.iterator();
+    }
+
+    @Override
     public String toString() {
         return "CombinationList{" +
                 "list=" + list +
@@ -49,20 +54,5 @@ class GenericCombinationList<T>
     @Override
     public int hashCode() {
         return list.hashCode();
-    }
-
-    @Override
-    public Iterator<GenericCombination<T>> iterator() {
-        return this.list.iterator();
-    }
-
-    @Override
-    public void forEach(Consumer<? super GenericCombination<T>> action) {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
-    public Spliterator<GenericCombination<T>> spliterator() {
-        throw new UnsupportedOperationException();
     }
 }
