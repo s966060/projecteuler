@@ -10,6 +10,10 @@ import static org.junit.Assert.assertEquals;
 public class ConsecutivePrimeSum {
     private final static long ANSWER = 997651;
 
+    // final long limit = 100;
+    // final long limit = 1_000;
+    final long LIMIT = 1_000_000;
+
     @Test
     public void ConsecutivePrimeSum() {
         StopWatch stopWatch = new StopWatch();
@@ -18,10 +22,6 @@ public class ConsecutivePrimeSum {
         Primes primes = new Primes();
 
         PrimeBuilder check = new PrimeBuilder(primes);
-
-        // final long limit = 100;
-        // final long limit = 1_000;
-        final long limit = 1_000_000;
 
         boolean done = false;
 
@@ -38,22 +38,28 @@ public class ConsecutivePrimeSum {
                 builder.next();
             }
 
+            done = isUseFull(suspect, builder);
+
+            if(done) {
+                break;
+            }
+
             long prime = builder.next();
             final long firstPrimeTerm = prime;
             int terms = 1;
 
-            if (prime > limit) {
+            if (prime > LIMIT) {
                 done = true;
             } else {
                 long sum = prime;
 
-                while (sum < limit) {
+                while (sum < LIMIT) {
                     prime = builder.next();
                     ++terms;
 
                     sum += prime;
 
-                    if (sum < limit) {
+                    if (sum < LIMIT) {
                         if (check.isPrime(sum)) {
                             if (terms > suspect.getTerms()) {
                                 final long lastPrimeTerm = prime;
@@ -77,6 +83,19 @@ public class ConsecutivePrimeSum {
         assertEquals(suspect.getPrime(), ANSWER);
         assertEquals(suspect.getFirstPrimeTerm(), 7);
         assertEquals(suspect.getLastPrimeTerm(), 3931);
+    }
+
+    private boolean isUseFull(Suspect suspect, PrimeBuilder builder) {
+        PrimeBuilder useful = new PrimeBuilder(builder);
+        long sum2 = 0;
+
+        for(long i = 1; i <= suspect.getTerms(); ++i) {
+                      sum2 += useful.next();
+
+        }
+
+        boolean done = sum2 > LIMIT;
+        return done;
     }
 
 
