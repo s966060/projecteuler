@@ -6,7 +6,7 @@ import java.util.function.Consumer;
 public class CombinationList implements Iterable<Combination> {
     private final GenericCombinationList<Long> internal;
 
-    public CombinationList() {
+    CombinationList() {
         this.internal = new GenericCombinationList<>();
     }
 

@@ -2,18 +2,18 @@ package org.fde.util.combinations;
 
 import java.util.List;
 
-public class GenericCombinationFactory<T> {
-    private final GenericCombinationList list;
+class GenericCombinationFactory<T> {
+    private final GenericCombinationList<T> list;
     private final List<T> elements;
 
-    public GenericCombinationFactory(List<T> elements) {
-        this.list = new GenericCombinationList();
+    GenericCombinationFactory(List<T> elements) {
+        this.list = new GenericCombinationList<>();
         this.elements = elements;
     }
 
-    public GenericCombinationList getCombinations() {
+    public GenericCombinationList<T> getCombinations() {
         for (int size = 1; size <= getN(); ++size) {
-            combine(new GenericCombination(), size, 0);
+            combine(new GenericCombination<>(), size, 0);
         }
 
         return list;
@@ -25,7 +25,7 @@ public class GenericCombinationFactory<T> {
 
     private void combine(GenericCombination<T> input, int size, int index) {
         if (size == 0) {
-            GenericCombination gotcha = new GenericCombination(input);
+            GenericCombination<T> gotcha = new GenericCombination<>(input);
             list.add(gotcha);
             return;
         }
@@ -33,7 +33,7 @@ public class GenericCombinationFactory<T> {
         int max = getMax(size);
 
         for (; index < max; ++index) {
-            GenericCombination tryThisOne = new GenericCombination(input);
+            GenericCombination<T> tryThisOne = new GenericCombination<>(input);
             tryThisOne.add(getElement(index));
             combine(tryThisOne, size - 1, index + 1);
         }

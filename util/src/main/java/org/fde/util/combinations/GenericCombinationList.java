@@ -3,26 +3,26 @@ package org.fde.util.combinations;
 import java.util.*;
 import java.util.function.Consumer;
 
-public class GenericCombinationList<T>
+class GenericCombinationList<T>
         implements Iterable<GenericCombination<T>> {
 
     private final List<GenericCombination<T>> list;
 
-    public GenericCombinationList() {
+    GenericCombinationList() {
         this.list = new ArrayList<>();
     }
 
-    public GenericCombinationList add(GenericCombination combination) {
+    public GenericCombinationList<T> add(GenericCombination<T> combination) {
         this.list.add(combination);
         return this;
     }
 
-    public GenericCombinationList getUnique() {
+    GenericCombinationList<T> getUnique() {
         LinkedHashSet<GenericCombination> unique = new LinkedHashSet<>();
 
         unique.addAll(this.list);
 
-        GenericCombinationList uniqueList = new GenericCombinationList();
+        GenericCombinationList<T> uniqueList = new GenericCombinationList<>();
 
         unique.forEach(uniqueList::add);
 
