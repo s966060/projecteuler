@@ -24,15 +24,11 @@ public class GenericCombinationList<T>
     public GenericCombinationList getUnique() {
         LinkedHashSet<GenericCombination> unique = new LinkedHashSet<>();
 
-        for (GenericCombination c : this.list) {
-            unique.add(c);
-        }
+        unique.addAll(this.list);
 
         GenericCombinationList uniqueList = new GenericCombinationList();
 
-        for (GenericCombination c : unique) {
-            uniqueList.add(c);
-        }
+        unique.forEach(uniqueList::add);
 
         return uniqueList;
     }

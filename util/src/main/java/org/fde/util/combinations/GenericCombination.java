@@ -9,7 +9,7 @@ public class GenericCombination<T> {
     private final List<T> list;
 
     public GenericCombination() {
-        this.list = new ArrayList<T>();
+        this.list = new ArrayList<>();
     }
 
     public GenericCombination(T... elements) {
@@ -17,7 +17,7 @@ public class GenericCombination<T> {
     }
 
     public GenericCombination(GenericCombination<T> other) {
-        this.list = new ArrayList<T>(other.list);
+        this.list = new ArrayList<>(other.list);
     }
 
     public GenericCombination<T> add(T element) {
@@ -26,9 +26,7 @@ public class GenericCombination<T> {
     }
 
     public void add(GenericCombination<T> other) {
-        for (T element : other.list) {
-            add(element);
-        }
+        other.list.forEach(this::add);
     }
 
     public List<T> getList () {

@@ -5,7 +5,7 @@ import org.fde.util.ListOfLong;
 public class Combination {
     private final GenericCombination<Long> internal;
 
-    public Combination(Long... elements) {
+    Combination(Long... elements) {
         this.internal = new GenericCombination<>(elements);
     }
 
