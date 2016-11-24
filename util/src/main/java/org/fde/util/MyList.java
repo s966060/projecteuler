@@ -145,4 +145,27 @@ class MyList<T extends  Comparable<T>> implements Iterable<T> {
     void addAll(MyList<T> other) {
         this.list.addAll(other.list);
     }
+
+    @Override
+    public String toString() {
+        return "MyList{" +
+                "list=" + list +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        MyList<?> myList = (MyList<?>) o;
+
+        return list.equals(myList.list);
+
+    }
+
+    @Override
+    public int hashCode() {
+        return list.hashCode();
+    }
 }
