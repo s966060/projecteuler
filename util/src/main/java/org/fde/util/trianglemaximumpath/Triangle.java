@@ -1,12 +1,10 @@
 package org.fde.util.trianglemaximumpath;
 
 import org.apache.commons.lang3.Validate;
+import org.fde.util.Logger;
 
 import java.util.Stack;
 
-/**
- * Created by filipdelbaen on 25/11/2016.
- */
 public class Triangle {
     private Stack<Line> lines;
 
@@ -92,5 +90,18 @@ public class Triangle {
 
     public long getTopValue() {
         return this.lines.get(1).get(0);
+    }
+
+    public Triangle solveTriangle() {
+        Triangle newTriangle = new Triangle(this);
+
+        while (newTriangle.canRollUp()) {
+            newTriangle = newTriangle.rollUp();
+
+            Logger.log("newTriangle = " + newTriangle);
+            Logger.log();
+            Logger.log();
+        }
+        return newTriangle;
     }
 }

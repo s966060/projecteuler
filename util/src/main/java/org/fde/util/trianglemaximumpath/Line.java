@@ -2,9 +2,6 @@ package org.fde.util.trianglemaximumpath;
 
 import org.fde.util.ListOfLong;
 
-/**
- * Created by filipdelbaen on 25/11/2016.
- */
 public class Line {
     private final ListOfLong line;
 
