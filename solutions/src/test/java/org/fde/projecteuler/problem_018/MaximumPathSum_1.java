@@ -11,7 +11,7 @@ public class MaximumPathSum_1 {
     @Test
     public void maximumPathSum_1() throws Exception {
         String fileName = "triangle.txt";
-        final Triangle triangle = new TriangleLoader().loadTriangle(fileName);
+        final Triangle triangle = new TriangleLoader(this).loadTriangle(fileName);
 
         Logger.log("triangle = " + triangle);
         Logger.log();

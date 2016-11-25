@@ -8,8 +8,14 @@ import java.io.InputStream;
 import java.util.Scanner;
 
 public class TriangleLoader {
+    private final Object location;
+
+    public TriangleLoader(Object location) {
+        this.location = location;
+    }
+
     public Triangle loadTriangle(String fileName) throws Exception {
-        InputStream is = ClassUtil.getInputStream(this, fileName);
+        InputStream is = ClassUtil.getInputStream(location, fileName);
         Validate.notNull(is);
 
         final Triangle triangle = new Triangle();
