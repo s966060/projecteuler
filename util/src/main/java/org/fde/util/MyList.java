@@ -161,7 +161,6 @@ class MyList<T extends  Comparable<T>> implements Iterable<T> {
         MyList<?> myList = (MyList<?>) o;
 
         return list.equals(myList.list);
-
     }
 
     @Override
