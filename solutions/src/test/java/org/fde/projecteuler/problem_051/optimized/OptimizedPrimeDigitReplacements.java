@@ -22,7 +22,7 @@ public class OptimizedPrimeDigitReplacements {
         long logThreshold = LOG_THRESHOLD;
 
         for (int canonicalSuspect = 1; replaceFamily.getFamily() < 8; ++canonicalSuspect) {
-            replaceFamily = getReplaceFamily(primes, 2, canonicalSuspect);
+            replaceFamily = getReplaceFamily(primes, 2, canonicalSuspect, 8);
 
             if (replaceFamily.getFamily() >= 7) {
                 System.out.println("replaceFamily = " + replaceFamily);
@@ -40,7 +40,7 @@ public class OptimizedPrimeDigitReplacements {
     @Test
     public void primeDigitReplacements_1_3() {
         Primes primes = new Primes();
-        ReplaceFamily replaceFamily = getReplaceFamily(primes, 1, 3);
+        ReplaceFamily replaceFamily = getReplaceFamily(primes, 1, 3, 6);
 
         assertEquals(6, replaceFamily.getFamily());
         assertEquals(3, replaceFamily.getCanonicalSuspect());
@@ -50,19 +50,19 @@ public class OptimizedPrimeDigitReplacements {
     @Test
     public void primeDigitReplacements_2_563() {
         Primes primes = new Primes();
-        ReplaceFamily replaceFamily = getReplaceFamily(primes, 2, 563);
+        ReplaceFamily replaceFamily = getReplaceFamily(primes, 2, 563, 7);
 
         assertEquals(7, replaceFamily.getFamily());
         assertEquals(563, replaceFamily.getCanonicalSuspect());
         assertArrayEquals(new int[]{2, 3}, replaceFamily.getReplaceIndexes());
     }
 
-    private ReplaceFamily getReplaceFamily(Primes primes, int replaceCount, long canonicalSuspect) {
+    private ReplaceFamily getReplaceFamily(Primes primes, int replaceCount, long canonicalSuspect, int targetFamily) {
         ReplaceFamily globalReplaceFamily = ReplaceFamily._null_(canonicalSuspect);
 
         Digits canonicalSuspectAsDigits = Digits.valueOf(canonicalSuspect);
 
-        ReplaceIterator it = new ReplaceIterator(new OptimizedReplaceFactory(), replaceCount, canonicalSuspectAsDigits.size());
+        ReplaceIterator it = new ReplaceIterator(new OptimizedReplaceFactory(targetFamily), replaceCount, canonicalSuspectAsDigits.size());
 
         while (it.hasNext()) {
             Replace replace = it.next();
