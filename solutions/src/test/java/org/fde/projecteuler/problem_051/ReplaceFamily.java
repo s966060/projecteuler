@@ -1,8 +1,8 @@
-package org.fde.projecteuler.problem_051.general;
+package org.fde.projecteuler.problem_051;
 
 import java.util.Arrays;
 
-class ReplaceFamily {
+public class ReplaceFamily {
     private final long canonicalSuspect;
 
     private final int[] replaceIndexes;
@@ -27,7 +27,7 @@ class ReplaceFamily {
         return family;
     }
 
-    static ReplaceFamily _null_(long canonicalSuspect) {
+    public static ReplaceFamily _null_(long canonicalSuspect) {
         return new ReplaceFamily(canonicalSuspect, new int[0], 0);
     }
 

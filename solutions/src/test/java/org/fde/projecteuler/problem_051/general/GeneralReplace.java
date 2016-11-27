@@ -1,17 +1,18 @@
 package org.fde.projecteuler.problem_051.general;
 
+import org.fde.projecteuler.problem_051.Replace;
 import org.fde.util.Digits;
 import org.fde.util.primes.PrimeBuilder;
 import org.fde.util.primes.Primes;
 
 import java.util.Arrays;
 
-class Replace {
-    public static final Replace NULL = new Replace(new int[0]);
+class GeneralReplace implements Replace {
+    public static final GeneralReplace NULL = new GeneralReplace(new int[0]);
 
     private final int[] replaceIndexes;
 
-    public Replace(int[] replaceIndexes) {
+    public GeneralReplace(int[] replaceIndexes) {
         this.replaceIndexes = Arrays.copyOf(replaceIndexes, replaceIndexes.length);
     }
 
@@ -43,7 +44,7 @@ class Replace {
 
     @Override
     public String toString() {
-        return "Replace{" +
+        return "GeneralReplace{" +
                 "replaceIndexes=" + Arrays.toString(replaceIndexes) +
                 '}';
     }

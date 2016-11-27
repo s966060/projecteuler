@@ -1,14 +1,17 @@
-package org.fde.projecteuler.problem_051.general;
+package org.fde.projecteuler.problem_051;
 
 import java.util.Arrays;
 import java.util.Iterator;
 
-class ReplaceIterator implements Iterator<Replace> {
+public class ReplaceIterator implements Iterator<Replace> {
+    private final ReplaceFactory replaceFactory;
+
     private final int[] replaceIndexes;
     private final int sizeOfTargetNumber;
     private boolean first;
 
-    public ReplaceIterator(int count, int sizeOfOriginalNumber) {
+    public ReplaceIterator(ReplaceFactory replaceFactory, int count, int sizeOfOriginalNumber) {
+        this.replaceFactory = replaceFactory;
         this.replaceIndexes = new int[count];
         this.sizeOfTargetNumber = sizeOfOriginalNumber + count;
 
@@ -60,7 +63,7 @@ class ReplaceIterator implements Iterator<Replace> {
     public Replace next() {
         if (this.first) {
             this.first = false;
-            return new Replace(this.replaceIndexes);
+            return this.replaceFactory.createReplace(this.replaceIndexes);
         } else {
             for (int i = this.replaceIndexes.length - 1; i >= 0; --i) {
                 int lastOne = getLastOne(i);
@@ -69,11 +72,11 @@ class ReplaceIterator implements Iterator<Replace> {
                     int value = this.replaceIndexes[i] + 1;
                     setSequence(i, value);
 
-                    return new Replace(this.replaceIndexes);
+                    return this.replaceFactory.createReplace(this.replaceIndexes);
                 }
             }
 
-            return Replace.NULL;
+            return this.replaceFactory._null_();
         }
     }
 
