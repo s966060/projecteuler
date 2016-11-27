@@ -124,4 +124,11 @@ public class Digits implements Iterable<Digit> {
     public void add(int index, long digit) {
         this.digits.add(index, Digit.valueOf(digit));
     }
+
+    @Override
+    public String toString() {
+        return "Digits{" +
+                "digits=" + digits +
+                '}';
+    }
 }

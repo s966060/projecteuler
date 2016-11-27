@@ -147,13 +147,6 @@ class MyList<T extends  Comparable<T>> implements Iterable<T> {
     }
 
     @Override
-    public String toString() {
-        return "MyList{" +
-                "list=" + list +
-                '}';
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -170,5 +163,12 @@ class MyList<T extends  Comparable<T>> implements Iterable<T> {
 
     void set(int index, T element) {
         this.list.set(index, element);
+    }
+
+    @Override
+    public String toString() {
+        return "MyList{" +
+                "list=" + list +
+                '}';
     }
 }

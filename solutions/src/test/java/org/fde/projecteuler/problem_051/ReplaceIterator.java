@@ -1,5 +1,6 @@
 package org.fde.projecteuler.problem_051;
 
+import java.util.Arrays;
 import java.util.Iterator;
 
 class ReplaceIterator implements Iterator<Replace> {
@@ -77,5 +78,13 @@ class ReplaceIterator implements Iterator<Replace> {
 
     public int[] getReplaceIndexes() {
         return replaceIndexes;
+    }
+
+    @Override
+    public String toString() {
+        return "ReplaceIterator{" +
+                "replaceIndexes=" + Arrays.toString(replaceIndexes) +
+                ", sizeOfTargetNumber=" + sizeOfTargetNumber +
+                '}';
     }
 }

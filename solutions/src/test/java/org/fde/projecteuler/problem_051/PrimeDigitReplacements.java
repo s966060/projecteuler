@@ -14,13 +14,18 @@ public class PrimeDigitReplacements {
     @Test
     public void primeDigitReplacements() {
         Primes primes = new Primes();
+        ReplaceFamily replaceFamily = getReplaceFamily(primes, 1, 3);
+        System.out.println("replaceFamily = " + replaceFamily);
+    }
 
+    private void f () {
+        Primes primes = new Primes();
         ReplaceFamily globalReplaceFamily = ReplaceFamily._null_(0);
 
         long logThreshold = LOG_THRESHOLD;
 
         for (int canonicalSuspect = 1; globalReplaceFamily.getFamily() < 8; ++canonicalSuspect) {
-            ReplaceFamily replaceFamily = getReplaceFamily(primes, canonicalSuspect);
+            ReplaceFamily replaceFamily = getReplaceFamily(primes, 2, canonicalSuspect);
             globalReplaceFamily = replaceFamily;
 
             if (replaceFamily.getFamily() >= 6) {
@@ -35,12 +40,12 @@ public class PrimeDigitReplacements {
         }
     }
 
-    private ReplaceFamily getReplaceFamily(Primes primes, long canonicalSuspect) {
+    private ReplaceFamily getReplaceFamily(Primes primes, int replaceCount, long canonicalSuspect) {
         ReplaceFamily globalReplaceFamily = ReplaceFamily._null_(canonicalSuspect);
 
         Digits canonicalSuspectAsDigits = Digits.valueOf(canonicalSuspect);
 
-        ReplaceIterator it = new ReplaceIterator(2, canonicalSuspectAsDigits.size());
+        ReplaceIterator it = new ReplaceIterator(replaceCount, canonicalSuspectAsDigits.size());
 
         while (it.hasNext()) {
             Replace replace = it.next();

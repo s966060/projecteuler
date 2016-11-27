@@ -22,4 +22,11 @@ public class Digit implements Comparable<Digit> {
     public long getValue() {
         return digit;
     }
+
+    @Override
+    public String toString() {
+        return "Digit{" +
+                "digit=" + digit +
+                '}';
+    }
 }
