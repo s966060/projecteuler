@@ -17,6 +17,10 @@ public class DigitList implements Iterable<Digit> {
         }
     }
 
+    public DigitList(DigitList other) {
+        this.digits = new MyList<>(other.digits);
+    }
+
     public void add(long digit) {
         this.digits.add(Digit.valueOf(digit));
     }
@@ -111,5 +115,9 @@ public class DigitList implements Iterable<Digit> {
 
         digitList.reverse();
         return digitList;
+    }
+
+    public void set(int index, long digit) {
+        this.digits.set(index, Digit.valueOf(digit));
     }
 }

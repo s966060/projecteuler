@@ -167,4 +167,8 @@ class MyList<T extends  Comparable<T>> implements Iterable<T> {
     public int hashCode() {
         return list.hashCode();
     }
+
+    void set(int index, T element) {
+        this.list.set(index, element);
+    }
 }
