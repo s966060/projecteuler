@@ -1,5 +1,8 @@
 package org.fde.projecteuler.problem_051.optimized;
 
+import org.fde.projecteuler.problem_051.Replace;
+import org.fde.projecteuler.problem_051.ReplaceFamily;
+import org.fde.projecteuler.problem_051.ReplaceIterator;
 import org.fde.util.Digits;
 import org.fde.util.primes.Primes;
 import org.junit.Test;
@@ -7,7 +10,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
-public class PrimeDigitReplacements {
+public class OptimizedPrimeDigitReplacements {
 
     public static final int LOG_THRESHOLD = 1_000;
 
@@ -59,7 +62,7 @@ public class PrimeDigitReplacements {
 
         Digits canonicalSuspectAsDigits = Digits.valueOf(canonicalSuspect);
 
-        ReplaceIterator it = new ReplaceIterator(replaceCount, canonicalSuspectAsDigits.size());
+        ReplaceIterator it = new ReplaceIterator(new OptimizedReplaceFactory(), replaceCount, canonicalSuspectAsDigits.size());
 
         while (it.hasNext()) {
             Replace replace = it.next();

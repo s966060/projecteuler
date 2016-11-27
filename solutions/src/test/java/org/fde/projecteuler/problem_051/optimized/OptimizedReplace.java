@@ -6,12 +6,12 @@ import org.fde.util.primes.Primes;
 
 import java.util.Arrays;
 
-class Replace {
-    public static final Replace NULL = new Replace(new int[0]);
+class OptimizedReplace {
+    public static final OptimizedReplace NULL = new OptimizedReplace(new int[0]);
 
     private final int[] replaceIndexes;
 
-    public Replace(int[] replaceIndexes) {
+    public OptimizedReplace(int[] replaceIndexes) {
         this.replaceIndexes = Arrays.copyOf(replaceIndexes, replaceIndexes.length);
     }
 
@@ -43,7 +43,7 @@ class Replace {
 
     @Override
     public String toString() {
-        return "Replace{" +
+        return "GeneralReplace{" +
                 "replaceIndexes=" + Arrays.toString(replaceIndexes) +
                 '}';
     }
