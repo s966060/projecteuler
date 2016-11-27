@@ -1,15 +1,15 @@
 package org.fde.projecteuler.problem_051;
 
+import java.util.Arrays;
+
 class ReplaceFamily {
     private final long canonicalSuspect;
-    private final int first;
-    private final int second;
+    private final int[] replaceIndexes;
     private final int family;
 
-    public ReplaceFamily(long canonicalSuspect, int first, int second, int family) {
+    public ReplaceFamily(long canonicalSuspect, int[] replaceIndexes, int family) {
         this.canonicalSuspect = canonicalSuspect;
-        this.first = first;
-        this.second = second;
+        this.replaceIndexes = replaceIndexes;
         this.family = family;
     }
 
@@ -17,8 +17,7 @@ class ReplaceFamily {
     public String toString() {
         return "ReplaceFamily{" +
                 "canonicalSuspect=" + canonicalSuspect +
-                ", first=" + first +
-                ", second=" + second +
+                ", replaceIndexes=" + Arrays.toString(replaceIndexes) +
                 ", family=" + family +
                 '}';
     }
@@ -27,7 +26,7 @@ class ReplaceFamily {
         return family;
     }
 
-    static ReplaceFamily _null_() {
-        return new ReplaceFamily(0, 0, 0, 0);
+    static ReplaceFamily _null_(long canonicalSuspect) {
+        return new ReplaceFamily(canonicalSuspect, new int[0], 0);
     }
 }

@@ -3,11 +3,11 @@ package org.fde.projecteuler.problem_051;
 import java.util.Iterator;
 
 class ReplaceIterator implements Iterator<Replace> {
-    private final int[] iterators;
+    private final int[] replaceIndexes;
     private final int sizeOfTargetNumber;
 
     public ReplaceIterator(int count, int sizeOfOriginalNumber) {
-        this.iterators = new int[count];
+        this.replaceIndexes = new int[count];
         this.sizeOfTargetNumber = sizeOfOriginalNumber + count;
 
         setSequence(0, 0);
@@ -26,10 +26,10 @@ class ReplaceIterator implements Iterator<Replace> {
      */
     @Override
     public boolean hasNext() {
-        for (int i = 0; i < this.iterators.length; ++i) {
+        for (int i = 0; i < this.replaceIndexes.length; ++i) {
             int lastOne = getLastOne(i);
 
-            if (this.iterators[i] != lastOne) {
+            if (this.replaceIndexes[i] != lastOne) {
                 return true;
             }
         }
@@ -37,16 +37,27 @@ class ReplaceIterator implements Iterator<Replace> {
         return false;
     }
 
+    /**
+     * 0 1 2 x y
+     * -> 0 1 x 3 y
+     * -> 0 1 x y 4
+     * -> 0 x 2 3 y
+     * -> 0 x 2 y 4
+     * -> 0 x y 3 4
+     * -> x 1 2 3 y
+     * -> ...
+     * @return
+     */
     @Override
     public Replace next() {
-        for (int i = this.iterators.length - 1; i >= 0; --i) {
+        for (int i = this.replaceIndexes.length - 1; i >= 0; --i) {
             int lastOne = getLastOne(i);
 
-            if (this.iterators[i] < lastOne) {
-                int value = this.iterators[i];
+            if (this.replaceIndexes[i] < lastOne) {
+                int value = this.replaceIndexes[i];
                 setSequence(i, value);
 
-                return new Replace(this.iterators);
+                return new Replace(this.replaceIndexes);
             }
         }
 
@@ -54,13 +65,17 @@ class ReplaceIterator implements Iterator<Replace> {
     }
 
     private void setSequence(int start, int value) {
-        for (int j = start; j < this.iterators.length; ++j) {
-            this.iterators[j] = value;
+        for (int j = start; j < this.replaceIndexes.length; ++j) {
+            this.replaceIndexes[j] = value;
             ++value;
         }
     }
 
     private int getLastOne(int i) {
-        return sizeOfTargetNumber - this.iterators.length + i;
+        return sizeOfTargetNumber - this.replaceIndexes.length + i;
+    }
+
+    public int[] getReplaceIndexes() {
+        return replaceIndexes;
     }
 }

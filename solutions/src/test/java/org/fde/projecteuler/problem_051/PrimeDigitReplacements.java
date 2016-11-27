@@ -1,12 +1,9 @@
 package org.fde.projecteuler.problem_051;
 
-import org.fde.util.DigitList;
+import org.fde.util.Digits;
 import org.fde.util.primes.PrimeBuilder;
 import org.fde.util.primes.Primes;
 import org.junit.Test;
-
-import java.util.Arrays;
-import java.util.Iterator;
 
 import static org.fde.projecteuler.problem_051.ReplaceFamily._null_;
 
@@ -17,9 +14,8 @@ public class PrimeDigitReplacements {
     @Test
     public void primeDigitReplacements() {
         Primes primes = new Primes();
-        ReplaceFamily replaceFamily2 = getReplaceFamily(primes, 563);
 
-        ReplaceFamily globalReplaceFamily = _null_();
+        ReplaceFamily globalReplaceFamily = ReplaceFamily._null_(0);
 
         long logThreshold = LOG_THRESHOLD;
 
@@ -40,33 +36,20 @@ public class PrimeDigitReplacements {
     }
 
     private ReplaceFamily getReplaceFamily(Primes primes, long canonicalSuspect) {
-        ReplaceFamily globalReplaceFamily = _null_();
+        ReplaceFamily globalReplaceFamily = ReplaceFamily._null_(canonicalSuspect);
 
-        PrimeBuilder builder = new PrimeBuilder(primes);
+        Digits canonicalSuspectAsDigits = Digits.valueOf(canonicalSuspect);
 
-        DigitList original = DigitList.valueOf(canonicalSuspect);
+        ReplaceIterator it = new ReplaceIterator(2, canonicalSuspectAsDigits.size());
 
-        for (int first = 0; first < original.size(); ++first) {
-            for (int second = first + 1; second < original.size(); ++second) {
-                int replaceFamilyCounter = 0;
+        while (it.hasNext()) {
+            Replace replace = it.next();
 
-                for (int digit = 0; digit <= 9; ++digit) {
-                    DigitList suspect = new DigitList(original);
+            int familyCounter = replace.getFamily(primes, canonicalSuspectAsDigits);
 
-                    suspect.add(first, digit);
-                    suspect.add(second, digit);
-
-                    long value = suspect.getValue();
-
-                    if (builder.isPrime(value)) {
-                        ++replaceFamilyCounter;
-                    }
-                }
-
-                if (replaceFamilyCounter > globalReplaceFamily.getFamily()) {
-                    globalReplaceFamily = new ReplaceFamily(canonicalSuspect,
-                            first, second, replaceFamilyCounter);
-                }
+            if (familyCounter > globalReplaceFamily.getFamily()) {
+                globalReplaceFamily = new ReplaceFamily(canonicalSuspect,
+                        it.getReplaceIndexes(), familyCounter);
             }
         }
 
