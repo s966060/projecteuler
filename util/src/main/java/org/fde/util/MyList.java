@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.function.Consumer;
 
 class MyList<T extends  Comparable<T>> implements Iterable<T> {
-    private final List<T> list;
+    private final ArrayList<T> list;
 
     MyList() {
         this.list = new ArrayList<T>();

@@ -120,4 +120,8 @@ public class DigitList implements Iterable<Digit> {
     public void set(int index, long digit) {
         this.digits.set(index, Digit.valueOf(digit));
     }
+
+    public void add(int index, long digit) {
+        this.digits.add(index, Digit.valueOf(digit));
+    }
 }

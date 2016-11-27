@@ -1,13 +1,13 @@
 package org.fde.projecteuler.problem_051;
 
 class ReplaceFamily {
-    private final long suspect;
+    private final long canonicalSuspect;
     private final int first;
     private final int second;
     private final int family;
 
-    public ReplaceFamily(long suspect, int first, int second, int family) {
-        this.suspect = suspect;
+    public ReplaceFamily(long canonicalSuspect, int first, int second, int family) {
+        this.canonicalSuspect = canonicalSuspect;
         this.first = first;
         this.second = second;
         this.family = family;
@@ -16,7 +16,7 @@ class ReplaceFamily {
     @Override
     public String toString() {
         return "ReplaceFamily{" +
-                "suspect=" + suspect +
+                "canonicalSuspect=" + canonicalSuspect +
                 ", first=" + first +
                 ", second=" + second +
                 ", family=" + family +

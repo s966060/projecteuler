@@ -1,7 +1,6 @@
 package org.fde.projecteuler.problem_051;
 
 import org.fde.util.DigitList;
-import org.fde.util.LongUtil;
 import org.fde.util.primes.PrimeBuilder;
 import org.fde.util.primes.Primes;
 import org.junit.Test;
@@ -10,52 +9,49 @@ import static org.fde.projecteuler.problem_051.ReplaceFamily._null_;
 
 public class PrimeDigitReplacements {
 
-    public static final int LOG_THRESHOLD = 1_000_000;
+    public static final int LOG_THRESHOLD = 1_000;
 
     @Test
     public void primeDigitReplacements() {
         Primes primes = new Primes();
-
-        PrimeBuilder builder = new PrimeBuilder(primes);
-        builder.next(7); // next prime would be 11 then...
+        ReplaceFamily replaceFamily2 = getReplaceFamily(primes, 563);
 
         ReplaceFamily globalReplaceFamily = _null_();
 
-        long logThreshold = 1_000_000;
+        long logThreshold = LOG_THRESHOLD;
 
-        while (globalReplaceFamily.getFamily() < 8) {
-            long suspectPrime = builder.next();
-
-            ReplaceFamily replaceFamily = getReplaceFamily(primes, suspectPrime);
+        for (int canonicalSuspect = 1; globalReplaceFamily.getFamily() < 8; ++canonicalSuspect) {
+            ReplaceFamily replaceFamily = getReplaceFamily(primes, canonicalSuspect);
             globalReplaceFamily = replaceFamily;
 
             if (replaceFamily.getFamily() >= 6) {
-                System.out.println("suspectPrime = " + suspectPrime);
+                System.out.println("canonicalSuspect = " + canonicalSuspect);
                 System.out.println("replaceFamily = " + replaceFamily);
             }
 
-            if(suspectPrime > logThreshold) {
-                System.out.println("log ... " + suspectPrime);
+            if (canonicalSuspect > logThreshold) {
+                System.out.println("log ... " + canonicalSuspect);
                 logThreshold += LOG_THRESHOLD;
             }
         }
     }
 
-    private ReplaceFamily getReplaceFamily(Primes primes, long suspectPrime) {
+    private ReplaceFamily getReplaceFamily(Primes primes, long canonicalSuspect) {
         ReplaceFamily globalReplaceFamily = _null_();
 
         PrimeBuilder builder = new PrimeBuilder(primes);
 
-        DigitList original = DigitList.valueOf(suspectPrime);
+        DigitList original = DigitList.valueOf(canonicalSuspect);
 
         for (int first = 0; first < original.size(); ++first) {
             for (int second = first + 1; second < original.size(); ++second) {
-                DigitList suspect = new DigitList(original);
                 int replaceFamilyCounter = 0;
 
-                for (int digit = 1; digit <= 9; ++digit) {
-                    suspect.set(first, digit);
-                    suspect.set(second, digit);
+                for (int digit = 0; digit <= 9; ++digit) {
+                    DigitList suspect = new DigitList(original);
+
+                    suspect.add(first, digit);
+                    suspect.add(second, digit);
 
                     long value = suspect.getValue();
 
@@ -65,7 +61,7 @@ public class PrimeDigitReplacements {
                 }
 
                 if (replaceFamilyCounter > globalReplaceFamily.getFamily()) {
-                    globalReplaceFamily = new ReplaceFamily(suspect.getValue(),
+                    globalReplaceFamily = new ReplaceFamily(canonicalSuspect,
                             first, second, replaceFamilyCounter);
                 }
             }
