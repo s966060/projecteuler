@@ -6,11 +6,13 @@ import java.util.Iterator;
 class ReplaceIterator implements Iterator<Replace> {
     private final int[] replaceIndexes;
     private final int sizeOfTargetNumber;
+    private boolean first;
 
     public ReplaceIterator(int count, int sizeOfOriginalNumber) {
         this.replaceIndexes = new int[count];
         this.sizeOfTargetNumber = sizeOfOriginalNumber + count;
 
+        this.first = true;
         setSequence(0, 0);
     }
 
@@ -27,15 +29,19 @@ class ReplaceIterator implements Iterator<Replace> {
      */
     @Override
     public boolean hasNext() {
-        for (int i = 0; i < this.replaceIndexes.length; ++i) {
-            int lastOne = getLastOne(i);
+        if (this.first) {
+            return true;
+        } else {
+            for (int i = 0; i < this.replaceIndexes.length; ++i) {
+                int lastOne = getLastOne(i);
 
-            if (this.replaceIndexes[i] != lastOne) {
-                return true;
+                if (this.replaceIndexes[i] != lastOne) {
+                    return true;
+                }
             }
-        }
 
-        return false;
+            return false;
+        }
     }
 
     /**
@@ -47,26 +53,32 @@ class ReplaceIterator implements Iterator<Replace> {
      * -> 0 x y 3 4
      * -> x 1 2 3 y
      * -> ...
+     *
      * @return
      */
     @Override
     public Replace next() {
-        for (int i = this.replaceIndexes.length - 1; i >= 0; --i) {
-            int lastOne = getLastOne(i);
+        if (this.first) {
+            this.first = false;
+            return new Replace(this.replaceIndexes);
+        } else {
+            for (int i = this.replaceIndexes.length - 1; i >= 0; --i) {
+                int lastOne = getLastOne(i);
 
-            if (this.replaceIndexes[i] < lastOne) {
-                int value = this.replaceIndexes[i];
-                setSequence(i, value);
+                if (this.replaceIndexes[i] < lastOne) {
+                    int value = this.replaceIndexes[i] + 1;
+                    setSequence(i, value);
 
-                return new Replace(this.replaceIndexes);
+                    return new Replace(this.replaceIndexes);
+                }
             }
-        }
 
-        return Replace.NULL;
+            return Replace.NULL;
+        }
     }
 
-    private void setSequence(int start, int value) {
-        for (int j = start; j < this.replaceIndexes.length; ++j) {
+    private void setSequence(int startIndex, int value) {
+        for (int j = startIndex; j < this.replaceIndexes.length; ++j) {
             this.replaceIndexes[j] = value;
             ++value;
         }
