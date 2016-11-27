@@ -1,4 +1,4 @@
-package org.fde.projecteuler.problem_051;
+package org.fde.projecteuler.problem_051.general;
 
 import org.fde.util.Digits;
 import org.fde.util.primes.PrimeBuilder;

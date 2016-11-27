@@ -1,11 +1,9 @@
-package org.fde.projecteuler.problem_051;
+package org.fde.projecteuler.problem_051.general;
 
 import org.fde.util.Digits;
-import org.fde.util.primes.PrimeBuilder;
 import org.fde.util.primes.Primes;
 import org.junit.Test;
 
-import static org.fde.projecteuler.problem_051.ReplaceFamily._null_;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 

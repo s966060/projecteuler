@@ -1,4 +1,4 @@
-package org.fde.projecteuler.problem_051;
+package org.fde.projecteuler.problem_051.general;
 
 import java.util.Arrays;
 import java.util.Iterator;
