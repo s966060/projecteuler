@@ -1,12 +1,13 @@
 package org.fde.projecteuler.problem_051.optimized;
 
+import org.fde.projecteuler.problem_051.Replace;
 import org.fde.util.Digits;
 import org.fde.util.primes.PrimeBuilder;
 import org.fde.util.primes.Primes;
 
 import java.util.Arrays;
 
-class OptimizedReplace {
+class OptimizedReplace implements Replace {
     public static final OptimizedReplace NULL = new OptimizedReplace(new int[0]);
 
     private final int[] replaceIndexes;
