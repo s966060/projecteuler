@@ -35,10 +35,10 @@ public class ReplaceIterator implements Iterator<Replace> {
         if (this.first) {
             return true;
         } else {
-            for (int i = 0; i < this.replaceIndexes.length; ++i) {
-                int lastOne = getLastOne(i);
+            for (int iteratorIndex = 0; iteratorIndex < this.replaceIndexes.length; ++iteratorIndex) {
+                int lastDigitIndex = getLastDigitIndex(iteratorIndex);
 
-                if (this.replaceIndexes[i] != lastOne) {
+                if (this.replaceIndexes[iteratorIndex] != lastDigitIndex) {
                     return true;
                 }
             }
@@ -65,12 +65,13 @@ public class ReplaceIterator implements Iterator<Replace> {
             this.first = false;
             return this.replaceFactory.createReplace(this.replaceIndexes);
         } else {
-            for (int i = this.replaceIndexes.length - 1; i >= 0; --i) {
-                int lastOne = getLastOne(i);
+            for (int iteratorIndex = this.replaceIndexes.length - 1; iteratorIndex >= 0; --iteratorIndex) {
+                int lastDigitIndex = getLastDigitIndex(iteratorIndex);
 
-                if (this.replaceIndexes[i] < lastOne) {
-                    int value = this.replaceIndexes[i] + 1;
-                    setSequence(i, value);
+                int digitIndex = this.replaceIndexes[iteratorIndex];
+
+                if (digitIndex < lastDigitIndex) {
+                    setSequence(iteratorIndex, digitIndex + 1);
 
                     return this.replaceFactory.createReplace(this.replaceIndexes);
                 }
@@ -80,19 +81,19 @@ public class ReplaceIterator implements Iterator<Replace> {
         }
     }
 
-    private void setSequence(int startIndex, int value) {
-        for (int j = startIndex; j < this.replaceIndexes.length; ++j) {
+    private void setSequence(int startIteratorIndex, int value) {
+        for (int j = startIteratorIndex; j < this.replaceIndexes.length; ++j) {
             this.replaceIndexes[j] = value;
             ++value;
         }
     }
 
-    private int getLastOne(int i) {
-        return sizeOfTargetNumber - this.replaceIndexes.length + i;
+    private int getLastDigitIndex(int iteratorIndex) {
+        return sizeOfTargetNumber - this.replaceIndexes.length + iteratorIndex;
     }
 
     public int[] getReplaceIndexes() {
-        return Arrays.copyOf(replaceIndexes, replaceIndexes.length);
+        return Arrays.copyOf(replaceIndexes, this.replaceIndexes.length);
     }
 
     @Override
@@ -101,5 +102,12 @@ public class ReplaceIterator implements Iterator<Replace> {
                 "replaceIndexes=" + Arrays.toString(replaceIndexes) +
                 ", sizeOfTargetNumber=" + sizeOfTargetNumber +
                 '}';
+    }
+
+    public boolean isLastIteratorTheLastDigit() {
+        int iteratorIndex = this.replaceIndexes.length - 1;
+        int digitIndex = this.replaceIndexes[iteratorIndex];
+
+        return (digitIndex == getLastDigitIndex(iteratorIndex));
     }
 }
