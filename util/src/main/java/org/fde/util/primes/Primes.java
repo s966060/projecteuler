@@ -1,5 +1,7 @@
 package org.fde.util.primes;
 
+import org.apache.commons.lang3.time.DurationFormatUtils;
+import org.apache.commons.lang3.time.StopWatch;
 import org.fde.util.ListOfLong;
 
 import java.util.Iterator;
@@ -51,8 +53,25 @@ public class Primes {
                 '}';
     }
 
+    private static long TOTAL_ELAPSED =0 ;
+    private static final long LOG_THRESHOLD = 1_000_000_000;
+    private static long LOG_ELAPSED = LOG_THRESHOLD;
+
     public boolean contains(long suspect) {
-        boolean isKnownPrime = this.primes.containsByBinarySearch(suspect);
-        return isKnownPrime;
+        long start = System.nanoTime();
+
+        try {
+            boolean isKnownPrime = this.primes.containsByBinarySearch(suspect);
+            return isKnownPrime;
+        }
+        finally {
+            long elapsed = System.nanoTime() - start;
+            TOTAL_ELAPSED += elapsed;
+
+            if(TOTAL_ELAPSED > LOG_ELAPSED) {
+                LOG_ELAPSED += LOG_THRESHOLD;
+                System.out.println("@@@ Primes.contains() ... elapsed = " + DurationFormatUtils.formatDurationHMS(TOTAL_ELAPSED / 1_000_000));
+            }
+        }
     }
 }
