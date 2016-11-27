@@ -1,6 +1,6 @@
 package org.fde.projecteuler.problem_049;
 
-import org.fde.util.DigitList;
+import org.fde.util.Digits;
 import org.fde.util.combinations.GenericCombination;
 import org.fde.util.combinations.GenericCombinationFactory;
 import org.fde.util.combinations.GenericCombinationList;
@@ -163,7 +163,7 @@ public class PrimePermutations {
         PrimeBuilder builder = new PrimeBuilder();
 
         for (long prime = builder.next(1000); prime < 10_000; prime = builder.next()) {
-            DigitList digits = DigitList.valueOf(prime);
+            Digits digits = Digits.valueOf(prime);
             digits.sort();
             long canonical = digits.getValue();
 

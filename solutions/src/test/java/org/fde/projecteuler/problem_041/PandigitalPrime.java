@@ -1,6 +1,6 @@
 package org.fde.projecteuler.problem_041;
 
-import org.fde.util.DigitList;
+import org.fde.util.Digits;
 import org.fde.util.PandigitalUtil;
 import org.fde.util.permutations.Permutation;
 import org.fde.util.permutations.PermutationList;
@@ -27,8 +27,8 @@ public class PandigitalPrime {
         PermutationList numbers = PandigitalUtil.getNumbers(1, N);
 
         for (Permutation number : numbers) {
-            DigitList digitList = new DigitList(number.getList());
-            long suspect = digitList.getValue();
+            Digits digits = new Digits(number.getList());
+            long suspect = digits.getValue();
 
             if (isPrime.isPrime(suspect)) {
                 if (suspect > target) {

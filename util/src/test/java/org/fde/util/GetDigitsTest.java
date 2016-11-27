@@ -2,9 +2,9 @@ package org.fde.util;
 
 import org.junit.Test;
 
-import static org.fde.util.DigitList.createDigitList;
+import static org.fde.util.Digits.createDigitList;
 import static org.fde.util.ListOfLong.createListOfLong;
-import static org.fde.util.DigitList.valueOf;
+import static org.fde.util.Digits.valueOf;
 import static org.junit.Assert.assertEquals;
 
 public class GetDigitsTest {

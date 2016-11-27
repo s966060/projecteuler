@@ -2,14 +2,14 @@ package org.fde.util;
 
 import java.util.Iterator;
 
-public class DigitList implements Iterable<Digit> {
+public class Digits implements Iterable<Digit> {
     private final MyList<Digit> digits;
 
-    public DigitList() {
+    public Digits() {
         this.digits = new MyList<>();
     }
 
-    public DigitList(ListOfLong list) {
+    public Digits(ListOfLong list) {
         this();
 
         for (long value : list) {
@@ -17,7 +17,7 @@ public class DigitList implements Iterable<Digit> {
         }
     }
 
-    public DigitList(DigitList other) {
+    public Digits(Digits other) {
         this.digits = new MyList<>(other.digits);
     }
 
@@ -61,8 +61,8 @@ public class DigitList implements Iterable<Digit> {
         this.digits.removeFirst();
     }
 
-    public static DigitList createDigitList(Integer... digits) {
-        DigitList list = new DigitList();
+    public static Digits createDigitList(Integer... digits) {
+        Digits list = new Digits();
 
         for(Integer digit: digits) {
             list.add(digit);
@@ -76,7 +76,7 @@ public class DigitList implements Iterable<Digit> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        DigitList longs = (DigitList) o;
+        Digits longs = (Digits) o;
 
         return digits.equals(longs.digits);
 
@@ -95,8 +95,8 @@ public class DigitList implements Iterable<Digit> {
         return this.digits.size();
     }
 
-    public static DigitList valueOf(final long value) {
-        DigitList digitList = new DigitList();
+    public static Digits valueOf(final long value) {
+        Digits digitList = new Digits();
 
         if (value == 0) {
             digitList.add(0);

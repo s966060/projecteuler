@@ -6,7 +6,7 @@ public class LongUtil {
         ListOfLong numbers = new ListOfLong();
         numbers.add(value);
 
-        DigitList digits = DigitList.valueOf(value);
+        Digits digits = Digits.valueOf(value);
         digits.rotateRight();
         long number = digits.getValue();
 
@@ -29,7 +29,7 @@ public class LongUtil {
     public static ListOfLong getTruncatedRightValues(final long value) {
         ListOfLong numbers = new ListOfLong();
 
-        DigitList digits = DigitList.valueOf(value);
+        Digits digits = Digits.valueOf(value);
 
         do {
             long number = digits.getValue();
@@ -44,7 +44,7 @@ public class LongUtil {
     public static ListOfLong getTruncatedLeftValues(final long value) {
         ListOfLong numbers = new ListOfLong();
 
-        DigitList digits = DigitList.valueOf(value);
+        Digits digits = Digits.valueOf(value);
 
         do {
             long number = digits.getValue();
