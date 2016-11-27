@@ -6,6 +6,8 @@ import org.fde.util.primes.Primes;
 import org.junit.Test;
 
 import static org.fde.projecteuler.problem_051.ReplaceFamily._null_;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
 
 public class PrimeDigitReplacements {
 
@@ -14,22 +16,14 @@ public class PrimeDigitReplacements {
     @Test
     public void primeDigitReplacements() {
         Primes primes = new Primes();
-        ReplaceFamily replaceFamily = getReplaceFamily(primes, 1, 3);
-        System.out.println("replaceFamily = " + replaceFamily);
-    }
-
-    private void f () {
-        Primes primes = new Primes();
-        ReplaceFamily globalReplaceFamily = ReplaceFamily._null_(0);
+        ReplaceFamily replaceFamily = ReplaceFamily._null_(0);
 
         long logThreshold = LOG_THRESHOLD;
 
-        for (int canonicalSuspect = 1; globalReplaceFamily.getFamily() < 8; ++canonicalSuspect) {
-            ReplaceFamily replaceFamily = getReplaceFamily(primes, 2, canonicalSuspect);
-            globalReplaceFamily = replaceFamily;
+        for (int canonicalSuspect = 1; replaceFamily.getFamily() < 8; ++canonicalSuspect) {
+            replaceFamily = getReplaceFamily(primes, 2, canonicalSuspect);
 
-            if (replaceFamily.getFamily() >= 6) {
-                System.out.println("canonicalSuspect = " + canonicalSuspect);
+            if (replaceFamily.getFamily() >= 7) {
                 System.out.println("replaceFamily = " + replaceFamily);
             }
 
@@ -38,6 +32,28 @@ public class PrimeDigitReplacements {
                 logThreshold += LOG_THRESHOLD;
             }
         }
+
+        System.out.println("!!! replaceFamily = " + replaceFamily);
+    }
+
+    @Test
+    public void primeDigitReplacements_1_3() {
+        Primes primes = new Primes();
+        ReplaceFamily replaceFamily = getReplaceFamily(primes, 1, 3);
+
+        assertEquals(6, replaceFamily.getFamily());
+        assertEquals(3, replaceFamily.getCanonicalSuspect());
+        assertArrayEquals(new int[]{0}, replaceFamily.getReplaceIndexes());
+    }
+
+    @Test
+    public void primeDigitReplacements_2_563() {
+        Primes primes = new Primes();
+        ReplaceFamily replaceFamily = getReplaceFamily(primes, 2, 563);
+
+        assertEquals(7, replaceFamily.getFamily());
+        assertEquals(563, replaceFamily.getCanonicalSuspect());
+        assertArrayEquals(new int[]{2, 3}, replaceFamily.getReplaceIndexes());
     }
 
     private ReplaceFamily getReplaceFamily(Primes primes, int replaceCount, long canonicalSuspect) {

@@ -89,7 +89,7 @@ class ReplaceIterator implements Iterator<Replace> {
     }
 
     public int[] getReplaceIndexes() {
-        return replaceIndexes;
+        return Arrays.copyOf(replaceIndexes, replaceIndexes.length);
     }
 
     @Override
