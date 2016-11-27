@@ -1,8 +1,8 @@
 package org.fde.projecteuler.problem_051.general;
 
+import org.fde.projecteuler.problem_051.Replace;
 import org.fde.projecteuler.problem_051.ReplaceFamily;
 import org.fde.projecteuler.problem_051.ReplaceIterator;
-import org.fde.projecteuler.problem_051.Replace;
 import org.fde.util.Digits;
 import org.fde.util.primes.Primes;
 import org.junit.Test;
