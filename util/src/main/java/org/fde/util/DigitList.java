@@ -1,14 +1,12 @@
 package org.fde.util;
 
-import org.apache.commons.lang3.Validate;
-
 import java.util.Iterator;
 
-public class DigitList implements Iterable<Long> {
-    private final ListOfLong digits;
+public class DigitList implements Iterable<Digit> {
+    private final MyList<Digit> digits;
 
     public DigitList() {
-        this.digits = new ListOfLong();
+        this.digits = new MyList<>();
     }
 
     public DigitList(ListOfLong list) {
@@ -20,8 +18,7 @@ public class DigitList implements Iterable<Long> {
     }
 
     public void add(long digit) {
-        Validate.inclusiveBetween(0, 9, digit);
-        this.digits.add(digit);
+        this.digits.add(Digit.valueOf(digit));
     }
 
     public void reverse() {
@@ -33,16 +30,16 @@ public class DigitList implements Iterable<Long> {
     }
 
     @Override
-    public Iterator<Long> iterator() {
+    public Iterator<Digit> iterator() {
         return this.digits.iterator();
     }
 
     public long getValue() {
         long total = 0;
 
-        for (Long digit : this) {
+        for (Digit digit : this) {
             total *= 10;
-            total += digit;
+            total += digit.getValue();
         }
 
         return total;
@@ -88,5 +85,31 @@ public class DigitList implements Iterable<Long> {
 
     public void sort() {
         this.digits.sort();
+    }
+
+    public int size() {
+        return this.digits.size();
+    }
+
+    public static DigitList valueOf(final long value) {
+        DigitList digitList = new DigitList();
+
+        if (value == 0) {
+            digitList.add(0);
+            return digitList;
+        }
+
+        int digits = (int) Math.floor(Math.log10(value)) + 1;
+
+        long newValue = value;
+
+        for (int i = 1; i <= digits; ++i) {
+            long digit = newValue % 10;
+            newValue /= 10;
+            digitList.add(digit);
+        }
+
+        digitList.reverse();
+        return digitList;
     }
 }
