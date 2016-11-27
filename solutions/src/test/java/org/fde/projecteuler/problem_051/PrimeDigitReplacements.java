@@ -5,6 +5,9 @@ import org.fde.util.primes.PrimeBuilder;
 import org.fde.util.primes.Primes;
 import org.junit.Test;
 
+import java.util.Arrays;
+import java.util.Iterator;
+
 import static org.fde.projecteuler.problem_051.ReplaceFamily._null_;
 
 public class PrimeDigitReplacements {
