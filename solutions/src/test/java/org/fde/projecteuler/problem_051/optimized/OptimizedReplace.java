@@ -1,7 +1,9 @@
 package org.fde.projecteuler.problem_051.optimized;
 
 import org.fde.projecteuler.problem_051.Replace;
+import org.fde.projecteuler.problem_051.ReplaceFamily;
 import org.fde.util.Digits;
+import org.fde.util.ListOfLong;
 import org.fde.util.primes.PrimeBuilder;
 import org.fde.util.primes.Primes;
 
@@ -18,12 +20,13 @@ class OptimizedReplace implements Replace {
         this.targetFamily = targetFamily;
     }
 
-    public int getFamily(Primes primes, Digits canonicalSuspectAsDigits) {
-        int replaceFamilyCounter = 0;
+    public ReplaceFamily getFamily(Primes primes, Digits canonicalSuspectAsDigits) {
         int notAPrimeCount = 0;
         final int maxNotAPrimeCount = (10 - targetFamily);
 
         PrimeBuilder primeBuilder = new PrimeBuilder(primes);
+
+        ListOfLong familyPrimes = new ListOfLong();
 
         for (int digit = 0; (digit <= 9) && (notAPrimeCount <= maxNotAPrimeCount); ++digit) {
             if(replaceIndexes[0] == 0 && digit == 0) {
@@ -40,7 +43,7 @@ class OptimizedReplace implements Replace {
             long value = suspect.getValue();
 
             if (primeBuilder.isPrime(value)) {
-                ++replaceFamilyCounter;
+                familyPrimes.add(value);
             }
             else {
                 ++notAPrimeCount;
@@ -48,10 +51,13 @@ class OptimizedReplace implements Replace {
         }
 
         if(notAPrimeCount <= maxNotAPrimeCount) {
-            return replaceFamilyCounter;
+            return new ReplaceFamily(
+                                canonicalSuspectAsDigits.getValue(),
+                                replaceIndexes,
+                                familyPrimes);
         }
         else {
-            return 0;
+            return ReplaceFamily._null_(canonicalSuspectAsDigits.getValue());
         }
     }
 

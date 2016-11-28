@@ -1,7 +1,9 @@
 package org.fde.projecteuler.problem_051.general;
 
 import org.fde.projecteuler.problem_051.Replace;
+import org.fde.projecteuler.problem_051.ReplaceFamily;
 import org.fde.util.Digits;
+import org.fde.util.ListOfLong;
 import org.fde.util.primes.PrimeBuilder;
 import org.fde.util.primes.Primes;
 
@@ -16,10 +18,10 @@ class GeneralReplace implements Replace {
         this.replaceIndexes = Arrays.copyOf(replaceIndexes, replaceIndexes.length);
     }
 
-    public int getFamily(Primes primes, Digits canonicalSuspectAsDigits) {
-        int replaceFamilyCounter = 0;
-
+    public ReplaceFamily getFamily(Primes primes, Digits canonicalSuspectAsDigits) {
         PrimeBuilder primeBuilder = new PrimeBuilder(primes);
+
+        ListOfLong familyPrimes = new ListOfLong();
 
         for (int digit = 0; digit <= 9; ++digit) {
             if(replaceIndexes[0] == 0 && digit == 0) {
@@ -35,11 +37,14 @@ class GeneralReplace implements Replace {
             long value = suspect.getValue();
 
             if (primeBuilder.isPrime(value)) {
-                ++replaceFamilyCounter;
+                familyPrimes.add(value);
             }
         }
 
-        return replaceFamilyCounter;
+        return new ReplaceFamily(
+                                canonicalSuspectAsDigits.getValue(),
+                                replaceIndexes,
+                                familyPrimes);
     }
 
     @Override

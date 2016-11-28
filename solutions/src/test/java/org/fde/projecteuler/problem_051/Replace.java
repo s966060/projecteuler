@@ -4,5 +4,5 @@ import org.fde.util.Digits;
 import org.fde.util.primes.Primes;
 
 public interface Replace {
-    int getFamily(Primes primes, Digits canonicalSuspectAsDigits);
+    ReplaceFamily getFamily(Primes primes, Digits canonicalSuspectAsDigits);
 }

@@ -1,17 +1,19 @@
 package org.fde.projecteuler.problem_051;
 
+import org.fde.util.ListOfLong;
+
 import java.util.Arrays;
 
 public class ReplaceFamily {
     private final long canonicalSuspect;
 
     private final int[] replaceIndexes;
-    private final int family;
+    private final ListOfLong familyPrimes;
 
-    public ReplaceFamily(long canonicalSuspect, int[] replaceIndexes, int family) {
+    public ReplaceFamily(long canonicalSuspect, int[] replaceIndexes, ListOfLong familyPrimes) {
         this.canonicalSuspect = canonicalSuspect;
         this.replaceIndexes = Arrays.copyOf(replaceIndexes, replaceIndexes.length);
-        this.family = family;
+        this.familyPrimes = familyPrimes;
     }
 
     @Override
@@ -19,16 +21,20 @@ public class ReplaceFamily {
         return "ReplaceFamily{" +
                 "canonicalSuspect=" + canonicalSuspect +
                 ", replaceIndexes=" + Arrays.toString(replaceIndexes) +
-                ", family=" + family +
+                ", familyPrimes=" + familyPrimes +
                 '}';
     }
 
-    public int getFamily() {
-        return family;
+    public int getFamilyCount() {
+        return familyPrimes.size();
+    }
+
+    public ListOfLong getFamilyPrimes() {
+        return familyPrimes.getUnModifiableListOfLong();
     }
 
     public static ReplaceFamily _null_(long canonicalSuspect) {
-        return new ReplaceFamily(canonicalSuspect, new int[0], 0);
+        return new ReplaceFamily(canonicalSuspect, new int[0], new ListOfLong());
     }
 
     public long getCanonicalSuspect() {
