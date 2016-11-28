@@ -1,5 +1,7 @@
 package org.fde.projecteuler.problem_051.optimized;
 
+import javafx.scene.paint.Stop;
+import org.apache.commons.lang3.time.StopWatch;
 import org.fde.projecteuler.problem_051.Replace;
 import org.fde.projecteuler.problem_051.ReplaceFamily;
 import org.fde.projecteuler.problem_051.ReplaceIterator;
@@ -16,6 +18,9 @@ public class OptimizedPrimeDigitReplacements {
 
     @Test
     public void primeDigitReplacements() {
+        StopWatch stopWatch = new StopWatch();
+        stopWatch.start();
+
         Primes primes = new Primes();
         ReplaceFamily replaceFamily = ReplaceFamily._null_(0);
 
@@ -24,12 +29,8 @@ public class OptimizedPrimeDigitReplacements {
         for (int canonicalSuspect = 1; replaceFamily.getFamily() < 8; ++canonicalSuspect) {
             replaceFamily = getReplaceFamily(primes, 2, canonicalSuspect, 8);
 
-            if (replaceFamily.getFamily() >= 7) {
-                System.out.println("replaceFamily = " + replaceFamily);
-            }
-
             if (canonicalSuspect > logThreshold) {
-                System.out.println("log ... " + canonicalSuspect);
+                System.out.println(stopWatch + " log ... " + canonicalSuspect);
                 logThreshold += LOG_THRESHOLD;
             }
         }
@@ -57,6 +58,36 @@ public class OptimizedPrimeDigitReplacements {
         assertArrayEquals(new int[]{2, 3}, replaceFamily.getReplaceIndexes());
     }
 
+    @Test
+    public void primeDigitReplacements_2_7991() {
+        Primes primes = new Primes();
+        ReplaceFamily replaceFamily = getReplaceFamily(primes, 2, 7991, 7);
+
+        assertEquals(7, replaceFamily.getFamily());
+        assertEquals(7991, replaceFamily.getCanonicalSuspect());
+        assertArrayEquals(new int[]{1, 4}, replaceFamily.getReplaceIndexes());
+    }
+
+    @Test
+    public void primeDigitReplacements_2_76399() {
+        Primes primes = new Primes();
+        ReplaceFamily replaceFamily = getReplaceFamily(primes, 2, 76399, 7);
+
+        assertEquals(7, replaceFamily.getFamily());
+        assertEquals(76399, replaceFamily.getCanonicalSuspect());
+        assertArrayEquals(new int[]{2, 5}, replaceFamily.getReplaceIndexes());
+    }
+
+    @Test
+    public void primeDigitReplacements_2_995369() {
+        Primes primes = new Primes();
+        ReplaceFamily replaceFamily = getReplaceFamily(primes, 2, 995369, 7);
+
+        assertEquals(7, replaceFamily.getFamily());
+        assertEquals(995369, replaceFamily.getCanonicalSuspect());
+        assertArrayEquals(new int[]{2, 5}, replaceFamily.getReplaceIndexes());
+    }
+
     private ReplaceFamily getReplaceFamily(Primes primes, int replaceCount, long canonicalSuspect, int targetFamily) {
         ReplaceFamily globalReplaceFamily = ReplaceFamily._null_(canonicalSuspect);
 
@@ -66,6 +97,10 @@ public class OptimizedPrimeDigitReplacements {
 
         while (it.hasNext()) {
             Replace replace = it.next();
+
+            if(it.isLastIteratorOnTheLastDigit()) {
+                continue;
+            }
 
             int familyCounter = replace.getFamily(primes, canonicalSuspectAsDigits);
 

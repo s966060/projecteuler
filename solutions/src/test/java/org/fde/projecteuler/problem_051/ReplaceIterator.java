@@ -104,7 +104,7 @@ public class ReplaceIterator implements Iterator<Replace> {
                 '}';
     }
 
-    public boolean isLastIteratorTheLastDigit() {
+    public boolean isLastIteratorOnTheLastDigit() {
         int iteratorIndex = this.replaceIndexes.length - 1;
         int digitIndex = this.replaceIndexes[iteratorIndex];
 
