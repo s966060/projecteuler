@@ -64,7 +64,7 @@ public class Digits implements Iterable<Digit> {
     public static Digits createDigitList(Integer... digits) {
         Digits list = new Digits();
 
-        for(Integer digit: digits) {
+        for (Integer digit : digits) {
             list.add(digit);
         }
 
@@ -117,12 +117,18 @@ public class Digits implements Iterable<Digit> {
         return digitList;
     }
 
-    public void set(int index, long digit) {
-        this.digits.set(index, Digit.valueOf(digit));
-    }
-
     public void add(int index, long digit) {
         this.digits.add(index, Digit.valueOf(digit));
+    }
+
+    public ListOfLong toListOfLong() {
+        ListOfLong list = new ListOfLong();
+
+        for (Digit d : this) {
+            list.add(d.getValue());
+        }
+
+        return list;
     }
 
     @Override
