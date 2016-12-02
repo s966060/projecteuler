@@ -7,7 +7,7 @@ import java.math.BigInteger;
 
 import static org.junit.Assert.assertEquals;
 
-public class CombinatorSelections {
+public class CombinatorSelectionsUsingBigIntegers {
     @Test
     public void combinatorSelections() {
         int count = 0;
