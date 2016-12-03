@@ -8,6 +8,9 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class CombinatorSelectionsUsingLongs {
+
+    public static final int LIMIT = 1_000_000;
+
     @Test
     public void combinatorSelections() {
         int count = 0;
@@ -22,7 +25,7 @@ public class CombinatorSelectionsUsingLongs {
                 long result = combination(n, r);
                 // System.out.printf("result = C(%s, %s) = %s%n", n, r, result);
 
-                if (result > 1_000_000) {
+                if (result > LIMIT) {
                     overAMillion = true;
                 } else {
                     ++r;
@@ -53,7 +56,7 @@ public class CombinatorSelectionsUsingLongs {
         for (long factor : nFactors) {
             result *= factor;
 
-            if (result > 1_000_000) {
+            if (result > LIMIT) {
                 return Long.MAX_VALUE;
             }
         }
