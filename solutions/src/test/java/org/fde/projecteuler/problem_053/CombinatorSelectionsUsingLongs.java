@@ -67,10 +67,6 @@ public class CombinatorSelectionsUsingLongs {
     private final PrimeFactors primeFactors = new PrimeFactors();
 
     private ListOfLong factorial(int n) {
-        if (n == 0) {
-            return new ListOfLong();
-        }
-
         ListOfLong allFactors = new ListOfLong();
 
         for (int i = 1; i <= n; ++i) {
