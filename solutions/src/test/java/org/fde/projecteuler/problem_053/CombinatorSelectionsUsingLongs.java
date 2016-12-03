@@ -43,12 +43,32 @@ public class CombinatorSelectionsUsingLongs {
         assertEquals(4075, count);
     }
 
-    private long combination(int n, int r) {
-        ListOfLong nFactors = factorial(n);
-        ListOfLong rFactors = factorial(r);
-        ListOfLong nMinusRFactors = factorial(n - r);
+    @Test
+    public void combination_5_3() {
+        assertEquals(10, combination(5, 3));
+    }
 
-        nFactors.remove(rFactors);
+    @Test
+    public void combination_7_4() {
+        assertEquals(35, combination(7, 4));
+    }
+
+    @Test
+    public void combination_8_5() {
+        assertEquals(56, combination(8, 5));
+    }
+
+    @Test
+    public void combination_9_6() {
+        assertEquals(84, combination(9, 6));
+    }
+
+    private long combination(int n, int r) {
+        int newR = Math.max(r, n - r);
+
+        ListOfLong nFactors = factorial(newR + 1, n);
+        ListOfLong nMinusRFactors = factorial(1, n - newR);
+
         nFactors.remove(nMinusRFactors);
 
         long result = 1;
@@ -66,10 +86,10 @@ public class CombinatorSelectionsUsingLongs {
 
     private final PrimeFactors primeFactors = new PrimeFactors();
 
-    private ListOfLong factorial(int n) {
+    private ListOfLong factorial(int from, int to) {
         ListOfLong allFactors = new ListOfLong();
 
-        for (int i = 1; i <= n; ++i) {
+        for (int i = from; i <= to; ++i) {
             ListOfLong factors = primeFactors.getPrimeFactors(i);
             allFactors.addAll(factors);
         }
