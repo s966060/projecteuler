@@ -21,7 +21,7 @@ enum Ranking {
                 return EIGHT;
             case "9":
                 return NINE;
-            case "10":
+            case "T":
                 return TEN;
             case "J":
                 return JACK;
