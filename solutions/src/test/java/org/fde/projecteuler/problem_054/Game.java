@@ -25,7 +25,7 @@ public class Game {
                 '}';
     }
 
-    public Winner evaluate() {
+    public Player evaluate() {
         return null;
     }
 }

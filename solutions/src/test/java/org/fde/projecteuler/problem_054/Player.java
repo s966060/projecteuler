@@ -1,5 +1,5 @@
 package org.fde.projecteuler.problem_054;
 
-public enum Winner {
+enum Player {
     ONE, TWO;
 }
