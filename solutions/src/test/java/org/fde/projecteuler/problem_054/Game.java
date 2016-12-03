@@ -24,4 +24,8 @@ public class Game {
                 ", two=" + two +
                 '}';
     }
+
+    public Winner evaluate() {
+        return null;
+    }
 }

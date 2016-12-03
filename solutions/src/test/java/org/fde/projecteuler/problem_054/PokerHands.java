@@ -14,7 +14,9 @@ public class PokerHands {
     public void pokerHands() throws Exception {
         final List<Game> games = readGames();
 
-        System.out.println("games = " + games);
+        for(Game game : games) {
+            game.evaluate();
+        }
     }
 
     private List<Game> readGames() throws Exception {
@@ -29,7 +31,6 @@ public class PokerHands {
 
                 if (!trimmedLine.isEmpty()) {
                     Game game = readOneGame(trimmedLine);
-                    System.out.println("game = " + game);
                     games.add(game);
                 }
             }
