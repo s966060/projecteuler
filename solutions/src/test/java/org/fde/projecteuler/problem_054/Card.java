@@ -1,16 +1,15 @@
 package org.fde.projecteuler.problem_054;
 
-public class Card {
+class Card {
     final Ranking ranking;
     final Suite suite;
 
-    public Card(Ranking ranking, Suite suite) {
+    Card(Ranking ranking, Suite suite) {
         this.ranking = ranking;
         this.suite = suite;
     }
 
-    public static Card fromCode(final String code) {
-
+    static Card fromCode(final String code) {
         String rankingCode = code.trim().substring(0, 1);
         String suiteCode = code.trim().substring(1, 2);
 

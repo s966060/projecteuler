@@ -3,7 +3,7 @@ package org.fde.projecteuler.problem_054;
 enum Ranking {
     TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING, ACE;
 
-    public static Ranking fromCode(String code) {
+    static Ranking fromCode(String code) {
         switch (code) {
             case "2":
                 return TWO;

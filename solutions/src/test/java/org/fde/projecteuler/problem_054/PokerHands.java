@@ -12,6 +12,12 @@ import java.util.Scanner;
 public class PokerHands {
     @Test
     public void pokerHands() throws Exception {
+        final List<Game> games = readGames();
+
+        System.out.println("games = " + games);
+    }
+
+    private List<Game> readGames() throws Exception {
         final List<Game> games = new ArrayList<>();
 
         InputStream pokerStream = ClassUtil.getInputStream(this, "poker.txt");
@@ -21,19 +27,36 @@ public class PokerHands {
             public void readLine(String line) throws Exception {
                 String trimmedLine = line.trim();
 
-                if(!trimmedLine.isEmpty()) {
-                    Scanner scanner = new Scanner(trimmedLine);
-
-                    while (scanner.hasNext()) {
-                        String cardAsCode = scanner.next();
-
-                        Card card = Card.fromCode(cardAsCode);
-                        System.out.println(" ... card = " + card);
-                    }
-
-                    System.out.println();
+                if (!trimmedLine.isEmpty()) {
+                    Game game = readOneGame(trimmedLine);
+                    System.out.println("game = " + game);
+                    games.add(game);
                 }
             }
+
+            private Game readOneGame(String line) {
+                Scanner scanner = new Scanner(line);
+
+                Hand one = new Hand();
+                Hand two = new Hand();
+
+                for (int counter = 0; scanner.hasNext(); ++counter) {
+                    String cardAsCode = scanner.next();
+
+                    Card card = Card.fromCode(cardAsCode);
+
+                    if (counter < 5) {
+                        one.add(card);
+                    } else {
+                        two.add(card);
+                    }
+                }
+
+                Game game = Game.createGame(one, two);
+                return game;
+            }
         }.readAll();
+
+        return games;
     }
 }
