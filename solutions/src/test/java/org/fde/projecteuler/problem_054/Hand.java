@@ -27,4 +27,8 @@ class Hand {
                 "cards=" + cards +
                 '}';
     }
+
+    public HandEvaluation getEvaluation() {
+        HandEvaluation eval = HandEvaluation.evaluate(this);
+    }
 }

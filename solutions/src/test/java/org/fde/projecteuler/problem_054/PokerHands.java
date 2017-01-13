@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import static org.junit.Assert.fail;
+
 public class PokerHands {
     @Test
     public void pokerHands() throws Exception {
@@ -17,6 +19,8 @@ public class PokerHands {
         for(Game game : games) {
             game.evaluate();
         }
+
+        fail();
     }
 
     private List<Game> readGames() throws Exception {
