@@ -11,8 +11,7 @@ public class PrimeSieve {
     }
 
     public void sieve() {
-        int primeLimit = (int) Math.sqrt(this.composites.length) + 1;
-        int limit = Math.min(primeLimit, this.composites.length);
+        int limit = getLimit();
 
         this.composites[0] = true;
         this.composites[1] = true;
@@ -22,17 +21,26 @@ public class PrimeSieve {
             if (!this.composites[index]) {
                 int prime = index;
 
-                int multiple = 2;
-                int composite;
-                composite = prime * multiple;
-
-                while (composite < this.composites.length) {
-                    this.composites[composite] = true;
-                    ++multiple;
-                    composite = prime * multiple;
-                }
+                eliminateComposites(prime);
             }
         }
+    }
+
+    private void eliminateComposites(int prime) {
+        int multiple = 2;
+        int composite;
+        composite = prime * multiple;
+
+        while (composite < this.composites.length) {
+            this.composites[composite] = true;
+            ++multiple;
+            composite = prime * multiple;
+        }
+    }
+
+    private int getLimit() {
+        int primeLimit = (int) Math.sqrt(this.composites.length) + 1;
+        return Math.min(primeLimit, this.composites.length);
     }
 
     public Iterable<Long> getPrimes() {
