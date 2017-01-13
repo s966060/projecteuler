@@ -11,11 +11,14 @@ public class PrimeSieve {
     }
 
     public void sieve() {
+        int primeLimit = (int) Math.sqrt(this.composites.length) + 1;
+        int limit = Math.min(primeLimit, this.composites.length);
+
         this.composites[0] = true;
         this.composites[1] = true;
         this.composites[2] = false;
 
-        for (int index = 0; index < this.composites.length; ++index) {
+        for (int index = 0; index < limit; ++index) {
             if (!this.composites[index]) {
                 int prime = index;
 
