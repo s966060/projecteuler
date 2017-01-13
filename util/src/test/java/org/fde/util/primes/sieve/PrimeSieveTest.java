@@ -1,18 +1,20 @@
 package org.fde.util.primes.sieve;
 
+import org.fde.util.primes.PrimeBuilder;
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 public class PrimeSieveTest {
     @Test
     public void primeSieveTest() {
-        PrimeSieve sieve = new PrimeSieve(100);
-
+        PrimeSieve sieve = new PrimeSieve(1_000_000);
         sieve.sieve();
 
-        System.out.println("sieve = " + sieve);
+        PrimeBuilder builder = new PrimeBuilder();
 
         for (Long prime : sieve.getPrimes()) {
-            System.out.println("prime = " + prime);
+            assertEquals(builder.next(), prime.longValue());
         }
     }
 }
