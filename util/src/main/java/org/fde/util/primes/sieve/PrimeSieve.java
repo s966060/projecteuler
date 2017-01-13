@@ -7,7 +7,7 @@ public class PrimeSieve {
     private boolean[] composites;
 
     public PrimeSieve(int upTo) {
-        this.composites = new boolean[upTo];
+        this.composites = new boolean[upTo + 1];
     }
 
     public void sieve() {
@@ -22,8 +22,14 @@ public class PrimeSieve {
             if (!this.composites[index]) {
                 int prime = index;
 
-                for (int multiple = 2; prime * multiple < this.composites.length; ++multiple) {
-                    this.composites[prime * multiple] = true;
+                int multiple = 2;
+                int composite;
+                composite = prime * multiple;
+
+                while (composite < this.composites.length) {
+                    this.composites[composite] = true;
+                    ++multiple;
+                    composite = prime * multiple;
                 }
             }
         }
