@@ -70,7 +70,11 @@ public class Primes {
 
             if(TOTAL_ELAPSED > LOG_ELAPSED) {
                 LOG_ELAPSED += LOG_THRESHOLD;
-                System.out.println("@@@ Primes.contains() ... elapsed = " + DurationFormatUtils.formatDurationHMS(TOTAL_ELAPSED / 1_000_000));
+
+                long durationMillis = TOTAL_ELAPSED / 1_000_000;
+
+                System.out.println("@@@ Primes.contains() ... elapsed = "
+                        + DurationFormatUtils.formatDurationHMS(durationMillis));
             }
         }
     }
