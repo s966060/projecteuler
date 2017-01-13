@@ -30,5 +30,6 @@ class Hand {
 
     public HandEvaluation getEvaluation() {
         HandEvaluation eval = HandEvaluation.evaluate(this);
+        return eval;
     }
 }
