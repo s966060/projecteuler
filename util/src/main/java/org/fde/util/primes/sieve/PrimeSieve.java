@@ -31,13 +31,7 @@ public class PrimeSieve {
     }
 
     private Iterable<Long> getPrimeIterable() {
-        return new Iterable<Long>() {
-            @Override
-            public Iterator<Long> iterator() {
-                return getPrimeIterator();
-            }
-
-        };
+        return () -> getPrimeIterator();
     }
 
     private Iterator<Long> getPrimeIterator() {
@@ -60,7 +54,7 @@ public class PrimeSieve {
                 for (int search = index; search < composites.length; ++search) {
                     if (!composites[search]) {
                         index = search + 1;
-                        return Long.valueOf(search);
+                        return (long) search;
                     }
                 }
 
