@@ -23,6 +23,14 @@ public class PrimeBuilder {
         this.squares = new Squares(other.squares);
     }
 
+    public long current() {
+        if (index == 0) {
+            throw new IllegalArgumentException("no current yet");
+        }
+
+        return primes.get(index - 1);
+    }
+
     public long next() {
         if (index < primes.size()) {
             return primes.get(index++);
