@@ -26,4 +26,22 @@ class Card {
                 ", suite=" + suite +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Card card = (Card) o;
+
+        if (ranking != card.ranking) return false;
+        return suite == card.suite;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = ranking.hashCode();
+        result = 31 * result + suite.hashCode();
+        return result;
+    }
 }
