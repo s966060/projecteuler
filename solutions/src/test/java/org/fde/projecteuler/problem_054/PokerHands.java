@@ -16,7 +16,7 @@ public class PokerHands {
     public void pokerHands() throws Exception {
         final List<Game> games = readGames();
 
-        for(Game game : games) {
+        for (Game game : games) {
             game.evaluate();
         }
 

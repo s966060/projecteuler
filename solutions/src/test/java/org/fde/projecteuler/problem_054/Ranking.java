@@ -8,10 +8,6 @@ import java.util.List;
 enum Ranking {
     TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING, ACE;
 
-    int getValue() {
-        return ordinal() + 1;
-    }
-
     static Ranking fromCode(String code) {
         switch (code) {
             case "2":
@@ -43,6 +39,10 @@ enum Ranking {
         }
 
         throw new IllegalArgumentException("Unknown Ranking " + code);
+    }
+
+    int getValue() {
+        return ordinal() + 1;
     }
 
     Ranking next() {

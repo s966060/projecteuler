@@ -2,9 +2,7 @@ package org.fde.projecteuler.problem_054;
 
 import org.apache.commons.lang3.Validate;
 
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
 class Hand implements Iterable<Card> {
     private final Cards cards;

@@ -19,8 +19,8 @@ class CardSuites {
     }
 
     boolean hasFlush() {
-        for(Cards cards : suites) {
-            if(cards.hasFive()) {
+        for (Cards cards : suites) {
+            if (cards.hasFive()) {
                 return true;
             }
         }
