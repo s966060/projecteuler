@@ -3,6 +3,10 @@ package org.fde.projecteuler.problem_054;
 enum Ranking {
     TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING, ACE;
 
+    int getValue() {
+        return ordinal() + 1;
+    }
+
     static Ranking fromCode(String code) {
         switch (code) {
             case "2":

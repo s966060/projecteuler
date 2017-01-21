@@ -1,11 +1,21 @@
 package org.fde.projecteuler.problem_054;
 
 public class HandEvaluation {
-    public static HandEvaluation evaluate(Hand hand) {
-        boolean hasRoyalFlush = false;
-        if(hasRoyalFlush) {
+    private final Rankings rankings = new Rankings();
 
+    public HandEvaluation evaluate(Hand hand) {
+        Rankings rankings = new Rankings();
+
+        for (Card card : hand) {
+            rankings.add(card);
         }
+
+        RoyalFlush royalFlush = extractRoyalFlush();
+        return null;
+    }
+
+    private RoyalFlush extractRoyalFlush() {
+        // if (hasOne(Ranking.ACE)) {}
         return null;
     }
 }
