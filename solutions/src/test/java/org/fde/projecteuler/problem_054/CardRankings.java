@@ -40,11 +40,7 @@ class CardRankings {
     }
 
     boolean hasTenJackQueenKingAce() {
-        return has(ACE)
-                && has(KING)
-                && has(QUEEN)
-                && has(JACK)
-                && has(TEN);
+        return has5ConsecutiveValues(TEN);
     }
 
     private boolean has(Ranking ranking) {
@@ -54,17 +50,22 @@ class CardRankings {
     boolean has5ConsecutiveValues() {
         Ranking[] search = {TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN};
 
-        nextRanking:
         for (Ranking ranking : search) {
-            for (Ranking suspect : ranking.getThisAndNextFour()) {
-                if (!has(suspect)) {
-                    continue nextRanking;
-                }
+            if (has5ConsecutiveValues(ranking)) {
+                return true;
             }
-
-            return true;
         }
 
         return false;
+    }
+
+    private boolean has5ConsecutiveValues(Ranking ranking) {
+        for (Ranking suspect : ranking.getThisAndNextFour()) {
+            if (!has(suspect)) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }
