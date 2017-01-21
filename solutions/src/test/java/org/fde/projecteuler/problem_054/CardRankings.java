@@ -18,7 +18,15 @@ class CardRankings {
         }
     }
 
-    public void add(Card card) {
+    void add(Hand hand) {
+        Validate.isTrue(hand.isValid());
+
+        for (Card card : hand) {
+            add(card);
+        }
+    }
+
+    private void add(Card card) {
         Validate.notNull(card);
 
         Cards cards = this.rankings.get(card.ranking.ordinal());
@@ -67,5 +75,21 @@ class CardRankings {
         }
 
         return true;
+    }
+
+    boolean hasFourOfAKind() {
+        for(Ranking ranking : Ranking.values()) {
+            Cards cards = get(ranking);
+
+            if(cards.hasFour()) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private Cards get(Ranking ranking) {
+        return this.rankings.get(ranking.ordinal());
     }
 }

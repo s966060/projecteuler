@@ -26,7 +26,7 @@ class Cards {
     }
 
     boolean hasFive() {
-        return this.cards.size() == 5;
+        return size() == 5;
     }
 
     boolean hasCards() {
@@ -40,5 +40,9 @@ class Cards {
 
     boolean isEmpty() {
         return cards.isEmpty();
+    }
+
+    public boolean hasFour() {
+        return size() == 4;
     }
 }

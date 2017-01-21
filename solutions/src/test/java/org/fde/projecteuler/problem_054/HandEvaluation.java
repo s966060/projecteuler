@@ -5,10 +5,8 @@ class HandEvaluation {
     private final CardSuites suites = new CardSuites();
 
     HandEvaluation evaluate(Hand hand) {
-        for (Card card : hand) {
-            rankings.add(card);
-            suites.add(card);
-        }
+        rankings.add(hand);
+        suites.add(hand);
 
         if (suites.hasFlush()) {
             if (rankings.hasTenJackQueenKingAce()) {
@@ -19,12 +17,10 @@ class HandEvaluation {
                 new Flush(rankings.getHighCard());
             }
         }
+        else if(rankings.hasFourOfAKind()) {
+            new FourOfAKind(rankings.getFourOfAKindCards());
+        }
 
-        return null;
-    }
-
-    private RoyalFlush extractRoyalFlush() {
-        // if (hasOne(Ranking.ACE)) {}
         return null;
     }
 }

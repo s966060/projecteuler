@@ -9,10 +9,18 @@ class CardSuites {
     private final List<Cards> suites;
 
     CardSuites() {
-        this.suites = new ArrayList<Cards>();
+        this.suites = new ArrayList<>();
     }
 
-    void add(Card card) {
+    void add(Hand hand) {
+        Validate.isTrue(hand.isValid());
+
+        for (Card card : hand) {
+            add(card);
+        }
+    }
+
+    private void add(Card card) {
         Validate.notNull(card);
         Cards cards = this.suites.get(card.suite.ordinal());
         cards.add(card);
