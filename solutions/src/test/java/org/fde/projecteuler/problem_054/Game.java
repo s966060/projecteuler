@@ -1,6 +1,6 @@
 package org.fde.projecteuler.problem_054;
 
-public class Game {
+class Game {
     private final Hand one;
     private final Hand two;
 
@@ -9,7 +9,7 @@ public class Game {
         this.two = two;
     }
 
-    public static Game createGame(Hand one, Hand two) {
+    static Game createGame(Hand one, Hand two) {
         if (one.isValid() && two.isValid()) {
             return new Game(one, two);
         }
@@ -25,7 +25,7 @@ public class Game {
                 '}';
     }
 
-    public Player evaluate() {
+    Player evaluate() {
         return null;
     }
 }

@@ -45,13 +45,13 @@ enum Ranking {
         throw new IllegalArgumentException("Unknown Ranking " + code);
     }
 
-    public Ranking next() {
+    Ranking next() {
         int next = ordinal() + 1;
         Validate.inclusiveBetween(0, values().length - 1, next);
         return values()[next];
     }
 
-    public List<Ranking> getThisAndNextFour() {
+    List<Ranking> getThisAndNextFour() {
         List<Ranking> rankings = new ArrayList<>();
 
         Ranking ranking = this;

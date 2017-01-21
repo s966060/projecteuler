@@ -27,7 +27,7 @@ class CardRankings {
         cards.add(card);
     }
 
-    public Card getHighCard() {
+    Card getHighCard() {
         Card highCard = null;
 
         for (Cards cards : rankings) {
@@ -39,7 +39,7 @@ class CardRankings {
         return highCard;
     }
 
-    public boolean hasTenJackQueenKingAce() {
+    boolean hasTenJackQueenKingAce() {
         return has(ACE)
                 && has(KING)
                 && has(QUEEN)
@@ -51,7 +51,7 @@ class CardRankings {
         return !rankings.get(ranking.ordinal()).isEmpty();
     }
 
-    public boolean has5ConsecutiveValues() {
+    boolean has5ConsecutiveValues() {
         Ranking[] search = {TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN};
 
         nextRanking:

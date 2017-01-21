@@ -22,7 +22,7 @@ class Hand implements Iterable<Card> {
         return this.cards.size() == 5;
     }
 
-    public HandEvaluation getEvaluation() {
+    HandEvaluation getEvaluation() {
         HandEvaluation eval = new HandEvaluation().evaluate(this);
         return eval;
     }

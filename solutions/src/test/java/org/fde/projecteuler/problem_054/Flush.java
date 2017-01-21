@@ -1,9 +1,9 @@
 package org.fde.projecteuler.problem_054;
 
-public class Flush {
+class Flush {
     private Card highCard;
 
-    public Flush(Card highCard) {
+    Flush(Card highCard) {
         this.highCard = highCard;
     }
 }

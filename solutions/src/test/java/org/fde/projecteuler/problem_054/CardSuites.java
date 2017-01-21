@@ -5,20 +5,20 @@ import org.apache.commons.lang3.Validate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CardSuites {
+class CardSuites {
     private final List<Cards> suites;
 
-    public CardSuites() {
+    CardSuites() {
         this.suites = new ArrayList<Cards>();
     }
 
-    public void add(Card card) {
+    void add(Card card) {
         Validate.notNull(card);
         Cards cards = this.suites.get(card.suite.ordinal());
         cards.add(card);
     }
 
-    public boolean hasFlush() {
+    boolean hasFlush() {
         for(Cards cards : suites) {
             if(cards.hasFive()) {
                 return true;

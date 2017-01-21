@@ -6,39 +6,39 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class Cards {
+class Cards {
     private final List<Card> cards;
 
-    public Cards() {
+    Cards() {
         this.cards = new ArrayList<>();
     }
 
-    public void add(Card card) {
+    void add(Card card) {
         this.cards.add(card);
     }
 
-    public int size() {
+    int size() {
         return this.cards.size();
     }
 
-    public Iterator<Card> iterator() {
+    Iterator<Card> iterator() {
         return this.cards.iterator();
     }
 
-    public boolean hasFive() {
+    boolean hasFive() {
         return this.cards.size() == 5;
     }
 
-    public boolean hasCards() {
+    boolean hasCards() {
         return !cards.isEmpty();
     }
 
-    public Card getFirstCard() {
+    Card getFirstCard() {
         Validate.isTrue(hasCards());
         return cards.get(0);
     }
 
-    public boolean isEmpty() {
+    boolean isEmpty() {
         return cards.isEmpty();
     }
 }
