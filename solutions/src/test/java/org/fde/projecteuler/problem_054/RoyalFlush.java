@@ -1,9 +1,14 @@
 package org.fde.projecteuler.problem_054;
 
 class RoyalFlush {
-    private final Card highCard;
+    private final Cards cards;
 
-    RoyalFlush(Card card) {
-        this.highCard = card;
+    private RoyalFlush(Cards cards) {
+        this.cards = cards;
+    }
+
+    static RoyalFlush createRoyalFlush(Cards cards) {
+        Cards orderedCards = cards.getFromHighToLow();
+        return new RoyalFlush(orderedCards);
     }
 }

@@ -1,5 +1,9 @@
 package org.fde.projecteuler.problem_054;
 
+import static org.fde.projecteuler.problem_054.Flush.createFlush;
+import static org.fde.projecteuler.problem_054.RoyalFlush.createRoyalFlush;
+import static org.fde.projecteuler.problem_054.StraightFlush.createStraightFlush;
+
 class HandEvaluation {
     private final CardRankings rankings = new CardRankings();
     private final CardSuites suites = new CardSuites();
@@ -10,14 +14,13 @@ class HandEvaluation {
 
         if (suites.hasFlush()) {
             if (rankings.hasTenJackQueenKingAce()) {
-                new RoyalFlush(rankings.getHighCard());
+                createRoyalFlush(rankings.getAllCards());
             } else if (rankings.has5ConsecutiveValues()) {
-                new StraightFlush(rankings.getHighCard());
+                createStraightFlush(rankings.getAllCards());
             } else {
-                new Flush(rankings.getHighCard());
+                createFlush(rankings.getAllCards());
             }
-        }
-        else if(rankings.hasFourOfAKind()) {
+        } else if (rankings.hasFourOfAKind()) {
             new FourOfAKind(rankings.getFourOfAKindCards());
         }
 

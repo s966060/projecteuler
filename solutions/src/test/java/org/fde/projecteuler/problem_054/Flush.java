@@ -1,9 +1,14 @@
 package org.fde.projecteuler.problem_054;
 
 class Flush {
-    private Card highCard;
+    private final Cards cards;
 
-    Flush(Card highCard) {
-        this.highCard = highCard;
+    private Flush(Cards cards) {
+        this.cards = cards;
+    }
+
+    static Flush createFlush(Cards cards) {
+        Cards orderedCards = cards.getFromHighToLow();
+        return new Flush(orderedCards);
     }
 }
