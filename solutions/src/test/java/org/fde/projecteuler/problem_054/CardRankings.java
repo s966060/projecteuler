@@ -78,15 +78,21 @@ class CardRankings {
     }
 
     boolean hasFourOfAKind() {
+        Cards cards = getFourOfAKindCards();
+
+        return cards != null;
+    }
+
+    public Cards getFourOfAKindCards() {
         for (Ranking ranking : Ranking.values()) {
             Cards cards = get(ranking);
 
             if (cards.hasFour()) {
-                return true;
+                return cards;
             }
         }
 
-        return false;
+        return null;
     }
 
     private Cards get(Ranking ranking) {

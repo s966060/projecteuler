@@ -11,4 +11,11 @@ class Flush {
         Cards orderedCards = cards.getFromHighToLow();
         return new Flush(orderedCards);
     }
+
+    @Override
+    public String toString() {
+        return "Flush{" +
+                "cards=" + cards +
+                '}';
+    }
 }

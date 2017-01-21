@@ -3,7 +3,6 @@ package org.fde.projecteuler.problem_054;
 import org.apache.commons.lang3.Validate;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
@@ -43,11 +42,11 @@ class Cards {
         return cards.isEmpty();
     }
 
-    public boolean hasFour() {
+    boolean hasFour() {
         return size() == 4;
     }
 
-    public Cards getFromHighToLow() {
+    Cards getFromHighToLow() {
         Cards cards = new Cards();
         cards.addAll(this);
         cards.sortFromHighToLow();
@@ -72,7 +71,14 @@ class Cards {
         });
     }
 
-    public void addAll(Cards other) {
+    void addAll(Cards other) {
         this.cards.addAll(other.cards);
+    }
+
+    @Override
+    public String toString() {
+        return "Cards{" +
+                "cards=" + cards +
+                '}';
     }
 }

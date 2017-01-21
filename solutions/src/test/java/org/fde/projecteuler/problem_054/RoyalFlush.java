@@ -11,4 +11,11 @@ class RoyalFlush {
         Cards orderedCards = cards.getFromHighToLow();
         return new RoyalFlush(orderedCards);
     }
+
+    @Override
+    public String toString() {
+        return "RoyalFlush{" +
+                "cards=" + cards +
+                '}';
+    }
 }

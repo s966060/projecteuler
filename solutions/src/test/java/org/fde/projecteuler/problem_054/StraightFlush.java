@@ -11,4 +11,11 @@ class StraightFlush {
         Cards orderedCards = cards.getFromHighToLow();
         return new StraightFlush(orderedCards);
     }
+
+    @Override
+    public String toString() {
+        return "StraightFlush{" +
+                "cards=" + cards +
+                '}';
+    }
 }
