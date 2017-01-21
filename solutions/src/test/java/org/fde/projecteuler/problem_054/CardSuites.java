@@ -17,4 +17,14 @@ public class CardSuites {
         Cards cards = this.suites.get(card.suite.ordinal());
         cards.add(card);
     }
+
+    public boolean hasFlush() {
+        for(Cards cards : suites) {
+            if(cards.hasFive()) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }

@@ -1,5 +1,7 @@
 package org.fde.projecteuler.problem_054;
 
+import org.apache.commons.lang3.Validate;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -21,5 +23,22 @@ public class Cards {
 
     public Iterator<Card> iterator() {
         return this.cards.iterator();
+    }
+
+    public boolean hasFive() {
+        return this.cards.size() == 5;
+    }
+
+    public boolean hasCards() {
+        return !cards.isEmpty();
+    }
+
+    public Card getFirstCard() {
+        Validate.isTrue(hasCards());
+        return cards.get(0);
+    }
+
+    public boolean isEmpty() {
+        return cards.isEmpty();
     }
 }

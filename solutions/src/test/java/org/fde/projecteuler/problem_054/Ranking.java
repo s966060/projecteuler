@@ -1,5 +1,10 @@
 package org.fde.projecteuler.problem_054;
 
+import org.apache.commons.lang3.Validate;
+
+import java.util.ArrayList;
+import java.util.List;
+
 enum Ranking {
     TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING, ACE;
 
@@ -38,5 +43,23 @@ enum Ranking {
         }
 
         throw new IllegalArgumentException("Unknown Ranking " + code);
+    }
+
+    public Ranking next() {
+        int next = ordinal() + 1;
+        Validate.inclusiveBetween(0, values().length - 1, next);
+        return values()[next];
+    }
+
+    public List<Ranking> getThisAndNextFour() {
+        List<Ranking> rankings = new ArrayList<>();
+
+        Ranking ranking = this;
+        for (int i = 0; i < 5; ++i) {
+            rankings.add(ranking);
+            ranking = ranking.next();
+        }
+
+        return rankings;
     }
 }
