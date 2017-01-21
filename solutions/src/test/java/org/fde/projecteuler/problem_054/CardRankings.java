@@ -5,12 +5,11 @@ import org.apache.commons.lang3.Validate;
 import java.util.ArrayList;
 import java.util.List;
 
-class Rankings {
+class CardRankings {
     private List<Cards> rankings;
 
-    Rankings() {
+    CardRankings() {
         this.rankings = new ArrayList<>();
-        this.rankings.add(null);
 
         for (Ranking ranking : Ranking.values()) {
             this.rankings.add(new Cards());
@@ -20,7 +19,7 @@ class Rankings {
     public void add(Card card) {
         Validate.notNull(card);
 
-        Cards cards = this.rankings.get(card.ranking.getValue());
+        Cards cards = this.rankings.get(card.ranking.ordinal());
         Validate.notNull(cards);
 
         cards.add(card);

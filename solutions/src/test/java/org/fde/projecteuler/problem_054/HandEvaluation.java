@@ -1,10 +1,10 @@
 package org.fde.projecteuler.problem_054;
 
 public class HandEvaluation {
-    private final Rankings rankings = new Rankings();
+    private final CardRankings rankings = new CardRankings();
 
     public HandEvaluation evaluate(Hand hand) {
-        Rankings rankings = new Rankings();
+        CardRankings rankings = new CardRankings();
 
         for (Card card : hand) {
             rankings.add(card);
