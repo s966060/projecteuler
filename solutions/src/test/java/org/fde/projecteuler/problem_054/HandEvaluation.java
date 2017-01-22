@@ -2,6 +2,8 @@ package org.fde.projecteuler.problem_054;
 
 import static org.fde.projecteuler.problem_054.Flush.createFlush;
 import static org.fde.projecteuler.problem_054.FourOfAKind.createFourOfAKind;
+import static org.fde.projecteuler.problem_054.FullHouse.createFullHouse;
+import static org.fde.projecteuler.problem_054.HighCards.createHighCards;
 import static org.fde.projecteuler.problem_054.RoyalFlush.createRoyalFlush;
 import static org.fde.projecteuler.problem_054.StraightFlush.createStraightFlush;
 
@@ -23,6 +25,16 @@ class HandEvaluation {
             }
         } else if (rankings.hasFourOfAKind()) {
             createFourOfAKind(rankings.getFourOfAKindCards());
+        } else if (rankings.hasFullHouse()) {
+            createFullHouse(rankings.getAllCards());
+        } else if (rankings.hasThreeOfAKind()) {
+
+        } else if (rankings.hasTwoPairs()) {
+
+        } else if (rankings.hasOnePair()) {
+
+        } else {
+            createHighCards(rankings.getAllCards());
         }
 
         return null;

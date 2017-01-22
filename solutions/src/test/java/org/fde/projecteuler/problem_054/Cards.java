@@ -56,15 +56,15 @@ class Cards {
     private void sortFromHighToLow() {
         this.cards.sort((o1, o2) -> {
             int compare = Integer.compare(
-                                    o1.ranking.ordinal(),
-                                    o2.ranking.ordinal());
+                    o1.ranking.ordinal(),
+                    o2.ranking.ordinal());
 
             if (compare != 0) {
                 return -compare;
             } else {
                 compare = Integer.compare(
-                                    o1.suite.ordinal(),
-                                    o2.suite.ordinal());
+                        o1.suite.ordinal(),
+                        o2.suite.ordinal());
 
                 return compare;
             }
@@ -73,6 +73,14 @@ class Cards {
 
     void addAll(Cards other) {
         this.cards.addAll(other.cards);
+    }
+
+    boolean hasTwo() {
+        return size() == 2;
+    }
+
+    boolean hasThree() {
+        return size() == 3;
     }
 
     @Override

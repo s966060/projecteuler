@@ -35,18 +35,6 @@ class CardRankings {
         cards.add(card);
     }
 
-    Card getHighCard() {
-        Card highCard = null;
-
-        for (Cards cards : rankings) {
-            if (cards.hasCards()) {
-                highCard = cards.getFirstCard();
-            }
-        }
-
-        return highCard;
-    }
-
     boolean hasTenJackQueenKingAce() {
         return has5ConsecutiveValues(TEN);
     }
@@ -83,7 +71,7 @@ class CardRankings {
         return cards != null;
     }
 
-    public Cards getFourOfAKindCards() {
+    Cards getFourOfAKindCards() {
         for (Ranking ranking : Ranking.values()) {
             Cards cards = get(ranking);
 
@@ -99,7 +87,7 @@ class CardRankings {
         return this.rankings.get(ranking.ordinal());
     }
 
-    public Cards getAllCards() {
+    Cards getAllCards() {
         Cards cards = new Cards();
 
         for (Ranking ranking : Ranking.values()) {
@@ -108,5 +96,71 @@ class CardRankings {
         }
 
         return cards;
+    }
+
+    boolean hasFullHouse() {
+        Cards two = null;
+        Cards three = null;
+
+        for (Ranking ranking : Ranking.values()) {
+            Cards cards = get(ranking);
+
+            if (cards.hasTwo()) {
+                two = cards;
+            }
+
+            if (cards.hasThree()) {
+                three = cards;
+            }
+        }
+
+        return two != null && three != null;
+    }
+
+    boolean hasThreeOfAKind() {
+        Cards three = null;
+
+        for (Ranking ranking : Ranking.values()) {
+            Cards cards = get(ranking);
+
+            if (cards.hasThree()) {
+                three = cards;
+            }
+        }
+
+        return three != null;
+    }
+
+    boolean hasTwoPairs() {
+        Cards firstPair = null;
+        Cards secondPair = null;
+
+        for (Ranking ranking : Ranking.values()) {
+            Cards cards = get(ranking);
+
+            if (cards.hasTwo()) {
+                if (firstPair == null) {
+                    firstPair = cards;
+                } else if (secondPair == null) {
+                    secondPair = cards;
+                }
+            }
+        }
+
+        return firstPair != null && secondPair != null;
+    }
+
+    boolean hasOnePair() {
+        Cards two = null;
+
+        for (Ranking ranking : Ranking.values()) {
+            Cards cards = get(ranking);
+
+            if (cards.hasTwo()) {
+                two = cards;
+            }
+        }
+
+        return two != null;
     }
 }
