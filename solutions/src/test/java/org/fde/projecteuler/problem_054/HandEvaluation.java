@@ -6,6 +6,7 @@ import static org.fde.projecteuler.problem_054.FullHouse.createFullHouse;
 import static org.fde.projecteuler.problem_054.HighCards.createHighCards;
 import static org.fde.projecteuler.problem_054.RoyalFlush.createRoyalFlush;
 import static org.fde.projecteuler.problem_054.StraightFlush.createStraightFlush;
+import static org.fde.projecteuler.problem_054.ThreeOfAKind.createThreeOfAKind;
 
 class HandEvaluation {
     private final CardRankings rankings = new CardRankings();
@@ -28,7 +29,7 @@ class HandEvaluation {
         } else if (rankings.hasFullHouse()) {
             createFullHouse(rankings.getAllCards());
         } else if (rankings.hasThreeOfAKind()) {
-
+            createThreeOfAKind(rankings.getThreeOfAKindCards());
         } else if (rankings.hasTwoPairs()) {
 
         } else if (rankings.hasOnePair()) {

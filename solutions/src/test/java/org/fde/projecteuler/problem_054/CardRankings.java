@@ -131,6 +131,10 @@ class CardRankings {
         return three != null;
     }
 
+    Cards getThreeOfAKindCards() {
+        return null;
+    }
+
     boolean hasTwoPairs() {
         Cards firstPair = null;
         Cards secondPair = null;
