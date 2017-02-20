@@ -26,6 +26,21 @@ public class LongUtil {
         return a.equals(b);
     }
 
+    public static boolean isPalinDrome(long value) {
+        return isPalinDrome(value, 10);
+    }
+
+    public static long reverse(long value) {
+        return reverse(value, 10);
+    }
+
+    public static long reverse(long value, int base) {
+        String original = Long.toString(value, base);
+        String reverse = new StringBuilder(original).reverse().toString();
+
+        return Long.valueOf(reverse);
+    }
+
     public static ListOfLong getTruncatedRightValues(final long value) {
         ListOfLong numbers = new ListOfLong();
 
