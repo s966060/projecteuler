@@ -3,10 +3,13 @@ package org.fde.projecteuler.problem_055;
 import org.junit.Test;
 
 import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
+
+import static java.math.BigInteger.valueOf;
+import static java.util.Arrays.asList;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class LychrelNumbers {
     class Current {
@@ -45,11 +48,11 @@ public class LychrelNumbers {
             setProcessed(suspect);
             setProcessed(reverse);
 
-            if (suspect.compareTo(BigInteger.valueOf(this.suspects.size())) < 0) {
+            if (suspect.compareTo(valueOf(this.suspects.size())) < 0) {
                 this.lyrchelList.add(suspect.longValue());
             }
 
-            if (reverse.compareTo(BigInteger.valueOf(this.suspects.size())) < 0) {
+            if (reverse.compareTo(valueOf(this.suspects.size())) < 0) {
                 this.lyrchelList.add(reverse.longValue());
             }
         }
@@ -62,7 +65,7 @@ public class LychrelNumbers {
         }
 
         public void setProcessed(BigInteger processed) {
-            if (processed.compareTo(BigInteger.valueOf(this.suspects.size())) < 0) {
+            if (processed.compareTo(valueOf(this.suspects.size())) < 0) {
                 this.suspects.set(processed.intValue(), null);
             }
         }
@@ -74,8 +77,13 @@ public class LychrelNumbers {
 
         List<Long> suspects = createSuspects();
 
-        Current current = new Current(BigInteger.valueOf(349), suspects, 1, lyrchelList);
-        System.out.println("isLyrchel = " + isLyrchel(current));
+        Current current = new Current(valueOf(349), suspects, 1, lyrchelList);
+        assertFalse(isLyrchel(current));
+
+        assertEquals(
+                asList(valueOf(3124), valueOf(4213), valueOf(2921), valueOf(1292), valueOf(943), valueOf(349)),
+                current.palindromeList);
+
         System.out.println("current.palindromeList = " + current.palindromeList);
     }
 
@@ -85,8 +93,13 @@ public class LychrelNumbers {
 
         List<Long> suspects = createSuspects();
 
-        Current current = new Current(BigInteger.valueOf(47), suspects, 1, lyrchelList);
-        System.out.println("isLyrchel = " + isLyrchel(current));
+        Current current = new Current(valueOf(47), suspects, 1, lyrchelList);
+        assertEquals(false, isLyrchel(current));
+
+        assertEquals(
+                asList(valueOf(74), valueOf(47)),
+                current.palindromeList);
+
         System.out.println("current.palindromeList = " + current.palindromeList);
     }
 
@@ -96,9 +109,8 @@ public class LychrelNumbers {
 
         List<Long> suspects = createSuspects();
 
-        Current current = new Current(BigInteger.valueOf(4994), suspects, 1, lyrchelList);
-        System.out.println("isLyrchel = " + isLyrchel(current));
-        System.out.println("current.palindromeList = " + current.palindromeList);
+        Current current = new Current(valueOf(4994), suspects, 1, lyrchelList);
+        assertTrue(isLyrchel(current));
     }
 
     @Test
@@ -109,7 +121,7 @@ public class LychrelNumbers {
 
         for (Long suspect : suspects) {
             if (suspect != null) {
-                if (isLyrchel(new Current(BigInteger.valueOf(suspect), suspects, 1, lyrchelList))) {
+                if (isLyrchel(new Current(valueOf(suspect), suspects, 1, lyrchelList))) {
                     lyrchelList.add(suspect);
                 }
             }
