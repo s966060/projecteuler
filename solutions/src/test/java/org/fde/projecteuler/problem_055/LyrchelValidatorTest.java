@@ -1,11 +1,28 @@
 package org.fde.projecteuler.problem_055;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
 import org.junit.Test;
 
+import static org.junit.Assert.*;
+
 public class LyrchelValidatorTest {
+    @Test
+    public void countAllLyrchelNumbersUpTo10000() {
+        int lyrchelCounter = 0;
+
+        for (int i = 0; i < 10000; ++i) {
+            LyrchelResult result = new LyrchelValidator(50).validate(i);
+
+            // System.out.println("result = " + result);
+
+            if (result.isLyrchel()) {
+                ++lyrchelCounter;
+            }
+        }
+
+        System.out.println("lyrchelCounter = " + lyrchelCounter);
+        assertEquals(249, lyrchelCounter);
+    }
+
     @Test
     public void test_47() {
         LyrchelResult result = test(47);
