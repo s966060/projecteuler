@@ -4,7 +4,8 @@ import java.util.Arrays;
 import java.util.Iterator;
 
 public class PrimeSieveCacheAware {
-    private final static int BATCH = 1000;
+    private final static int BATCH = 1000000;
+    private final int limit;
 
     private boolean[] numbers;
 
@@ -17,11 +18,11 @@ public class PrimeSieveCacheAware {
 
         System.arraycopy(sieve.getNumbers(), 0, this.numbers, 0,
                 Math.min(sieve.getNumbers().length, this.numbers.length));
+
+        this.limit = getLimit();
     }
 
     public void sieve() {
-        int limit = getLimit();
-
         int batchEnd = this.numbers.length / BATCH;
 
         if ((batchEnd % BATCH) > 0) {
@@ -30,12 +31,12 @@ public class PrimeSieveCacheAware {
 
         for (int primeBatch = 0; primeBatch <= batchEnd; ++primeBatch) {
             for (int compositeBatch = primeBatch + 1; compositeBatch <= batchEnd; ++compositeBatch) {
-                sieve(limit, primeBatch, compositeBatch);
+                sieve(primeBatch, compositeBatch);
             }
         }
     }
 
-    private void sieve(int limit, int primeBatch, int compositeBatch) {
+    private void sieve(int primeBatch, int compositeBatch) {
         if (compositeBatch <= primeBatch) {
             throw new IllegalArgumentException();
         }
@@ -45,7 +46,10 @@ public class PrimeSieveCacheAware {
         // batch 1 -> 1000 ... 1999
         // ...
         int primeBegin = primeBatch * BATCH;
-        int primeEnd = Math.min(Math.min(((primeBatch + 1) * BATCH) - 1, limit), numbers.length - 1);
+        int primeEnd;
+        primeEnd = ((primeBatch + 1) * BATCH) - 1;
+        primeEnd = Math.min(primeEnd, limit);
+        primeEnd = Math.min(primeEnd, numbers.length - 1);
 
         int compositeBegin = compositeBatch * BATCH;
         int compositeEnd = Math.min(((compositeBatch + 1) * BATCH) - 1, numbers.length - 1);
