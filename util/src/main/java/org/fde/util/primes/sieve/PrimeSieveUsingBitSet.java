@@ -3,7 +3,7 @@ package org.fde.util.primes.sieve;
 import java.util.BitSet;
 import java.util.Iterator;
 
-public class PrimeSieveUsingBitSet implements PrimeSieve {
+public class PrimeSieveUsingBitSet implements PrimeSieve, PrimeSieveIterable {
     private final int length;
     private final BitSet numbers;
 
@@ -54,32 +54,7 @@ public class PrimeSieveUsingBitSet implements PrimeSieve {
     }
 
     private Iterator<Long> getPrimeIterator() {
-        return new Iterator<Long>() {
-            int index = 0;
-
-            @Override
-            public boolean hasNext() {
-                for (int search = index; search < getLength(); ++search) {
-                    if (isPrime(search)) {
-                        return true;
-                    }
-                }
-
-                return false;
-            }
-
-            @Override
-            public Long next() {
-                for (int search = index; search < getLength(); ++search) {
-                    if (isPrime(search)) {
-                        index = search + 1;
-                        return (long) search;
-                    }
-                }
-
-                throw new IllegalArgumentException("no next found");
-            }
-        };
+        return new PrimeSieveIterator(this);
     }
 
     @Override
@@ -94,11 +69,11 @@ public class PrimeSieveUsingBitSet implements PrimeSieve {
         return null;
     }
 
-    private boolean isPrime(int index) {
+    public boolean isPrime(int index) {
         return !this.numbers.get(index);
     }
 
-    private int getLength() {
+    public int getLength() {
         return length;
     }
 
