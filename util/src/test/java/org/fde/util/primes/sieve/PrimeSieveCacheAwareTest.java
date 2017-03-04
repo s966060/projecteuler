@@ -8,13 +8,19 @@ import static org.junit.Assert.assertEquals;
 public class PrimeSieveCacheAwareTest {
     @Test
     public void primeSieveCacheAwareTest() {
-        PrimeSieveCacheAware sieve = new PrimeSieveCacheAware(1_000_000);
+        PrimeSieveCacheAware sieve = new PrimeSieveCacheAware(10_000_000);
         sieve.sieve();
 
         PrimeBuilder builder = new PrimeBuilder();
 
+        int count = 0;
+
         for (Long prime : sieve.getPrimes()) {
-            assertEquals(builder.next(), prime.longValue());
+            long expected = builder.next();
+            assertEquals(expected, prime.longValue());
+            ++count;
         }
+
+        assertEquals(664579, count);
     }
 }
