@@ -4,21 +4,21 @@ import java.util.Arrays;
 import java.util.Iterator;
 
 public class PrimeSieveCacheAware {
-    private boolean[] composites;
+    private boolean[] numbers;
 
     public PrimeSieveCacheAware(int upTo) {
-        this.composites = new boolean[upTo + 1];
+        this.numbers = new boolean[upTo + 1];
     }
 
     public void sieve() {
         int limit = getLimit();
 
-        this.composites[0] = true;
-        this.composites[1] = true;
-        this.composites[2] = false;
+        this.numbers[0] = true;
+        this.numbers[1] = true;
+        this.numbers[2] = false;
 
         for (int index = 0; index < limit; ++index) {
-            if (!this.composites[index]) {
+            if (!this.numbers[index]) {
                 int prime = index;
 
                 eliminateComposites(prime);
@@ -30,15 +30,15 @@ public class PrimeSieveCacheAware {
         int composite;
         composite = prime + prime;
 
-        while (composite < this.composites.length) {
-            this.composites[composite] = true;
+        while (composite < this.numbers.length) {
+            this.numbers[composite] = true;
             composite += prime;
         }
     }
 
     private int getLimit() {
-        int primeLimit = (int) Math.sqrt(this.composites.length) + 1;
-        return Math.min(primeLimit, this.composites.length);
+        int primeLimit = (int) Math.sqrt(this.numbers.length) + 1;
+        return Math.min(primeLimit, this.numbers.length);
     }
 
     public Iterable<Long> getPrimes() {
@@ -55,8 +55,8 @@ public class PrimeSieveCacheAware {
 
             @Override
             public boolean hasNext() {
-                for (int search = index; search < composites.length; ++search) {
-                    if (!composites[search]) {
+                for (int search = index; search < numbers.length; ++search) {
+                    if (!numbers[search]) {
                         return true;
                     }
                 }
@@ -66,8 +66,8 @@ public class PrimeSieveCacheAware {
 
             @Override
             public Long next() {
-                for (int search = index; search < composites.length; ++search) {
-                    if (!composites[search]) {
+                for (int search = index; search < numbers.length; ++search) {
+                    if (!numbers[search]) {
                         index = search + 1;
                         return (long) search;
                     }
@@ -80,8 +80,8 @@ public class PrimeSieveCacheAware {
 
     @Override
     public String toString() {
-        return "PrimeSieve{" +
-                "composites=" + Arrays.toString(composites) +
+        return "PrimeSieveCacheAware{" +
+                "numbers=" + Arrays.toString(numbers) +
                 '}';
     }
 }
