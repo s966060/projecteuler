@@ -12,7 +12,7 @@ public class PrimeSievePerformanceTest {
         PrimeSieve sieve = new PrimeSieve(1_000_000);
         sieve.sieve();
 
-        // about 20 milliseconds on my iCore 7 3770
+        // about 5 milliseconds on my iCore 7 3770
         System.out.println("stopWatch = " + stopWatch);
     }
 
@@ -24,7 +24,7 @@ public class PrimeSievePerformanceTest {
         PrimeSieve sieve = new PrimeSieve(10_000_000);
         sieve.sieve();
 
-        // about 90 milliseconds on my iCore 7 3770
+        // about 50 milliseconds on my iCore 7 3770
         System.out.println("stopWatch = " + stopWatch);
     }
 
@@ -36,7 +36,7 @@ public class PrimeSievePerformanceTest {
         PrimeSieve sieve = new PrimeSieve(100_000_000);
         sieve.sieve();
 
-        // about 2 seconds on my iCore 7 3770
+        // about 1 second on my iCore 7 3770
         System.out.println("stopWatch = " + stopWatch);
     }
 
