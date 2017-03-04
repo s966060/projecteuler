@@ -22,8 +22,23 @@ public class PrimeSieveCacheAware {
     public void sieve() {
         int limit = getLimit();
 
-        int primeBatch = 0;
-        int compositeBatch = 1;
+        int batchEnd = this.numbers.length / BATCH;
+
+        if ((batchEnd % BATCH) > 0) {
+            ++batchEnd;
+        }
+
+        for (int primeBatch = 0; primeBatch <= batchEnd; ++primeBatch) {
+            for (int compositeBatch = primeBatch + 1; compositeBatch <= batchEnd; ++compositeBatch) {
+                sieve(limit, primeBatch, compositeBatch);
+            }
+        }
+    }
+
+    private void sieve(int limit, int primeBatch, int compositeBatch) {
+        if (compositeBatch <= primeBatch) {
+            throw new IllegalArgumentException();
+        }
 
         // BATCH SIZE 1000
         // batch 0 -> 0 ... 999
@@ -40,9 +55,8 @@ public class PrimeSieveCacheAware {
                 int prime = primeIndex;
 
                 int factor = compositeBegin / prime;
-                int modulo = compositeBegin % prime;
 
-                if (modulo > 0) {
+                if ((compositeBegin % prime) > 0) {
                     ++factor;
                 }
 
