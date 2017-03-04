@@ -3,10 +3,10 @@ package org.fde.util.primes.sieve;
 import java.util.Arrays;
 import java.util.Iterator;
 
-public class PrimeSieve {
+public class PrimeSieveUsingArray {
     private boolean[] numbers;
 
-    public PrimeSieve(int upTo) {
+    public PrimeSieveUsingArray(int upTo) {
         this.numbers = new boolean[upTo + 1];
     }
 
@@ -80,7 +80,7 @@ public class PrimeSieve {
 
     @Override
     public String toString() {
-        return "PrimeSieve{" +
+        return "PrimeSieveUsingArray{" +
                 "numbers=" + Arrays.toString(numbers) +
                 '}';
     }

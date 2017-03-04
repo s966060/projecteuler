@@ -13,7 +13,7 @@ public class PrimeSieveCacheAware {
         this.numbers = new boolean[upTo + 1];
 
         // initialize numbers with all prime / composite results <= BATCH
-        PrimeSieve sieve = new PrimeSieve(BATCH);
+        PrimeSieveUsingArray sieve = new PrimeSieveUsingArray(BATCH);
         sieve.sieve();
 
         System.arraycopy(sieve.getNumbers(), 0, this.numbers, 0,

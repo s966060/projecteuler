@@ -5,10 +5,10 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class PrimeSieveTest {
+public class PrimeSieveUsingArrayTest {
     @Test
-    public void primeSieveTest() {
-        PrimeSieve sieve = new PrimeSieve(10_000_000);
+    public void primeSieveUsingArrayTest() {
+        PrimeSieveUsingArray sieve = new PrimeSieveUsingArray(10_000_000);
         sieve.sieve();
 
         PrimeBuilder builder = new PrimeBuilder();
