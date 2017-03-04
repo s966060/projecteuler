@@ -7,7 +7,7 @@ import static org.junit.Assert.assertEquals;
 
 public class PrimeSieveCacheAwareTest {
     @Test
-    public void primeSieveTest() {
+    public void primeSieveCacheAwareTest() {
         PrimeSieveCacheAware sieve = new PrimeSieveCacheAware(1_000_000);
         sieve.sieve();
 
