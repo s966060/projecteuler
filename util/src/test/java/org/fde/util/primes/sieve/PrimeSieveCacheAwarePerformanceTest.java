@@ -9,7 +9,7 @@ public class PrimeSieveCacheAwarePerformanceTest {
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
 
-        PrimeSieveCacheAware sieve = new PrimeSieveCacheAware(1_000_000);
+        PrimeSieve sieve = new PrimeSieveCacheAware(1_000_000);
         sieve.sieve();
 
         // about 5 milliseconds on my iCore 7 3770
@@ -21,7 +21,7 @@ public class PrimeSieveCacheAwarePerformanceTest {
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
 
-        PrimeSieveCacheAware sieve = new PrimeSieveCacheAware(10_000_000);
+        PrimeSieve sieve = new PrimeSieveCacheAware(10_000_000);
         sieve.sieve();
 
         // about 40 milliseconds on my iCore 7 3770
@@ -33,7 +33,7 @@ public class PrimeSieveCacheAwarePerformanceTest {
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
 
-        PrimeSieveCacheAware sieve = new PrimeSieveCacheAware(100_000_000);
+        PrimeSieve sieve = new PrimeSieveCacheAware(100_000_000);
         sieve.sieve();
 
         // about 350 milli seconds on my iCore 7 3770
@@ -45,7 +45,7 @@ public class PrimeSieveCacheAwarePerformanceTest {
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
 
-        PrimeSieveCacheAware sieve = new PrimeSieveCacheAware(1_000_000_000);
+        PrimeSieve sieve = new PrimeSieveCacheAware(1_000_000_000);
         sieve.sieve();
 
         // about 4 seconds on my iCore 7 3770

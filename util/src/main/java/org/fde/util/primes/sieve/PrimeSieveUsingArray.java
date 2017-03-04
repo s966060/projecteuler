@@ -3,13 +3,14 @@ package org.fde.util.primes.sieve;
 import java.util.Arrays;
 import java.util.Iterator;
 
-public class PrimeSieveUsingArray {
+public class PrimeSieveUsingArray implements PrimeSieve {
     private boolean[] numbers;
 
     public PrimeSieveUsingArray(int upTo) {
         this.numbers = new boolean[upTo + 1];
     }
 
+    @Override
     public void sieve() {
         int limit = getLimit();
 
@@ -41,6 +42,7 @@ public class PrimeSieveUsingArray {
         return Math.min(primeLimit, getLength());
     }
 
+    @Override
     public Iterable<Long> getPrimes() {
         return getPrimeIterable();
     }

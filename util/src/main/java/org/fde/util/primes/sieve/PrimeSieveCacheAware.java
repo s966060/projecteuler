@@ -3,7 +3,7 @@ package org.fde.util.primes.sieve;
 import java.util.Arrays;
 import java.util.Iterator;
 
-public class PrimeSieveCacheAware {
+public class PrimeSieveCacheAware implements PrimeSieve {
     private final static int BATCH = 1000000;
     private final int limit;
 
@@ -22,6 +22,7 @@ public class PrimeSieveCacheAware {
         this.limit = getLimit();
     }
 
+    @Override
     public void sieve() {
         int batchEnd = getLength() / BATCH;
 
@@ -79,6 +80,7 @@ public class PrimeSieveCacheAware {
         return Math.min(primeLimit, getLength());
     }
 
+    @Override
     public Iterable<Long> getPrimes() {
         return getPrimeIterable();
     }

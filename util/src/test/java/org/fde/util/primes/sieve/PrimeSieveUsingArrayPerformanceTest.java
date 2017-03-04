@@ -9,7 +9,7 @@ public class PrimeSieveUsingArrayPerformanceTest {
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
 
-        PrimeSieveUsingArray sieve = new PrimeSieveUsingArray(1_000_000);
+        PrimeSieve sieve = new PrimeSieveUsingArray(1_000_000);
         sieve.sieve();
 
         // about 5 milliseconds on my iCore 7 3770
@@ -21,7 +21,7 @@ public class PrimeSieveUsingArrayPerformanceTest {
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
 
-        PrimeSieveUsingArray sieve = new PrimeSieveUsingArray(10_000_000);
+        PrimeSieve sieve = new PrimeSieveUsingArray(10_000_000);
         sieve.sieve();
 
         // about 50 milliseconds on my iCore 7 3770
@@ -33,7 +33,7 @@ public class PrimeSieveUsingArrayPerformanceTest {
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
 
-        PrimeSieveUsingArray sieve = new PrimeSieveUsingArray(100_000_000);
+        PrimeSieve sieve = new PrimeSieveUsingArray(100_000_000);
         sieve.sieve();
 
         // about 1 second on my iCore 7 3770
@@ -45,7 +45,7 @@ public class PrimeSieveUsingArrayPerformanceTest {
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
 
-        PrimeSieveUsingArray sieve = new PrimeSieveUsingArray(1_000_000_000);
+        PrimeSieve sieve = new PrimeSieveUsingArray(1_000_000_000);
         sieve.sieve();
 
         // about 11.5seconds on my iCore 7 3770

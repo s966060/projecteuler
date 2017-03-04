@@ -8,7 +8,7 @@ import static org.junit.Assert.assertEquals;
 public class PrimeSieveUsingArrayTest {
     @Test
     public void primeSieveUsingArrayTest() {
-        PrimeSieveUsingArray sieve = new PrimeSieveUsingArray(10_000_000);
+        PrimeSieve sieve = new PrimeSieveUsingArray(10_000_000);
         sieve.sieve();
 
         PrimeBuilder builder = new PrimeBuilder();
