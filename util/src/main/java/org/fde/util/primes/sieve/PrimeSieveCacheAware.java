@@ -17,13 +17,13 @@ public class PrimeSieveCacheAware {
         sieve.sieve();
 
         System.arraycopy(sieve.getNumbers(), 0, this.numbers, 0,
-                Math.min(sieve.getNumbers().length, this.numbers.length));
+                Math.min(sieve.getNumbers().length, getLength()));
 
         this.limit = getLimit();
     }
 
     public void sieve() {
-        int batchEnd = this.numbers.length / BATCH;
+        int batchEnd = getLength() / BATCH;
 
         if ((batchEnd % BATCH) > 0) {
             ++batchEnd;
@@ -49,13 +49,13 @@ public class PrimeSieveCacheAware {
         int primeEnd;
         primeEnd = ((primeBatch + 1) * BATCH) - 1;
         primeEnd = Math.min(primeEnd, limit);
-        primeEnd = Math.min(primeEnd, numbers.length - 1);
+        primeEnd = Math.min(primeEnd, getLength() - 1);
 
         int compositeBegin = compositeBatch * BATCH;
-        int compositeEnd = Math.min(((compositeBatch + 1) * BATCH) - 1, numbers.length - 1);
+        int compositeEnd = Math.min(((compositeBatch + 1) * BATCH) - 1, getLength() - 1);
 
         for (int primeIndex = primeBegin; primeIndex <= primeEnd; ++primeIndex) {
-            if (!this.numbers[primeIndex]) {
+            if (isPrime(primeIndex)) {
                 int prime = primeIndex;
 
                 int factor = compositeBegin / prime;
@@ -67,7 +67,7 @@ public class PrimeSieveCacheAware {
                 int composite = prime * factor;
 
                 while (composite <= compositeEnd) {
-                    this.numbers[composite] = true;
+                    setComposite(composite, true);
                     composite += prime;
                 }
             }
@@ -75,8 +75,8 @@ public class PrimeSieveCacheAware {
     }
 
     private int getLimit() {
-        int primeLimit = (int) Math.sqrt(this.numbers.length) + 1;
-        return Math.min(primeLimit, this.numbers.length);
+        int primeLimit = (int) Math.sqrt(getLength()) + 1;
+        return Math.min(primeLimit, getLength());
     }
 
     public Iterable<Long> getPrimes() {
@@ -93,8 +93,8 @@ public class PrimeSieveCacheAware {
 
             @Override
             public boolean hasNext() {
-                for (int search = index; search < numbers.length; ++search) {
-                    if (!numbers[search]) {
+                for (int search = index; search < getLength(); ++search) {
+                    if (isPrime(search)) {
                         return true;
                     }
                 }
@@ -104,8 +104,8 @@ public class PrimeSieveCacheAware {
 
             @Override
             public Long next() {
-                for (int search = index; search < numbers.length; ++search) {
-                    if (!numbers[search]) {
+                for (int search = index; search < getLength(); ++search) {
+                    if (isPrime(search)) {
                         index = search + 1;
                         return (long) search;
                     }
@@ -121,5 +121,17 @@ public class PrimeSieveCacheAware {
         return "PrimeSieveCacheAware{" +
                 "numbers=" + Arrays.toString(numbers) +
                 '}';
+    }
+
+    private boolean isPrime(int index) {
+        return !this.numbers[index];
+    }
+
+    private int getLength() {
+        return this.numbers.length;
+    }
+
+    private void setComposite(int index, boolean isComposite) {
+        this.numbers[index] = isComposite;
     }
 }
