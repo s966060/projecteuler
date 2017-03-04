@@ -5,7 +5,7 @@ import org.junit.Test;
 
 public class PrimeSievePerformanceTest {
     @Test
-    public void upTo_1_Million() {
+    public void A_upTo_A_1_Million() {
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
 
@@ -17,7 +17,7 @@ public class PrimeSievePerformanceTest {
     }
 
     @Test
-    public void upTo_10_Million() {
+    public void B_upTo_B_10_Million() {
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
 
@@ -29,7 +29,7 @@ public class PrimeSievePerformanceTest {
     }
 
     @Test
-    public void upTo_100_Million() {
+    public void C_upTo_C_100_Million() {
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
 
@@ -41,7 +41,7 @@ public class PrimeSievePerformanceTest {
     }
 
     @Test
-    public void upTo_1000_Million() {
+    public void D_upTo_D_1000_Million() {
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
 
