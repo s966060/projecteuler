@@ -1,5 +1,6 @@
 package org.fde.util;
 
+import org.fde.util.primes.PrimeFactors;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -28,10 +29,12 @@ public class RatioTest {
 
     @Test
     public void simplify() {
+        PrimeFactors factors = new PrimeFactors();
+
         int nominator = 2 * 3 * 4 * 5 * 6 * 7 * 8 * 9;
         int denominator = 3 * 4 * 5 * 6 * 7 * 8;
 
-        Ratio actual = new Ratio(nominator, denominator).simplify();
+        Ratio actual = new Ratio(nominator, denominator).simplify(factors);
 
         assertEquals(new Ratio(18, 1), actual);
     }

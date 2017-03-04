@@ -3,12 +3,16 @@ package org.fde.util;
 import org.fde.util.primes.PrimeFactors;
 
 public class Ratio {
-    private final int nominator;
-    private final int denominator;
+    private final long nominator;
+    private final long denominator;
 
-    public Ratio(int nominator, int denominator) {
+    public Ratio(long nominator, long denominator) {
         this.nominator = nominator;
         this.denominator = denominator;
+    }
+
+    public Ratio(long nominator) {
+        this(nominator, 1);
     }
 
     public Ratio add(Ratio other) {
@@ -29,11 +33,11 @@ public class Ratio {
                 this.denominator * other.nominator);
     }
 
-    public Ratio simplify() {
-        ListOfLong commonFactors = getCommonFactors();
+    public Ratio simplify(PrimeFactors factors) {
+        ListOfLong commonFactors = getCommonFactors(factors);
 
-        int newNominator = this.nominator;
-        int newDecnominator = this.denominator;
+        long newNominator = this.nominator;
+        long newDecnominator = this.denominator;
 
         for (Long factor : commonFactors) {
             newNominator /= factor;
@@ -43,9 +47,7 @@ public class Ratio {
         return new Ratio(newNominator, newDecnominator);
     }
 
-    private ListOfLong getCommonFactors() {
-        PrimeFactors factors = new PrimeFactors();
-
+    private ListOfLong getCommonFactors(PrimeFactors factors) {
         ListOfLong nominatorFactors = factors.getPrimeFactors(this.nominator);
         ListOfLong denominatorFactors = factors.getPrimeFactors(this.denominator);
 
@@ -54,10 +56,8 @@ public class Ratio {
 
     @Override
     public String toString() {
-        return "Ratio{" +
-                "nominator=" + nominator +
-                ", denominator=" + denominator +
-                '}';
+        return String.format("Ratio{nominator=%,d, denominator=%,d}",
+                nominator, denominator);
     }
 
     @Override
@@ -73,8 +73,20 @@ public class Ratio {
 
     @Override
     public int hashCode() {
-        int result = nominator;
-        result = 31 * result + denominator;
+        int result = (int) (nominator ^ (nominator >>> 32));
+        result = 31 * result + (int) (denominator ^ (denominator >>> 32));
         return result;
+    }
+
+    public long getDenominator() {
+        return denominator;
+    }
+
+    public long getNominator() {
+        return nominator;
+    }
+
+    public double getRatioAsDouble() {
+        return ((double) nominator) / ((double) denominator);
     }
 }

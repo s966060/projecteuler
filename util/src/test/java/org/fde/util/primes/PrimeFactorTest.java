@@ -188,4 +188,11 @@ public class PrimeFactorTest {
 
         assertEquals(createListOfLong(2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 8191), factors);
     }
+
+    @Test
+    public void _1023286908188737() {
+        ListOfLong factors = new PrimeFactors().getPrimeFactors(1_023_286_908_188_737L);
+        assertEquals(createListOfLong(577, 188801, 9393281), factors);
+        System.out.println("factors = " + factors);
+    }
 }

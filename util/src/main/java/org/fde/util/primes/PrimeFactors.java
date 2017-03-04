@@ -11,6 +11,11 @@ public class PrimeFactors {
     }
 
     public ListOfLong getPrimeFactors(long target) {
+        if(target < 0) {
+            String msg = String.format("target (%.d) < 0", target);
+            throw new IllegalArgumentException(msg);
+        }
+
         PrimeBuilder builder = new PrimeBuilder(this.primes);
 
         ListOfLong factors = new ListOfLong();
