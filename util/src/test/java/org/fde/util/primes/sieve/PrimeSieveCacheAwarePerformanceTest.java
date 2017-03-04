@@ -39,4 +39,16 @@ public class PrimeSieveCacheAwarePerformanceTest {
         // about 2 seconds on my iCore 7 3770
         System.out.println("stopWatch = " + stopWatch);
     }
+
+    @Test
+    public void upTo_1000_Million() {
+        StopWatch stopWatch = new StopWatch();
+        stopWatch.start();
+
+        PrimeSieveCacheAware sieve = new PrimeSieveCacheAware(1_000_000_000);
+        sieve.sieve();
+
+        // about 11.5 seconds on my iCore 7 3770
+        System.out.println("stopWatch = " + stopWatch);
+    }
 }
