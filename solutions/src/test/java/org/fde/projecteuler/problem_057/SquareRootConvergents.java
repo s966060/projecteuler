@@ -12,15 +12,16 @@ public class SquareRootConvergents {
         PrimeFactors factors = new PrimeFactors();
         int yes = 0;
 
-        for (int iteration = 1; iteration <= 100; ++iteration) {
-            Ratio base = new Ratio(1, 2);
+        Ratio base = new Ratio(1, 2);
 
-            for (int expand = 1; expand <= (iteration - 1); ++expand) {
+        for (int iteration = 1; iteration <= 100; ++iteration) {
+
+            if(iteration > 1) {
                 base = base.add(new Ratio(2));
                 base = new Ratio(1).div(base);
                 base = base.simplify(factors);
-                // System.out.printf("    expand (%s) base (%s) %n", expand, base);
             }
+                // System.out.printf("    expand (%s) base (%s) %n", expand, base);
 
             Ratio result;
             result = new Ratio(1).add(base);
