@@ -27,14 +27,12 @@ public class PrimeSieve {
     }
 
     private void eliminateComposites(int prime) {
-        int multiple = 2;
         int composite;
-        composite = prime * multiple;
+        composite = prime + prime;
 
         while (composite < this.composites.length) {
             this.composites[composite] = true;
-            ++multiple;
-            composite = prime * multiple;
+            composite += prime;
         }
     }
 
