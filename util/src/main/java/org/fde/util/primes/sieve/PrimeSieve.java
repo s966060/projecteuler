@@ -13,12 +13,12 @@ public class PrimeSieve {
     public void sieve() {
         int limit = getLimit();
 
-        this.numbers[0] = true;
-        this.numbers[1] = true;
-        this.numbers[2] = false;
+        setComposite(0, true);
+        setComposite(1, true);
+        setComposite(2, false);
 
         for (int index = 0; index < limit; ++index) {
-            if (!this.numbers[index]) {
+            if (isPrime(index)) {
                 int prime = index;
 
                 eliminateComposites(prime);
@@ -30,15 +30,15 @@ public class PrimeSieve {
         int composite;
         composite = prime + prime;
 
-        while (composite < this.numbers.length) {
-            this.numbers[composite] = true;
+        while (composite < getLength()) {
+            setComposite(composite, true);
             composite += prime;
         }
     }
 
     private int getLimit() {
-        int primeLimit = (int) Math.sqrt(this.numbers.length) + 1;
-        return Math.min(primeLimit, this.numbers.length);
+        int primeLimit = (int) Math.sqrt(getLength()) + 1;
+        return Math.min(primeLimit, getLength());
     }
 
     public Iterable<Long> getPrimes() {
@@ -55,8 +55,8 @@ public class PrimeSieve {
 
             @Override
             public boolean hasNext() {
-                for (int search = index; search < numbers.length; ++search) {
-                    if (!numbers[search]) {
+                for (int search = index; search < getLength(); ++search) {
+                    if (isPrime(search)) {
                         return true;
                     }
                 }
@@ -66,8 +66,8 @@ public class PrimeSieve {
 
             @Override
             public Long next() {
-                for (int search = index; search < numbers.length; ++search) {
-                    if (!numbers[search]) {
+                for (int search = index; search < getLength(); ++search) {
+                    if (isPrime(search)) {
                         index = search + 1;
                         return (long) search;
                     }
@@ -87,5 +87,17 @@ public class PrimeSieve {
 
     boolean[] getNumbers() {
         return this.numbers;
+    }
+
+    private boolean isPrime(int index) {
+        return !this.numbers[index];
+    }
+
+    private int getLength() {
+        return this.numbers.length;
+    }
+
+    private void setComposite(int index, boolean isComposite) {
+        this.numbers[index] = isComposite;
     }
 }
