@@ -52,7 +52,7 @@ public class PrimeSieveUsingArrayPerformanceTest {
         System.out.println("stopWatch = " + stopWatch);
     }
 
-    private PrimeSieveUsingArray createPrimeSieve(int upTo) {
+    private PrimeSieve createPrimeSieve(int upTo) {
         return new PrimeSieveUsingArray(upTo);
     }
 }

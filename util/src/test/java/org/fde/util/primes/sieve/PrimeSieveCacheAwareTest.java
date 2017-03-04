@@ -24,7 +24,7 @@ public class PrimeSieveCacheAwareTest {
         assertEquals(664579, count);
     }
 
-    private PrimeSieveUsingArray createPrimeSieve(int upTo) {
+    private PrimeSieve createPrimeSieve(int upTo) {
         return new PrimeSieveUsingArray(upTo);
     }
 }

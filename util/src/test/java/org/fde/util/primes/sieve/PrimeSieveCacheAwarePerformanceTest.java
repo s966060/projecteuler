@@ -52,7 +52,7 @@ public class PrimeSieveCacheAwarePerformanceTest {
         System.out.println("stopWatch = " + stopWatch);
     }
 
-    private PrimeSieveCacheAware createPrimeSieve(int upTo) {
+    private PrimeSieve createPrimeSieve(int upTo) {
         return new PrimeSieveCacheAware(upTo);
     }
 }
