@@ -4,35 +4,55 @@ import java.util.Arrays;
 import java.util.Iterator;
 
 public class PrimeSieveCacheAware {
+    private final static int BATCH = 1000;
+
     private boolean[] numbers;
 
     public PrimeSieveCacheAware(int upTo) {
         this.numbers = new boolean[upTo + 1];
+
+        // initialize numbers with all prime / composite results <= BATCH
+        PrimeSieve sieve = new PrimeSieve(BATCH);
+        sieve.sieve();
+
+        System.arraycopy(sieve.getNumbers(), 0, this.numbers, 0,
+                Math.min(sieve.getNumbers().length, this.numbers.length));
     }
 
     public void sieve() {
         int limit = getLimit();
 
-        this.numbers[0] = true;
-        this.numbers[1] = true;
-        this.numbers[2] = false;
+        int primeBatch = 0;
+        int compositeBatch = 1;
 
-        for (int index = 0; index < limit; ++index) {
-            if (!this.numbers[index]) {
-                int prime = index;
+        // BATCH SIZE 1000
+        // batch 0 -> 0 ... 999
+        // batch 1 -> 1000 ... 1999
+        // ...
+        int primeBegin = primeBatch * BATCH;
+        int primeEnd = Math.min(Math.min(((primeBatch + 1) * BATCH) - 1, limit), numbers.length - 1);
 
-                eliminateComposites(prime);
+        int compositeBegin = compositeBatch * BATCH;
+        int compositeEnd = Math.min(((compositeBatch + 1) * BATCH) - 1, numbers.length - 1);
+
+        for (int primeIndex = primeBegin; primeIndex <= primeEnd; ++primeIndex) {
+            if (!this.numbers[primeIndex]) {
+                int prime = primeIndex;
+
+                int factor = compositeBegin / prime;
+                int modulo = compositeBegin % prime;
+
+                if (modulo > 0) {
+                    ++factor;
+                }
+
+                int composite = prime * factor;
+
+                while (composite <= compositeEnd) {
+                    this.numbers[composite] = true;
+                    composite += prime;
+                }
             }
-        }
-    }
-
-    private void eliminateComposites(int prime) {
-        int composite;
-        composite = prime + prime;
-
-        while (composite < this.numbers.length) {
-            this.numbers[composite] = true;
-            composite += prime;
         }
     }
 
