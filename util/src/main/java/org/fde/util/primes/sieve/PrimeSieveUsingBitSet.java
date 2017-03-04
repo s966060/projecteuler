@@ -84,8 +84,9 @@ public class PrimeSieveUsingBitSet implements PrimeSieve {
 
     @Override
     public String toString() {
-        return "PrimeSieve{" +
-                "numbers=" + numbers +
+        return "PrimeSieveUsingBitSet{" +
+                "length=" + length +
+                ", numbers=" + numbers +
                 '}';
     }
 
