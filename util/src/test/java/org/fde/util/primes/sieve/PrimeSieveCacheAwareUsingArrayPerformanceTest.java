@@ -3,7 +3,7 @@ package org.fde.util.primes.sieve;
 import org.apache.commons.lang3.time.StopWatch;
 import org.junit.Test;
 
-public class PrimeSieveCacheAwarePerformanceTest {
+public class PrimeSieveCacheAwareUsingArrayPerformanceTest {
     @Test
     public void A_upTo_A_1_Million() {
         StopWatch stopWatch = new StopWatch();
@@ -53,6 +53,6 @@ public class PrimeSieveCacheAwarePerformanceTest {
     }
 
     private PrimeSieve createPrimeSieve(int upTo) {
-        return new PrimeSieveCacheAware(upTo);
+        return new PrimeSieveCacheAwareUsingArray(upTo);
     }
 }

@@ -3,13 +3,13 @@ package org.fde.util.primes.sieve;
 import java.util.Arrays;
 import java.util.Iterator;
 
-public class PrimeSieveCacheAware implements PrimeSieve {
+public class PrimeSieveCacheAwareUsingArray implements PrimeSieve {
     private final static int BATCH = 1000000;
     private final int limit;
 
     private boolean[] numbers;
 
-    public PrimeSieveCacheAware(int upTo) {
+    public PrimeSieveCacheAwareUsingArray(int upTo) {
         this.numbers = new boolean[upTo + 1];
 
         // initialize numbers with all prime / composite results <= BATCH
@@ -120,7 +120,7 @@ public class PrimeSieveCacheAware implements PrimeSieve {
 
     @Override
     public String toString() {
-        return "PrimeSieveCacheAware{" +
+        return "PrimeSieveCacheAwareUsingArray{" +
                 "numbers=" + Arrays.toString(numbers) +
                 '}';
     }

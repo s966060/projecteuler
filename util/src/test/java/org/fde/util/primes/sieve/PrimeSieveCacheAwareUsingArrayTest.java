@@ -5,9 +5,9 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class PrimeSieveCacheAwareTest {
+public class PrimeSieveCacheAwareUsingArrayTest {
     @Test
-    public void primeSieveCacheAwareTest() {
+    public void primeSieveCacheAwareUsingArrayTest() {
         PrimeSieve sieve = createPrimeSieve(10_000_000);
         sieve.sieve();
 
