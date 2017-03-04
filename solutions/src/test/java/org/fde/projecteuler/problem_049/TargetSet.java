@@ -1,6 +1,9 @@
 package org.fde.projecteuler.problem_049;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.TreeSet;
 import java.util.function.Consumer;
 
 class TargetSet implements Iterable<Target> {

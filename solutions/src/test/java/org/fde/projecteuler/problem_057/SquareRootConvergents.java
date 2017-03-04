@@ -1,6 +1,5 @@
 package org.fde.projecteuler.problem_057;
 
-import org.apache.commons.lang3.text.translate.NumericEntityEscaper;
 import org.fde.util.Ratio;
 import org.fde.util.primes.PrimeFactors;
 import org.junit.Test;

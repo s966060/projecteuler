@@ -3,7 +3,6 @@ package org.fde.projecteuler.problem_052;
 import org.fde.util.Digits;
 import org.fde.util.ListOfLong;
 import org.fde.util.SetOfLong;
-import org.fde.util.primes.PrimeBuilder;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

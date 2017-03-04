@@ -6,8 +6,8 @@ import org.fde.util.permutations.Permutation;
 import org.fde.util.permutations.PermutationList;
 import org.junit.Test;
 
-import static org.fde.util.ListOfLong.*;
-import static org.fde.util.permutations.Permutation.*;
+import static org.fde.util.ListOfLong.createListOfLong;
+import static org.fde.util.permutations.Permutation.createPermutation;
 import static org.junit.Assert.assertEquals;
 
 public class LexicographicPermutationTest {
