@@ -1,7 +1,6 @@
 package org.fde.util.primes;
 
 import org.apache.commons.lang3.time.DurationFormatUtils;
-import org.apache.commons.lang3.time.StopWatch;
 import org.fde.util.ListOfLong;
 
 import java.util.Iterator;

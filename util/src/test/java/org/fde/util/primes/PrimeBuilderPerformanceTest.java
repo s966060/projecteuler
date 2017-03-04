@@ -1,7 +1,7 @@
 package org.fde.util.primes;
 
-import org.junit.Test;
 import org.apache.commons.lang3.time.StopWatch;
+import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 

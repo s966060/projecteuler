@@ -1,6 +1,5 @@
 package org.fde.util.primes.sieve;
 
-import java.util.Arrays;
 import java.util.BitSet;
 import java.util.Iterator;
 
