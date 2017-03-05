@@ -29,6 +29,6 @@ public class PrimeSieveUsingArrayTest {
     }
 
     private PrimeSieve createPrimeSieve(int upTo) {
-        return PrimeSieveUsingArray.createPrimeSieveUsingArray(10_000_000);
+        return PrimeSieveFactory.createPrimeSieveUsingArray(10_000_000);
     }
 }

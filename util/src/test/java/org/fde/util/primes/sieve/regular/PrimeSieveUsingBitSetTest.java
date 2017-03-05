@@ -29,6 +29,6 @@ public class PrimeSieveUsingBitSetTest {
     }
 
     private PrimeSieve createPrimeSieve(int upTo) {
-        return PrimeSieveUsingBitSet.createPrimeSieveUsingBitSet(10_000_000);
+        return PrimeSieveFactory.createPrimeSieveUsingBitSet(10_000_000);
     }
 }

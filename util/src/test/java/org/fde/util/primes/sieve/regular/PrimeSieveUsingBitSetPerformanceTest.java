@@ -56,6 +56,6 @@ public class PrimeSieveUsingBitSetPerformanceTest {
     }
 
     private PrimeSieve createPrimeSieve(int upTo) {
-        return PrimeSieveUsingBitSet.createPrimeSieveUsingBitSet(upTo);
+        return PrimeSieveFactory.createPrimeSieveUsingBitSet(upTo);
     }
 }

@@ -56,6 +56,6 @@ public class PrimeSieveUsingArrayPerformanceTest {
     }
 
     private PrimeSieve createPrimeSieve(int upTo) {
-        return PrimeSieveUsingArray.createPrimeSieveUsingArray(upTo);
+        return PrimeSieveFactory.createPrimeSieveUsingArray(upTo);
     }
 }
