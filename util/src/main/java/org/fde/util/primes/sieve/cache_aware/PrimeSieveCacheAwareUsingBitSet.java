@@ -12,20 +12,18 @@ public class PrimeSieveCacheAwareUsingBitSet
         implements PrimeSieve, PrimeSieveIterable {
 
     private final static int BATCH_SIZE = 1000000;
-    private final int length;
 
-    private final BitSet numbers;
+    private final BitSetStore store;
 
     public PrimeSieveCacheAwareUsingBitSet(int upTo) {
-        this.length = upTo + 1;
-        this.numbers = new BitSet(length);
+        this.store = new BitSetStore(upTo);
 
         // initialize numbers with all prime / composite results <= BATCH_SIZE
         PrimeSieveUsingArray sieve = new PrimeSieveUsingArray(getBatchSize());
         sieve.sieve();
 
         for(int index = 0; index < sieve.getLength(); ++index) {
-            setComposite(index, !sieve.isPrime(index));
+            store.setComposite(index, !sieve.isPrime(index));
         }
     }
 
@@ -41,20 +39,19 @@ public class PrimeSieveCacheAwareUsingBitSet
     @Override
     public String toString() {
         return "PrimeSieveCacheAwareUsingBitSet{" +
-                "length=" + length +
-                ", numbers=" + numbers +
+                "store=" + store +
                 '}';
     }
 
     public boolean isPrime(int index) {
-        return !this.numbers.get(index);
+        return store.isPrime(index);
     }
 
     public int getLength() {
-        return length;
+        return store.getLength();
     }
 
     void setComposite(int index, boolean isComposite) {
-        this.numbers.set(index, isComposite);
+        store.setComposite(index, isComposite);
     }
 }
