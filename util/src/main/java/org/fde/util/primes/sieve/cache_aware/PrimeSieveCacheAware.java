@@ -6,6 +6,8 @@ import org.fde.util.primes.sieve.regular.PrimeSieveRegular;
 import org.fde.util.primes.sieve.regular.PrimeSieveRegularFactory;
 import org.fde.util.primes.sieve.store.Store;
 
+import static org.fde.util.primes.sieve.regular.PrimeSieveRegularFactory.createPrimeSieveUsingArray;
+
 public class PrimeSieveCacheAware
         implements PrimeSieveIterable, org.fde.util.primes.sieve.PrimeSieve {
 
@@ -15,17 +17,11 @@ public class PrimeSieveCacheAware
     public PrimeSieveCacheAware(Store store, int batchSize) {
         this.store = store;
         this.batchSize = batchSize;
-
-        // initialize numbers with all prime / composite results <= BATCH_SIZE
-        PrimeSieveRegular sieve = PrimeSieveRegularFactory.createPrimeSieveUsingArray(getBatchSize());
-        sieve.sieve();
-
-        for (int index = 0; index < sieve.getLength(); ++index) {
-            store.setComposite(index, !sieve.isPrime(index));
-        }
     }
 
     public final void sieve() {
+        initializeSieve();
+
         int batchEnd = getLength() / getBatchSize();
 
         if ((batchEnd % getBatchSize()) > 0) {
@@ -36,6 +32,16 @@ public class PrimeSieveCacheAware
             for (int compositeBatch = primeBatch + 1; compositeBatch <= batchEnd; ++compositeBatch) {
                 sieve(primeBatch, compositeBatch);
             }
+        }
+    }
+
+    private void initializeSieve() {
+        // initialize numbers with all prime / composite results <= BATCH_SIZE
+        PrimeSieveRegular sieve = createPrimeSieveUsingArray(getBatchSize());
+        sieve.sieve();
+
+        for (int index = 0; index < sieve.getLength(); ++index) {
+            store.setComposite(index, !sieve.isPrime(index));
         }
     }
 
