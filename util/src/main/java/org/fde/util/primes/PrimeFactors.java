@@ -9,13 +9,12 @@ import java.util.Map;
 import static org.fde.util.ListOfLong.createListOfLong;
 
 public class PrimeFactors {
+    private final static Map<Long, ListOfLong> LARGE_KNOWN_PRIMES = createLargeKnownFactorizations();
     private final Primes primes;
 
     public PrimeFactors() {
         this.primes = new Primes();
     }
-
-    private final static Map<Long, ListOfLong> LARGE_KNOWN_PRIMES = createLargeKnownFactorizations();
 
     private static Map<Long, ListOfLong> createLargeKnownFactorizations() {
         Map map = new HashMap();

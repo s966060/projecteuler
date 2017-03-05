@@ -7,6 +7,9 @@ import java.util.Iterator;
 
 public class Primes {
 
+    private static final long LOG_THRESHOLD = 1_000_000_000;
+    private static long TOTAL_ELAPSED = 0;
+    private static long LOG_ELAPSED = LOG_THRESHOLD;
     private final ListOfLong primes;
 
     public Primes() {
@@ -52,22 +55,17 @@ public class Primes {
                 '}';
     }
 
-    private static long TOTAL_ELAPSED =0 ;
-    private static final long LOG_THRESHOLD = 1_000_000_000;
-    private static long LOG_ELAPSED = LOG_THRESHOLD;
-
     public boolean contains(long suspect) {
         long start = System.nanoTime();
 
         try {
             boolean isKnownPrime = this.primes.containsByBinarySearch(suspect);
             return isKnownPrime;
-        }
-        finally {
+        } finally {
             long elapsed = System.nanoTime() - start;
             TOTAL_ELAPSED += elapsed;
 
-            if(TOTAL_ELAPSED > LOG_ELAPSED) {
+            if (TOTAL_ELAPSED > LOG_ELAPSED) {
                 LOG_ELAPSED += LOG_THRESHOLD;
 
                 long durationMillis = TOTAL_ELAPSED / 1_000_000;

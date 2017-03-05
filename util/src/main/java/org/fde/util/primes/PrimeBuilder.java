@@ -73,7 +73,7 @@ public class PrimeBuilder {
     public long next(long target) {
         long next = next();
 
-        while(next < target) {
+        while (next < target) {
             next = next();
         }
 
@@ -90,7 +90,7 @@ public class PrimeBuilder {
     }
 
     public boolean isPrime(long suspect) {
-        while(suspect > getLastPrime()) {
+        while (suspect > getLastPrime()) {
             next();
         }
 
