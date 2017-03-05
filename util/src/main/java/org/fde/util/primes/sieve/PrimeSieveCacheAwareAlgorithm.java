@@ -1,7 +1,7 @@
 package org.fde.util.primes.sieve;
 
 public abstract class PrimeSieveCacheAwareAlgorithm {
-    public void sieve() {
+    public final void sieve() {
         int batchEnd = getLength() / getBatchSize();
 
         if ((batchEnd % getBatchSize()) > 0) {
@@ -53,7 +53,7 @@ public abstract class PrimeSieveCacheAwareAlgorithm {
         }
     }
 
-    int getLimit() {
+    private int getLimit() {
         int primeLimit = (int) Math.sqrt(getLength()) + 1;
         return Math.min(primeLimit, getLength());
     }

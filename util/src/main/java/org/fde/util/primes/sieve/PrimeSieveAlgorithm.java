@@ -1,7 +1,7 @@
 package org.fde.util.primes.sieve;
 
 public abstract class PrimeSieveAlgorithm {
-    public void sieve() {
+    public final void sieve() {
         int limit = getLimit();
 
         setComposite(0, true);
