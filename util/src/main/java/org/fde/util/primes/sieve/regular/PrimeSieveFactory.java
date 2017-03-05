@@ -5,10 +5,12 @@ import org.fde.util.primes.sieve.store.BitSetStore;
 
 public class PrimeSieveFactory {
     public static PrimeSieve createPrimeSieveUsingArray(int upTo) {
-        return new PrimeSieve(new ArrayStore(upTo + 1));
+        ArrayStore store = new ArrayStore(upTo + 1);
+        return new PrimeSieve(store);
     }
 
     public static PrimeSieve createPrimeSieveUsingBitSet(int upTo) {
-        return new PrimeSieve(new BitSetStore(upTo + 1));
+        BitSetStore store = new BitSetStore(upTo + 1);
+        return new PrimeSieve(store);
     }
 }

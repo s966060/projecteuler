@@ -5,10 +5,12 @@ import org.fde.util.primes.sieve.store.BitSetStore;
 
 public class PrimeSieveCacheAwareFactory {
     public static PrimeSieveCacheAware createPrimeSieveCacheAwareUsingArray(int upTo) {
-        return new PrimeSieveCacheAware(new ArrayStore(upTo + 1), 1_000_000);
+        ArrayStore store = new ArrayStore(upTo + 1);
+        return new PrimeSieveCacheAware(store, 1_000_000);
     }
 
     public static PrimeSieveCacheAware createPrimeSieveCacheAwareUsingBitSet(int upTo) {
-        return new PrimeSieveCacheAware(new BitSetStore(upTo + 1), 1_000_000);
+        BitSetStore store = new BitSetStore(upTo + 1);
+        return new PrimeSieveCacheAware(store, 1_000_000);
     }
 }
