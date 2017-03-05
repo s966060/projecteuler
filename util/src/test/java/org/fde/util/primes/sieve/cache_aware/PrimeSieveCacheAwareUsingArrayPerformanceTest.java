@@ -56,6 +56,6 @@ public class PrimeSieveCacheAwareUsingArrayPerformanceTest {
     }
 
     private PrimeSieve createPrimeSieve(int upTo) {
-        return PrimeSieveCacheAwareUsingArray.createPrimeSieveCacheAwareUsingArray(upTo);
+        return PrimeSieveCacheAwareFactory.createPrimeSieveCacheAwareUsingArray(upTo);
     }
 }

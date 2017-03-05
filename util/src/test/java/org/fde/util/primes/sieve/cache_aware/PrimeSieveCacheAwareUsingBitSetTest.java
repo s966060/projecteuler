@@ -29,6 +29,6 @@ public class PrimeSieveCacheAwareUsingBitSetTest {
     }
 
     private PrimeSieve createPrimeSieve(int upTo) {
-        return PrimeSieveCacheAwareUsingBitSet.createPrimeSieveCacheAwareUsingBitSet(upTo);
+        return PrimeSieveCacheAwareFactory.createPrimeSieveCacheAwareUsingBitSet(upTo);
     }
 }
