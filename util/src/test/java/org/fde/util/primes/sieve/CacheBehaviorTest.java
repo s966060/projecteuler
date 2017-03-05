@@ -10,7 +10,7 @@ import java.util.List;
 public class CacheBehaviorTest {
     @Test
     public void cacheBehaviorTest() throws Exception {
-        for(int iterations = 0; iterations < 50; ++iterations) {
+        for(int iterations = 0; iterations < 10; ++iterations) {
             System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
             System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
             System.out.println();
