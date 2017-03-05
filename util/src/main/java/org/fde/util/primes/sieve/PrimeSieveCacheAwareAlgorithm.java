@@ -53,6 +53,11 @@ public abstract class PrimeSieveCacheAwareAlgorithm {
         }
     }
 
+    int getLimit() {
+        int primeLimit = (int) Math.sqrt(getLength()) + 1;
+        return Math.min(primeLimit, getLength());
+    }
+
     abstract boolean isPrime(int index);
 
     abstract void setComposite(int index, boolean isComposite);
@@ -60,9 +65,4 @@ public abstract class PrimeSieveCacheAwareAlgorithm {
     abstract int getBatchSize();
 
     abstract int getLength();
-
-    int getLimit() {
-        int primeLimit = (int) Math.sqrt(getLength()) + 1;
-        return Math.min(primeLimit, getLength());
-    }
 }
