@@ -209,7 +209,7 @@ public class PrimeFactorTest {
         return primeFactors;
     }
 
-    // damn prime take a long time ... 22 secs on my workstation
+    // damn prime takes a long time ... 22 secs on my workstation
     @Test
     public void _1_746_860_020_068_409L() {
         ListOfLong factors = getPrimeFactors().getPrimeFactors(1_746_860_020_068_409L);
@@ -217,7 +217,7 @@ public class PrimeFactorTest {
         assertEquals(createListOfLong(1_746_860_020_068_409L), factors);
     }
 
-    // damn prime take a long time ... almost 18 minutes on my workstation
+    // damn prime takes a long time ... almost 18 minutes on my workstation
     @Test
     public void _489_133_282_872_437_279L() {
         ListOfLong factors = getPrimeFactors().getPrimeFactors(489_133_282_872_437_279L);
