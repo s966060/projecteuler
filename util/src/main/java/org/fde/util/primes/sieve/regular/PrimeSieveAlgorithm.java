@@ -1,6 +1,19 @@
 package org.fde.util.primes.sieve.regular;
 
-public abstract class PrimeSieveAlgorithm {
+import org.fde.util.primes.sieve.PrimeSieve;
+import org.fde.util.primes.sieve.PrimeSieveIterable;
+import org.fde.util.primes.sieve.PrimeSieveIterator;
+import org.fde.util.primes.sieve.store.Store;
+
+public abstract class PrimeSieveAlgorithm
+        implements PrimeSieve, PrimeSieveIterable {
+
+    private final Store store;
+
+    public PrimeSieveAlgorithm(Store store) {
+        this.store = store;
+    }
+
     public final void sieve() {
         int limit = getLimit();
 
@@ -32,9 +45,22 @@ public abstract class PrimeSieveAlgorithm {
         return Math.min(primeLimit, getLength());
     }
 
-    protected abstract int getLength();
+    @Override
+    public boolean isPrime(int index) {
+        return this.store.isPrime(index);
+    }
 
-    abstract boolean isPrime(int index);
+    @Override
+    public int getLength() {
+        return this.store.getLength();
+    }
 
-    abstract void setComposite(int index, boolean isComposite);
+    void setComposite(int index, boolean isComposite) {
+        this.store.setComposite(index, isComposite);
+    }
+
+    @Override
+    public Iterable<Long> getPrimes() {
+        return () -> new PrimeSieveIterator(this);
+    }
 }
