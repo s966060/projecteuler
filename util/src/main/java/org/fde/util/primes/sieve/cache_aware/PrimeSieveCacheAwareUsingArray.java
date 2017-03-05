@@ -20,8 +20,9 @@ public class PrimeSieveCacheAwareUsingArray
         PrimeSieveUsingArray sieve = new PrimeSieveUsingArray(getBatchSize());
         sieve.sieve();
 
-        System.arraycopy(sieve.getNumbers(), 0, store.getNumbers(), 0,
-                Math.min(sieve.getNumbers().length, getLength()));
+        for(int index = 0; index < sieve.getLength(); ++index) {
+            store.setComposite(index, !sieve.isPrime(index));
+        }
     }
 
     int getBatchSize() {
