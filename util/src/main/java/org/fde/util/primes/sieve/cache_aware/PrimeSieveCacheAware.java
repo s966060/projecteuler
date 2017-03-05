@@ -7,13 +7,13 @@ import org.fde.util.primes.sieve.regular.PrimeSieveAlgorithm;
 import org.fde.util.primes.sieve.regular.PrimeSieveUsingArray;
 import org.fde.util.primes.sieve.store.Store;
 
-public class PrimeSieveCacheAwareAlgorithm
+public class PrimeSieveCacheAware
         implements PrimeSieveIterable, PrimeSieve {
 
     private final Store store;
     private final int batchSize;
 
-    public PrimeSieveCacheAwareAlgorithm(Store store, int batchSize) {
+    public PrimeSieveCacheAware(Store store, int batchSize) {
         this.store = store;
         this.batchSize = batchSize;
 
@@ -108,7 +108,7 @@ public class PrimeSieveCacheAwareAlgorithm
 
     @Override
     public String toString() {
-        return "PrimeSieveCacheAwareAlgorithm{" +
+        return "PrimeSieveCacheAware{" +
                 "store=" + store +
                 '}';
     }
