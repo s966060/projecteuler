@@ -10,8 +10,19 @@ import java.util.List;
 public class CacheBehaviorTest {
     @Test
     public void cacheBehaviorTest() throws Exception {
-        for (int size = 1; size < 10_000; size += 10) {
-            cacheBehaviorTest(size * 1000);
+        for(int iterations = 0; iterations < 50; ++iterations) {
+            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+            System.out.println();
+
+            for (int size = 0; size < 20; ++size) {
+                int arraySize = (int) Math.pow(2, size) * 128;
+                cacheBehaviorTest(arraySize);
+            }
+
+            System.out.println();
+            System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+            System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
         }
     }
 
@@ -20,35 +31,44 @@ public class CacheBehaviorTest {
         int[] write = new int[size];
 
         for (int index = 0; index < read.length; ++index) {
-            int value = (index + 91) % read.length;
-            read[index] = value;
+            long value = (3769 * (long) index) % read.length;
+
+            if (value < 0) {
+                String msg = String.format("value (%s) > 0", value);
+                throw new IllegalArgumentException(msg);
+            }
+
+            read[index] = (int) value;
         }
 
-        List<Integer> readAsList = new ArrayList<>();
-        for(int index = 0; index < read.length; ++index) {
+        // checkUnique(read);
+
+        StopWatch stopWatch = new StopWatch();
+        stopWatch.start();
+
+        for (long runs = 0; runs < 100_000_000L; ++runs) {
+            long index = runs % read.length;
+            int value = read[(int) index];
+            write[value] = value;
+        }
+
+        System.out.printf("size (%s) stopWatch (%s) %n", size, stopWatch);
+    }
+
+    private void checkUnique(int[] read) throws Exception {
+        List<Integer> readAsList = new ArrayList<>(read.length);
+        for (int index = 0; index < read.length; ++index) {
             readAsList.add(read[index]);
         }
 
         CountingMap<Integer> unique = new CountingMap(readAsList);
         unique.justOnce();
 
-        for(int value = 0; value < read.length; ++value) {
+        for (int value = 0; value < read.length; ++value) {
             if (!unique.contains(value)) {
                 String msg = String.format("does not contain (%s)", value);
                 throw new Exception(msg);
             }
         }
-
-
-        StopWatch stopWatch = new StopWatch();
-        stopWatch.start();
-
-        for (int runs = 0; runs < 100_000_000; ++runs) {
-            int index = runs % read.length;
-            int value = read[index];
-            write[value] = value;
-        }
-
-        System.out.printf("size (%s) stopWatch (%s) %n", size, stopWatch);
     }
 }
