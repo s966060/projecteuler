@@ -6,12 +6,11 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.TreeMap;
 
 public class CacheBehaviorTest {
     @Test
     public void cacheBehaviorTest() throws Exception {
-        for (int size = 1; size < 10_000; ++size) {
+        for (int size = 1; size < 10_000; size += 10) {
             cacheBehaviorTest(size * 1000);
         }
     }
@@ -21,7 +20,7 @@ public class CacheBehaviorTest {
         int[] write = new int[size];
 
         for (int index = 0; index < read.length; ++index) {
-            int value = (index + 393_342_743) % read.length;
+            int value = (index + 91) % read.length;
             read[index] = value;
         }
 
@@ -33,6 +32,12 @@ public class CacheBehaviorTest {
         CountingMap<Integer> unique = new CountingMap(readAsList);
         unique.justOnce();
 
+        for(int value = 0; value < read.length; ++value) {
+            if (!unique.contains(value)) {
+                String msg = String.format("does not contain (%s)", value);
+                throw new Exception(msg);
+            }
+        }
 
 
         StopWatch stopWatch = new StopWatch();

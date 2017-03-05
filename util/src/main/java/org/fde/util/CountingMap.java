@@ -40,8 +40,24 @@ public class CountingMap<T> {
     public void justOnce() throws Exception {
         for(Map.Entry<T, Integer> entry : this.countMap.entrySet()) {
             if(entry.getValue() != 1) {
-                throw new Exception(String.format("entry (%s) is not unique."));
+                String msg = String.format("entry (%s) is not unique.", entry);
+                throw new Exception(msg);
             }
         }
+    }
+
+    public boolean contains(T value) {
+        return this.countMap.containsKey(value);
+    }
+
+    public boolean containsAll(Collection<T> values) throws Exception {
+        for(T value : values) {
+            if (!contains(value)) {
+                String msg = String.format("does not contain (%s)", value);
+                throw new Exception(msg);
+            }
+        }
+
+        return true;
     }
 }
