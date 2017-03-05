@@ -14,7 +14,7 @@ public class SquareRootConvergents {
 
         Ratio base = new Ratio(1, 2);
 
-        for (int iteration = 1; iteration <= 100; ++iteration) {
+        for (int iteration = 1; iteration <= 1000; ++iteration) {
 
             if(iteration > 1) {
                 base = base.add(new Ratio(2));
@@ -36,6 +36,12 @@ public class SquareRootConvergents {
             if(digitsNominator > digitsDenominator) {
                 ++yes;
                 System.out.println("   YES");
+            }
+            // Long.MAX_VALUE..........9_223_372_036_854_775_807L
+            if(base.getDenominator() > 1_000_000_000_000_000_000L) {
+                System.out.printf("@@@ SCALING FROM (%s) %n", base);
+                base = new Ratio(base.getNominator() / 10, base.getDenominator() / 10);
+                System.out.printf("@@@ SCALING TO (%s) %n", base);
             }
         }
 
