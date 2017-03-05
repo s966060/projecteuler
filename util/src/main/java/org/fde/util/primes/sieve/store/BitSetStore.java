@@ -1,7 +1,5 @@
 package org.fde.util.primes.sieve.store;
 
-import org.fde.util.primes.sieve.store.Store;
-
 import java.util.BitSet;
 
 public class BitSetStore implements Store {
