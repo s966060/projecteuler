@@ -5,7 +5,6 @@ import org.fde.util.primes.sieve.PrimeSieveIterable;
 import org.fde.util.primes.sieve.PrimeSieveIterator;
 
 import java.util.Arrays;
-import java.util.Iterator;
 
 public class PrimeSieveUsingArray
         extends PrimeSieveAlgorithm
@@ -19,15 +18,7 @@ public class PrimeSieveUsingArray
 
     @Override
     public Iterable<Long> getPrimes() {
-        return getPrimeIterable();
-    }
-
-    private Iterable<Long> getPrimeIterable() {
-        return () -> getPrimeIterator();
-    }
-
-    private Iterator<Long> getPrimeIterator() {
-        return new PrimeSieveIterator(this);
+        return () -> new PrimeSieveIterator(this);
     }
 
     @Override

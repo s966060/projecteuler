@@ -6,7 +6,6 @@ import org.fde.util.primes.sieve.PrimeSieveIterator;
 import org.fde.util.primes.sieve.regular.PrimeSieveUsingArray;
 
 import java.util.BitSet;
-import java.util.Iterator;
 
 public class PrimeSieveCacheAwareUsingBitSet
         extends PrimeSieveCacheAwareAlgorithm
@@ -36,15 +35,7 @@ public class PrimeSieveCacheAwareUsingBitSet
 
     @Override
     public Iterable<Long> getPrimes() {
-        return getPrimeIterable();
-    }
-
-    private Iterable<Long> getPrimeIterable() {
-        return () -> getPrimeIterator();
-    }
-
-    private Iterator<Long> getPrimeIterator() {
-        return new PrimeSieveIterator(this);
+        return () -> new PrimeSieveIterator(this);
     }
 
     @Override
