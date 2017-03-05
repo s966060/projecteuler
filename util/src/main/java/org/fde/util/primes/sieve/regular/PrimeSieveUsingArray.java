@@ -24,7 +24,7 @@ public class PrimeSieveUsingArray
     @Override
     public String toString() {
         return "PrimeSieveUsingArray{" +
-                "numbers=" + this.store +
+                "store=" + store +
                 '}';
     }
 

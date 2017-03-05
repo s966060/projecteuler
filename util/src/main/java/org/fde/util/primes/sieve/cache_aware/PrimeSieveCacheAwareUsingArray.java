@@ -36,7 +36,7 @@ public class PrimeSieveCacheAwareUsingArray
     @Override
     public String toString() {
         return "PrimeSieveCacheAwareUsingArray{" +
-                "numbers=" + this.store +
+                "store=" + store +
                 '}';
     }
 
