@@ -2,7 +2,6 @@ package org.fde.util.primes.sieve.regular;
 
 import org.fde.util.primes.PrimeBuilder;
 import org.fde.util.primes.sieve.PrimeSieve;
-import org.fde.util.primes.sieve.regular.PrimeSieveUsingArray;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -30,6 +29,6 @@ public class PrimeSieveUsingArrayTest {
     }
 
     private PrimeSieve createPrimeSieve(int upTo) {
-        return new PrimeSieveUsingArray(10_000_000);
+        return PrimeSieveUsingArray.createPrimeSieveUsingArray(10_000_000);
     }
 }

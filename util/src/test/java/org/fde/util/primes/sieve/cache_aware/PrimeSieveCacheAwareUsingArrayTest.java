@@ -30,6 +30,6 @@ public class PrimeSieveCacheAwareUsingArrayTest {
     }
 
     private PrimeSieve createPrimeSieve(int upTo) {
-        return new PrimeSieveUsingArray(upTo);
+        return PrimeSieveUsingArray.createPrimeSieveUsingArray(upTo);
     }
 }

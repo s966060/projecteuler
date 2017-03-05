@@ -8,8 +8,12 @@ public class PrimeSieveCacheAwareUsingBitSet
         extends PrimeSieveCacheAwareAlgorithm
         implements PrimeSieve, PrimeSieveIterable {
 
-    public PrimeSieveCacheAwareUsingBitSet(int upTo) {
+    private PrimeSieveCacheAwareUsingBitSet(int upTo) {
         super(new BitSetStore(upTo + 1), 1_000_000);
+    }
+
+    public static PrimeSieveCacheAwareUsingBitSet createPrimeSieveCacheAwareUsingBitSet(int upTo) {
+        return new PrimeSieveCacheAwareUsingBitSet(upTo);
     }
 
     @Override

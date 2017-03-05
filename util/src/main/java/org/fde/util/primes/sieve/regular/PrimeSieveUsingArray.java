@@ -5,8 +5,12 @@ import org.fde.util.primes.sieve.store.ArrayStore;
 public class PrimeSieveUsingArray
         extends PrimeSieveAlgorithm {
 
-    public PrimeSieveUsingArray(int upTo) {
+    private PrimeSieveUsingArray(int upTo) {
         super(new ArrayStore(upTo + 1));
+    }
+
+    public static PrimeSieveUsingArray createPrimeSieveUsingArray(int upTo) {
+        return new PrimeSieveUsingArray(upTo);
     }
 
     @Override

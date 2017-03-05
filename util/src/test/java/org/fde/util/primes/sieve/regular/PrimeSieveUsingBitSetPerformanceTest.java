@@ -2,7 +2,6 @@ package org.fde.util.primes.sieve.regular;
 
 import org.apache.commons.lang3.time.StopWatch;
 import org.fde.util.primes.sieve.PrimeSieve;
-import org.fde.util.primes.sieve.regular.PrimeSieveUsingBitSet;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -57,6 +56,6 @@ public class PrimeSieveUsingBitSetPerformanceTest {
     }
 
     private PrimeSieve createPrimeSieve(int upTo) {
-        return new PrimeSieveUsingBitSet(upTo);
+        return PrimeSieveUsingBitSet.createPrimeSieveUsingBitSet(upTo);
     }
 }

@@ -2,7 +2,6 @@ package org.fde.util.primes.sieve.cache_aware;
 
 import org.apache.commons.lang3.time.StopWatch;
 import org.fde.util.primes.sieve.PrimeSieve;
-import org.fde.util.primes.sieve.cache_aware.PrimeSieveCacheAwareUsingBitSet;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -57,6 +56,6 @@ public class PrimeSieveCacheAwareUsingBitSetPerformanceTest {
     }
 
     private PrimeSieve createPrimeSieve(int upTo) {
-        return new PrimeSieveCacheAwareUsingBitSet(upTo);
+        return PrimeSieveCacheAwareUsingBitSet.createPrimeSieveCacheAwareUsingBitSet(upTo);
     }
 }

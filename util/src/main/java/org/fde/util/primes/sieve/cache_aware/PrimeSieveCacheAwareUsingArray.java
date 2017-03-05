@@ -8,8 +8,12 @@ public class PrimeSieveCacheAwareUsingArray
         extends PrimeSieveCacheAwareAlgorithm
         implements PrimeSieve, PrimeSieveIterable {
 
-    public PrimeSieveCacheAwareUsingArray(int upTo) {
+    private PrimeSieveCacheAwareUsingArray(int upTo) {
         super(new ArrayStore(upTo + 1), 1_000_000);
+    }
+
+    public static PrimeSieveCacheAwareUsingArray createPrimeSieveCacheAwareUsingArray(int upTo) {
+        return new PrimeSieveCacheAwareUsingArray(upTo);
     }
 
     @Override

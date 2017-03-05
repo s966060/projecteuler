@@ -17,7 +17,7 @@ public abstract class PrimeSieveCacheAwareAlgorithm
         this.batchSize = batchSize;
 
         // initialize numbers with all prime / composite results <= BATCH_SIZE
-        PrimeSieveUsingArray sieve = new PrimeSieveUsingArray(getBatchSize());
+        PrimeSieveUsingArray sieve = PrimeSieveUsingArray.createPrimeSieveUsingArray(getBatchSize());
         sieve.sieve();
 
         for (int index = 0; index < sieve.getLength(); ++index) {

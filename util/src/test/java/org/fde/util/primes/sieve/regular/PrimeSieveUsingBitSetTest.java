@@ -2,7 +2,6 @@ package org.fde.util.primes.sieve.regular;
 
 import org.fde.util.primes.PrimeBuilder;
 import org.fde.util.primes.sieve.PrimeSieve;
-import org.fde.util.primes.sieve.regular.PrimeSieveUsingBitSet;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -30,6 +29,6 @@ public class PrimeSieveUsingBitSetTest {
     }
 
     private PrimeSieve createPrimeSieve(int upTo) {
-        return new PrimeSieveUsingBitSet(10_000_000);
+        return PrimeSieveUsingBitSet.createPrimeSieveUsingBitSet(10_000_000);
     }
 }

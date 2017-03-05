@@ -8,8 +8,12 @@ public class PrimeSieveUsingBitSet
         extends PrimeSieveAlgorithm
         implements PrimeSieve, PrimeSieveIterable {
 
-    public PrimeSieveUsingBitSet(int upTo) {
+    private PrimeSieveUsingBitSet(int upTo) {
         super(new BitSetStore(upTo + 1));
+    }
+
+    public static PrimeSieveUsingBitSet createPrimeSieveUsingBitSet(int upTo) {
+        return new PrimeSieveUsingBitSet(upTo);
     }
 
     @Override
