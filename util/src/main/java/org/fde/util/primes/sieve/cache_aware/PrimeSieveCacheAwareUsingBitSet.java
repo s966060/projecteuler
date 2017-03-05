@@ -4,8 +4,7 @@ import org.fde.util.primes.sieve.PrimeSieve;
 import org.fde.util.primes.sieve.PrimeSieveIterable;
 import org.fde.util.primes.sieve.PrimeSieveIterator;
 import org.fde.util.primes.sieve.regular.PrimeSieveUsingArray;
-
-import java.util.BitSet;
+import org.fde.util.primes.sieve.store.BitSetStore;
 
 public class PrimeSieveCacheAwareUsingBitSet
         extends PrimeSieveCacheAwareAlgorithm

@@ -1,4 +1,4 @@
-package org.fde.util.primes.sieve.cache_aware;
+package org.fde.util.primes.sieve.store;
 
 import org.fde.util.primes.sieve.store.Store;
 
