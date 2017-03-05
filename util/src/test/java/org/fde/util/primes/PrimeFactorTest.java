@@ -215,6 +215,7 @@ public class PrimeFactorTest {
         ListOfLong factors = getPrimeFactors().getPrimeFactors(1_746_860_020_068_409L);
         System.out.println("factors = " + factors);
         assertEquals(createListOfLong(1_746_860_020_068_409L), factors);
+        // Long.MAX_VALUE.........9_223_372_036_854_775_807L
     }
 
     // damn prime takes a long time ... almost 18 minutes on my workstation
