@@ -30,4 +30,8 @@ public class ArrayStore implements Store {
                 "numbers=" + Arrays.toString(numbers) +
                 '}';
     }
+
+    public boolean[] getNumbers() {
+        return numbers;
+    }
 }

@@ -23,7 +23,7 @@ public class PrimeSieveCacheAwareUsingArray
         PrimeSieveUsingArray sieve = new PrimeSieveUsingArray(getBatchSize());
         sieve.sieve();
 
-        System.arraycopy(sieve.getNumbers(), 0, this.store.numbers, 0,
+        System.arraycopy(sieve.getNumbers(), 0, store.getNumbers(), 0,
                 Math.min(sieve.getNumbers().length, getLength()));
     }
 
@@ -39,12 +39,12 @@ public class PrimeSieveCacheAwareUsingArray
     @Override
     public String toString() {
         return "PrimeSieveCacheAwareUsingArray{" +
-                "numbers=" + Arrays.toString(store.numbers) +
+                "numbers=" + this.store +
                 '}';
     }
 
     public boolean isPrime(int index) {
-        return store.isPrime(index);
+        return this.store.isPrime(index);
     }
 
     public int getLength() {
