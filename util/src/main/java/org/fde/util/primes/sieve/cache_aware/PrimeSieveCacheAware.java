@@ -3,7 +3,6 @@ package org.fde.util.primes.sieve.cache_aware;
 import org.fde.util.primes.sieve.PrimeSieveIterable;
 import org.fde.util.primes.sieve.PrimeSieveIterator;
 import org.fde.util.primes.sieve.regular.PrimeSieveRegular;
-import org.fde.util.primes.sieve.regular.PrimeSieveRegularFactory;
 import org.fde.util.primes.sieve.store.Store;
 
 import static org.fde.util.primes.sieve.regular.PrimeSieveRegularFactory.createPrimeSieveUsingArray;
