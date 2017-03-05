@@ -1,6 +1,30 @@
 package org.fde.util.primes.sieve.cache_aware;
 
-public abstract class PrimeSieveCacheAwareAlgorithm {
+import org.fde.util.primes.sieve.PrimeSieve;
+import org.fde.util.primes.sieve.PrimeSieveIterable;
+import org.fde.util.primes.sieve.PrimeSieveIterator;
+import org.fde.util.primes.sieve.regular.PrimeSieveUsingArray;
+import org.fde.util.primes.sieve.store.Store;
+
+public abstract class PrimeSieveCacheAwareAlgorithm
+        implements PrimeSieveIterable, PrimeSieve {
+
+    private final Store store;
+    private final int batchSize;
+
+    public PrimeSieveCacheAwareAlgorithm(Store store, int batchSize) {
+        this.store = store;
+        this.batchSize = batchSize;
+
+        // initialize numbers with all prime / composite results <= BATCH_SIZE
+        PrimeSieveUsingArray sieve = new PrimeSieveUsingArray(getBatchSize());
+        sieve.sieve();
+
+        for (int index = 0; index < sieve.getLength(); ++index) {
+            store.setComposite(index, !sieve.isPrime(index));
+        }
+    }
+
     public final void sieve() {
         int batchEnd = getLength() / getBatchSize();
 
@@ -58,11 +82,33 @@ public abstract class PrimeSieveCacheAwareAlgorithm {
         return Math.min(primeLimit, getLength());
     }
 
-    abstract boolean isPrime(int index);
+    @Override
+    public boolean isPrime(int index) {
+        return this.store.isPrime(index);
+    }
 
-    abstract void setComposite(int index, boolean isComposite);
+    @Override
+    public int getLength() {
+        return this.store.getLength();
+    }
 
-    abstract int getBatchSize();
+    void setComposite(int index, boolean isComposite) {
+        this.store.setComposite(index, isComposite);
+    }
 
-    abstract int getLength();
+    int getBatchSize() {
+        return batchSize;
+    }
+
+    @Override
+    public Iterable<Long> getPrimes() {
+        return () -> new PrimeSieveIterator(this);
+    }
+
+    @Override
+    public String toString() {
+        return "PrimeSieveCacheAwareAlgorithm{" +
+                "store=" + store +
+                '}';
+    }
 }

@@ -4,53 +4,19 @@ import org.fde.util.primes.sieve.PrimeSieve;
 import org.fde.util.primes.sieve.PrimeSieveIterable;
 import org.fde.util.primes.sieve.PrimeSieveIterator;
 import org.fde.util.primes.sieve.regular.PrimeSieveUsingArray;
+import org.fde.util.primes.sieve.store.ArrayStore;
 import org.fde.util.primes.sieve.store.BitSetStore;
 
 public class PrimeSieveCacheAwareUsingBitSet
         extends PrimeSieveCacheAwareAlgorithm
         implements PrimeSieve, PrimeSieveIterable {
 
-    private final static int BATCH_SIZE = 1000000;
-
-    private final BitSetStore store;
-
     public PrimeSieveCacheAwareUsingBitSet(int upTo) {
-        this.store = new BitSetStore(upTo);
-
-        // initialize numbers with all prime / composite results <= BATCH_SIZE
-        PrimeSieveUsingArray sieve = new PrimeSieveUsingArray(getBatchSize());
-        sieve.sieve();
-
-        for(int index = 0; index < sieve.getLength(); ++index) {
-            store.setComposite(index, !sieve.isPrime(index));
-        }
-    }
-
-    int getBatchSize() {
-        return BATCH_SIZE;
-    }
-
-    @Override
-    public Iterable<Long> getPrimes() {
-        return () -> new PrimeSieveIterator(this);
+        super(new BitSetStore(upTo + 1), 1_000_000);
     }
 
     @Override
     public String toString() {
-        return "PrimeSieveCacheAwareUsingBitSet{" +
-                "store=" + store +
-                '}';
-    }
-
-    public boolean isPrime(int index) {
-        return store.isPrime(index);
-    }
-
-    public int getLength() {
-        return store.getLength();
-    }
-
-    void setComposite(int index, boolean isComposite) {
-        store.setComposite(index, isComposite);
+        return "PrimeSieveCacheAwareUsingBitSet{}";
     }
 }
