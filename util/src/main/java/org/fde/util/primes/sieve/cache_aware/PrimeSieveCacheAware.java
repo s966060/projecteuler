@@ -109,6 +109,7 @@ public class PrimeSieveCacheAware
     public String toString() {
         return "PrimeSieveCacheAware{" +
                 "store=" + store.getClass().getSimpleName() +
+                ", length=" + store.getLength() +
                 '}';
     }
 }

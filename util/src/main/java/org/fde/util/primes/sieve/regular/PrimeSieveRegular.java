@@ -68,6 +68,7 @@ public class PrimeSieveRegular
     public String toString() {
         return "PrimeSieveRegular{" +
                 "store=" + store.getClass().getSimpleName() +
+                ", length=" + store.getLength() +
                 '}';
     }
 }
