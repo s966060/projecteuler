@@ -5,9 +5,6 @@ import org.fde.util.primes.sieve.PrimeSieveIterable;
 import org.fde.util.primes.sieve.PrimeSieveIterator;
 import org.fde.util.primes.sieve.store.ArrayStore;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
-
 public class PrimeSieveUsingArray
         extends PrimeSieveAlgorithm
         implements PrimeSieve, PrimeSieveIterable {
