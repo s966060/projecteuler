@@ -5,7 +5,7 @@ import org.fde.util.primes.sieve.PrimeSieveIterable;
 import org.fde.util.primes.sieve.PrimeSieveIterator;
 import org.fde.util.primes.sieve.store.Store;
 
-public abstract class PrimeSieveAlgorithm
+public class PrimeSieveAlgorithm
         implements PrimeSieve, PrimeSieveIterable {
 
     private final Store store;

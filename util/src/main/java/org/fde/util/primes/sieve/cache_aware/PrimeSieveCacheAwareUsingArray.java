@@ -2,19 +2,9 @@ package org.fde.util.primes.sieve.cache_aware;
 
 import org.fde.util.primes.sieve.store.ArrayStore;
 
-public class PrimeSieveCacheAwareUsingArray
-        extends PrimeSieveCacheAwareAlgorithm {
+public class PrimeSieveCacheAwareUsingArray {
 
-    private PrimeSieveCacheAwareUsingArray(int upTo) {
-        super(new ArrayStore(upTo + 1), 1_000_000);
-    }
-
-    public static PrimeSieveCacheAwareUsingArray createPrimeSieveCacheAwareUsingArray(int upTo) {
-        return new PrimeSieveCacheAwareUsingArray(upTo);
-    }
-
-    @Override
-    public String toString() {
-        return "PrimeSieveCacheAwareUsingArray{}";
+    public static PrimeSieveCacheAwareAlgorithm createPrimeSieveCacheAwareUsingArray(int upTo) {
+        return new PrimeSieveCacheAwareAlgorithm(new ArrayStore(upTo + 1), 1_000_000);
     }
 }
