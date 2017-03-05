@@ -63,4 +63,11 @@ public class PrimeSieveRegular
     public Iterable<Long> getPrimes() {
         return () -> new PrimeSieveIterator(this);
     }
+
+    @Override
+    public String toString() {
+        return "PrimeSieveRegular{" +
+                "store=" + store.getClass().getSimpleName() +
+                '}';
+    }
 }

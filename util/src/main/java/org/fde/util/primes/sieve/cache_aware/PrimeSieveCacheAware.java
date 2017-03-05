@@ -108,7 +108,7 @@ public class PrimeSieveCacheAware
     @Override
     public String toString() {
         return "PrimeSieveCacheAware{" +
-                "store=" + store +
+                "store=" + store.getClass().getSimpleName() +
                 '}';
     }
 }

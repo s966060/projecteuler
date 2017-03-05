@@ -16,7 +16,7 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
 public class PrimeSieveTest {
-    @Parameterized.Parameters
+    @Parameterized.Parameters(name = "{index}: sieve({0})")
     public static Collection<PrimeSieve> sieveAlgorithms() {
         int size = 10_000_000;
 
