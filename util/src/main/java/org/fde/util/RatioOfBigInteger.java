@@ -1,5 +1,6 @@
 package org.fde.util;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
 
 public class RatioOfBigInteger {
@@ -68,7 +69,8 @@ public class RatioOfBigInteger {
     }
 
     public double getRatioAsDouble() {
-        return nominator.divide(denominator).doubleValue();
+        double ratio = nominator.doubleValue() / denominator.doubleValue();
+        return ratio;
     }
 
     @Override
