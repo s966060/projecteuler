@@ -3,6 +3,7 @@ package org.fde.util.primes.sieve.cache_aware;
 import org.apache.commons.lang3.time.StopWatch;
 import org.fde.util.primes.sieve.PrimeSieve;
 import org.fde.util.primes.sieve.cache_aware.PrimeSieveCacheAwareUsingArray;
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class PrimeSieveCacheAwareUsingArrayPerformanceTest {
@@ -42,6 +43,7 @@ public class PrimeSieveCacheAwareUsingArrayPerformanceTest {
         System.out.println("stopWatch = " + stopWatch);
     }
 
+    @Ignore
     @Test
     public void D_upTo_D_1000_Million() {
         StopWatch stopWatch = new StopWatch();

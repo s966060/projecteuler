@@ -3,6 +3,7 @@ package org.fde.util.primes.sieve.regular;
 import org.apache.commons.lang3.time.StopWatch;
 import org.fde.util.primes.sieve.PrimeSieve;
 import org.fde.util.primes.sieve.regular.PrimeSieveUsingBitSet;
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class PrimeSieveUsingBitSetPerformanceTest {
@@ -42,6 +43,7 @@ public class PrimeSieveUsingBitSetPerformanceTest {
         System.out.println("stopWatch = " + stopWatch);
     }
 
+    @Ignore
     @Test
     public void D_upTo_D_1000_Million() {
         StopWatch stopWatch = new StopWatch();
