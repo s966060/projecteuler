@@ -16,14 +16,17 @@ public class PrimeSieveUsingArrayTest {
         PrimeBuilder builder = new PrimeBuilder();
 
         int count = 0;
+        long lastComputePrime = 0;
 
         for (Long prime : sieve.getPrimes()) {
             long expected = builder.next();
-            assertEquals(expected, prime.longValue());
+            lastComputePrime = prime;
+            assertEquals(expected, lastComputePrime);
             ++count;
         }
 
-        assertEquals(664579, count);
+        assertEquals(664_579, count);
+        assertEquals(9_999_991, lastComputePrime);
     }
 
     private PrimeSieve createPrimeSieve(int upTo) {
