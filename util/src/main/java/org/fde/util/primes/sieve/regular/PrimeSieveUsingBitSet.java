@@ -3,19 +3,16 @@ package org.fde.util.primes.sieve.regular;
 import org.fde.util.primes.sieve.PrimeSieve;
 import org.fde.util.primes.sieve.PrimeSieveIterable;
 import org.fde.util.primes.sieve.PrimeSieveIterator;
-
-import java.util.BitSet;
+import org.fde.util.primes.sieve.store.BitSetStore;
 
 public class PrimeSieveUsingBitSet
         extends PrimeSieveAlgorithm
         implements PrimeSieve, PrimeSieveIterable {
 
-    private final int length;
-    private final BitSet numbers;
+    private final BitSetStore store;
 
     public PrimeSieveUsingBitSet(int upTo) {
-        this.length = upTo + 1;
-        this.numbers = new BitSet(length);
+        this.store = new BitSetStore(upTo);
     }
 
     @Override
@@ -26,20 +23,19 @@ public class PrimeSieveUsingBitSet
     @Override
     public String toString() {
         return "PrimeSieveUsingBitSet{" +
-                "length=" + length +
-                ", numbers=" + numbers +
+                "store=" + store +
                 '}';
     }
 
     public boolean isPrime(int index) {
-        return !this.numbers.get(index);
+        return store.isPrime(index);
     }
 
     public int getLength() {
-        return length;
+        return store.getLength();
     }
 
     void setComposite(int index, boolean isComposite) {
-        this.numbers.set(index,isComposite);
+        store.setComposite(index, isComposite);
     }
 }
