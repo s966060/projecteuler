@@ -5,9 +5,9 @@ import org.fde.util.primes.sieve.PrimeSieve;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import static org.fde.util.primes.sieve.regular.PrimeSieveFactory.createPrimeSieveUsingBitSet;
+import static org.fde.util.primes.sieve.regular.PrimeSieveRegularFactory.createPrimeSieveUsingArray;
 
-public class PrimeSieveUsingBitSetPerformanceTest {
+public class PrimeSieveRegularUsingArrayPerformanceTest {
     @Test
     public void A_upTo_A_1_Million() {
         StopWatch stopWatch = new StopWatch();
@@ -58,6 +58,6 @@ public class PrimeSieveUsingBitSetPerformanceTest {
     }
 
     private PrimeSieve createPrimeSieve(int upTo) {
-        return createPrimeSieveUsingBitSet(upTo);
+        return createPrimeSieveUsingArray(upTo);
     }
 }

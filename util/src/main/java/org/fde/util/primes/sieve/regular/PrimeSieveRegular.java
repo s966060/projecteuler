@@ -5,12 +5,12 @@ import org.fde.util.primes.sieve.PrimeSieveIterable;
 import org.fde.util.primes.sieve.PrimeSieveIterator;
 import org.fde.util.primes.sieve.store.Store;
 
-public class PrimeSieve
-        implements org.fde.util.primes.sieve.PrimeSieve, PrimeSieveIterable {
+public class PrimeSieveRegular
+        implements PrimeSieve, PrimeSieveIterable {
 
     private final Store store;
 
-    public PrimeSieve(Store store) {
+    public PrimeSieveRegular(Store store) {
         this.store = store;
     }
 

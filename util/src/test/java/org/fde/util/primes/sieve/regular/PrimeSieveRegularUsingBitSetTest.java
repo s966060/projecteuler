@@ -4,10 +4,10 @@ import org.fde.util.primes.PrimeBuilder;
 import org.fde.util.primes.sieve.PrimeSieve;
 import org.junit.Test;
 
-import static org.fde.util.primes.sieve.regular.PrimeSieveFactory.createPrimeSieveUsingBitSet;
+import static org.fde.util.primes.sieve.regular.PrimeSieveRegularFactory.createPrimeSieveUsingBitSet;
 import static org.junit.Assert.assertEquals;
 
-public class PrimeSieveUsingBitSetTest {
+public class PrimeSieveRegularUsingBitSetTest {
     @Test
     public void primeSieveUsingBitSetTest() {
         PrimeSieve sieve = createPrimeSieve(10_000_000);

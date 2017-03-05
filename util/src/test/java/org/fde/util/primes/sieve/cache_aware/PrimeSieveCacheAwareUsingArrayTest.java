@@ -2,10 +2,9 @@ package org.fde.util.primes.sieve.cache_aware;
 
 import org.fde.util.primes.PrimeBuilder;
 import org.fde.util.primes.sieve.PrimeSieve;
-import org.fde.util.primes.sieve.regular.PrimeSieveFactory;
 import org.junit.Test;
 
-import static org.fde.util.primes.sieve.regular.PrimeSieveFactory.createPrimeSieveUsingArray;
+import static org.fde.util.primes.sieve.regular.PrimeSieveRegularFactory.createPrimeSieveUsingArray;
 import static org.junit.Assert.assertEquals;
 
 public class PrimeSieveCacheAwareUsingArrayTest {
