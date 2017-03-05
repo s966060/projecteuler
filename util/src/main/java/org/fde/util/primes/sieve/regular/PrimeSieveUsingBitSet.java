@@ -31,10 +31,6 @@ public class PrimeSieveUsingBitSet
                 '}';
     }
 
-    boolean[] getNumbers() {
-        return null;
-    }
-
     public boolean isPrime(int index) {
         return !this.numbers.get(index);
     }
