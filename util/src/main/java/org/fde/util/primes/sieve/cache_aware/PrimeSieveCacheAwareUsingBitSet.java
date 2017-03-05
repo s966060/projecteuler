@@ -1,25 +1,33 @@
-package org.fde.util.primes.sieve;
+package org.fde.util.primes.sieve.cache_aware;
 
-import java.util.Arrays;
+import org.fde.util.primes.sieve.PrimeSieve;
+import org.fde.util.primes.sieve.PrimeSieveIterable;
+import org.fde.util.primes.sieve.PrimeSieveIterator;
+import org.fde.util.primes.sieve.regular.PrimeSieveUsingArray;
+
+import java.util.BitSet;
 import java.util.Iterator;
 
-public class PrimeSieveCacheAwareUsingArray
+public class PrimeSieveCacheAwareUsingBitSet
         extends PrimeSieveCacheAwareAlgorithm
         implements PrimeSieve, PrimeSieveIterable {
 
     private final static int BATCH_SIZE = 1000000;
+    private final int length;
 
-    private boolean[] numbers;
+    private final BitSet numbers;
 
-    public PrimeSieveCacheAwareUsingArray(int upTo) {
-        this.numbers = new boolean[upTo + 1];
+    public PrimeSieveCacheAwareUsingBitSet(int upTo) {
+        this.length = upTo + 1;
+        this.numbers = new BitSet(length);
 
         // initialize numbers with all prime / composite results <= BATCH_SIZE
         PrimeSieveUsingArray sieve = new PrimeSieveUsingArray(getBatchSize());
         sieve.sieve();
 
-        System.arraycopy(sieve.getNumbers(), 0, this.numbers, 0,
-                Math.min(sieve.getNumbers().length, getLength()));
+        for(int index = 0; index < sieve.getLength(); ++index) {
+            setComposite(index, !sieve.isPrime(index));
+        }
     }
 
     int getBatchSize() {
@@ -41,20 +49,21 @@ public class PrimeSieveCacheAwareUsingArray
 
     @Override
     public String toString() {
-        return "PrimeSieveCacheAwareUsingArray{" +
-                "numbers=" + Arrays.toString(numbers) +
+        return "PrimeSieveCacheAwareUsingBitSet{" +
+                "length=" + length +
+                ", numbers=" + numbers +
                 '}';
     }
 
     public boolean isPrime(int index) {
-        return !this.numbers[index];
+        return !this.numbers.get(index);
     }
 
     public int getLength() {
-        return this.numbers.length;
+        return length;
     }
 
     void setComposite(int index, boolean isComposite) {
-        this.numbers[index] = isComposite;
+        this.numbers.set(index, isComposite);
     }
 }

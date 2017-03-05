@@ -2,7 +2,7 @@ package org.fde.util.primes.sieve;
 
 import java.util.Iterator;
 
-class PrimeSieveIterator implements Iterator<Long> {
+public class PrimeSieveIterator implements Iterator<Long> {
     private PrimeSieveIterable iterable;
     private int index = 0;
 

@@ -1,4 +1,4 @@
-package org.fde.util.primes.sieve;
+package org.fde.util.primes.sieve.regular;
 
 public abstract class PrimeSieveAlgorithm {
     public final void sieve() {

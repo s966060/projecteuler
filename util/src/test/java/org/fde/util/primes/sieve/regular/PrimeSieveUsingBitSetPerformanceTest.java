@@ -1,9 +1,11 @@
-package org.fde.util.primes.sieve;
+package org.fde.util.primes.sieve.regular;
 
 import org.apache.commons.lang3.time.StopWatch;
+import org.fde.util.primes.sieve.PrimeSieve;
+import org.fde.util.primes.sieve.regular.PrimeSieveUsingBitSet;
 import org.junit.Test;
 
-public class PrimeSieveUsingArrayPerformanceTest {
+public class PrimeSieveUsingBitSetPerformanceTest {
     @Test
     public void A_upTo_A_1_Million() {
         StopWatch stopWatch = new StopWatch();
@@ -53,6 +55,6 @@ public class PrimeSieveUsingArrayPerformanceTest {
     }
 
     private PrimeSieve createPrimeSieve(int upTo) {
-        return new PrimeSieveUsingArray(upTo);
+        return new PrimeSieveUsingBitSet(upTo);
     }
 }

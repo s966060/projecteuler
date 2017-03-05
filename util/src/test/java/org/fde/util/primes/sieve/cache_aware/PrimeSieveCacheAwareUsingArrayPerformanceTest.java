@@ -1,9 +1,11 @@
-package org.fde.util.primes.sieve;
+package org.fde.util.primes.sieve.cache_aware;
 
 import org.apache.commons.lang3.time.StopWatch;
+import org.fde.util.primes.sieve.PrimeSieve;
+import org.fde.util.primes.sieve.cache_aware.PrimeSieveCacheAwareUsingArray;
 import org.junit.Test;
 
-public class PrimeSieveUsingBitSetPerformanceTest {
+public class PrimeSieveCacheAwareUsingArrayPerformanceTest {
     @Test
     public void A_upTo_A_1_Million() {
         StopWatch stopWatch = new StopWatch();
@@ -24,7 +26,7 @@ public class PrimeSieveUsingBitSetPerformanceTest {
         PrimeSieve sieve = createPrimeSieve(10_000_000);
         sieve.sieve();
 
-        // about 50 milliseconds on my iCore 7 3770
+        // about 40 milliseconds on my iCore 7 3770
         System.out.println("stopWatch = " + stopWatch);
     }
 
@@ -36,7 +38,7 @@ public class PrimeSieveUsingBitSetPerformanceTest {
         PrimeSieve sieve = createPrimeSieve(100_000_000);
         sieve.sieve();
 
-        // about 1 second on my iCore 7 3770
+        // about 350 milli seconds on my iCore 7 3770
         System.out.println("stopWatch = " + stopWatch);
     }
 
@@ -48,11 +50,11 @@ public class PrimeSieveUsingBitSetPerformanceTest {
         PrimeSieve sieve = createPrimeSieve(1_000_000_000);
         sieve.sieve();
 
-        // about 11.5seconds on my iCore 7 3770
+        // about 4 seconds on my iCore 7 3770
         System.out.println("stopWatch = " + stopWatch);
     }
 
     private PrimeSieve createPrimeSieve(int upTo) {
-        return new PrimeSieveUsingBitSet(upTo);
+        return new PrimeSieveCacheAwareUsingArray(upTo);
     }
 }

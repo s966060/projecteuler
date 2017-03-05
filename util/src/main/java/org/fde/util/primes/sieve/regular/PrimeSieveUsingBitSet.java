@@ -1,4 +1,8 @@
-package org.fde.util.primes.sieve;
+package org.fde.util.primes.sieve.regular;
+
+import org.fde.util.primes.sieve.PrimeSieve;
+import org.fde.util.primes.sieve.PrimeSieveIterable;
+import org.fde.util.primes.sieve.PrimeSieveIterator;
 
 import java.util.BitSet;
 import java.util.Iterator;

@@ -1,13 +1,15 @@
-package org.fde.util.primes.sieve;
+package org.fde.util.primes.sieve.regular;
 
 import org.fde.util.primes.PrimeBuilder;
+import org.fde.util.primes.sieve.PrimeSieve;
+import org.fde.util.primes.sieve.regular.PrimeSieveUsingArray;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class PrimeSieveCacheAwareUsingBitSetTest {
+public class PrimeSieveUsingArrayTest {
     @Test
-    public void primeSieveCacheAwareUsingBitSetTest() {
+    public void primeSieveUsingArrayTest() {
         PrimeSieve sieve = createPrimeSieve(10_000_000);
         sieve.sieve();
 
@@ -25,6 +27,6 @@ public class PrimeSieveCacheAwareUsingBitSetTest {
     }
 
     private PrimeSieve createPrimeSieve(int upTo) {
-        return new PrimeSieveCacheAwareUsingBitSet(upTo);
+        return new PrimeSieveUsingArray(10_000_000);
     }
 }

@@ -1,4 +1,4 @@
-package org.fde.util.primes.sieve;
+package org.fde.util.primes.sieve.cache_aware;
 
 public abstract class PrimeSieveCacheAwareAlgorithm {
     public final void sieve() {
