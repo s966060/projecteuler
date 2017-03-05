@@ -4,13 +4,33 @@ import org.fde.util.primes.sieve.store.ArrayStore;
 import org.fde.util.primes.sieve.store.BitSetStore;
 
 public class PrimeSieveCacheAwareFactory {
-    public static PrimeSieveCacheAware createPrimeSieveCacheAwareUsingArray(int upTo) {
-        ArrayStore store = new ArrayStore(upTo);
-        return new PrimeSieveCacheAware(store, 1_000_000);
+    public static PrimeSieveCacheAware createPrimeSieveCacheAwareUsingArray(
+            int upTo) {
+
+        int batchSize = 1_000_000;
+
+        return createPrimeSieveCacheAwareUsingArray(upTo, batchSize);
     }
 
-    public static PrimeSieveCacheAware createPrimeSieveCacheAwareUsingBitSet(int upTo) {
+    private static PrimeSieveCacheAware createPrimeSieveCacheAwareUsingArray(
+            int upTo, int batchSize) {
+
+        ArrayStore store = new ArrayStore(upTo);
+        return new PrimeSieveCacheAware(store, batchSize);
+    }
+
+    public static PrimeSieveCacheAware createPrimeSieveCacheAwareUsingBitSet(
+            int upTo) {
+
+        int batchSize = 1_000_000;
+
+        return createPrimeSieveCacheAwareUsingBitSet(upTo, batchSize);
+    }
+
+    private static PrimeSieveCacheAware createPrimeSieveCacheAwareUsingBitSet(
+            int upTo, int batchSize) {
+
         BitSetStore store = new BitSetStore(upTo);
-        return new PrimeSieveCacheAware(store, 1_000_000);
+        return new PrimeSieveCacheAware(store, batchSize);
     }
 }
