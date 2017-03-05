@@ -1,14 +1,13 @@
 package org.fde.util.primes.sieve.cache_aware;
 
-import org.fde.util.primes.sieve.PrimeSieve;
 import org.fde.util.primes.sieve.PrimeSieveIterable;
 import org.fde.util.primes.sieve.PrimeSieveIterator;
-import org.fde.util.primes.sieve.regular.PrimeSieveAlgorithm;
+import org.fde.util.primes.sieve.regular.PrimeSieve;
 import org.fde.util.primes.sieve.regular.PrimeSieveFactory;
 import org.fde.util.primes.sieve.store.Store;
 
 public class PrimeSieveCacheAware
-        implements PrimeSieveIterable, PrimeSieve {
+        implements PrimeSieveIterable, org.fde.util.primes.sieve.PrimeSieve {
 
     private final Store store;
     private final int batchSize;
@@ -18,7 +17,7 @@ public class PrimeSieveCacheAware
         this.batchSize = batchSize;
 
         // initialize numbers with all prime / composite results <= BATCH_SIZE
-        PrimeSieveAlgorithm sieve = PrimeSieveFactory.createPrimeSieveUsingArray(getBatchSize());
+        PrimeSieve sieve = PrimeSieveFactory.createPrimeSieveUsingArray(getBatchSize());
         sieve.sieve();
 
         for (int index = 0; index < sieve.getLength(); ++index) {
