@@ -1,4 +1,4 @@
-package org.fde.util.primes.sieve.cache_aware;
+package org.fde.util.primes.sieve.performance;
 
 import org.apache.commons.lang3.time.StopWatch;
 import org.fde.util.primes.sieve.PrimeSieve;
