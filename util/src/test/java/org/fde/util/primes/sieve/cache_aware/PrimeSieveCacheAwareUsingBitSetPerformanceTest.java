@@ -5,6 +5,8 @@ import org.fde.util.primes.sieve.PrimeSieve;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import static org.fde.util.primes.sieve.cache_aware.PrimeSieveCacheAwareFactory.createPrimeSieveCacheAwareUsingBitSet;
+
 public class PrimeSieveCacheAwareUsingBitSetPerformanceTest {
     @Test
     public void A_upTo_A_1_Million() {
@@ -56,6 +58,6 @@ public class PrimeSieveCacheAwareUsingBitSetPerformanceTest {
     }
 
     private PrimeSieve createPrimeSieve(int upTo) {
-        return PrimeSieveCacheAwareFactory.createPrimeSieveCacheAwareUsingBitSet(upTo);
+        return createPrimeSieveCacheAwareUsingBitSet(upTo);
     }
 }
