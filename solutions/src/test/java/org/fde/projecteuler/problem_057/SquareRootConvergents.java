@@ -5,7 +5,6 @@ import org.fde.util.primes.PrimeFactors;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 
 public class SquareRootConvergents {
     @Test
@@ -20,13 +19,11 @@ public class SquareRootConvergents {
             if (iteration > 1) {
                 base = base.add(new Ratio(2));
                 base = new Ratio(1).div(base);
-                base = base.simplify(factors);
             }
             // System.out.printf("    expand (%s) base (%s) %n", expand, base);
 
             Ratio result;
             result = new Ratio(1).add(base);
-            result = result.simplify(factors);
 
             System.out.printf("iteration (%s) result (%s) (%s) %n",
                     iteration, result, result.getRatioAsDouble());
@@ -38,8 +35,8 @@ public class SquareRootConvergents {
                 ++yes;
                 System.out.println("   YES");
             }
-            // Long.MAX_VALUE..........9_223_372_036_854_775_807L
-            if (base.getDenominator() > 1_000_000_000_000L) {
+
+            if (base.getDenominator() > 1_000_000_000L) {
                 System.out.printf("@@@ SCALING FROM (%s) %n", base);
                 long nominator = Math.round(base.getNominator() / 10.0);
                 long denominator = Math.round(base.getDenominator() / 10.0);
@@ -49,8 +46,6 @@ public class SquareRootConvergents {
         }
 
         System.out.println("yes = " + yes);
-        assertEquals(166, yes);
-
-        fail("Solution pending... not found yet");
+        assertEquals(153, yes);
     }
 }
