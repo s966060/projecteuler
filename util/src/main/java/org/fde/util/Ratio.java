@@ -59,13 +59,40 @@ public class Ratio {
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
 
+        ListOfLong primeFactors = null;
+
         try {
-            return factors.getPrimeFactors(value);
+            primeFactors = factors.getPrimeFactors(value);
+            return primeFactors;
         }
         finally {
-            if(stopWatch.getTime() > 1_000) {
-                System.out.printf("(%,d) took a long time (%s) to factorize %n",
-                        value, stopWatch);
+            if(stopWatch.getTime() > 1_00) {
+                System.out.printf("### %n");
+                System.out.printf("### (%,d) took a long time (%s) to factorize (%s) %n",
+                        value, stopWatch, primeFactors);
+
+                System.out.println();
+
+                String map = "";
+
+                map += String.format("map@put(%,dL$ createListOfLong(", value);
+
+                for(int i = 0; i < primeFactors.size(); ++i) {
+                    if(i > 0) {
+                        map += "$ ";
+
+                    }
+
+                    map += String.format("%,dL", primeFactors.get(i));
+                }
+
+                map += "));";
+                map = map.replace('.', '_').replace('$', ',').replace('@', '.');
+
+                System.out.println(map);
+
+                System.out.println();
+                System.out.printf("### %n");
             }
         }
     }

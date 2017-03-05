@@ -4,6 +4,7 @@ import org.fde.util.primes.sieve.PrimeSieve;
 import org.fde.util.primes.sieve.PrimeSieveIterable;
 import org.fde.util.primes.sieve.PrimeSieveIterator;
 import org.fde.util.primes.sieve.regular.PrimeSieveUsingArray;
+import org.fde.util.primes.sieve.store.ArrayStore;
 
 import java.util.Arrays;
 
@@ -12,17 +13,16 @@ public class PrimeSieveCacheAwareUsingArray
         implements PrimeSieve, PrimeSieveIterable {
 
     private final static int BATCH_SIZE = 1000000;
-
-    private boolean[] numbers;
+    private final ArrayStore arrayStore;
 
     public PrimeSieveCacheAwareUsingArray(int upTo) {
-        this.numbers = new boolean[upTo + 1];
+        this.arrayStore = new ArrayStore(upTo + 1);
 
         // initialize numbers with all prime / composite results <= BATCH_SIZE
         PrimeSieveUsingArray sieve = new PrimeSieveUsingArray(getBatchSize());
         sieve.sieve();
 
-        System.arraycopy(sieve.getNumbers(), 0, this.numbers, 0,
+        System.arraycopy(sieve.getNumbers(), 0, this.arrayStore.numbers, 0,
                 Math.min(sieve.getNumbers().length, getLength()));
     }
 
@@ -38,19 +38,19 @@ public class PrimeSieveCacheAwareUsingArray
     @Override
     public String toString() {
         return "PrimeSieveCacheAwareUsingArray{" +
-                "numbers=" + Arrays.toString(numbers) +
+                "numbers=" + Arrays.toString(arrayStore.numbers) +
                 '}';
     }
 
     public boolean isPrime(int index) {
-        return !this.numbers[index];
+        return arrayStore.isPrime(index);
     }
 
     public int getLength() {
-        return this.numbers.length;
+        return this.arrayStore.getLength();
     }
 
     void setComposite(int index, boolean isComposite) {
-        this.numbers[index] = isComposite;
+        this.arrayStore.setComposite(index, isComposite);
     }
 }
