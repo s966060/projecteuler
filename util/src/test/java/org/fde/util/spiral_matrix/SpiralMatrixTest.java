@@ -1,7 +1,9 @@
 package org.fde.util.spiral_matrix;
 
+import org.fde.util.ListOfLong;
 import org.junit.Test;
 
+import static org.fde.util.ListOfLong.createListOfLong;
 import static org.fde.util.spiral_matrix.SpiralMatrix.createSpiralMatrix;
 import static org.junit.Assert.assertEquals;
 
@@ -82,5 +84,16 @@ public class SpiralMatrixTest {
         SpiralMatrix expectedMatrix = createSpiralMatrix(expected);
 
         assertEquals(expectedMatrix, actual);
+    }
+
+    @Test
+    public void diaganonalValues() {
+        SpiralMatrix matrix = new SpiralMatrix().next().next().next().next();
+
+        ListOfLong actual = matrix.getDiagonalValues();
+
+        ListOfLong expected = createListOfLong(37, 31, 17, 13, 5, 3, 1, 1, 9, 7, 25, 21, 49, 43);
+
+        assertEquals(expected, actual);
     }
 }

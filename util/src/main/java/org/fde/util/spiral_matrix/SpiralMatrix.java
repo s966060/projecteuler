@@ -89,7 +89,7 @@ public class SpiralMatrix {
         }
     }
 
-    private ListOfLong getDiagonalValues() {
+    public ListOfLong getDiagonalValues() {
         ListOfLong list = new ListOfLong();
 
         int size = getSize();
