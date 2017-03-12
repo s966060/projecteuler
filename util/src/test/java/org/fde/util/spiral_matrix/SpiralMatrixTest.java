@@ -1,17 +1,11 @@
-package org.fde.projecteuler.problem_058;
+package org.fde.util.spiral_matrix;
 
-import org.fde.util.spiral_matrix.SpiralMatrix;
 import org.junit.Test;
 
 import static org.fde.util.spiral_matrix.SpiralMatrix.createSpiralMatrix;
 import static org.junit.Assert.assertEquals;
 
-public class SpiralPrimes {
-    @Test
-    public void spiralPrimes() {
-
-    }
-
+public class SpiralMatrixTest {
     @Test
     public void createOfSize_1() {
         SpiralMatrix actual = new SpiralMatrix();

@@ -1,5 +1,7 @@
 package org.fde.util.matrix;
 
+import java.util.Arrays;
+
 public abstract class Matrix {
     final int rows;
     final int columns;
@@ -75,5 +77,42 @@ public abstract class Matrix {
 
     public static Matrix createMatrixColumnsFirst(int rows, int columns) {
         return new MatrixColumnsFirst(rows,columns);
+    }
+
+    public int getRows() {
+        return this.rows;
+    }
+
+    public int getColumns() {
+        return this.columns;
+    }
+
+    @Override
+    public String toString() {
+        return "Matrix{" +
+                "rows=" + rows +
+                ", columns=" + columns +
+                ", matrix=" + Arrays.toString(matrix) +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Matrix matrix1 = (Matrix) o;
+
+        if (rows != matrix1.rows) return false;
+        if (columns != matrix1.columns) return false;
+        return Arrays.equals(matrix, matrix1.matrix);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = rows;
+        result = 31 * result + columns;
+        result = 31 * result + Arrays.hashCode(matrix);
+        return result;
     }
 }
