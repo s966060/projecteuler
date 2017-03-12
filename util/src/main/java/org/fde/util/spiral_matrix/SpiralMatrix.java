@@ -3,6 +3,7 @@ package org.fde.util.spiral_matrix;
 import org.fde.util.matrix.Matrix;
 
 import static org.fde.util.matrix.Matrix.createMatrixRowsFirst;
+import static org.fde.util.spiral_matrix.Direction.*;
 
 public class SpiralMatrix {
     private final Matrix matrix;
@@ -43,48 +44,65 @@ public class SpiralMatrix {
         int size = this.matrix.getRows() + 1;
 
         if (size == 2) {
-            int[][] values = {
-                    {4, 3},
-                    {1, 2}
-            };
-
-            return createSpiralMatrix(
-                    values
-            );
+            return createSize_2();
         } else if (size == 3) {
-            int[][] values = {
-                    {5, 4, 3},
-                    {6, 1, 2},
-                    {7, 8, 9}
-            };
-
-            return createSpiralMatrix(
-                    values
-            );
+            return createSize_3();
         }
         else {
             // 3 -> 5; 5 -> 7; ...
             // uneven sizes from now on
             // each last element start @ right bottom
             ++size;
-            Matrix newMatrix = createMatrix(size);
 
-            int  value = (int) getRightBottomValue();
-
-            // we start at right bottom + one to the right
-            int columnIndex = size - 1;
-            int rowIndex = size - 2;
-
-            Cursor cursor = new Cursor(newMatrix, rowIndex, columnIndex, value + 1);
-
-            cursor.setValues(Direction.RIGHT);
-            cursor.setValues(Direction.UP);
-            cursor.setValues(Direction.LEFT);
-            cursor.setValues(Direction.DOWN);
-            cursor.setValues(Direction.RIGHT);
-
-            return new SpiralMatrix(newMatrix);
+            return create(size);
         }
+    }
+
+    private SpiralMatrix create(int size) {
+        Matrix newMatrix = createMatrix(size);
+
+        for(int rowIndex = 0; rowIndex < this.matrix.getRows(); ++rowIndex) {
+            for(int columnIndex = 0; columnIndex < this.matrix.getColumns(); ++columnIndex) {
+                int value = (int) this.matrix.get(rowIndex, columnIndex);
+
+                newMatrix.set(rowIndex + 1, columnIndex + 1, value);
+            }
+        }
+
+        int  value = (int) getRightBottomValue();
+
+        // we start at right bottom + one to the right
+        int columnIndex = size - 2;
+        int rowIndex = size - 2;
+
+        Cursor cursor = new Cursor(newMatrix, rowIndex, columnIndex, value + 1);
+
+        cursor.setValues(RIGHT);
+        cursor.setValues(UP);
+        cursor.setValues(LEFT);
+        cursor.setValues(DOWN);
+        cursor.setValues(RIGHT);
+
+        return new SpiralMatrix(newMatrix);
+    }
+
+    private SpiralMatrix createSize_3() {
+        int[][] values = {
+                {5, 4, 3},
+                {6, 1, 2},
+                {7, 8, 9}
+        };
+
+        return createSpiralMatrix(values);
+    }
+
+    private SpiralMatrix createSize_2() {
+        int[][] values = {
+                {4, 3},
+                {1, 2}
+        };
+
+        return createSpiralMatrix(values);
     }
 
     private double getRightBottomValue() {
