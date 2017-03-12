@@ -1,5 +1,6 @@
 package org.fde.util.spiral_matrix;
 
+import org.fde.util.ListOfLong;
 import org.fde.util.matrix.Matrix;
 
 import static org.fde.util.matrix.Matrix.createMatrixRowsFirst;
@@ -41,7 +42,7 @@ public class SpiralMatrix {
     }
 
     public SpiralMatrix next() {
-        int size = this.matrix.getRows();
+        int size = getSize();
 
         if (size == 1) {
             return createSize_2();
@@ -79,13 +80,31 @@ public class SpiralMatrix {
     }
 
     private void copyToNewMatrix(Matrix newMatrix) {
-        for (int rowIndex = 0; rowIndex < this.matrix.getRows(); ++rowIndex) {
-            for (int columnIndex = 0; columnIndex < this.matrix.getColumns(); ++columnIndex) {
-                int value = (int) this.matrix.get(rowIndex, columnIndex);
+        for (int rowIndex = 0; rowIndex < getSize(); ++rowIndex) {
+            for (int columnIndex = 0; columnIndex <  getSize(); ++columnIndex) {
+                int value = getValue(rowIndex, columnIndex);
 
                 newMatrix.set(rowIndex + 1, columnIndex + 1, value);
             }
         }
+    }
+
+    private ListOfLong getDiagonalValues() {
+        ListOfLong list = new ListOfLong();
+
+        int size = getSize();
+
+        for(int index = 0; index < size; ++index) {
+            list.add(getValue(index, index));
+            list.add(getValue(index, size - 1 - index));
+        }
+
+        return list;
+    }
+
+    public int getValue(int rowIndex, int columnIndex) {
+        int value = (int) this.matrix.get(rowIndex, columnIndex);
+        return value;
     }
 
     private SpiralMatrix createSize_3() {
@@ -108,9 +127,13 @@ public class SpiralMatrix {
     }
 
     private double getRightBottomValue() {
-        int index = this.matrix.getRows() - 1;
-        double value = this.matrix.get(index, index);
+        int index = getSize() - 1;
+        double value = getValue(index, index);
         return value;
+    }
+
+    private int getSize() {
+        return this.matrix.getRows();
     }
 
     private static Matrix createMatrix(int size) {

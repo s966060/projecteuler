@@ -67,6 +67,11 @@ public class ListOfLong implements Iterable<Long> {
         this.numbers.add(number);
     }
 
+    public void add(Integer number) {
+        Validate.notNull(number);
+        this.numbers.add(number.longValue());
+    }
+
     public void add(int index, Long number) {
         Validate.notNull(number);
         this.numbers.add(index, number);

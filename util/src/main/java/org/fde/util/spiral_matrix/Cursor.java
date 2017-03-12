@@ -2,9 +2,6 @@ package org.fde.util.spiral_matrix;
 
 import org.fde.util.matrix.Matrix;
 
-/**
- * Created by filip on 12/03/2017.
- */
 class Cursor {
     private final Matrix matrix;
 
