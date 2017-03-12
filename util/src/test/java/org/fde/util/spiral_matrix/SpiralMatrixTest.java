@@ -92,7 +92,7 @@ public class SpiralMatrixTest {
 
         ListOfLong actual = matrix.getDiagonalValues();
 
-        ListOfLong expected = createListOfLong(37, 31, 17, 13, 5, 3, 1, 1, 9, 7, 25, 21, 49, 43);
+        ListOfLong expected = createListOfLong(37, 31, 17, 13, 5, 3, 1, 9, 7, 25, 21, 49, 43);
 
         assertEquals(expected, actual);
     }

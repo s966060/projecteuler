@@ -96,7 +96,10 @@ public class SpiralMatrix {
 
         for(int index = 0; index < size; ++index) {
             list.add(getValue(index, index));
-            list.add(getValue(index, size - 1 - index));
+
+            if(index != size - 1 - index) {
+                list.add(getValue(index, size - 1 - index));
+            }
         }
 
         return list;
@@ -132,7 +135,7 @@ public class SpiralMatrix {
         return value;
     }
 
-    private int getSize() {
+    public int getSize() {
         return this.matrix.getRows();
     }
 
