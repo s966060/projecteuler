@@ -1,4 +1,4 @@
-package org.fde.util.cache;
+package org.fde.util.matrix;
 
 public abstract class Matrix {
     final int rows;

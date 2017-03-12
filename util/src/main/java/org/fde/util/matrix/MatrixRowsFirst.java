@@ -1,4 +1,4 @@
-package org.fde.util.cache;
+package org.fde.util.matrix;
 
 public class MatrixRowsFirst extends Matrix {
     public MatrixRowsFirst(int rows, int columns) {
