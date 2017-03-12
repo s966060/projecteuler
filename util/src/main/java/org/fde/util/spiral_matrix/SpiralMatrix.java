@@ -41,20 +41,18 @@ public class SpiralMatrix {
     }
 
     public SpiralMatrix next() {
-        int size = this.matrix.getRows() + 1;
+        int size = this.matrix.getRows();
 
-        if (size == 2) {
+        if (size == 1) {
             return createSize_2();
-        } else if (size == 3) {
+        } else if (size == 2) {
             return createSize_3();
         }
         else {
             // 3 -> 5; 5 -> 7; ...
             // uneven sizes from now on
             // each last element start @ right bottom
-            ++size;
-
-            return create(size);
+            return create(size + 2);
         }
     }
 
