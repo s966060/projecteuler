@@ -59,13 +59,7 @@ public class SpiralMatrix {
     private SpiralMatrix create(int size) {
         Matrix newMatrix = createMatrix(size);
 
-        for(int rowIndex = 0; rowIndex < this.matrix.getRows(); ++rowIndex) {
-            for(int columnIndex = 0; columnIndex < this.matrix.getColumns(); ++columnIndex) {
-                int value = (int) this.matrix.get(rowIndex, columnIndex);
-
-                newMatrix.set(rowIndex + 1, columnIndex + 1, value);
-            }
-        }
+        copyToNewMatrix(newMatrix);
 
         int  value = (int) getRightBottomValue();
 
@@ -82,6 +76,16 @@ public class SpiralMatrix {
         cursor.setValues(RIGHT);
 
         return new SpiralMatrix(newMatrix);
+    }
+
+    private void copyToNewMatrix(Matrix newMatrix) {
+        for (int rowIndex = 0; rowIndex < this.matrix.getRows(); ++rowIndex) {
+            for (int columnIndex = 0; columnIndex < this.matrix.getColumns(); ++columnIndex) {
+                int value = (int) this.matrix.get(rowIndex, columnIndex);
+
+                newMatrix.set(rowIndex + 1, columnIndex + 1, value);
+            }
+        }
     }
 
     private SpiralMatrix createSize_3() {
