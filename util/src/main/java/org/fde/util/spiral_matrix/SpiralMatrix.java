@@ -39,56 +39,6 @@ public class SpiralMatrix {
         return new SpiralMatrix(matrix);
     }
 
-    static enum Direction {
-        UP(-1, 0), DOWN(1, 0), LEFT(0, -1), RIGHT(0, 1);
-
-        private final int rowIncrement;
-        private final int columnIncrement;
-
-        Direction(int rowIncrement, int columnIncrement) {
-            this.rowIncrement = rowIncrement;
-            this.columnIncrement = columnIncrement;
-        }
-    }
-
-    static class Cursor {
-        private final Matrix matrix;
-
-        private int rowIndex;
-        private int columnIndex;
-
-        private int value;
-
-        public Cursor(Matrix matrix, int rowIndex, int columnIndex, int value) {
-            this.matrix = matrix;
-            this.rowIndex = rowIndex;
-            this.columnIndex = columnIndex;
-            this.value = value;
-        }
-
-        boolean setValue(Direction direction) {
-            int newRowIndex = rowIndex + direction.rowIncrement;
-            int newColumnIndex = columnIndex + direction.columnIncrement;
-
-            if (newRowIndex >= 0 && newRowIndex < matrix.getRows()) {
-                if (newColumnIndex >= 0 && newColumnIndex < matrix.getColumns()) {
-                    this.rowIndex = newRowIndex;
-                    this.columnIndex = newColumnIndex;
-
-                    this.matrix.set(this.rowIndex, this.columnIndex, this.value);
-                    ++this.value;
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
-        void setValues(Direction direction) {
-             while(setValue(direction));
-        }
-    }
-
     public SpiralMatrix next() {
         int size = this.matrix.getRows() + 1;
 
