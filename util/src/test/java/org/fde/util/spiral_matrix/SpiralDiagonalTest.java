@@ -12,8 +12,6 @@ public class SpiralDiagonalTest {
         SpiralDiagonal spiralDiagonal = new SpiralDiagonal();
 
         for (int i = 0; i < 100; ++i) {
-            int size = matrix.getSize();
-
             ListOfLong expected = matrix.getDiagonalValues();
             expected.sort();
 
