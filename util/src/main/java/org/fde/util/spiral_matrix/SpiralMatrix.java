@@ -45,8 +45,6 @@ public class SpiralMatrix {
         int size = getSize();
 
         if (size == 1) {
-            return createSize_2();
-        } else if (size == 2) {
             return createSize_3();
         }
         else {

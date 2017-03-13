@@ -22,22 +22,8 @@ public class SpiralMatrixTest {
     }
 
     @Test
-    public void createOfSize_2() {
-        SpiralMatrix actual = new SpiralMatrix().next();
-
-        int[][] expected = {
-                {4, 3},
-                {1, 2}
-        };
-
-        SpiralMatrix expectedMatrix = createSpiralMatrix(expected);
-
-        assertEquals(expectedMatrix, actual);
-    }
-
-    @Test
     public void createOfSize_3() {
-        SpiralMatrix actual = new SpiralMatrix().next().next();
+        SpiralMatrix actual = new SpiralMatrix().next();
 
         int[][] expected = {
                 {5, 4, 3},
@@ -52,7 +38,7 @@ public class SpiralMatrixTest {
 
     @Test
     public void createOfSize_5() {
-        SpiralMatrix actual = new SpiralMatrix().next().next().next();
+        SpiralMatrix actual = new SpiralMatrix().next().next();
 
         int[][] expected = {
                 {17, 16, 15, 14, 13},
@@ -69,7 +55,7 @@ public class SpiralMatrixTest {
 
     @Test
     public void createOfSize_7() {
-        SpiralMatrix actual = new SpiralMatrix().next().next().next().next();
+        SpiralMatrix actual = new SpiralMatrix().next().next().next();
 
         int[][] expected = {
                 {37, 36, 35, 34, 33, 32, 31},
@@ -87,8 +73,8 @@ public class SpiralMatrixTest {
     }
 
     @Test
-    public void diaganonalValues() {
-        SpiralMatrix matrix = new SpiralMatrix().next().next().next().next();
+    public void diagonalValues() {
+        SpiralMatrix matrix = new SpiralMatrix().next().next().next();
 
         ListOfLong actual = matrix.getDiagonalValues();
 
