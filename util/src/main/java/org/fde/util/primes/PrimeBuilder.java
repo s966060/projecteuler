@@ -90,12 +90,31 @@ public class PrimeBuilder {
     }
 
     public boolean isPrime(long suspect) {
-        while (suspect > getLastPrime()) {
-            next();
-        }
+        if(suspect < 1_000_000) {
+            while (suspect > getLastPrime()) {
+                next();
+            }
 
-        boolean isPrime = this.primes.contains(suspect);
-        return isPrime;
+            boolean isPrime = this.primes.contains(suspect);
+            return isPrime;
+        }
+        else {
+            PrimeBuilder builder = new PrimeBuilder(this.primes);
+
+            long limit = getLimit(suspect);
+
+            long prime = builder.next();
+
+            while (prime <= limit) {
+                if ((suspect % prime) == 0) {
+                    return false;
+                }
+
+                prime = builder.next();
+            }
+
+            return true;
+        }
     }
 
     @Override
