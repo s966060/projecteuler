@@ -248,7 +248,8 @@ public class ListOfLong implements Iterable<Long> {
     }
 
     public ListOfLong subList(int fromIndex, int toIndex) {
-        return new ListOfLong(this.numbers.subList(fromIndex, toIndex));
+        List<Long> subList = this.numbers.subList(fromIndex, toIndex);
+        return new ListOfLong(subList);
     }
 
     public void swap(int fromIndex, int toIndex) {

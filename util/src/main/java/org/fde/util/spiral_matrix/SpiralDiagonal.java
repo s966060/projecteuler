@@ -25,7 +25,19 @@ public class SpiralDiagonal {
         }
     }
 
+    public ListOfLong getNewOnes() {
+        int fromIndex = Math.max(0, this.diagonal.size() - 4);
+        int toIndex = this.diagonal.size();
+
+        ListOfLong newOnes = this.diagonal.subList(fromIndex, toIndex);
+        return newOnes;
+    }
+
     public ListOfLong getDiagonal() {
         return this.diagonal;
+    }
+
+    public int getSize() {
+        return size;
     }
 }
