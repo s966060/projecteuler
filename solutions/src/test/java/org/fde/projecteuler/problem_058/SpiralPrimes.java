@@ -27,16 +27,20 @@ public class SpiralPrimes {
         primeStopWatch.start();
         primeStopWatch.suspend();
 
+        int primeCheckCount = 0;
+
         while(!done) {
             ListOfLong values = diagonal.getNewOnes();
 
             primeStopWatch.resume();
 
             for(Long value : values) {
+                ++primeCheckCount;
                 if(primes.isPrime(value)) {
                     ++primeCount;
                 }
             }
+
             primeStopWatch.suspend();
 
             double primeRatio = primeCount / diagonal.getDiagonal().size();
@@ -49,6 +53,7 @@ public class SpiralPrimes {
 
                 System.out.println("primeStopWatch = " + primeStopWatch);
                 System.out.println("generalStopWatch = " + generalStopWatch);
+                System.out.println("primeCheckCount = " + primeCheckCount);
             }
 
             if(primeRatio < 0.1) {
