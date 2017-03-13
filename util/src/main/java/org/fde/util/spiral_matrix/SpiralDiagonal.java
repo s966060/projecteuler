@@ -8,7 +8,7 @@ public class SpiralDiagonal {
 
         int computeSize = size;
 
-        while (size > 0) {
+        while (computeSize > 0) {
             ListOfLong listOne = computeOne(computeSize);
             list.addAll(listOne);
 
@@ -21,22 +21,15 @@ public class SpiralDiagonal {
     private int stepDownSize(int size) {
         if (size == 1) {
             return 0;
-        } else if (size == 2) {
-            return 1;
-        } else if (size == 3) {
-            return 2;
         } else {
             return size - 2;
         }
     }
 
-    ListOfLong computeOne(int size) {
+    private ListOfLong computeOne(int size) {
         if (size == 1) {
             return ListOfLong.createListOfLong(1);
-        } else if(size == 2) {
-            return ListOfLong.createListOfLong(1);
-        }
-        else {
+        } else {
             ListOfLong list = new ListOfLong();
 
             int value = size * size;
