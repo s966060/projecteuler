@@ -3,7 +3,7 @@ package org.fde.util.spiral_matrix;
 import org.fde.util.ListOfLong;
 
 public class SpiralDiagonal {
-    ListOfLong compute(int size) {
+    public ListOfLong compute(int size) {
         ListOfLong list = new ListOfLong();
 
         int computeSize = size;
