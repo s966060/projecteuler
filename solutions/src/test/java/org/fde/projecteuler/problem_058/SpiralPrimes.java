@@ -2,19 +2,20 @@ package org.fde.projecteuler.problem_058;
 
 import org.fde.util.ListOfLong;
 import org.fde.util.primes.PrimeBuilder;
-import org.fde.util.spiral_matrix.SpiralMatrix;
+import org.fde.util.spiral_matrix.SpiralDiagonal;
 import org.junit.Test;
 
 public class SpiralPrimes {
     @Test
     public void spiralPrimes() {
         PrimeBuilder primes = new PrimeBuilder();
-        SpiralMatrix matrix = new SpiralMatrix().next();
+        SpiralDiagonal diagonal = new SpiralDiagonal();
 
         boolean done = false;
+        int size = 3;
 
         while(!done) {
-            ListOfLong values = matrix.getDiagonalValues();
+            ListOfLong values = diagonal.compute(size);
 
             double primeCount = 0;
 
@@ -26,17 +27,19 @@ public class SpiralPrimes {
 
             double primeRatio = primeCount / values.size();
 
-            System.out.println("matrix.getSize() = " + matrix.getSize());
-            System.out.println("primeRatio = " + primeRatio);
+            if((size % 101) == 0) {
+                System.out.println("size = " + size);
+                System.out.println("primeRatio = " + primeRatio);
+            }
 
             if(primeRatio < 0.1) {
                 done = true;
             }
             else {
-                matrix = matrix.next();
+                size += 2;
             }
         }
 
-        System.out.println("matrix.getSize() = " + matrix.getSize());
+        System.out.println("size = " + size);
     }
 }

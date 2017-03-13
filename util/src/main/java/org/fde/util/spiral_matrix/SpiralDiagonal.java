@@ -3,45 +3,29 @@ package org.fde.util.spiral_matrix;
 import org.fde.util.ListOfLong;
 
 public class SpiralDiagonal {
-    public ListOfLong compute(int size) {
-        ListOfLong list = new ListOfLong();
+    private int size;
+    private final ListOfLong diagonal;
 
-        int computeSize = size;
-
-        while (computeSize > 0) {
-            ListOfLong listOne = computeOne(computeSize);
-            list.addAll(listOne);
-
-            computeSize = stepDownSize(computeSize);
-        }
-
-        return list;
+    public SpiralDiagonal() {
+        this.size = 1;
+        this.diagonal = new ListOfLong();
+        this.diagonal.add(1);
     }
 
-    private int stepDownSize(int size) {
-        if (size == 1) {
-            return 0;
-        } else {
-            return size - 2;
-        }
-    }
+    public void next() {
+        this.size += 2;
 
-    private ListOfLong computeOne(int size) {
-        if (size == 1) {
-            return ListOfLong.createListOfLong(1);
-        } else {
-            ListOfLong list = new ListOfLong();
+        long value = this.size * this.size;
 
-            int value = size * size;
+        for (int corner = 0; corner < 4; ++corner) {
+            this.diagonal.add(value);
 
-            for (int i = 0; i < 4; ++i) {
-                list.add(value);
-                value -= (size - 1);
-            }
-
-            return list;
+            int step = this.size - 1;
+            value -= step;
         }
     }
 
-
+    public ListOfLong getDiagonal() {
+        return this.diagonal;
+    }
 }

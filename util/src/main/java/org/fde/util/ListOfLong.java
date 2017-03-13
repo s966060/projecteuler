@@ -262,4 +262,8 @@ public class ListOfLong implements Iterable<Long> {
     public List<Long> getInternalList() {
         return Collections.unmodifiableList(this.numbers);
     }
+
+    public static ListOfLong ofSize(int size) {
+        return new ListOfLong(new ArrayList<>(size));
+    }
 }
