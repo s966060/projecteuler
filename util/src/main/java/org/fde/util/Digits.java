@@ -76,10 +76,9 @@ public class Digits implements Iterable<Digit> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Digits longs = (Digits) o;
+        Digits digits1 = (Digits) o;
 
-        return digits.equals(longs.digits);
-
+        return digits.equals(digits1.digits);
     }
 
     @Override

@@ -47,4 +47,19 @@ public class Digit implements Comparable<Digit> {
                 "digit=" + digit +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Digit digit1 = (Digit) o;
+
+        return digit == digit1.digit;
+    }
+
+    @Override
+    public int hashCode() {
+        return (int) (digit ^ (digit >>> 32));
+    }
 }
