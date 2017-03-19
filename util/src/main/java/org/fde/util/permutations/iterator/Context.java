@@ -24,11 +24,21 @@ class Context {
         ++this.index;
     }
 
-    public ListOfLong getNumbers() {
+    ListOfLong getNumbers() {
         return numbers;
     }
 
-    public int getIndex() {
+    int getIndex() {
         return index;
+    }
+
+    /**
+     * Used for the permutation of the empty set
+     * 0! = 1
+     * Only the empty set needs a hasValue() check !
+     */
+    boolean hasValue() {
+        boolean hasValue = (this.index < this.numbers.size());
+        return hasValue;
     }
 }

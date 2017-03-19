@@ -102,7 +102,7 @@ public class OrderedPermutationIteratorTest {
         OrderedPermutationFactory factory = new OrderedPermutationFactory(input);
         PermutationList expected = factory.getPermutations();
 
-        OrderedPermutationIterator actual = new OrderedPermutationIterator(input);
+        OrderedPermutationIterator actual = OrderedPermutationIterator.createOrderedPermutationIterator(input);
 
         check(expected, actual);
     }
@@ -114,7 +114,7 @@ public class OrderedPermutationIteratorTest {
             input.add(value);
         }
 
-        return new OrderedPermutationIterator(input);
+        return OrderedPermutationIterator.createOrderedPermutationIterator(input);
     }
 
     private void check(PermutationList expected,

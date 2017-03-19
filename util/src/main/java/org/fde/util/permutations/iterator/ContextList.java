@@ -10,17 +10,25 @@ class ContextList implements Iterable<Context> {
     private final List<Context> list;
 
     ContextList(ListOfLong numbers) {
-        this.list = new ArrayList<>();
+        this();
 
         Context firstContext = new Context(numbers, 0);
         create(firstContext);
+    }
+
+    ContextList() {
+        this.list = new ArrayList<>();
+    }
+
+    void add(Context context) {
+        this.list.add(context);
     }
 
     void create(Context context) {
         ListOfLong numbers = context.getNumbers();
 
         if (!numbers.isEmpty()) {
-            this.list.add(context);
+            add(context);
 
             ListOfLong nextNumbers = new ListOfLong();
 
