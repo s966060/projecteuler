@@ -12,7 +12,7 @@ import static org.junit.Assert.assertEquals;
 public class GenericCombinationIteratorTest {
     @Test
     public void empty_theCombinationsOf() {
-        GenericCombinationIterator<Long> actual = createActual();
+        GenericCombinationIterator<Long> actual = createActual(0);
 
         GenericCombinationList<Long> expected = new GenericCombinationList<Long>()
                 .add(new GenericCombination<>());
@@ -25,64 +25,75 @@ public class GenericCombinationIteratorTest {
         GenericCombinationIterator<Long> actual = createActual(1);
 
         GenericCombinationList<Long> expected = new GenericCombinationList<Long>()
-                .add(new GenericCombination<>())
-                .add(new GenericCombination<>(1L));
+                .add(new GenericCombination<>(1L))
+                .add(new GenericCombination<>(2L))
+                .add(new GenericCombination<>(3L))
+                .add(new GenericCombination<>(4L))
+                .add(new GenericCombination<>(5L));
 
         check(expected, actual);
     }
 
     @Test
     public void two_theCombinationsOf() {
-        GenericCombinationIterator<Long> actual = createActual(1, 2);
+        GenericCombinationIterator<Long> actual = createActual(2);
 
         GenericCombinationList<Long> expected = new GenericCombinationList<Long>()
-                .add(new GenericCombination<>())
-                .add(new GenericCombination<>(1L))
-                .add(new GenericCombination<>(2L))
-                .add(new GenericCombination<>(1L, 2L));
+                .add(new GenericCombination<>(1L, 2L))
+                .add(new GenericCombination<>(1L, 3L))
+                .add(new GenericCombination<>(1L, 4L))
+                .add(new GenericCombination<>(1L, 5L))
+                .add(new GenericCombination<>(2L, 3L))
+                .add(new GenericCombination<>(2L, 4L))
+                .add(new GenericCombination<>(2L, 5L))
+                .add(new GenericCombination<>(3L, 4L))
+                .add(new GenericCombination<>(3L, 5L))
+                .add(new GenericCombination<>(4L, 5L));
 
         check(expected, actual);
     }
 
     @Test
     public void three_theCombinationsOf() {
-        GenericCombinationIterator<Long> actual = createActual(1, 2, 3);
+        GenericCombinationIterator<Long> actual = createActual(3);
 
         GenericCombinationList expected = new GenericCombinationList<>()
-                .add(new GenericCombination<>())
-                .add(new GenericCombination<>(1L))
-                .add(new GenericCombination<>(2L))
-                .add(new GenericCombination<>(3L))
-                .add(new GenericCombination<>(1L, 2L))
-                .add(new GenericCombination<>(1L, 3L))
-                .add(new GenericCombination<>(2L, 3L))
-                .add(new GenericCombination<>(1L, 2L, 3L));
+                .add(new GenericCombination<>(1L, 2L, 3L))
+                .add(new GenericCombination<>(1L, 2L, 4L))
+                .add(new GenericCombination<>(1L, 2L, 5L))
+                .add(new GenericCombination<>(1L, 3L, 4L))
+                .add(new GenericCombination<>(1L, 3L, 5L))
+                .add(new GenericCombination<>(1L, 4L, 5L))
+                .add(new GenericCombination<>(2L, 3L, 4L))
+                .add(new GenericCombination<>(2L, 3L, 5L))
+                .add(new GenericCombination<>(2L, 4L, 5L))
+                .add(new GenericCombination<>(3L, 4L, 5L))
+                ;
 
         check(expected, actual);
     }
 
     @Test
     public void four_theCombinationsOf() {
-        GenericCombinationIterator<Long> actual = createActual(1, 2, 3, 4);
+        GenericCombinationIterator<Long> actual = createActual(4);
 
         GenericCombinationList<Long> expected = new GenericCombinationList<Long>()
-                .add(new GenericCombination<>())
-                .add(new GenericCombination<>(1L))
-                .add(new GenericCombination<>(2L))
-                .add(new GenericCombination<>(3L))
-                .add(new GenericCombination<>(4L))
-                .add(new GenericCombination<>(1L, 2L))
-                .add(new GenericCombination<>(1L, 3L))
-                .add(new GenericCombination<>(1L, 4L))
-                .add(new GenericCombination<>(2L, 3L))
-                .add(new GenericCombination<>(2L, 4L))
-                .add(new GenericCombination<>(3L, 4L))
-                .add(new GenericCombination<>(1L, 2L, 3L))
-                .add(new GenericCombination<>(1L, 2L, 4L))
-                .add(new GenericCombination<>(1L, 3L, 4L))
-                .add(new GenericCombination<>(2L, 3L, 4L))
-                .add(new GenericCombination<>(1L, 2L, 3L, 4L)
-                );
+                .add(new GenericCombination<>(1L, 2L, 3L, 4L))
+                .add(new GenericCombination<>(1L, 2L, 3L, 5L))
+                .add(new GenericCombination<>(1L, 2L, 4L, 5L))
+                .add(new GenericCombination<>(1L, 3L, 4L, 5L))
+                .add(new GenericCombination<>(2L, 3L, 4L, 5L))
+                ;
+
+        check(expected, actual);
+    }
+
+    @Test
+    public void five_theCombinationsOf() {
+        GenericCombinationIterator<Long> actual = createActual(5);
+
+        GenericCombinationList<Long> expected = new GenericCombinationList<Long>()
+                .add(new GenericCombination<>(1L, 2L, 3L, 4L, 5L));
 
         check(expected, actual);
     }
@@ -116,9 +127,9 @@ public class GenericCombinationIteratorTest {
         return result;
     }
 
-    private GenericCombinationIterator<Long> createActual(long... values) {
-        List<Long> input = createListOfLong(values);
+    private GenericCombinationIterator<Long> createActual(int selectSize) {
+        List<Long> input = createListOfLong(1, 2, 3, 4, 5);
 
-        return new GenericCombinationIterator<Long>(input);
+        return new GenericCombinationIterator<>(input, selectSize);
     }
 }
