@@ -14,11 +14,11 @@ public class OrderedPermutationIterator implements Iterator<Permutation> {
 
     @Override
     public boolean hasNext() {
-        return false;
+        return this.context.hasNext();
     }
 
     @Override
     public Permutation next() {
-        return null;
+        return this.context.next();
     }
 }
