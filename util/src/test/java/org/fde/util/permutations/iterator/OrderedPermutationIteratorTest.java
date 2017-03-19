@@ -124,7 +124,8 @@ public class OrderedPermutationIteratorTest {
         PermutationList actual = new PermutationList();
 
         while (actualIterator.hasNext()) {
-            actual.add(actualIterator.next());
+            Permutation value = actualIterator.next();
+            actual.add(value);
         }
 
         check(expected, actual);
