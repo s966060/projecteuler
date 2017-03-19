@@ -10,6 +10,16 @@ import static org.junit.Assert.assertEquals;
 
 public class OrderedPermutationFactoryTest {
     @Test
+    public void empty_thePermutationsOf() {
+        PermutationList actual = createActual();
+
+        PermutationList expected = new PermutationList()
+                .add(createPermutation());
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
     public void one_thePermutationsOf() {
         PermutationList actual = createActual(1);
 
