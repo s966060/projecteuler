@@ -3,10 +3,12 @@ package org.fde.util.permutations.iterator;
 import org.fde.util.ListOfLong;
 import org.fde.util.permutations.Permutation;
 import org.fde.util.permutations.PermutationList;
+import org.fde.util.permutations.factory.OrderedPermutationFactory;
 import org.junit.Test;
 
 import java.util.Iterator;
 
+import static org.fde.util.ListOfLong.createListOfLong;
 import static org.fde.util.permutations.Permutation.createPermutation;
 import static org.junit.Assert.assertEquals;
 
@@ -89,6 +91,18 @@ public class OrderedPermutationIteratorTest {
                 .add(createPermutation(4, 2, 3, 1))
                 .add(createPermutation(4, 3, 1, 2))
                 .add(createPermutation(4, 3, 2, 1));
+
+        check(expected, actual);
+    }
+
+    @Test
+    public void testVersusTheOrderedPermutationFactory() {
+        ListOfLong input = createListOfLong(1, 2, 3, 4, 5, 6, 7, 8, 9);
+
+        OrderedPermutationFactory factory = new OrderedPermutationFactory(input);
+        PermutationList expected = factory.getPermutations();
+
+        OrderedPermutationIterator actual = new OrderedPermutationIterator(input);
 
         check(expected, actual);
     }

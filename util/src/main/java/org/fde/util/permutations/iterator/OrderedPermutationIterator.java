@@ -37,7 +37,7 @@ public class OrderedPermutationIterator implements Iterator<Permutation> {
         Context current;
 
         do {
-            if(this.contextList.isEmpty()) {
+            if (this.contextList.isEmpty()) {
                 return;
             }
 
