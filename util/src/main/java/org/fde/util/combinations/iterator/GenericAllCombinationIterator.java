@@ -7,13 +7,13 @@ import java.util.List;
 
 import static org.fde.util.combinations.iterator.GenericCombinationIteratorFactory.createGenericCombinationIterator;
 
-public class GenericAllCombinationIterator <T> implements GenericCombinationIterator<T> {
+public class GenericAllCombinationIterator<T> implements GenericCombinationIterator<T> {
     private List iterators;
 
     public <T> GenericAllCombinationIterator(List<T> input) {
         this.iterators = new ArrayList();
 
-        for(int selectSize = 0; selectSize < input.size(); ++selectSize) {
+        for (int selectSize = 0; selectSize <= input.size(); ++selectSize) {
             GenericCombinationIterator<T> iterator
                     = createGenericCombinationIterator(input, selectSize);
 
@@ -23,21 +23,36 @@ public class GenericAllCombinationIterator <T> implements GenericCombinationIter
 
     @Override
     public boolean hasNext() {
-        boolean hasNext = !this.iterators.isEmpty();
-        return hasNext;
+        if (this.iterators.size() > 1) {
+            return true;
+        } else if (this.iterators.size() == 1) {
+            GenericCombinationIterator<T> iterator = getFirstIterator();
+
+            boolean hasNext = iterator.hasNext();
+            return hasNext;
+        } else {
+            return false;
+        }
     }
 
     @Override
     public GenericCombination<T> next() {
-        GenericCombinationIterator<T> iterator
-                = (GenericCombinationIterator<T>) this.iterators.get(0);
+        GenericCombinationIterator<T> iterator = getFirstIterator();
 
-        if(iterator.hasNext()) {
+        if (iterator.hasNext()) {
             return iterator.next();
-        }
-        else {
+        } else {
             this.iterators.remove(0);
             return next();
         }
+    }
+
+    private GenericCombinationIterator<T> getFirstIterator() {
+        Object iteratorAsObject = this.iterators.get(0);
+
+        GenericCombinationIterator<T> iterator
+                = (GenericCombinationIterator<T>) iteratorAsObject;
+
+        return iterator;
     }
 }
