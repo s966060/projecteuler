@@ -1,4 +1,4 @@
-package org.fde.util.permutations.iterators;
+package org.fde.util.permutations.iterator;
 
 import org.fde.util.ListOfLong;
 
