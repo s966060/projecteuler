@@ -7,6 +7,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.fde.util.combinations.iterator.GenericCombinationIteratorFactory.createGenericCombinationIterator;
 import static org.junit.Assert.assertEquals;
 
 public class GenericAllCombinationIteratorTest {
@@ -119,6 +120,6 @@ public class GenericAllCombinationIteratorTest {
     private GenericCombinationIterator<Long> createActual(long... values) {
         List<Long> input = createListOfLong(values);
 
-        return new GenericCombinationIterator<>(input, 0);
+        return createGenericCombinationIterator(input, 0);
     }
 }
