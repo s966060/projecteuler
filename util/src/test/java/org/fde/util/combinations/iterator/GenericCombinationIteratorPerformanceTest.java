@@ -34,6 +34,6 @@ public class GenericCombinationIteratorPerformanceTest {
         System.out.println("stopWatch = " + stopWatch);
         System.out.println("count = " + count);
 
-        assertEquals(8388608, count);
+        assertEquals(8_388_608, count);
     }
 }
