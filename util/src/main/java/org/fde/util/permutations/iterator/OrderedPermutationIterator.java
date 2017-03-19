@@ -6,19 +6,34 @@ import org.fde.util.permutations.Permutation;
 import java.util.Iterator;
 
 public class OrderedPermutationIterator implements Iterator<Permutation> {
-    private final Context context;
+    private final ContextList contextList;
 
     public OrderedPermutationIterator(ListOfLong input) {
-        this.context = new Context(input);
+        this.contextList = new ContextList(input);
     }
 
     @Override
     public boolean hasNext() {
-        return this.context.hasNext();
+        boolean hasNext = this.contextList.getFirst().hasNext();
+        return hasNext;
     }
 
     @Override
     public Permutation next() {
-        return this.context.next();
+        ListOfLong list = new ListOfLong();
+
+        for(Context context : contextList) {
+            Long value = context.getValue();
+            list.add(value);
+        }
+
+        Permutation permutation = new Permutation(list);
+        createNext();
+
+        return permutation;
+    }
+
+    private void createNext() {
+        this.contextList.getFirst().index++;
     }
 }
