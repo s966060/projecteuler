@@ -59,4 +59,8 @@ class ContextList implements Iterable<Context> {
     private int getLastIndex() {
         return this.list.size() - 1;
     }
+
+    public boolean isEmpty() {
+        return this.list.isEmpty();
+    }
 }

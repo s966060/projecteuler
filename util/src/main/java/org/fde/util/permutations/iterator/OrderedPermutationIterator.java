@@ -14,7 +14,7 @@ public class OrderedPermutationIterator implements Iterator<Permutation> {
 
     @Override
     public boolean hasNext() {
-        boolean hasNext = this.contextList.getFirst().hasNext();
+        boolean hasNext = !this.contextList.isEmpty();
         return hasNext;
     }
 
@@ -37,6 +37,10 @@ public class OrderedPermutationIterator implements Iterator<Permutation> {
         Context current;
 
         do {
+            if(this.contextList.isEmpty()) {
+                return;
+            }
+
             current = this.contextList.removeLast();
             current.next();
         } while (!current.hasNext());
