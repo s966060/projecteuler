@@ -3,20 +3,20 @@ package org.fde.util.combinations.iterator;
 class IndexList {
     final int[] indexes;
     private final int elementSize;
-    private final int selectSize;
 
     IndexList(int elementSize, int selectSize) {
         this.indexes = new int[selectSize];
         this.elementSize = elementSize;
-        this.selectSize = selectSize;
 
-        for (int index = 0; index < selectSize; ++index) {
+        for (int index = 0; index < this.indexes.length; ++index) {
             this.indexes[index] = index;
         }
     }
 
     public boolean hasNext() {
-        boolean hasNext = this.indexes[0] <= (this.elementSize - this.selectSize);
+        int validFirstIndex = this.elementSize - this.indexes.length;
+        int firstIndex = this.indexes[0];
+        boolean hasNext = firstIndex <= validFirstIndex;
         return hasNext;
     }
 
@@ -31,21 +31,27 @@ class IndexList {
     public void createNext() {
         int i;
 
-        for (i = this.indexes.length - 1; i >= 0; ++i) {
+        for (i = this.indexes.length - 1; i >= 0; --i) {
             ++this.indexes[i];
 
-            if (this.indexes[i] < (elementSize - i)) {
+            int carryValue = 1 + this.elementSize - (this.indexes.length - i);
+
+            if (this.indexes[i] < carryValue) {
                 break;
             }
         }
 
-        boolean carry = (i < this.indexes.length - 2);
+        if (i < 0) {
+            return;
+        }
+
+        boolean carry = (i < this.indexes.length - 1);
 
         if (carry) {
             int carryIndex = i;
             int indexValue = this.indexes[carryIndex];
 
-            for(; carryIndex < this.indexes.length; ++carryIndex) {
+            for (; carryIndex < this.indexes.length; ++carryIndex) {
                 this.indexes[carryIndex] = indexValue;
                 ++indexValue;
             }
