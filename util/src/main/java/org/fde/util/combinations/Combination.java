@@ -1,6 +1,10 @@
 package org.fde.util.combinations;
 
-public class Combination {
+import org.fde.util.ListOfLong;
+
+import java.util.Iterator;
+
+public class Combination implements Iterable<Long> {
     private final GenericCombination<Long> internal;
 
     public Combination(Long... elements) {
@@ -27,6 +31,21 @@ public class Combination {
 
     GenericCombination<Long> getInternal() {
         return internal;
+    }
+
+    public ListOfLong getAsList() {
+        ListOfLong list = new ListOfLong();
+
+        for(Long value : this) {
+            list.add(value);
+        }
+
+        return list;
+    }
+
+    @Override
+    public Iterator<Long> iterator() {
+        return this.internal.iterator();
     }
 
     @Override

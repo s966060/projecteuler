@@ -7,6 +7,7 @@ import java.util.function.Consumer;
 
 public class ListOfLong implements Iterable<Long> {
     private final List<Long> numbers;
+    private String last;
 
     public ListOfLong() {
         this.numbers = new ArrayList<>();
@@ -123,7 +124,7 @@ public class ListOfLong implements Iterable<Long> {
 
     public void removeLast() {
         if (!isEmpty()) {
-            removeAt(size() - 1);
+            removeAt(getLastIndex());
         }
     }
 
@@ -199,7 +200,7 @@ public class ListOfLong implements Iterable<Long> {
     }
 
     public Long last() {
-        return get(size() - 1);
+        return get(getLastIndex());
     }
 
     public ListOfLong getIntersection(ListOfLong other) {
@@ -242,7 +243,7 @@ public class ListOfLong implements Iterable<Long> {
     public void rotateRight() {
         if (!isEmpty()) {
             Long last = last();
-            removeAt(size() - 1);
+            removeAt(getLastIndex());
             add(0, last);
         }
     }
@@ -266,5 +267,9 @@ public class ListOfLong implements Iterable<Long> {
 
     public static ListOfLong ofSize(int size) {
         return new ListOfLong(new ArrayList<>(size));
+    }
+
+    private int getLastIndex() {
+        return size() - 1;
     }
 }

@@ -48,6 +48,10 @@ public class Primes {
         this.primes.add(prime);
     }
 
+    public ListOfLong getInternalList() {
+        return this.primes;
+    }
+
     @Override
     public String toString() {
         return "Primes{" +
