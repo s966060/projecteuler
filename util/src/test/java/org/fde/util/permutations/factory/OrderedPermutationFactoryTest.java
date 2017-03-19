@@ -2,7 +2,6 @@ package org.fde.util.permutations.factory;
 
 import org.fde.util.ListOfLong;
 import org.fde.util.permutations.PermutationList;
-import org.fde.util.permutations.factory.OrderedPermutationFactory;
 import org.junit.Test;
 
 import static org.fde.util.permutations.Permutation.createPermutation;
