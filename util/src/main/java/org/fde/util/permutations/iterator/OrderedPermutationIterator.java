@@ -34,13 +34,13 @@ public class OrderedPermutationIterator implements Iterator<Permutation> {
     }
 
     private void createNext() {
-        Context current = null;
+        Context current;
 
         do {
             current = this.contextList.removeLast();
             current.next();
-        } while(!current.hasNext());
+        } while (!current.hasNext());
 
-        this.contextList.create(current.getNumbers(), current.getIndex());
+        this.contextList.create(current);
     }
 }

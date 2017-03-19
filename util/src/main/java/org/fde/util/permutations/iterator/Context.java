@@ -6,9 +6,9 @@ class Context {
     private final ListOfLong numbers;
     private int index;
 
-    Context(ListOfLong numbers) {
+    Context(ListOfLong numbers, int index) {
         this.numbers = numbers;
-        this.index = 0;
+        this.index = index;
     }
 
     Long getValue() {

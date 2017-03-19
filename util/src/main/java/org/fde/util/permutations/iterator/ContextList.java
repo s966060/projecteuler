@@ -12,23 +12,27 @@ class ContextList implements Iterable<Context> {
     ContextList(ListOfLong numbers) {
         this.list = new ArrayList<>();
 
-        create(numbers, 0);
+        Context firstContext = new Context(numbers, 0);
+        create(firstContext);
     }
 
-    void create(ListOfLong numbers, int ignoreIndex) {
+    void create(Context context) {
+        ListOfLong numbers = context.getNumbers();
+
         if (!numbers.isEmpty()) {
-            this.list.add(new Context(numbers));
+            this.list.add(context);
 
             ListOfLong nextNumbers = new ListOfLong();
 
             for (int index = 0; index < numbers.size(); ++index) {
-                if(index != ignoreIndex) {
+                if(index != context.getIndex()) {
                     Long value = numbers.get(index);
                     nextNumbers.add(value);
                 }
             }
 
-            create(nextNumbers, 0);
+            Context nextContext = new Context(nextNumbers, 0);
+            create(nextContext);
         }
     }
 
