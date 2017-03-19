@@ -6,6 +6,8 @@ import org.fde.util.StopWatchUtil;
 import org.fde.util.combinations.CombinationList;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
+
 public class CombinationFactoryPerformanceTest {
     @Test
     public void combinationFactoryPerformanceTest() {
@@ -23,5 +25,7 @@ public class CombinationFactoryPerformanceTest {
 
         System.out.println("stopWatch = " + stopWatch);
         System.out.println("count = " + count);
+
+        assertEquals(8388608, count);
     }
 }
