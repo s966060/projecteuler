@@ -92,7 +92,7 @@ public class GenericCombinationIteratorTest {
 
         GenericCombinationList<Long> actual = new GenericCombinationList<>();
 
-        while(actualIterator.hasNext()) {
+        while (actualIterator.hasNext()) {
             GenericCombination<Long> value = actualIterator.next();
             actual.add(value);
         }
