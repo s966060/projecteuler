@@ -2,7 +2,7 @@ package org.fde.projecteuler.problem_049;
 
 import org.fde.util.Digits;
 import org.fde.util.combinations.GenericCombination;
-import org.fde.util.combinations.GenericCombinationFactory;
+import org.fde.util.combinations.factory.GenericCombinationFactory;
 import org.fde.util.combinations.GenericCombinationList;
 import org.fde.util.primes.PrimeBuilder;
 import org.junit.Test;

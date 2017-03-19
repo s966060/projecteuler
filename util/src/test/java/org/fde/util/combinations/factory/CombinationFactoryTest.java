@@ -1,6 +1,8 @@
-package org.fde.util.combinations;
+package org.fde.util.combinations.factory;
 
 import org.fde.util.ListOfLong;
+import org.fde.util.combinations.Combination;
+import org.fde.util.combinations.CombinationList;
 import org.junit.Test;
 
 import static org.fde.util.ListOfLong.createListOfLong;

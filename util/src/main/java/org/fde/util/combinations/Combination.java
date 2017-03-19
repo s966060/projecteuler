@@ -3,7 +3,7 @@ package org.fde.util.combinations;
 public class Combination {
     private final GenericCombination<Long> internal;
 
-    Combination(Long... elements) {
+    public Combination(Long... elements) {
         this.internal = new GenericCombination<>(elements);
     }
 

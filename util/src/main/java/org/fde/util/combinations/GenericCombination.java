@@ -5,16 +5,16 @@ import java.util.*;
 public class GenericCombination<T> implements Iterable<T> {
     private final List<T> list;
 
-    GenericCombination() {
+    public GenericCombination() {
         this.list = new ArrayList<>();
     }
 
     @SafeVarargs
-    GenericCombination(T... elements) {
+    public GenericCombination(T... elements) {
         this.list = Arrays.asList(elements);
     }
 
-    GenericCombination(GenericCombination<T> other) {
+    public GenericCombination(GenericCombination<T> other) {
         this.list = new ArrayList<>(other.list);
     }
 

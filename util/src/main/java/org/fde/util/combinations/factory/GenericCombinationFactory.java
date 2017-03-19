@@ -1,4 +1,7 @@
-package org.fde.util.combinations;
+package org.fde.util.combinations.factory;
+
+import org.fde.util.combinations.GenericCombination;
+import org.fde.util.combinations.GenericCombinationList;
 
 import java.util.List;
 

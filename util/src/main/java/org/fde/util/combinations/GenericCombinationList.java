@@ -8,7 +8,7 @@ public class GenericCombinationList<T>
 
     private final List<GenericCombination<T>> list;
 
-    GenericCombinationList() {
+    public GenericCombinationList() {
         this.list = new ArrayList<>();
     }
 
@@ -32,6 +32,10 @@ public class GenericCombinationList<T>
     @Override
     public Iterator<GenericCombination<T>> iterator() {
         return this.list.iterator();
+    }
+
+    public int size() {
+        return this.list.size();
     }
 
     @Override

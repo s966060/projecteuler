@@ -2,7 +2,7 @@ package org.fde.util.primes;
 
 import org.fde.util.ListOfLong;
 import org.fde.util.combinations.Combination;
-import org.fde.util.combinations.CombinationFactory;
+import org.fde.util.combinations.factory.CombinationFactory;
 import org.fde.util.combinations.CombinationList;
 
 public class Divisors {

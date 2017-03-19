@@ -1,6 +1,7 @@
-package org.fde.util.combinations;
+package org.fde.util.combinations.factory;
 
 import org.fde.util.ListOfLong;
+import org.fde.util.combinations.CombinationList;
 
 public class CombinationFactory {
     private final GenericCombinationFactory<Long> internal;

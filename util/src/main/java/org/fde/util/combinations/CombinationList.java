@@ -6,11 +6,11 @@ import java.util.function.Consumer;
 public class CombinationList implements Iterable<Combination> {
     private final GenericCombinationList<Long> internal;
 
-    CombinationList() {
+    public CombinationList() {
         this.internal = new GenericCombinationList<>();
     }
 
-    CombinationList(GenericCombinationList<Long> other) {
+    public CombinationList(GenericCombinationList<Long> other) {
         this.internal = other;
     }
 
@@ -21,6 +21,10 @@ public class CombinationList implements Iterable<Combination> {
 
     public CombinationList getUnique() {
         return new CombinationList(this.internal.getUnique());
+    }
+
+    public int size() {
+        return this.internal.size();
     }
 
     @Override
