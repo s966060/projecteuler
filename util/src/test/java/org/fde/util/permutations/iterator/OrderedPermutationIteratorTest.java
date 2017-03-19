@@ -10,6 +10,7 @@ import java.util.Iterator;
 
 import static org.fde.util.ListOfLong.createListOfLong;
 import static org.fde.util.permutations.Permutation.createPermutation;
+import static org.fde.util.permutations.iterator.OrderedPermutationIterator.createOrderedPermutationIterator;
 import static org.junit.Assert.assertEquals;
 
 public class OrderedPermutationIteratorTest {
@@ -102,7 +103,7 @@ public class OrderedPermutationIteratorTest {
         OrderedPermutationFactory factory = new OrderedPermutationFactory(input);
         PermutationList expected = factory.getPermutations();
 
-        OrderedPermutationIterator actual = OrderedPermutationIterator.createOrderedPermutationIterator(input);
+        OrderedPermutationIterator actual = createOrderedPermutationIterator(input);
 
         check(expected, actual);
     }
@@ -114,7 +115,7 @@ public class OrderedPermutationIteratorTest {
             input.add(value);
         }
 
-        return OrderedPermutationIterator.createOrderedPermutationIterator(input);
+        return createOrderedPermutationIterator(input);
     }
 
     private void check(PermutationList expected,
