@@ -1,7 +1,7 @@
 package org.fde.projecteuler.problem_024;
 
 import org.fde.util.ListOfLong;
-import org.fde.util.permutations.OrderedPermutationFactory;
+import org.fde.util.permutations.factory.OrderedPermutationFactory;
 import org.fde.util.permutations.Permutation;
 import org.fde.util.permutations.PermutationList;
 import org.junit.Test;

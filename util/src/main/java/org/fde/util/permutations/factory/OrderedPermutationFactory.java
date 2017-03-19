@@ -1,6 +1,8 @@
-package org.fde.util.permutations;
+package org.fde.util.permutations.factory;
 
 import org.fde.util.ListOfLong;
+import org.fde.util.permutations.Permutation;
+import org.fde.util.permutations.PermutationList;
 
 public class OrderedPermutationFactory {
     private final ListOfLong input;

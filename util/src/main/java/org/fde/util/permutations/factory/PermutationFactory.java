@@ -1,6 +1,8 @@
-package org.fde.util.permutations;
+package org.fde.util.permutations.factory;
 
 import org.fde.util.ListOfLong;
+import org.fde.util.permutations.Permutation;
+import org.fde.util.permutations.PermutationList;
 
 public class PermutationFactory {
     private final ListOfLong elements;
@@ -27,7 +29,7 @@ public class PermutationFactory {
                 newPermutations.add(new Permutation().add(el));
             } else {
                 for (Permutation p : start) {
-                    PermutationList list = p.createNewPermutations(el);
+                    PermutationList list = createNewPermutations(p, el);
                     newPermutations.add(list);
                 }
             }
@@ -36,6 +38,24 @@ public class PermutationFactory {
         } else {
             return start;
         }
+    }
+
+    private PermutationList createNewPermutations(Permutation p, Long el) {
+        PermutationList newPermutations = new PermutationList();
+
+        ListOfLong list = p.getList();
+
+        // the backwards loops is just for the output order
+        // nothing special
+        for (int index = list.size(); index >= 0; --index) {
+            ListOfLong newList = new ListOfLong(list);
+
+            newList.add(index, el);
+
+            newPermutations.add(new Permutation(newList));
+        }
+
+        return newPermutations;
     }
 
     private int getN() {

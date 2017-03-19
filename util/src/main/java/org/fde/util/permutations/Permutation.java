@@ -17,7 +17,7 @@ public class Permutation implements Iterable<Long> {
         this.list = new ListOfLong(other.list);
     }
 
-    Permutation(ListOfLong list) {
+    public Permutation(ListOfLong list) {
         this.list = list;
     }
 
@@ -57,22 +57,6 @@ public class Permutation implements Iterable<Long> {
     @Override
     public int hashCode() {
         return list.hashCode();
-    }
-
-    PermutationList createNewPermutations(Long el) {
-        PermutationList newPermutations = new PermutationList();
-
-        // the backwards loops is just for the output order
-        // nothing special
-        for (int index = list.size(); index >= 0; --index) {
-            ListOfLong newList = new ListOfLong(this.list);
-
-            newList.add(index, el);
-
-            newPermutations.add(new Permutation(newList));
-        }
-
-        return newPermutations;
     }
 
     @Override

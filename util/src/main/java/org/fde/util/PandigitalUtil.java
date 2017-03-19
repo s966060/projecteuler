@@ -1,7 +1,7 @@
 package org.fde.util;
 
 import org.fde.util.permutations.Permutation;
-import org.fde.util.permutations.PermutationFactory;
+import org.fde.util.permutations.factory.PermutationFactory;
 import org.fde.util.permutations.PermutationList;
 
 public class PandigitalUtil {
