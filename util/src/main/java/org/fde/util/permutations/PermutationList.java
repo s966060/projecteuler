@@ -22,29 +22,6 @@ public class PermutationList implements Iterable<Permutation> {
         this.list.addAll(other.list);
     }
 
-    @Override
-    public String toString() {
-        return "PermutationList{" +
-                "list=" + list +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        PermutationList that = (PermutationList) o;
-
-        return list.equals(that.list);
-
-    }
-
-    @Override
-    public int hashCode() {
-        return list.hashCode();
-    }
-
     public boolean isEmpty() {
         return list.isEmpty();
     }
@@ -70,5 +47,28 @@ public class PermutationList implements Iterable<Permutation> {
 
     public Permutation get(int index) {
         return this.list.get(index);
+    }
+
+    @Override
+    public String toString() {
+        return "PermutationList{" +
+                "list=" + list +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        PermutationList that = (PermutationList) o;
+
+        return list.equals(that.list);
+
+    }
+
+    @Override
+    public int hashCode() {
+        return list.hashCode();
     }
 }
