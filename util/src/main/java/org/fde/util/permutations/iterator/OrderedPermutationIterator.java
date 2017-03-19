@@ -22,7 +22,7 @@ public class OrderedPermutationIterator implements Iterator<Permutation> {
     public Permutation next() {
         ListOfLong list = new ListOfLong();
 
-        for(Context context : contextList) {
+        for (Context context : contextList) {
             Long value = context.getValue();
             list.add(value);
         }
@@ -34,6 +34,13 @@ public class OrderedPermutationIterator implements Iterator<Permutation> {
     }
 
     private void createNext() {
-        this.contextList.getFirst().index++;
+        Context current = null;
+
+        do {
+            current = this.contextList.removeLast();
+            current.next();
+        } while(!current.hasNext());
+
+        this.contextList.create(current.getNumbers(), current.getIndex());
     }
 }
