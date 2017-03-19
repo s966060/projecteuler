@@ -28,7 +28,7 @@ class IndexList {
      * ...
      * [ 0, 4, 5 ] -> [ 0, 4, 6 ] -> [ 0, 5, 6 ] -> [ 1, 2, 3 ]
      */
-    public void createNext() {
+    void createNext() {
         int i;
 
         for (i = this.indexes.length - 1; i >= 0; --i) {

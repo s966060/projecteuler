@@ -7,7 +7,9 @@ import java.util.List;
 
 import static org.fde.util.combinations.iterator.GenericCombinationIteratorFactory.createGenericCombinationIterator;
 
-public class GenericAllCombinationIterator<T> implements GenericCombinationIterator<T> {
+public class GenericAllCombinationIterator<T>
+        implements GenericCombinationIterator<T> {
+
     private List iterators;
 
     public <T> GenericAllCombinationIterator(List<T> input) {
