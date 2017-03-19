@@ -7,7 +7,7 @@ public class Combination {
         this.internal = new GenericCombination<>(elements);
     }
 
-    Combination(GenericCombination<Long> other) {
+    public Combination(GenericCombination<Long> other) {
         this.internal = other;
     }
 
