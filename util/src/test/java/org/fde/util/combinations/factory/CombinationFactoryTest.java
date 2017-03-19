@@ -11,9 +11,7 @@ import static org.junit.Assert.assertEquals;
 public class CombinationFactoryTest {
     @Test
     public void empty_theCombinationsOf() {
-        ListOfLong input = createListOfLong();
-
-        CombinationList actual = new CombinationFactory(input).getCombinations();
+        CombinationList actual = createActual();
 
         CombinationList expected = new CombinationList()
                 .add(new Combination());
@@ -23,9 +21,7 @@ public class CombinationFactoryTest {
 
     @Test
     public void one_theCombinationsOf() {
-        ListOfLong input = createListOfLong(1L);
-
-        CombinationList actual = new CombinationFactory(input).getCombinations();
+        CombinationList actual = createActual(1L);
 
         CombinationList expected = new CombinationList()
                 .add(new Combination())
@@ -36,9 +32,7 @@ public class CombinationFactoryTest {
 
     @Test
     public void two_theCombinationsOf() {
-        ListOfLong input = createListOfLong(1L, 2L);
-
-        CombinationList actual = new CombinationFactory(input).getCombinations();
+        CombinationList actual = createActual(1L, 2L);
 
         CombinationList expected = new CombinationList()
                 .add(new Combination())
@@ -51,9 +45,7 @@ public class CombinationFactoryTest {
 
     @Test
     public void three_theCombinationsOf() {
-        ListOfLong input = createListOfLong(1L, 2L, 3L);
-
-        CombinationList actual = new CombinationFactory(input).getCombinations();
+        CombinationList actual = createActual(1L, 2L, 3L);
 
         CombinationList expected = new CombinationList()
                 .add(new Combination())
@@ -70,9 +62,7 @@ public class CombinationFactoryTest {
 
     @Test
     public void four_theCombinationsOf() {
-        ListOfLong input = createListOfLong(1L, 2L, 3L, 4L);
-
-        CombinationList actual = new CombinationFactory(input).getCombinations();
+        CombinationList actual = createActual(1L, 2L, 3L, 4L);
 
         CombinationList expected = new CombinationList()
                 .add(new Combination())
@@ -94,5 +84,11 @@ public class CombinationFactoryTest {
                 );
 
         assertEquals(expected, actual);
+    }
+
+    private CombinationList createActual(long... values) {
+        ListOfLong input = createListOfLong(values);
+
+        return new CombinationFactory(input).getCombinations();
     }
 }
