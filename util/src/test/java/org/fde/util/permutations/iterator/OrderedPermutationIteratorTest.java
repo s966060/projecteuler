@@ -3,7 +3,6 @@ package org.fde.util.permutations.iterator;
 import org.fde.util.ListOfLong;
 import org.fde.util.permutations.Permutation;
 import org.fde.util.permutations.PermutationList;
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Iterator;
@@ -107,31 +106,18 @@ public class OrderedPermutationIteratorTest {
     private void check(PermutationList expected,
                        Iterator<Permutation> actualIterator) {
 
-        Iterator<Permutation> expectedIterator = expected.iterator();
+        PermutationList actual = new PermutationList();
 
-        check(expectedIterator, actualIterator);
+        while (actualIterator.hasNext()) {
+            actual.add(actualIterator.next());
+        }
+
+        check(expected, actual);
     }
 
-    private void check(Iterator<Permutation> expectedIterator,
-                       Iterator<Permutation> actualIterator) {
+    private void check(PermutationList expected,
+                       PermutationList actual) {
 
-        while (expectedIterator.hasNext()) {
-            Permutation e = expectedIterator.next();
-
-            if (actualIterator.hasNext()) {
-                Permutation a = actualIterator.next();
-
-                assertEquals(e, a);
-            } else {
-                String msg = String.format(
-                        "expected (%s) while actual iterator is exhausted", e);
-
-                Assert.fail(msg);
-            }
-        }
-
-        if (expectedIterator.hasNext()) {
-            Assert.fail();
-        }
+        assertEquals(expected, actual);
     }
 }
