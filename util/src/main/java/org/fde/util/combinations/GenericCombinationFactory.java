@@ -12,6 +12,8 @@ public class GenericCombinationFactory<T> {
     }
 
     public GenericCombinationList<T> getCombinations() {
+        this.list.add(new GenericCombination<T>());
+
         for (int size = 1; size <= getN(); ++size) {
             combine(new GenericCombination<>(), size, 0);
         }

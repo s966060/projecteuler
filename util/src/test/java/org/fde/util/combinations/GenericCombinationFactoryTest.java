@@ -9,6 +9,19 @@ import static org.junit.Assert.assertEquals;
 
 public class GenericCombinationFactoryTest {
     @Test
+    public void empty_theCombinationsOf() {
+        List<Long> input = createListOfLong();
+
+        GenericCombinationList<Long> actual = new GenericCombinationFactory<>(input)
+                .getCombinations();
+
+        GenericCombinationList<Long> expected = new GenericCombinationList<Long>()
+                .add(new GenericCombination<>());
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
     public void one_theCombinationsOf() {
         List<Long> input = createListOfLong(1L);
 
@@ -16,6 +29,7 @@ public class GenericCombinationFactoryTest {
                 .getCombinations();
 
         GenericCombinationList<Long> expected = new GenericCombinationList<Long>()
+                .add(new GenericCombination<>())
                 .add(new GenericCombination<>(1L));
 
         assertEquals(expected, actual);
@@ -29,6 +43,7 @@ public class GenericCombinationFactoryTest {
                 .getCombinations();
 
         GenericCombinationList<Long> expected = new GenericCombinationList<Long>()
+                .add(new GenericCombination<>())
                 .add(new GenericCombination<>(1L))
                 .add(new GenericCombination<>(2L))
                 .add(new GenericCombination<>(1L, 2L));
@@ -44,6 +59,7 @@ public class GenericCombinationFactoryTest {
                 .getCombinations();
 
         GenericCombinationList expected = new GenericCombinationList<>()
+                .add(new GenericCombination<>())
                 .add(new GenericCombination<>(1L))
                 .add(new GenericCombination<>(2L))
                 .add(new GenericCombination<>(3L))
@@ -63,6 +79,7 @@ public class GenericCombinationFactoryTest {
                 .getCombinations();
 
         GenericCombinationList<Long> expected = new GenericCombinationList<Long>()
+                .add(new GenericCombination<>())
                 .add(new GenericCombination<>(1L))
                 .add(new GenericCombination<>(2L))
                 .add(new GenericCombination<>(3L))

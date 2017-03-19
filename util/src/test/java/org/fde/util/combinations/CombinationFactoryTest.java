@@ -8,12 +8,26 @@ import static org.junit.Assert.assertEquals;
 
 public class CombinationFactoryTest {
     @Test
+    public void empty_theCombinationsOf() {
+        ListOfLong input = createListOfLong();
+
+        CombinationList actual = new CombinationFactory(input).getCombinations();
+
+        CombinationList expected = new CombinationList()
+                .add(new Combination());
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
     public void one_theCombinationsOf() {
         ListOfLong input = createListOfLong(1L);
 
         CombinationList actual = new CombinationFactory(input).getCombinations();
 
-        CombinationList expected = new CombinationList().add(new Combination(1L));
+        CombinationList expected = new CombinationList()
+                .add(new Combination())
+                .add(new Combination(1L));
 
         assertEquals(expected, actual);
     }
@@ -25,6 +39,7 @@ public class CombinationFactoryTest {
         CombinationList actual = new CombinationFactory(input).getCombinations();
 
         CombinationList expected = new CombinationList()
+                .add(new Combination())
                 .add(new Combination(1L))
                 .add(new Combination(2L))
                 .add(new Combination(1L, 2L));
@@ -39,6 +54,7 @@ public class CombinationFactoryTest {
         CombinationList actual = new CombinationFactory(input).getCombinations();
 
         CombinationList expected = new CombinationList()
+                .add(new Combination())
                 .add(new Combination(1L))
                 .add(new Combination(2L))
                 .add(new Combination(3L))
@@ -57,6 +73,7 @@ public class CombinationFactoryTest {
         CombinationList actual = new CombinationFactory(input).getCombinations();
 
         CombinationList expected = new CombinationList()
+                .add(new Combination())
                 .add(new Combination(1L))
                 .add(new Combination(2L))
                 .add(new Combination(3L))
