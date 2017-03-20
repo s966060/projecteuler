@@ -17,7 +17,7 @@ public class PrimePairSets {
     public void primePairSets() {
         StopWatch stopWatch = StopWatchUtil.createAndStart();
 
-        ListOfLong primes = getFirstPrimes(200);
+        ListOfLong primes = getFirstPrimes(2000);
         primes.remove(createListOfLong(2L, 5L));
 
         System.out.println("primes.last() = " + primes.last());
@@ -35,7 +35,7 @@ public class PrimePairSets {
 
             ++progress;
 
-            if ((progress % 1_000_000) == 0) {
+            if ((progress % 100_000_000) == 0) {
                 System.out.println("stopWatch = " + stopWatch);
                 System.out.println("progress = " + progress + " @ combination = " + combination);
             }
