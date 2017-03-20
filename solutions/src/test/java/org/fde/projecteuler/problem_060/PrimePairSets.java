@@ -3,11 +3,14 @@ package org.fde.projecteuler.problem_060;
 import org.apache.commons.lang3.time.StopWatch;
 import org.fde.util.ListOfLong;
 import org.fde.util.StopWatchUtil;
+import org.fde.util.ValueCounter;
 import org.fde.util.combinations.Combination;
 import org.fde.util.combinations.iterator.CombinationIterator;
 import org.fde.util.primes.PrimeBuilder;
 import org.fde.util.primes.Primes;
 import org.junit.Test;
+
+import java.util.List;
 
 import static org.fde.util.ListOfLong.createListOfLong;
 import static org.fde.util.combinations.iterator.CombinationIteratorFactory.createCombinationIterator;
@@ -19,6 +22,8 @@ public class PrimePairSets {
 
         ListOfLong primes = getFirstPrimes(2000);
         primes.remove(createListOfLong(2L, 5L));
+
+        ValueCounter<Long> valueCounter = new ValueCounter<>(primes.getInternalList());
 
         System.out.println("primes.last() = " + primes.last());
 
@@ -51,10 +56,21 @@ public class PrimePairSets {
                 }
             }
 
+            for (int i = 0; i < combinationAsList.size(); ++i) {
+                Long value = combinationAsList.get(i);
+                valueCounter.put(value);
+            }
+
             System.out.println("### ");
             System.out.println("### combination = " + combination);
             System.out.println("### ");
         }
+
+        List<Long> notParticipating = valueCounter.getCount(0);
+
+        System.out.println("notParticipating = " + notParticipating);
+
+
     }
 
     private boolean isPrimePair(PrimeBuilder builder, Long first, Long second) {
