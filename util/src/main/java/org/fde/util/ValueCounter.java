@@ -50,4 +50,11 @@ public class ValueCounter<T> {
 
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "ValueCounter{" +
+                "counter=" + counter +
+                '}';
+    }
 }
