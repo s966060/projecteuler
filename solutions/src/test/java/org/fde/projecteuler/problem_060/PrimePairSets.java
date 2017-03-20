@@ -33,6 +33,8 @@ public class PrimePairSets {
 
         long progress = 0;
 
+        long found = 0;
+
         nextCombination:
         while (iterator.hasNext()) {
             Combination combination = iterator.next();
@@ -61,6 +63,8 @@ public class PrimePairSets {
                 valueCounter.put(value);
             }
 
+            ++found;
+
             System.out.println("### ");
             System.out.println("### combination = " + combination);
             System.out.println("### ");
@@ -69,8 +73,7 @@ public class PrimePairSets {
         List<Long> notParticipating = valueCounter.getCount(0);
 
         System.out.println("notParticipating = " + notParticipating);
-
-
+        System.out.println("found = " + found);
     }
 
     private boolean isPrimePair(PrimeBuilder builder, Long first, Long second) {
