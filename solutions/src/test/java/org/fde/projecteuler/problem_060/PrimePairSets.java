@@ -19,13 +19,48 @@ import static org.fde.util.combinations.iterator.CombinationIteratorFactory.crea
 public class PrimePairSets {
     @Test
     public void primePairSets() {
+        PrimePairSet primePairSet = new PrimePairSet();
+
         CombinationList suspects = getSuspects();
 
-        System.out.println("suspects = " + suspects);
+        ListOfLong primes = getFirstPrimes(3000);
+
+        for (Combination suspect : suspects) {
+            ListOfLong asList = suspect.getAsList();
+
+            Long minimum = asList.last();
+
+            int primeIndex = 0;
+
+            for (; primeIndex < primes.size() && minimum > primes.get(primeIndex); ++primeIndex) {
+
+            }
+
+            for (int firstPrimeIndex = primeIndex; firstPrimeIndex < primes.size(); ++firstPrimeIndex) {
+                Long firstPrime = primes.get(firstPrimeIndex);
+
+                Combination firstNewCombination = new Combination(suspect);
+                firstNewCombination.add(firstPrime);
+
+                if (primePairSet.isPrimePairSet(firstNewCombination)) {
+                    System.out.println("@@@ firstNewCombination = " + firstNewCombination);
+                    for (int secondPrimeIndex = firstPrimeIndex + 1; secondPrimeIndex < primes.size(); ++secondPrimeIndex) {
+                        Long secondPrime = primes.get(secondPrimeIndex);
+
+                        Combination secondNewCombination = new Combination(firstNewCombination);
+                        secondNewCombination.add(secondPrime);
+
+                        if (primePairSet.isPrimePairSet(secondNewCombination)) {
+                            System.out.println("### secondNewCombination = " + secondNewCombination);
+                        }
+                    }
+                }
+            }
+        }
     }
 
     private CombinationList getSuspects() {
-        ListOfLong primes = getFirstPrimes(100);
+        ListOfLong primes = getFirstPrimes(500);
         primes.remove(createListOfLong(2L, 5L));
 
         System.out.println("primes.last() = " + primes.last());
@@ -41,8 +76,6 @@ public class PrimePairSets {
 
             if (primePairSet.isPrimePairSet(combination)) {
                 suspects.add(combination);
-
-                System.out.println("### suspect = " + combination);
             }
         }
 
