@@ -26,7 +26,7 @@ public class Divisors {
         CombinationList uniqueCombinations = combinations.getUnique();
 
         for (Combination c : uniqueCombinations) {
-            long product = c.multiply();
+            long product = c.product();
             result.add(product);
         }
 

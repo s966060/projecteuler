@@ -1,17 +1,12 @@
 package org.fde.projecteuler.problem_060;
 
-import org.apache.commons.lang3.time.StopWatch;
 import org.fde.util.ListOfLong;
-import org.fde.util.StopWatchUtil;
-import org.fde.util.ValueCounter;
 import org.fde.util.combinations.Combination;
 import org.fde.util.combinations.CombinationList;
 import org.fde.util.combinations.iterator.CombinationIterator;
 import org.fde.util.primes.PrimeBuilder;
 import org.fde.util.primes.Primes;
 import org.junit.Test;
-
-import java.util.List;
 
 import static org.fde.util.ListOfLong.createListOfLong;
 import static org.fde.util.combinations.iterator.CombinationIteratorFactory.createCombinationIterator;
@@ -52,6 +47,7 @@ public class PrimePairSets {
 
                         if (primePairSet.isPrimePairSet(secondNewCombination)) {
                             System.out.println("### secondNewCombination = " + secondNewCombination);
+                            System.out.println("### secondNewCombination.sum() = " + secondNewCombination.sum());
                         }
                     }
                 }

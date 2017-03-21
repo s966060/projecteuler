@@ -15,18 +15,36 @@ public class Combination implements Iterable<Long> {
         this.internal = other;
     }
 
-    public long multiply() {
+    public Combination(Combination other) {
+        this.internal = new GenericCombination<>(other.getInternal());
+    }
+
+    public void add(Long value) {
+        this.internal.add(value);
+    }
+
+    public long product() {
         if (internal.getList().isEmpty()) {
             return 0;
         } else {
             long result = 1;
 
-            for (Long number : this.internal.getList()) {
+            for (Long number : this.internal) {
                 result *= number;
             }
 
             return result;
         }
+    }
+
+    public long sum() {
+        long result = 0;
+
+        for(Long value : internal) {
+            result +=value;
+        }
+
+        return result;
     }
 
     GenericCombination<Long> getInternal() {
