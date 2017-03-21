@@ -5,6 +5,7 @@ import org.fde.util.ListOfLong;
 import org.fde.util.StopWatchUtil;
 import org.fde.util.ValueCounter;
 import org.fde.util.combinations.Combination;
+import org.fde.util.combinations.CombinationList;
 import org.fde.util.combinations.iterator.CombinationIterator;
 import org.fde.util.primes.PrimeBuilder;
 import org.fde.util.primes.Primes;
@@ -18,81 +19,34 @@ import static org.fde.util.combinations.iterator.CombinationIteratorFactory.crea
 public class PrimePairSets {
     @Test
     public void primePairSets() {
-        StopWatch stopWatch = StopWatchUtil.createAndStart();
+        CombinationList suspects = getSuspects();
 
-        ListOfLong primes = getFirstPrimes(2000);
+        System.out.println("suspects = " + suspects);
+    }
+
+    private CombinationList getSuspects() {
+        ListOfLong primes = getFirstPrimes(100);
         primes.remove(createListOfLong(2L, 5L));
-
-        ValueCounter<Long> valueCounter = new ValueCounter<>(primes.getInternalList());
 
         System.out.println("primes.last() = " + primes.last());
 
-        CombinationIterator iterator = createCombinationIterator(primes, 5);
+        CombinationIterator iterator = createCombinationIterator(primes, 3);
 
-        PrimeBuilder builder = new PrimeBuilder();
+        PrimePairSet primePairSet = new PrimePairSet();
 
-        long progress = 0;
+        CombinationList suspects = new CombinationList();
 
-        long found = 0;
-
-        nextCombination:
         while (iterator.hasNext()) {
             Combination combination = iterator.next();
-            ListOfLong combinationAsList = combination.getAsList();
 
-            ++progress;
+            if (primePairSet.isPrimePairSet(combination)) {
+                suspects.add(combination);
 
-            if ((progress % 100_000_000) == 0) {
-                System.out.println("stopWatch = " + stopWatch);
-                System.out.println("progress = " + progress + " @ combination = " + combination);
-            }
-
-            for (int i = 0; i < combinationAsList.size(); ++i) {
-                for (int j = i + 1; j < combinationAsList.size(); ++j) {
-                    Long first = combinationAsList.get(i);
-                    Long second = combinationAsList.get(j);
-
-                    if (!isPrimePair(builder, first, second)) {
-                        continue nextCombination;
-                    }
-                }
-            }
-
-            for (int i = 0; i < combinationAsList.size(); ++i) {
-                Long value = combinationAsList.get(i);
-                valueCounter.put(value);
-            }
-
-            ++found;
-
-            System.out.println("### ");
-            System.out.println("### combination = " + combination);
-            System.out.println("### ");
-        }
-
-        List<Long> notParticipating = valueCounter.getCount(0);
-
-        System.out.println("notParticipating = " + notParticipating);
-        System.out.println("found = " + found);
-    }
-
-    private boolean isPrimePair(PrimeBuilder builder, Long first, Long second) {
-        long suspect;
-        String suspectAsString;
-
-        suspectAsString = first + "" + second;
-        suspect = Long.parseLong(suspectAsString);
-
-        if (builder.isPrime(suspect)) {
-            suspectAsString = second + "" + first;
-            suspect = Long.parseLong(suspectAsString);
-
-            if (builder.isPrime(suspect)) {
-                return true;
+                System.out.println("### suspect = " + combination);
             }
         }
 
-        return false;
+        return suspects;
     }
 
     private ListOfLong getFirstPrimes(int count) {
@@ -104,7 +58,8 @@ public class PrimePairSets {
 
         Primes primes = builder.getPrimes();
         ListOfLong asList = primes.getInternalList();
+
+
         return asList;
     }
-
 }
