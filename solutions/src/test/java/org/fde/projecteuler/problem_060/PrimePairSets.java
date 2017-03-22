@@ -78,7 +78,6 @@ public class PrimePairSets {
     private CombinationList getSuspects() {
         ListOfLong primes = getFirstPrimes(1000);
 
-
         System.out.println("primes.last() = " + primes.last());
 
         CombinationIterator iterator = createCombinationIterator(primes, 3);
