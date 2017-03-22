@@ -1,6 +1,8 @@
 package org.fde.projecteuler.problem_060;
 
+import org.apache.commons.lang3.time.StopWatch;
 import org.fde.util.ListOfLong;
+import org.fde.util.StopWatchUtil;
 import org.fde.util.combinations.Combination;
 import org.fde.util.combinations.CombinationList;
 import org.fde.util.combinations.iterator.CombinationIterator;
@@ -14,11 +16,18 @@ import static org.fde.util.combinations.iterator.CombinationIteratorFactory.crea
 public class PrimePairSets {
     @Test
     public void primePairSets() {
+        StopWatch stopWatch = StopWatchUtil.createAndStart();
+
         PrimePairSet primePairSet = new PrimePairSet();
 
+        System.out.println("GET SUSPECTS");
         CombinationList suspects = getSuspects();
 
-        ListOfLong primes = getFirstPrimes(3000);
+        System.out.println("GO FOR IT");
+        ListOfLong primes = getFirstPrimes(5000);
+        System.out.println("primes.last() = " + primes.last());
+
+        long limit = Long.MAX_VALUE;
 
         for (Combination suspect : suspects) {
             ListOfLong asList = suspect.getAsList();
@@ -37,8 +46,13 @@ public class PrimePairSets {
                 Combination firstNewCombination = new Combination(suspect);
                 firstNewCombination.add(firstPrime);
 
+                if (firstNewCombination.sum() > limit) {
+                    continue;
+                }
+
                 if (primePairSet.isPrimePairSet(firstNewCombination)) {
                     System.out.println("@@@ firstNewCombination = " + firstNewCombination);
+
                     for (int secondPrimeIndex = firstPrimeIndex + 1; secondPrimeIndex < primes.size(); ++secondPrimeIndex) {
                         Long secondPrime = primes.get(secondPrimeIndex);
 
@@ -46,8 +60,11 @@ public class PrimePairSets {
                         secondNewCombination.add(secondPrime);
 
                         if (primePairSet.isPrimePairSet(secondNewCombination)) {
+                            System.out.println("### stopWatch = " + stopWatch);
                             System.out.println("### secondNewCombination = " + secondNewCombination);
                             System.out.println("### secondNewCombination.sum() = " + secondNewCombination.sum());
+
+                            limit = Math.min(limit, secondNewCombination.sum());
                         }
                     }
                 }
