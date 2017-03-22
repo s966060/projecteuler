@@ -24,11 +24,12 @@ public class PrimePairSets {
         CombinationList suspects = getSuspects();
 
         System.out.println("GO FOR IT");
-        ListOfLong primes = getFirstPrimes(5000);
+        ListOfLong primes = getFirstPrimes(10000);
         System.out.println("primes.last() = " + primes.last());
 
-        long limit = Long.MAX_VALUE;
+        long limit = 1_000_000_000_000_000L;
 
+        nextSuspect:
         for (Combination suspect : suspects) {
             ListOfLong asList = suspect.getAsList();
 
@@ -46,8 +47,10 @@ public class PrimePairSets {
                 Combination firstNewCombination = new Combination(suspect);
                 firstNewCombination.add(firstPrime);
 
-                if (firstNewCombination.sum() > limit) {
-                    continue;
+                long minimumValue = firstNewCombination.sum() + firstNewCombination.get(3);
+
+                if (minimumValue > limit) {
+                    continue nextSuspect;
                 }
 
                 if (primePairSet.isPrimePairSet(firstNewCombination)) {
@@ -73,8 +76,8 @@ public class PrimePairSets {
     }
 
     private CombinationList getSuspects() {
-        ListOfLong primes = getFirstPrimes(500);
-        primes.remove(createListOfLong(2L, 5L));
+        ListOfLong primes = getFirstPrimes(1000);
+
 
         System.out.println("primes.last() = " + primes.last());
 
@@ -105,7 +108,7 @@ public class PrimePairSets {
         Primes primes = builder.getPrimes();
         ListOfLong asList = primes.getInternalList();
 
-
+        asList.remove(createListOfLong(2L, 5L));
         return asList;
     }
 }

@@ -19,6 +19,10 @@ public class Combination implements Iterable<Long> {
         this.internal = new GenericCombination<>(other.getInternal());
     }
 
+    public Long get(int index) {
+        return this.internal.get(index);
+    }
+
     public void add(Long value) {
         this.internal.add(value);
     }

@@ -57,4 +57,8 @@ public class GenericCombination<T> implements Iterable<T> {
     public int hashCode() {
         return list.hashCode();
     }
+
+    public T get(int index) {
+        return this.list.get(index);
+    }
 }
