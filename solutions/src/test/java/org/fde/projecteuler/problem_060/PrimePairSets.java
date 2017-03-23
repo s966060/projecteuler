@@ -9,6 +9,8 @@ import org.fde.util.combinations.Combination;
 import org.fde.util.combinations.CombinationList;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
+
 public class PrimePairSets {
     @Test
     public void primePairSets() {
@@ -43,5 +45,7 @@ public class PrimePairSets {
         System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
         System.out.println("@@@ winner = " + winner);
         System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+
+        assertEquals(26033L, winner.getKey().longValue());
     }
 }
