@@ -41,6 +41,9 @@ class FindPrimePairSets {
 
         StopWatch stopWatch = StopWatchUtil.createAndStart();
 
+        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+        System.out.println("primeSize = " + primeSize);
+
         ListOfLong primes = getFirstPrimes(primeSize);
 
         long progress = 0;
@@ -73,6 +76,8 @@ class FindPrimePairSets {
         System.out.println("stopWatch = " + stopWatch);
         System.out.println("nextRecurseIndex = " + nextRecurseIndex);
         System.out.println("targets.size() = " + targets.size());
+        System.out.println("targets = " + targets);
+        System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
 
         return find(targets, primeSize * 2, nextRecurseIndex);
     }

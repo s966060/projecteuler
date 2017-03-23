@@ -15,9 +15,9 @@ public class PrimePairSets {
     public void primePairSets() {
         StopWatch stopWatch = StopWatchUtil.createAndStart();
 
-        CombinationList targets = new FindPrimePairSets(5).find(1000);
+        CombinationList targets = new FindPrimePairSets(5).find(200);
 
         System.out.println("targets = " + targets);
+        System.out.println("THE END ... stopWatch = " + stopWatch);
     }
-
 }
