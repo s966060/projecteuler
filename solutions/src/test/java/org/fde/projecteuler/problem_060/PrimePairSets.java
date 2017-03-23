@@ -20,9 +20,9 @@ public class PrimePairSets {
 
         System.out.println("targets = " + targets);
         System.out.println("THE END ... stopWatch = " + stopWatch);
-        
+
         Map<Long, Combination> orderedResults = new TreeMap<>();
-        
+
         for(Combination target : targets) {
             long sum = target.sum();
             
@@ -47,5 +47,6 @@ public class PrimePairSets {
         System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 
         assertEquals(26033L, winner.getKey().longValue());
+        assertEquals(new Combination(), winner.getValue());
     }
 }
