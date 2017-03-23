@@ -15,14 +15,13 @@ class PrimePairSet {
     boolean isPrimePairSet(Combination combination) {
         ListOfLong list = combination.getAsList();
 
-        for (int i = 0; i < list.size(); ++i) {
-            for (int j = i + 1; j < list.size(); ++j) {
-                Long first = list.get(i);
-                Long second = list.get(j);
+        Long newOne = combination.getLast();
 
-                if (!arePrimePairs(first, second)) {
-                    return false;
-                }
+        for (int i = 0; i < list.size() - 1; ++i) {
+            Long first = list.get(i);
+
+            if (!arePrimePairs(first, newOne)) {
+                return false;
             }
         }
 
