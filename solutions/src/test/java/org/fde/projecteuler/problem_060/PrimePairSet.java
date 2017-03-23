@@ -10,6 +10,8 @@ class PrimePairSet {
     private final PrimeSieve sieve;
 
     PrimePairSet() {
+        // when up to 2g ... it runs in less then 20 seconds
+        // this.sieve = createPrimeSieveCacheAwareUsingBitSet(2_000_000_000);
         this.sieve = createPrimeSieveCacheAwareUsingBitSet(100_000_000);
         this.sieve.sieve();
     }
