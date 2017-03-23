@@ -26,9 +26,22 @@ public class PrimePairSets {
             
             orderedResults.put(sum, target);
         }
+
+        Entry<Long, Combination> winner = null;
         
         for(Entry<Long, Combination> entry : orderedResults.entrySet()) {
+
+            if(winner == null) {
+                winner = entry;
+            }
+
             System.out.println(entry);
         }
+
+        System.out.println();
+        System.out.println();
+        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+        System.out.println("@@@ winner = " + winner);
+        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
     }
 }
