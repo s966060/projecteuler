@@ -22,7 +22,7 @@ public class GenericCombination<T> implements Iterable<T> {
         this.list.add(element);
     }
 
-    public List<T> getList () {
+    public List<T> getList() {
         return Collections.unmodifiableList(this.list);
     }
 
@@ -60,5 +60,9 @@ public class GenericCombination<T> implements Iterable<T> {
 
     public T get(int index) {
         return this.list.get(index);
+    }
+
+    public T getLast() {
+        return get(size() - 1);
     }
 }

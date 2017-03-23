@@ -44,8 +44,8 @@ public class Combination implements Iterable<Long> {
     public long sum() {
         long result = 0;
 
-        for(Long value : internal) {
-            result +=value;
+        for (Long value : internal) {
+            result += value;
         }
 
         return result;
@@ -58,11 +58,15 @@ public class Combination implements Iterable<Long> {
     public ListOfLong getAsList() {
         ListOfLong list = new ListOfLong();
 
-        for(Long value : this) {
+        for (Long value : this) {
             list.add(value);
         }
 
         return list;
+    }
+
+    public Long getLast() {
+        return this.internal.getLast();
     }
 
     @Override

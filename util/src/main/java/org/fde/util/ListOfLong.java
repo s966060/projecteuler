@@ -272,4 +272,14 @@ public class ListOfLong implements Iterable<Long> {
     private int getLastIndex() {
         return size() - 1;
     }
+
+    public int findIndexOf(Long find) {
+        for (int index = 0; index < size(); ++index) {
+            if (find.equals(get(index))) {
+                return index;
+            }
+        }
+
+        return -1;
+    }
 }
