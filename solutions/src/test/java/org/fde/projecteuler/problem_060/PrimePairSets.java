@@ -1,14 +1,13 @@
 package org.fde.projecteuler.problem_060;
 
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.TreeMap;
 import org.apache.commons.lang3.time.StopWatch;
-import org.fde.util.ListOfLong;
 import org.fde.util.StopWatchUtil;
+import org.fde.util.combinations.Combination;
 import org.fde.util.combinations.CombinationList;
-import org.fde.util.primes.PrimeBuilder;
-import org.fde.util.primes.Primes;
 import org.junit.Test;
-
-import static org.fde.util.ListOfLong.createListOfLong;
 
 public class PrimePairSets {
     @Test
@@ -19,5 +18,17 @@ public class PrimePairSets {
 
         System.out.println("targets = " + targets);
         System.out.println("THE END ... stopWatch = " + stopWatch);
+        
+        Map<Long, Combination> orderedResults = new TreeMap<>();
+        
+        for(Combination target : targets) {
+            long sum = target.sum();
+            
+            orderedResults.put(sum, target);
+        }
+        
+        for(Entry<Long, Combination> entry : orderedResults.entrySet()) {
+            System.out.println(entry);
+        }
     }
 }
