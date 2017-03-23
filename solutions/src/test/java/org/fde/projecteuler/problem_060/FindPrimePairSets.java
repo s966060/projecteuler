@@ -46,6 +46,8 @@ class FindPrimePairSets {
 
         ListOfLong primes = getFirstPrimes(primeSize);
 
+        System.out.println("primes.getLast() = " + primes.getLast());
+
         long progress = 0;
 
         CombinationList targets = new CombinationList();
@@ -76,7 +78,7 @@ class FindPrimePairSets {
         System.out.println("stopWatch = " + stopWatch);
         System.out.println("nextRecurseIndex = " + nextRecurseIndex);
         System.out.println("targets.size() = " + targets.size());
-        System.out.println("targets = " + targets);
+        // System.out.println("targets = " + targets);
         System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
 
         return find(targets, primeSize * 2, nextRecurseIndex);

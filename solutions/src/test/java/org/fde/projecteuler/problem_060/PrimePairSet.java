@@ -2,14 +2,16 @@ package org.fde.projecteuler.problem_060;
 
 import org.fde.util.ListOfLong;
 import org.fde.util.combinations.Combination;
-import org.fde.util.primes.PrimeBuilder;
+import org.fde.util.primes.sieve.PrimeSieve;
+
+import static org.fde.util.primes.sieve.cache_aware.PrimeSieveCacheAwareFactory.createPrimeSieveCacheAwareUsingBitSet;
 
 class PrimePairSet {
-    private final PrimeBuilder builder;
+    private final PrimeSieve sieve;
 
     PrimePairSet() {
-        this.builder = new PrimeBuilder();
-        this.builder.setIsPrimeLookUpLimit(100_000_000);
+        this.sieve = createPrimeSieveCacheAwareUsingBitSet(100_000_000);
+        this.sieve.sieve();
     }
 
     boolean isPrimePairSet(Combination combination) {
@@ -60,7 +62,7 @@ class PrimePairSet {
         long factor = getSizeFactor(second);
         long suspect = first * factor + second;
 
-        boolean isPrimePair = builder.isPrime(suspect);
+        boolean isPrimePair = sieve.isPrime(suspect);
         return isPrimePair;
     }
 }

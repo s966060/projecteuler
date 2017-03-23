@@ -7,7 +7,6 @@ import java.util.function.Consumer;
 
 public class ListOfLong implements Iterable<Long> {
     private final List<Long> numbers;
-    private String last;
 
     public ListOfLong() {
         this.numbers = new ArrayList<>();
@@ -281,5 +280,9 @@ public class ListOfLong implements Iterable<Long> {
         }
 
         return -1;
+    }
+
+    public Long getLast() {
+        return last();
     }
 }
