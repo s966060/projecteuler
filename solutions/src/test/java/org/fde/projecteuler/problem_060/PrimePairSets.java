@@ -47,6 +47,8 @@ public class PrimePairSets {
         System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 
         assertEquals(26033L, winner.getKey().longValue());
-        assertEquals(new Combination(), winner.getValue());
+
+        assertEquals(new Combination(13L, 5197L, 5701L, 6733L, 8389L),
+                winner.getValue());
     }
 }
