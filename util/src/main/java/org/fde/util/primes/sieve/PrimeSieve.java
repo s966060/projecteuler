@@ -4,4 +4,6 @@ public interface PrimeSieve {
     void sieve();
 
     Iterable<Long> getPrimes();
+
+    boolean isPrime(long suspect);
 }

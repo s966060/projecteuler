@@ -1,5 +1,6 @@
 package org.fde.util.primes.sieve.cache_aware;
 
+import org.fde.util.primes.sieve.PrimeSieve;
 import org.fde.util.primes.sieve.PrimeSieveIterable;
 import org.fde.util.primes.sieve.PrimeSieveIterator;
 import org.fde.util.primes.sieve.regular.PrimeSieveRegular;
@@ -8,7 +9,7 @@ import org.fde.util.primes.sieve.store.Store;
 import static org.fde.util.primes.sieve.regular.PrimeSieveRegularFactory.createPrimeSieveUsingArray;
 
 public class PrimeSieveCacheAware
-        implements PrimeSieveIterable, org.fde.util.primes.sieve.PrimeSieve {
+        implements PrimeSieveIterable, PrimeSieve {
 
     private final Store store;
     private final int batchSize;
@@ -108,6 +109,11 @@ public class PrimeSieveCacheAware
     @Override
     public Iterable<Long> getPrimes() {
         return () -> new PrimeSieveIterator(this);
+    }
+
+    @Override
+    public boolean isPrime(long suspect) {
+        return this.store.isCalculatedPrime(suspect);
     }
 
     @Override

@@ -27,6 +27,12 @@ public class BitSetStore implements Store {
     }
 
     @Override
+    public boolean isCalculatedPrime(long suspect) {
+        CalculatePrime calculate = new CalculatePrime(this);
+        return calculate.isCalculatedPrime(suspect);
+    }
+
+    @Override
     public String toString() {
         return "BitSetStore{" +
                 "length=" + length +

@@ -25,6 +25,12 @@ public class ArrayStore implements Store {
     }
 
     @Override
+    public boolean isCalculatedPrime(long suspect) {
+        CalculatePrime calculate = new CalculatePrime(this);
+        return calculate.isCalculatedPrime(suspect);
+    }
+
+    @Override
     public String toString() {
         return "ArrayStore{" +
                 "numbers=" + Arrays.toString(numbers) +

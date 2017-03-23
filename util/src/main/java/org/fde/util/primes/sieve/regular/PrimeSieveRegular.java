@@ -65,6 +65,11 @@ public class PrimeSieveRegular
     }
 
     @Override
+    public boolean isPrime(long suspect) {
+        return this.store.isCalculatedPrime(suspect);
+    }
+
+    @Override
     public String toString() {
         return "PrimeSieveRegular{" +
                 "store=" + store.getClass().getSimpleName() +

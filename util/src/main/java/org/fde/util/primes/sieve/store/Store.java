@@ -6,4 +6,6 @@ public interface Store {
     int getLength();
 
     void setComposite(int index, boolean isComposite);
+
+    boolean isCalculatedPrime(long suspect);
 }
