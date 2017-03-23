@@ -52,7 +52,8 @@ public class PrimeSieveRegular
 
     @Override
     public int getLength() {
-        return this.store.getLength();
+        int length = this.store.getLength();
+        return length;
     }
 
     void setComposite(int index, boolean isComposite) {

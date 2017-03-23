@@ -40,7 +40,9 @@ public class PrimeSieveCacheAware
         PrimeSieveRegular sieve = createPrimeSieveUsingArray(getBatchSize());
         sieve.sieve();
 
-        for (int index = 0; index < sieve.getLength(); ++index) {
+        int length = Math.min(sieve.getLength(), store.getLength());
+
+        for (int index = 0; index < length; ++index) {
             store.setComposite(index, !sieve.isPrime(index));
         }
     }

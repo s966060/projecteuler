@@ -18,7 +18,7 @@ public class BitSetStore implements Store {
 
     @Override
     public int getLength() {
-        return length;
+        return this.length;
     }
 
     @Override
