@@ -9,6 +9,7 @@ class PrimePairSet {
 
     PrimePairSet() {
         this.builder = new PrimeBuilder();
+        this.builder.setIsPrimeLookUpLimit(100_000_000);
     }
 
     boolean isPrimePairSet(Combination combination) {
@@ -19,7 +20,7 @@ class PrimePairSet {
                 Long first = list.get(i);
                 Long second = list.get(j);
 
-                if (!isPrimePair(first, second)) {
+                if (!arePrimePairs(first, second)) {
                     return false;
                 }
             }
@@ -28,12 +29,9 @@ class PrimePairSet {
         return true;
     }
 
-    private boolean isPrimePair(Long first, Long second) {
-        String firstAsString = first.toString();
-        String secondAsString = second.toString();
-
-        if (isPrimePair(firstAsString, secondAsString)) {
-            if (isPrimePair(secondAsString, firstAsString)) {
+    private boolean arePrimePairs(long first, long second) {
+        if (isPrimePair(first, second)) {
+            if (isPrimePair(second, first)) {
                 return true;
             }
         }
@@ -41,9 +39,27 @@ class PrimePairSet {
         return false;
     }
 
-    private boolean isPrimePair(String first, String second) {
-        String suspectAsString = first + second;
-        long suspect = Long.parseLong(suspectAsString);
+    private long getSizeFactor(long value) {
+        if (value < 10) {
+            return 10;
+        } else if (value < 100) {
+            return 100;
+        } else if (value < 1_000) {
+            return 1_000;
+        } else if (value < 10_000) {
+            return 10_000;
+        } else if (value < 100_000) {
+            return 100_000;
+        } else if (value < 1_000_000) {
+            return 1_000_000;
+        } else {
+            throw new IllegalArgumentException("getSizeFactor(" + value + ")");
+        }
+    }
+
+    private boolean isPrimePair(long first, long second) {
+        long factor = getSizeFactor(second);
+        long suspect = first * factor + second;
 
         boolean isPrimePair = builder.isPrime(suspect);
         return isPrimePair;

@@ -15,25 +15,9 @@ public class PrimePairSets {
     public void primePairSets() {
         StopWatch stopWatch = StopWatchUtil.createAndStart();
 
-        ListOfLong primes = getFirstPrimes(5000);
-        System.out.println("primes.last() = " + primes.last());
-
-        CombinationList targets = new FindPrimePairSets(5).find(primes);
+        CombinationList targets = new FindPrimePairSets(5).find(1000);
 
         System.out.println("targets = " + targets);
     }
 
-    private ListOfLong getFirstPrimes(int count) {
-        PrimeBuilder builder = new PrimeBuilder();
-
-        for (int i = 0; i < count; ++i) {
-            builder.next();
-        }
-
-        Primes primes = builder.getPrimes();
-        ListOfLong asList = primes.getInternalList();
-
-        asList.remove(createListOfLong(2L, 5L));
-        return asList;
-    }
 }

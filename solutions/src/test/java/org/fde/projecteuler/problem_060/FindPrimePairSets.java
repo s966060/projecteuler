@@ -5,9 +5,14 @@ import org.fde.util.ListOfLong;
 import org.fde.util.StopWatchUtil;
 import org.fde.util.combinations.Combination;
 import org.fde.util.combinations.CombinationList;
+import org.fde.util.primes.PrimeBuilder;
+import org.fde.util.primes.Primes;
+
+import static org.fde.util.ListOfLong.createListOfLong;
 
 class FindPrimePairSets {
     private final PrimePairSet primePairSet;
+
     private final int recurseSize;
 
     FindPrimePairSets(int recurseSize) {
@@ -16,23 +21,27 @@ class FindPrimePairSets {
     }
 
 
-    CombinationList find(ListOfLong primes) {
+    CombinationList find(int primeSize) {
         CombinationList suspects = new CombinationList();
+
+        ListOfLong primes = getFirstPrimes(primeSize);
 
         for (Long prime : primes) {
             suspects.add(new Combination(prime));
         }
 
-        CombinationList targets = find(suspects, primes, 1);
+        CombinationList targets = find(suspects, primeSize, 1);
         return targets;
     }
 
-    private CombinationList find(CombinationList suspects, ListOfLong primes, int recurseIndex) {
+    private CombinationList find(CombinationList suspects, int primeSize, int recurseIndex) {
         if (recurseIndex == this.recurseSize) {
             return suspects;
         }
 
         StopWatch stopWatch = StopWatchUtil.createAndStart();
+
+        ListOfLong primes = getFirstPrimes(primeSize);
 
         long progress = 0;
 
@@ -65,6 +74,20 @@ class FindPrimePairSets {
         System.out.println("nextRecurseIndex = " + nextRecurseIndex);
         System.out.println("targets.size() = " + targets.size());
 
-        return find(targets, primes, nextRecurseIndex);
+        return find(targets, primeSize * 2, nextRecurseIndex);
+    }
+
+    private ListOfLong getFirstPrimes(int count) {
+        PrimeBuilder builder = new PrimeBuilder();
+
+        for (int i = 0; i < count + 2; ++i) {
+            builder.next();
+        }
+
+        Primes primes = builder.getPrimes();
+        ListOfLong asList = primes.getInternalList();
+
+        asList.remove(createListOfLong(2L, 5L));
+        return asList;
     }
 }

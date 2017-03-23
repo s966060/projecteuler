@@ -6,11 +6,13 @@ public class PrimeBuilder {
     private final Primes primes;
     private final Squares squares;
     private int index;
+    private long isPrimeLookUpLimit;
 
     public PrimeBuilder(Primes primes) {
         this.primes = primes;
         this.index = 0;
         this.squares = new Squares();
+        this.isPrimeLookUpLimit = 1_000_000;
     }
 
     public PrimeBuilder() {
@@ -21,6 +23,7 @@ public class PrimeBuilder {
         this.primes = other.primes;
         this.index = other.index;
         this.squares = new Squares(other.squares);
+        this.isPrimeLookUpLimit = 1_000_000;
     }
 
     public long current() {
@@ -90,7 +93,7 @@ public class PrimeBuilder {
     }
 
     public boolean isPrime(long suspect) {
-        if(suspect < 1_000_000) {
+        if(suspect <= isPrimeLookUpLimit) {
             while (suspect > getLastPrime()) {
                 next();
             }
@@ -131,5 +134,9 @@ public class PrimeBuilder {
 
     public Primes getPrimes() {
         return primes;
+    }
+
+    public void setIsPrimeLookUpLimit(int isPrimeLookUpLimit) {
+        this.isPrimeLookUpLimit = isPrimeLookUpLimit;
     }
 }
