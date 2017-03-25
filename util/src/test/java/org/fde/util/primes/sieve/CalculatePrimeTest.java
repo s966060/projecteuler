@@ -40,7 +40,7 @@ public class CalculatePrimeTest {
 
         for(int suspect = 0; suspect <= 994_009; ++suspect) {
             boolean expected = builder.isPrime(suspect);
-            boolean actual = this.sieve.isPrime(suspect);
+            boolean actual = this.sieve.isCalculatedPrime(suspect);
 
             assertEquals(
                     String.format("suspect(%s) expected (%s) actual(%s)",

@@ -15,23 +15,23 @@ public class PrimeSieveRegular
     }
 
     public final void sieve() {
-        int limit = getLimit();
+        long limit = getLimit();
 
         setComposite(0, true);
         setComposite(1, true);
         setComposite(2, false);
 
-        for (int index = 0; index < limit; ++index) {
-            if (isPrime(index)) {
-                int prime = index;
+        for (long suspect = 0; suspect < limit; ++suspect) {
+            if (isPrime(suspect)) {
+                long prime = suspect;
 
                 eliminateComposites(prime);
             }
         }
     }
 
-    private void eliminateComposites(int prime) {
-        int composite;
+    private void eliminateComposites(long prime) {
+        long composite;
         composite = prime + prime;
 
         while (composite < getLength()) {
@@ -40,24 +40,24 @@ public class PrimeSieveRegular
         }
     }
 
-    private int getLimit() {
-        int primeLimit = (int) Math.sqrt(getLength()) + 1;
+    private long getLimit() {
+        long primeLimit = (long) Math.sqrt(getLength()) + 1;
         return Math.min(primeLimit, getLength());
     }
 
     @Override
-    public boolean isPrime(int index) {
-        return this.store.isPrime(index);
+    public boolean isPrime(long suspect) {
+        return this.store.isPrime(suspect);
     }
 
     @Override
-    public int getLength() {
-        int length = this.store.getLength();
+    public long getLength() {
+        long length = this.store.getLength();
         return length;
     }
 
-    void setComposite(int index, boolean isComposite) {
-        this.store.setComposite(index, isComposite);
+    void setComposite(long value, boolean isComposite) {
+        this.store.setComposite(value, isComposite);
     }
 
     @Override
@@ -66,7 +66,7 @@ public class PrimeSieveRegular
     }
 
     @Override
-    public boolean isPrime(long suspect) {
+    public boolean isCalculatedPrime(long suspect) {
         return this.store.isCalculatedPrime(suspect);
     }
 

@@ -1,7 +1,7 @@
 package org.fde.util.primes.sieve;
 
 public interface PrimeSieveIterable {
-    int getLength();
+    long getLength();
 
-    boolean isPrime(int index);
+    boolean isPrime(long suspect);
 }

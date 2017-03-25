@@ -6,7 +6,7 @@ public class CalculatePrime {
 
     public CalculatePrime(Store store) {
         this.store = store;
-        int maxPrime = new MaxPrime(store).getMaxPrime();
+        long maxPrime = new MaxPrime(store).getMaxPrime();
         this.maximum = ((long)maxPrime) * maxPrime;
     }
 
@@ -18,7 +18,7 @@ public class CalculatePrime {
             throw new IllegalArgumentException(msg);
         }
 
-        int length = store.getLength();
+        long length = store.getLength();
 
         if (suspect < length) {
             boolean isPrime = store.isPrime((int) suspect);

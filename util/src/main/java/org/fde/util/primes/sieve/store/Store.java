@@ -1,11 +1,11 @@
 package org.fde.util.primes.sieve.store;
 
 public interface Store {
-    boolean isPrime(int index);
+    boolean isPrime(long suspect);
 
-    int getLength();
+    long getLength();
 
-    void setComposite(int index, boolean isComposite);
+    void setComposite(long index, boolean isComposite);
 
     boolean isCalculatedPrime(long suspect);
 }

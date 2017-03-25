@@ -12,18 +12,18 @@ public class BitSetStore implements Store {
     }
 
     @Override
-    public boolean isPrime(int index) {
-        return !this.numbers.get(index);
+    public boolean isPrime(long suspect) {
+        return !this.numbers.get((int) suspect);
     }
 
     @Override
-    public int getLength() {
+    public long getLength() {
         return this.length;
     }
 
     @Override
-    public void setComposite(int index, boolean isComposite) {
-        this.numbers.set(index, isComposite);
+    public void setComposite(long value, boolean isComposite) {
+        this.numbers.set((int) value, isComposite);
     }
 
     @Override

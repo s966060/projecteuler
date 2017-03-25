@@ -7,8 +7,8 @@ public class MaxPrime {
         this.store = store;
     }
 
-    public int getMaxPrime() {
-        for(int index = store.getLength() - 1; index >= 0; --index) {
+    public long getMaxPrime() {
+        for(long index = store.getLength() - 1; index >= 0; --index) {
             if(store.isPrime(index)) {
                 return index;
             }

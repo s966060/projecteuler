@@ -5,5 +5,5 @@ public interface PrimeSieve {
 
     Iterable<Long> getPrimes();
 
-    boolean isPrime(long suspect);
+    boolean isCalculatedPrime(long suspect);
 }

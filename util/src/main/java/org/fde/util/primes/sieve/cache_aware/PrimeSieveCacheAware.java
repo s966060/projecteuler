@@ -22,14 +22,14 @@ public class PrimeSieveCacheAware
     public final void sieve() {
         initializeSieve();
 
-        int batchEnd = getLength() / getBatchSize();
+        long batchEnd = getLength() / getBatchSize();
 
         if ((batchEnd % getBatchSize()) > 0) {
             ++batchEnd;
         }
 
-        for (int primeBatch = 0; primeBatch <= batchEnd; ++primeBatch) {
-            for (int compositeBatch = primeBatch + 1; compositeBatch <= batchEnd; ++compositeBatch) {
+        for (long primeBatch = 0; primeBatch <= batchEnd; ++primeBatch) {
+            for (long compositeBatch = primeBatch + 1; compositeBatch <= batchEnd; ++compositeBatch) {
                 sieve(primeBatch, compositeBatch);
             }
         }
@@ -40,14 +40,14 @@ public class PrimeSieveCacheAware
         PrimeSieveRegular sieve = createPrimeSieveUsingArray(getBatchSize());
         sieve.sieve();
 
-        int length = Math.min(sieve.getLength(), store.getLength());
+        long length = Math.min(sieve.getLength(), store.getLength());
 
-        for (int index = 0; index < length; ++index) {
+        for (long index = 0; index < length; ++index) {
             store.setComposite(index, !sieve.isPrime(index));
         }
     }
 
-    private void sieve(int primeBatch, int compositeBatch) {
+    private void sieve(long primeBatch, long compositeBatch) {
         if (compositeBatch <= primeBatch) {
             throw new IllegalArgumentException();
         }
@@ -56,26 +56,26 @@ public class PrimeSieveCacheAware
         // batch 0 -> 0 ... 999
         // batch 1 -> 1000 ... 1999
         // ...
-        int primeBegin = primeBatch * getBatchSize();
-        int primeEnd;
+        long primeBegin = primeBatch * getBatchSize();
+        long primeEnd;
         primeEnd = ((primeBatch + 1) * getBatchSize()) - 1;
         primeEnd = Math.min(primeEnd, getLimit());
         primeEnd = Math.min(primeEnd, getLength() - 1);
 
-        int compositeBegin = compositeBatch * getBatchSize();
-        int compositeEnd = Math.min(((compositeBatch + 1) * getBatchSize()) - 1, getLength() - 1);
+        long compositeBegin = compositeBatch * getBatchSize();
+        long compositeEnd = Math.min(((compositeBatch + 1) * getBatchSize()) - 1, getLength() - 1);
 
-        for (int primeIndex = primeBegin; primeIndex <= primeEnd; ++primeIndex) {
+        for (long primeIndex = primeBegin; primeIndex <= primeEnd; ++primeIndex) {
             if (isPrime(primeIndex)) {
-                int prime = primeIndex;
+                long prime = primeIndex;
 
-                int factor = compositeBegin / prime;
+                long factor = compositeBegin / prime;
 
                 if ((compositeBegin % prime) > 0) {
                     ++factor;
                 }
 
-                int composite = prime * factor;
+                long composite = prime * factor;
 
                 while (composite <= compositeEnd) {
                     setComposite(composite, true);
@@ -85,23 +85,23 @@ public class PrimeSieveCacheAware
         }
     }
 
-    private int getLimit() {
-        int primeLimit = (int) Math.sqrt(getLength()) + 1;
+    private long getLimit() {
+        long primeLimit = (long) Math.sqrt(getLength()) + 1;
         return Math.min(primeLimit, getLength());
     }
 
     @Override
-    public boolean isPrime(int index) {
-        return this.store.isPrime(index);
+    public boolean isPrime(long suspect) {
+        return this.store.isPrime(suspect);
     }
 
     @Override
-    public int getLength() {
+    public long getLength() {
         return this.store.getLength();
     }
 
-    void setComposite(int index, boolean isComposite) {
-        this.store.setComposite(index, isComposite);
+    void setComposite(long value, boolean isComposite) {
+        this.store.setComposite(value, isComposite);
     }
 
     int getBatchSize() {
@@ -114,7 +114,7 @@ public class PrimeSieveCacheAware
     }
 
     @Override
-    public boolean isPrime(long suspect) {
+    public boolean isCalculatedPrime(long suspect) {
         return this.store.isCalculatedPrime(suspect);
     }
 

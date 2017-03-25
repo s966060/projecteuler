@@ -10,18 +10,18 @@ public class ArrayStore implements Store {
     }
 
     @Override
-    public boolean isPrime(int index) {
-        return !this.numbers[index];
+    public boolean isPrime(long suspect) {
+        return !this.numbers[(int) suspect];
     }
 
     @Override
-    public int getLength() {
+    public long getLength() {
         return this.numbers.length;
     }
 
     @Override
-    public void setComposite(int index, boolean isComposite) {
-        this.numbers[index] = isComposite;
+    public void setComposite(long value, boolean isComposite) {
+        this.numbers[(int) value] = isComposite;
     }
 
     @Override
