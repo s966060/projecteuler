@@ -49,6 +49,10 @@ public class CombinationList implements Iterable<Combination> {
 
     }
 
+    public Combination get(int index) {
+        return new Combination(this.internal.get(index));
+    }
+
     @Override
     public String toString() {
         return "CombinationList{" +

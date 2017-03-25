@@ -8,9 +8,6 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
-/**
- * Created by filip on 2/09/2016.
- */
 public class DivisorsTest {
     @Test
     public void zero() {
@@ -21,36 +18,36 @@ public class DivisorsTest {
     @Test
     public void one() {
         ListOfLong divisors = new Divisors().getDivisors(1);
-        assertThat(createListOfLong(1L), is(divisors));
+        assertThat(divisors, is(createListOfLong(1L)));
     }
 
     @Test
     public void two() {
         ListOfLong divisors = new Divisors().getDivisors(2);
-        assertThat(createListOfLong(1L, 2L), is(divisors));
+        assertThat(divisors, is(createListOfLong(1L, 2L)));
     }
 
     @Test
     public void three() {
         ListOfLong divisors = new Divisors().getDivisors(3);
-        assertThat(createListOfLong(1L, 3L), is(divisors));
+        assertThat(divisors, is(createListOfLong(1L, 3L)));
     }
 
     @Test
     public void four() {
         ListOfLong divisors = new Divisors().getDivisors(4);
-        assertThat(createListOfLong(1L, 2L, 4L), is(divisors));
+        assertThat(divisors, is(createListOfLong(1L, 2L, 4L)));
     }
 
     @Test
     public void twenty_eight() {
         ListOfLong divisors = new Divisors().getDivisors(28);
-        assertThat(createListOfLong(1L, 2L, 4L, 7L, 14L, 28L), is(divisors));
+        assertThat(divisors, is(createListOfLong(1L, 2L, 4L, 7L, 14L, 28L)));
     }
 
     @Test
     public void hundred() {
         ListOfLong divisors = new Divisors().getDivisors(100);
-        assertThat(createListOfLong(1L, 2L, 4L, 5L, 10L, 20L, 25L, 50L, 100L), is(divisors));
+        assertThat(divisors, is(createListOfLong(1L, 2L, 4L, 5L, 10L, 20L, 25L, 50L, 100L)));
     }
 }

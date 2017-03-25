@@ -2,8 +2,8 @@ package org.fde.util.primes;
 
 import org.fde.util.ListOfLong;
 import org.fde.util.combinations.Combination;
-import org.fde.util.combinations.factory.CombinationFactory;
 import org.fde.util.combinations.CombinationList;
+import org.fde.util.combinations.factory.CombinationFactory;
 
 public class Divisors {
     private final PrimeFactors primeFactors;
@@ -25,9 +25,12 @@ public class Divisors {
         CombinationList combinations = new CombinationFactory(factors).getCombinations();
         CombinationList uniqueCombinations = combinations.getUnique();
 
-        for (Combination c : uniqueCombinations) {
-            long product = c.product();
-            result.add(product);
+        for (int index = 0; index < uniqueCombinations.size(); ++index) {
+            if (index > 0) {
+                Combination c = uniqueCombinations.get(index);
+                long product = c.product();
+                result.add(product);
+            }
         }
 
         result.sort();

@@ -38,6 +38,10 @@ public class GenericCombinationList<T>
         return this.list.size();
     }
 
+    public GenericCombination<T> get(int index) {
+        return this.list.get(index);
+    }
+
     @Override
     public String toString() {
         return "CombinationList{" +
