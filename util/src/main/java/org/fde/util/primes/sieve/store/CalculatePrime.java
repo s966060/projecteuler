@@ -7,11 +7,22 @@ public class CalculatePrime {
     public CalculatePrime(Store store) {
         this.store = store;
         long maxPrime = new MaxPrime(store).getMaxPrime();
-        this.maximum = ((long)maxPrime) * maxPrime;
+        this.maximum = getMaximum(maxPrime);
+    }
+
+    private long getMaximum(long maxPrime) {
+        long maximum = maxPrime * maxPrime;
+
+        // overflow
+        if (maximum < 0) {
+            return Long.MAX_VALUE;
+        } else {
+            return maximum;
+        }
     }
 
     public boolean isCalculatedPrime(long suspect) {
-        if (suspect > this.maximum) {
+        if (suspect < 0 || suspect > this.maximum) {
             String msg = String.format("suspect (%s) > maximum (%s)",
                     suspect, this.maximum);
 
