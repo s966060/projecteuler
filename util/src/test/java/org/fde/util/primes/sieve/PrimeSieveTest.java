@@ -8,8 +8,7 @@ import org.junit.runners.Parameterized;
 import java.util.Arrays;
 import java.util.Collection;
 
-import static org.fde.util.primes.sieve.cache_aware.PrimeSieveCacheAwareFactory.createPrimeSieveCacheAwareUsingArray;
-import static org.fde.util.primes.sieve.cache_aware.PrimeSieveCacheAwareFactory.createPrimeSieveCacheAwareUsingBitSet;
+import static org.fde.util.primes.sieve.cache_aware.PrimeSieveCacheAwareFactory.*;
 import static org.fde.util.primes.sieve.regular.PrimeSieveRegularFactory.createPrimeSieveUsingArray;
 import static org.fde.util.primes.sieve.regular.PrimeSieveRegularFactory.createPrimeSieveUsingBitSet;
 import static org.junit.Assert.assertEquals;
@@ -24,7 +23,8 @@ public class PrimeSieveTest {
                 createPrimeSieveUsingArray(size),
                 createPrimeSieveUsingBitSet(size),
                 createPrimeSieveCacheAwareUsingArray(size),
-                createPrimeSieveCacheAwareUsingBitSet(size)};
+                createPrimeSieveCacheAwareUsingBitSet(size),
+                createPrimeSieveCacheAwareUsingMultiBitSet(size)};
 
         return Arrays.asList(algorithms);
     }

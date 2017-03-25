@@ -13,6 +13,7 @@ import java.util.List;
 
 import static org.fde.util.primes.sieve.cache_aware.PrimeSieveCacheAwareFactory.createPrimeSieveCacheAwareUsingArray;
 import static org.fde.util.primes.sieve.cache_aware.PrimeSieveCacheAwareFactory.createPrimeSieveCacheAwareUsingBitSet;
+import static org.fde.util.primes.sieve.cache_aware.PrimeSieveCacheAwareFactory.createPrimeSieveCacheAwareUsingMultiBitSet;
 import static org.fde.util.primes.sieve.regular.PrimeSieveRegularFactory.createPrimeSieveUsingArray;
 import static org.fde.util.primes.sieve.regular.PrimeSieveRegularFactory.createPrimeSieveUsingBitSet;
 
@@ -29,6 +30,8 @@ public class PrimeSievePerformanceTest {
             runs.add(createPrimeSieveUsingBitSet(size));
             runs.add(createPrimeSieveCacheAwareUsingArray(size));
             runs.add(createPrimeSieveCacheAwareUsingBitSet(size));
+            runs.add(createPrimeSieveCacheAwareUsingBitSet(size));
+            runs.add(createPrimeSieveCacheAwareUsingMultiBitSet(size));
         }
 
         return runs;
