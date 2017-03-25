@@ -36,7 +36,7 @@ public class PrimeSieveCacheAwareFactory {
     }
 
     public static PrimeSieveCacheAware createPrimeSieveCacheAwareUsingMultiBitSet(
-            int upTo) {
+            long upTo) {
 
         int batchSize = 1_000_000;
 
@@ -44,7 +44,7 @@ public class PrimeSieveCacheAwareFactory {
     }
 
     private static PrimeSieveCacheAware createPrimeSieveCacheAwareUsingMultiBitSet(
-            int upTo, int batchSize) {
+            long upTo, int batchSize) {
 
         MultiBitSetStore store = new MultiBitSetStore(upTo);
         return new PrimeSieveCacheAware(store, batchSize);

@@ -3,16 +3,16 @@ package org.fde.util.primes.sieve.store;
 import java.util.BitSet;
 
 public class MultiBitSetStore implements Store {
-    private final int length;
+    private final long length;
     private final BitSet[] numbers;
 
     // requiring BUCKET_SIZE = 2^n
     private final static int BUCKET_SIZE = 1024;
 
-    public MultiBitSetStore(int upTo) {
+    public MultiBitSetStore(long upTo) {
         this.length = upTo + 1;
 
-        int arraySize = (length / BUCKET_SIZE) + 1;
+        int arraySize = (int) (length / BUCKET_SIZE) + 1;
 
         if((length % BUCKET_SIZE) == 0) {
             --arraySize;
