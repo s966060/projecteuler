@@ -64,7 +64,7 @@ class PrimePairSet {
         long factor = getSizeFactor(second);
         long suspect = first * factor + second;
 
-        boolean isPrimePair = sieve.isPrime(suspect);
+        boolean isPrimePair = sieve.isCalculatedPrime(suspect);
         return isPrimePair;
     }
 }
