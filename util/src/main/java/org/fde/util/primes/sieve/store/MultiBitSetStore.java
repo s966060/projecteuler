@@ -6,6 +6,7 @@ public class MultiBitSetStore implements Store {
     private final int length;
     private final BitSet[] numbers;
 
+    // requiring BUCKET_SIZE = 2^n
     private final static int BUCKET_SIZE = 1024;
 
     public MultiBitSetStore(int upTo) {
@@ -26,10 +27,8 @@ public class MultiBitSetStore implements Store {
 
     @Override
     public boolean isPrime(long suspect) {
-        int bucketSelector = (int) (suspect / BUCKET_SIZE);
-        BitSet bucket = this.numbers[bucketSelector];
-
-        int index = (int) (suspect % BUCKET_SIZE);
+        BitSet bucket = getBucket(suspect);
+        int index = getIndexInBucket(suspect);
 
         return !bucket.get(index);
     }
@@ -41,10 +40,8 @@ public class MultiBitSetStore implements Store {
 
     @Override
     public void setComposite(long suspect, boolean isComposite) {
-        int bucketSelector = (int) (suspect / BUCKET_SIZE);
-        BitSet bucket = this.numbers[bucketSelector];
-
-        int index = (int) (suspect % BUCKET_SIZE);
+        BitSet bucket = getBucket(suspect);
+        int index = getIndexInBucket(suspect);
 
         bucket.set(index, isComposite);
     }
@@ -61,5 +58,14 @@ public class MultiBitSetStore implements Store {
                 "length=" + length +
                 ", numbers=" + numbers +
                 '}';
+    }
+
+    private BitSet getBucket(long suspect) {
+        int bucketSelector = (int) (suspect / BUCKET_SIZE);
+        return this.numbers[bucketSelector];
+    }
+
+    private int getIndexInBucket(long suspect) {
+        return (int) (suspect % BUCKET_SIZE);
     }
 }
