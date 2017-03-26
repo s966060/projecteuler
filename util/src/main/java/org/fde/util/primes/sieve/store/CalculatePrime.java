@@ -32,7 +32,7 @@ public class CalculatePrime {
         long length = store.getLength();
 
         if (suspect < length) {
-            boolean isPrime = store.isPrime((int) suspect);
+            boolean isPrime = store.isPrime(suspect);
             return isPrime;
         } else {
             long limit = Math.round(Math.sqrt(suspect) + 1);
