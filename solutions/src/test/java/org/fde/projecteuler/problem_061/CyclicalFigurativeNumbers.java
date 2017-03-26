@@ -1,10 +1,11 @@
 package org.fde.projecteuler.problem_061;
 
-import org.fde.util.ListOfLong;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.junit.Assert.assertEquals;
 
 public class CyclicalFigurativeNumbers {
     @Test
@@ -13,39 +14,48 @@ public class CyclicalFigurativeNumbers {
                 new Square(), new Pentagonal(), new Hexagonal(),
                 new Heptagonal(), new Octagonal()};
 
-        List<ListOfLong> suspects = new ArrayList<>();
-
-        ListOfLong start = create(new Triangle());
-        suspects.add(start);
+        List<Suspect> suspects = create(new Triangle());
 
         for (FigurativeNumber figurativeNumber : figurativeNumbers) {
-            ListOfLong next = create(figurativeNumber);
-            start = getConnected(start, next);
-            suspects.add(start);
+            List<Suspect> nextSuspects = getConnected(suspects, figurativeNumber);
+            suspects = nextSuspects;
         }
 
-        System.out.println("start = " + start);
-
-        for(ListOfLong suspect:suspects) {
+        for (Suspect suspect : suspects) {
             System.out.println("suspect = " + suspect);
         }
+
+        assertEquals(6, suspects.size());
+
+        Suspect answer = suspects.get(5);
+
+        long sum = answer.getSum();
+
+        assertEquals(134, sum);
     }
 
-    private ListOfLong getConnected(ListOfLong first, ListOfLong second) {
-        ListOfLong suspects = new ListOfLong();
+    private List<Suspect> getConnected(List<Suspect> first,
+                                       FigurativeNumber figurativeNumber) {
 
-        for (int i = 0; i < first.size(); ++i) {
-            for (int j = 0; j < second.size(); ++j) {
-                long firstNumber = first.get(i);
-                long secondNumber = second.get(j);
+        List<Suspect> newSuspects = new ArrayList<>();
 
-                if (isConnected(firstNumber, secondNumber)) {
-                    suspects.add(secondNumber);
+        List<Suspect> second = create(figurativeNumber);
+
+        for (Suspect firstSuspect : first) {
+            long firstSuspectNumber = firstSuspect.getLast();
+
+            for (Suspect secondSuspect : second) {
+                long secondSuspectNumber = secondSuspect.getLast();
+
+                if (isConnected(firstSuspectNumber, secondSuspectNumber)) {
+                    Suspect suspect = new Suspect(firstSuspect, secondSuspectNumber);
+                    newSuspects.add(suspect);
                 }
             }
+
         }
 
-        return suspects;
+        return newSuspects;
     }
 
     private boolean isConnected(long firstNumber, long secondNumber) {
@@ -56,16 +66,17 @@ public class CyclicalFigurativeNumbers {
         return isConnected;
     }
 
-    private ListOfLong create(FigurativeNumber figurativeNumber) {
-        ListOfLong suspects = new ListOfLong();
+    private List<Suspect> create(FigurativeNumber figurativeNumber) {
+        List<Suspect> suspects = new ArrayList<>();
 
-        long suspect = 0;
+        long value = 0;
         int n = 0;
 
-        while (suspect < 10_000) {
-            suspect = figurativeNumber.compute(n);
+        while (value < 10_000) {
+            value = figurativeNumber.compute(n);
 
-            if (suspect >= 1_000 && suspect < 10_000) {
+            if (value >= 1_000 && value < 10_000) {
+                Suspect suspect = new Suspect(value);
                 suspects.add(suspect);
             }
 
