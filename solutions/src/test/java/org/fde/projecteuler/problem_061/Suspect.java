@@ -7,6 +7,7 @@ import org.fde.util.ListOfLong;
  */
 class Suspect {
     private ListOfLong suspect;
+    private boolean connected;
 
     Suspect(long suspectNumber) {
         this.suspect = new ListOfLong();
@@ -31,5 +32,24 @@ class Suspect {
         return "Suspect{" +
                 "suspect=" + suspect +
                 '}';
+    }
+
+    public boolean isConnected() {
+        Long firstNumber = this.suspect.get(0);
+        Long lastNumber = this.suspect.get(5);
+        boolean isConnected = isConnected(lastNumber, firstNumber);
+        return isConnected;
+    }
+
+    public static boolean isConnected(long firstNumber, long secondNumber) {
+        long firstLastDigits = (firstNumber % 100);
+        long secondFirstDigits = (secondNumber / 100);
+
+        if(secondFirstDigits >= 100) {
+            secondFirstDigits /= 10;
+        }
+
+        boolean isConnected = (firstLastDigits == secondFirstDigits);
+        return isConnected;
     }
 }

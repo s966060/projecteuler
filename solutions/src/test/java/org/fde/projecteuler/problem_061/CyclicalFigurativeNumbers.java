@@ -22,7 +22,9 @@ public class CyclicalFigurativeNumbers {
         }
 
         for (Suspect suspect : suspects) {
-            System.out.println("suspect = " + suspect);
+            if(suspect.isConnected()) {
+                System.out.println("suspect = " + suspect);
+            }
         }
 
         assertEquals(6, suspects.size());
@@ -59,10 +61,7 @@ public class CyclicalFigurativeNumbers {
     }
 
     private boolean isConnected(long firstNumber, long secondNumber) {
-        long firstLastDigits = (firstNumber % 100);
-        long secondFirstDigits = (secondNumber / 100);
-
-        boolean isConnected = (firstLastDigits == secondFirstDigits);
+        boolean isConnected = Suspect.isConnected(firstNumber, secondNumber);
         return isConnected;
     }
 
@@ -72,10 +71,10 @@ public class CyclicalFigurativeNumbers {
         long value = 0;
         int n = 0;
 
-        while (value < 10_000) {
+        while (value < 100_000) {
             value = figurativeNumber.compute(n);
 
-            if (value >= 1_000 && value < 10_000) {
+            if (value >= 1_000 && value < 100_000) {
                 Suspect suspect = new Suspect(value);
                 suspects.add(suspect);
             }
