@@ -2,11 +2,16 @@ package org.fde.projecteuler.problem_061;
 
 import org.fde.util.ListOfLong;
 
+import java.util.ArrayList;
+import java.util.List;
+
 class Finder {
     private final FigurativeNumbersList figurativeNumbersList;
+    private final Matches matches;
 
     Finder(FigurativeNumbersList figurativeNumbersList) {
         this.figurativeNumbersList = figurativeNumbersList;
+        this.matches = new Matches();
     }
 
     void find() {
@@ -25,7 +30,7 @@ class Finder {
     private void match(FinderContext context, FigurativeNumbersList figurativeNumbersList) {
         if (figurativeNumbersList.isEmpty()) {
             if (context.isClosed()) {
-                System.out.println("context = " + context);
+                matches.add(context);
             }
         } else {
             for (FigurativeNumbers figurativeNumbers : figurativeNumbersList) {
@@ -44,5 +49,9 @@ class Finder {
                 }
             }
         }
+    }
+
+    Matches getMatches() {
+        return matches;
     }
 }
