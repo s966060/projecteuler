@@ -1,7 +1,6 @@
 package org.fde.projecteuler.problem_061;
 
 import org.fde.projecteuler.problem_061.figurative_numbers.*;
-import org.fde.projecteuler.problem_061.try2.figurative_numbers.*;
 import org.junit.Test;
 
 import static org.fde.projecteuler.problem_061.FigurativeNumbers.createFigurativeNumbers;
@@ -19,11 +18,11 @@ public class CyclicalFigurativeNumbers {
         FigurativeNumbersList figurativeNumbersList = new FigurativeNumbersList(
                 triangles, squares, pentagonals, hexagonals, heptagonals, octogonals);
 
-        for(FigurativeNumbers figurativeNumbers : figurativeNumbersList) {
+        for (FigurativeNumbers figurativeNumbers : figurativeNumbersList) {
             FigurativeNumbersList nextFigurativeNumbersList
                     = figurativeNumbersList.createWithout(figurativeNumbers);
 
-            for(Long value : figurativeNumbers.getNumbers()) {
+            for (Long value : figurativeNumbers.getNumbers()) {
                 match(value, nextFigurativeNumbersList);
             }
         }
