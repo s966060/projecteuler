@@ -5,14 +5,14 @@ import org.fde.util.ListOfLong;
 import java.util.Map;
 import java.util.TreeMap;
 
-public abstract class Container {
+abstract class Container {
     private Map<Long, ListOfLong> map;
 
-    public Container() {
+    Container() {
         this.map = new TreeMap<>();
     }
 
-    public void add(long value) {
+    void add(long value) {
         if (value >= 1_000 && value < 10_000) {
             Long key = computeKey(value);
 
@@ -30,4 +30,14 @@ public abstract class Container {
     }
 
     abstract long computeKey(long value);
+
+    ListOfLong get(long key) {
+        ListOfLong list = this.map.get(key);
+
+        if (list != null) {
+            return list;
+        } else {
+            return new ListOfLong();
+        }
+    }
 }

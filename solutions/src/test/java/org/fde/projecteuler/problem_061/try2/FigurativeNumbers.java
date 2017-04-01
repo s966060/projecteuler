@@ -1,19 +1,31 @@
 package org.fde.projecteuler.problem_061.try2;
 
-import org.fde.projecteuler.problem_061.FigurativeNumber;
+import org.fde.projecteuler.problem_061.try2.figurative_numbers.FigurativeNumber;
+import org.fde.util.ListOfLong;
 
 class FigurativeNumbers {
     private final PrefixContainer prefix;
     private final PostfixContainer postfix;
+    private final ListOfLong numbers;
 
-    FigurativeNumbers(PrefixContainer prefix, PostfixContainer postfix) {
+    FigurativeNumbers(ListOfLong numbers,
+                      PrefixContainer prefix,
+                      PostfixContainer postfix) {
+
+        this.numbers = numbers;
         this.prefix = prefix;
         this.postfix = postfix;
     }
 
-    public static FigurativeNumbers createFigurativeNumbers(
+    ListOfLong getLinkedOnPrefix(long value) {
+        ListOfLong onPostFixValue = this.prefix.getOnPostFixValue(value);
+        return onPostFixValue;
+    }
+
+    static FigurativeNumbers createFigurativeNumbers(
             FigurativeNumber figurativeNumber) {
 
+        ListOfLong numbers = new ListOfLong();
         PrefixContainer prefix = new PrefixContainer();
         PostfixContainer postfix = new PostfixContainer();
 
@@ -24,6 +36,7 @@ class FigurativeNumbers {
             value = figurativeNumber.compute(n);
 
             if (value >= 1_000 && value < 10_000) {
+                numbers.add(value);
                 prefix.add(value);
                 postfix.add(value);
             }
@@ -31,6 +44,10 @@ class FigurativeNumbers {
             ++n;
         }
 
-        return new FigurativeNumbers(prefix, postfix);
+        return new FigurativeNumbers(numbers, prefix, postfix);
+    }
+
+    public ListOfLong getNumbers() {
+        return numbers;
     }
 }
