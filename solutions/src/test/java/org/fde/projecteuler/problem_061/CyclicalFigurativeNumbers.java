@@ -19,30 +19,8 @@ public class CyclicalFigurativeNumbers {
         FigurativeNumbersList figurativeNumbersList = new FigurativeNumbersList(
                 triangles, squares, pentagonals, hexagonals, heptagonals, octogonals);
 
-        for (FigurativeNumbers figurativeNumbers : figurativeNumbersList) {
-            FigurativeNumbersList nextFigurativeNumbersList
-                    = figurativeNumbersList.createWithout(figurativeNumbers);
+        Finder finder = new Finder(figurativeNumbersList);
 
-            for (Long value : figurativeNumbers.getNumbers()) {
-                match(value, nextFigurativeNumbersList);
-            }
-        }
-    }
-
-    private void match(long value, FigurativeNumbersList figurativeNumbersList) {
-        if (figurativeNumbersList.isEmpty()) {
-
-        } else {
-            for (FigurativeNumbers figurativeNumbers : figurativeNumbersList) {
-                ListOfLong linkedValues = figurativeNumbers.getLinkedOnPrefix(value);
-
-                for (Long linkedValue : linkedValues) {
-                    FigurativeNumbersList nextFigurativeNumbersList
-                            = figurativeNumbersList.createWithout(figurativeNumbers);
-
-                    match(linkedValue, nextFigurativeNumbersList);
-                }
-            }
-        }
+        finder.find();
     }
 }
