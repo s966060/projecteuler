@@ -6,18 +6,15 @@ import org.fde.util.ListOfLong;
 class FigurativeNumbers {
     private final FigurativeNumber figurativeNumber;
     private final PrefixContainer prefix;
-    private final PostfixContainer postfix;
     private final ListOfLong numbers;
 
     FigurativeNumbers(FigurativeNumber figurativeNumber,
                       ListOfLong numbers,
-                      PrefixContainer prefix,
-                      PostfixContainer postfix) {
+                      PrefixContainer prefix) {
 
         this.figurativeNumber = figurativeNumber;
         this.numbers = numbers;
         this.prefix = prefix;
-        this.postfix = postfix;
     }
 
     // Example
@@ -42,7 +39,6 @@ class FigurativeNumbers {
 
         ListOfLong numbers = new ListOfLong();
         PrefixContainer prefix = new PrefixContainer();
-        PostfixContainer postfix = new PostfixContainer();
 
         long value = 0;
         int n = 0;
@@ -53,13 +49,12 @@ class FigurativeNumbers {
             if (value >= 1_000 && value < 10_000) {
                 numbers.add(value);
                 prefix.add(value);
-                postfix.add(value);
             }
 
             ++n;
         }
 
-        return new FigurativeNumbers(figurativeNumber, numbers, prefix, postfix);
+        return new FigurativeNumbers(figurativeNumber, numbers, prefix);
     }
 
     ListOfLong getNumbers() {
