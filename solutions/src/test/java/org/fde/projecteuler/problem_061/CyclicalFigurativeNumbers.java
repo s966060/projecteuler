@@ -1,7 +1,6 @@
 package org.fde.projecteuler.problem_061;
 
 import org.fde.projecteuler.problem_061.figurative_numbers.*;
-import org.fde.util.ListOfLong;
 import org.junit.Test;
 
 import static org.fde.projecteuler.problem_061.FigurativeNumbers.createFigurativeNumbers;
