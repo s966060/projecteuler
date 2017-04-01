@@ -5,4 +5,9 @@ public class Pentagonal implements FigurativeNumber {
     public long compute(int n) {
         return n * (3 * n - 1) / 2;
     }
+
+    @Override
+    public String toString() {
+        return "Pentagonal{}";
+    }
 }

@@ -26,7 +26,7 @@ class Finder {
     private void match(FinderContext context, FigurativeNumbersList figurativeNumbersList) {
         if (figurativeNumbersList.isEmpty()) {
             if (context.isClosed()) {
-                System.out.println("context = " + context.getValues());
+                System.out.println("context = " + context);
             }
         } else {
             for (FigurativeNumbers figurativeNumbers : figurativeNumbersList) {

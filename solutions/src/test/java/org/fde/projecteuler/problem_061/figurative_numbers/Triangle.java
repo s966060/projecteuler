@@ -5,4 +5,9 @@ public class Triangle implements FigurativeNumber {
     public long compute(int n) {
         return n * (n + 1) / 2;
     }
+
+    @Override
+    public String toString() {
+        return "Triangle{}";
+    }
 }

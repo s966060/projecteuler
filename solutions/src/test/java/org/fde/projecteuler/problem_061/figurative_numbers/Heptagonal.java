@@ -5,4 +5,9 @@ public class Heptagonal implements FigurativeNumber {
     public long compute(int n) {
         return n * (5 * n - 3) / 2;
     }
+
+    @Override
+    public String toString() {
+        return "Heptagonal{}";
+    }
 }

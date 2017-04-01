@@ -5,4 +5,9 @@ public class Square implements FigurativeNumber {
     public long compute(int n) {
         return n * n;
     }
+
+    @Override
+    public String toString() {
+        return "Square{}";
+    }
 }

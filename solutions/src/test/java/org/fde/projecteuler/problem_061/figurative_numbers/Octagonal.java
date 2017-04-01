@@ -5,4 +5,9 @@ public class Octagonal implements FigurativeNumber {
     public long compute(int n) {
         return n * (3 * n - 2);
     }
+
+    @Override
+    public String toString() {
+        return "Octagonal{}";
+    }
 }

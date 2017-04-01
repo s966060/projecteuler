@@ -5,4 +5,9 @@ public class Hexagonal implements FigurativeNumber {
     public long compute(int n) {
         return n * (2 * n - 1);
     }
+
+    @Override
+    public String toString() {
+        return "Hexagonal{}";
+    }
 }
