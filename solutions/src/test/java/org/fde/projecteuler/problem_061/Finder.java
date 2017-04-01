@@ -15,23 +15,33 @@ class Finder {
                     = this.figurativeNumbersList.createWithout(figurativeNumbers);
 
             for (Long value : figurativeNumbers.getNumbers()) {
-                match(value, nextFigurativeNumbersList);
+                FinderContext context = new FinderContext(
+                        value, figurativeNumbers);
+
+                match(context, nextFigurativeNumbersList);
             }
         }
     }
 
-    private void match(long value, FigurativeNumbersList figurativeNumbersList) {
+    private void match(FinderContext context, FigurativeNumbersList figurativeNumbersList) {
         if (figurativeNumbersList.isEmpty()) {
-            System.out.println("value = " + value);
+            if(context.isClosed()) {
+                System.out.println("context = " + context.getValues());
+            }
         } else {
             for (FigurativeNumbers figurativeNumbers : figurativeNumbersList) {
+                long value = context.getCurrentValue();
+
                 ListOfLong linkedValues = figurativeNumbers.getLinkedOnPrefix(value);
 
                 for (Long linkedValue : linkedValues) {
                     FigurativeNumbersList nextFigurativeNumbersList
                             = figurativeNumbersList.createWithout(figurativeNumbers);
 
-                    match(linkedValue, nextFigurativeNumbersList);
+                    FinderContext newContext = context.next(
+                            linkedValue, figurativeNumbers);
+
+                    match(newContext, nextFigurativeNumbersList);
                 }
             }
         }

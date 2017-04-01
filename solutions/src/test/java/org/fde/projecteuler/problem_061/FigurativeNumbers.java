@@ -4,22 +4,37 @@ import org.fde.projecteuler.problem_061.figurative_numbers.FigurativeNumber;
 import org.fde.util.ListOfLong;
 
 class FigurativeNumbers {
+    private final FigurativeNumber figurativeNumber;
     private final PrefixContainer prefix;
     private final PostfixContainer postfix;
     private final ListOfLong numbers;
 
-    FigurativeNumbers(ListOfLong numbers,
+    FigurativeNumbers(FigurativeNumber figurativeNumber,
+                      ListOfLong numbers,
                       PrefixContainer prefix,
                       PostfixContainer postfix) {
 
+        this.figurativeNumber = figurativeNumber;
         this.numbers = numbers;
         this.prefix = prefix;
         this.postfix = postfix;
     }
 
+    // Example
+    // value = 1234
+    // possible postfix values (2222, 3333, 3400, 3444, 3500)
+    // match value = 34
+    // --> 3400, 3444
     ListOfLong getLinkedOnPrefix(long value) {
         ListOfLong onPostFixValue = this.prefix.getOnPostFixValue(value);
         return onPostFixValue;
+    }
+
+    public boolean isLinkedOnPrefix(long value, long linkValue) {
+        ListOfLong suspects = getLinkedOnPrefix(value);
+
+        boolean isLinked = suspects.contains(linkValue);
+        return isLinked;
     }
 
     static FigurativeNumbers createFigurativeNumbers(
@@ -44,10 +59,17 @@ class FigurativeNumbers {
             ++n;
         }
 
-        return new FigurativeNumbers(numbers, prefix, postfix);
+        return new FigurativeNumbers(figurativeNumber, numbers, prefix, postfix);
     }
 
-    public ListOfLong getNumbers() {
+    ListOfLong getNumbers() {
         return numbers;
+    }
+
+    @Override
+    public String toString() {
+        return "FigurativeNumbers{" +
+                "figurativeNumber=" + figurativeNumber +
+                '}';
     }
 }
