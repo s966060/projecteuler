@@ -1,6 +1,7 @@
 package org.fde.projecteuler.problem_061;
 
 import org.fde.projecteuler.problem_061.figurative_numbers.*;
+import org.fde.util.ListOfLong;
 import org.junit.Test;
 
 import static org.fde.projecteuler.problem_061.FigurativeNumbers.createFigurativeNumbers;
@@ -28,7 +29,20 @@ public class CyclicalFigurativeNumbers {
         }
     }
 
-    private void match(Long value, FigurativeNumbersList figurativeNumbersList) {
+    private void match(long value, FigurativeNumbersList figurativeNumbersList) {
+        if (figurativeNumbersList.isEmpty()) {
 
+        } else {
+            for (FigurativeNumbers figurativeNumbers : figurativeNumbersList) {
+                ListOfLong linkedValues = figurativeNumbers.getLinkedOnPrefix(value);
+
+                for (Long linkedValue : linkedValues) {
+                    FigurativeNumbersList nextFigurativeNumbersList
+                            = figurativeNumbersList.createWithout(figurativeNumbers);
+
+                    match(linkedValue, nextFigurativeNumbersList);
+                }
+            }
+        }
     }
 }

@@ -35,4 +35,8 @@ class FigurativeNumbersList implements Iterable<FigurativeNumbers> {
     public Iterator<FigurativeNumbers> iterator() {
         return this.list.iterator();
     }
+
+    public boolean isEmpty() {
+        return this.list.isEmpty();
+    }
 }
