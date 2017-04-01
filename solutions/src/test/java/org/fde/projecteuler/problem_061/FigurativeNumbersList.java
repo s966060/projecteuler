@@ -39,4 +39,9 @@ class FigurativeNumbersList implements Iterable<FigurativeNumbers> {
     public boolean isEmpty() {
         return this.list.isEmpty();
     }
+
+    public FigurativeNumbers getFirst() {
+        FigurativeNumbers first = this.list.get(0);
+        return first;
+    }
 }

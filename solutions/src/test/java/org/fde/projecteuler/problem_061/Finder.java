@@ -10,16 +10,15 @@ class Finder {
     }
 
     void find() {
-        for (FigurativeNumbers figurativeNumbers : this.figurativeNumbersList) {
-            FigurativeNumbersList nextFigurativeNumbersList
-                    = this.figurativeNumbersList.createWithout(figurativeNumbers);
+        FigurativeNumbers first = this.figurativeNumbersList.getFirst();
 
-            for (Long value : figurativeNumbers.getNumbers()) {
-                FinderContext context = new FinderContext(
-                        value, figurativeNumbers);
+        FigurativeNumbersList nextFigurativeNumbersList
+                = this.figurativeNumbersList.createWithout(first);
 
-                match(context, nextFigurativeNumbersList);
-            }
+        for (Long value : first.getNumbers()) {
+            FinderContext context = new FinderContext(value, first);
+
+            match(context, nextFigurativeNumbersList);
         }
     }
 
