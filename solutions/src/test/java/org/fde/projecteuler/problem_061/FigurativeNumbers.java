@@ -66,4 +66,8 @@ class FigurativeNumbers {
                 "figurativeNumber=" + figurativeNumber +
                 '}';
     }
+
+    FigurativeNumber getFigurativeNumber() {
+        return figurativeNumber;
+    }
 }

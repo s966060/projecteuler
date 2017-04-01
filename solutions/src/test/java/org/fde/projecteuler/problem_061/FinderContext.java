@@ -18,9 +18,8 @@ class FinderContext {
         @Override
         public String toString() {
             return "Node{" +
-                    "value=" + value +
-                    ", figurativeNumbers=" + figurativeNumbers +
-                    '}';
+                    this.figurativeNumbers.getFigurativeNumber() + "_" +
+                    this.value + '}';
         }
     }
 
