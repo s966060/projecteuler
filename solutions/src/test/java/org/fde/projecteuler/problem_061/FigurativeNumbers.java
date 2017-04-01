@@ -18,17 +18,16 @@ class FigurativeNumbers {
     }
 
     // Example
-    // value = 1234
+    // value = 1234 - postfix = 34
     // possible postfix values (2222, 3333, 3400, 3444, 3500)
-    // match value = 34
     // --> 3400, 3444
-    ListOfLong getLinkedOnPrefix(long value) {
+    ListOfLong getOnPostFixValue(long value) {
         ListOfLong onPostFixValue = this.prefix.getOnPostFixValue(value);
         return onPostFixValue;
     }
 
-    public boolean isLinkedOnPrefix(long value, long linkValue) {
-        ListOfLong suspects = getLinkedOnPrefix(value);
+    public boolean isLinkedOnPostFixValue(long value, long linkValue) {
+        ListOfLong suspects = getOnPostFixValue(value);
 
         boolean isLinked = suspects.contains(linkValue);
         return isLinked;

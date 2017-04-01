@@ -25,14 +25,14 @@ class Finder {
 
     private void match(FinderContext context, FigurativeNumbersList figurativeNumbersList) {
         if (figurativeNumbersList.isEmpty()) {
-            if(context.isClosed()) {
+            if (context.isClosed()) {
                 System.out.println("context = " + context.getValues());
             }
         } else {
             for (FigurativeNumbers figurativeNumbers : figurativeNumbersList) {
                 long value = context.getCurrentValue();
 
-                ListOfLong linkedValues = figurativeNumbers.getLinkedOnPrefix(value);
+                ListOfLong linkedValues = figurativeNumbers.getOnPostFixValue(value);
 
                 for (Long linkedValue : linkedValues) {
                     FigurativeNumbersList nextFigurativeNumbersList

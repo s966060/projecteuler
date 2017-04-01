@@ -89,8 +89,8 @@ class FinderContext {
         long lastValue = getLastValue();
         long firstValue = getFirstValue();
 
-        Node firstNode = getLastNode();
-        boolean isLinked = firstNode.figurativeNumbers.isLinkedOnPrefix(
+        Node firstNode = getFirstNode();
+        boolean isLinked = firstNode.figurativeNumbers.isLinkedOnPostFixValue(
                 lastValue, firstValue);
 
         return isLinked;
