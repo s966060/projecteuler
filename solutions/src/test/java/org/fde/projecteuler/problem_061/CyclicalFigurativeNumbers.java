@@ -1,9 +1,10 @@
-package org.fde.projecteuler.problem_061.try2;
+package org.fde.projecteuler.problem_061;
 
+import org.fde.projecteuler.problem_061.figurative_numbers.*;
 import org.fde.projecteuler.problem_061.try2.figurative_numbers.*;
 import org.junit.Test;
 
-import static org.fde.projecteuler.problem_061.try2.FigurativeNumbers.createFigurativeNumbers;
+import static org.fde.projecteuler.problem_061.FigurativeNumbers.createFigurativeNumbers;
 
 public class CyclicalFigurativeNumbers {
     @Test

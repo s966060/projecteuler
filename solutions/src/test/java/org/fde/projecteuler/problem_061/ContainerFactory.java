@@ -1,4 +1,4 @@
-package org.fde.projecteuler.problem_061.try2;
+package org.fde.projecteuler.problem_061;
 
 /**
  * Created by filip on 1/04/2017.
