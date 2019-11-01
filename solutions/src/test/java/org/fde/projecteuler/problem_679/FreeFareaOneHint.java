@@ -18,35 +18,36 @@ public class FreeFareaOneHint {
 
         int free = wordLength - HINT.length();
 
-        for (int i = 0; i <= free; ++i) {
-            int before = i;
-            int after = free - i;
+        for (int before = 0; before <= free; ++before) {
+            int after = free - before;
 
-            StringBuilder word = new StringBuilder(wordLength);
+
+
+            Word word = new Word(wordLength);
             before(before, after, word);
         }
 
         return this.count;
     }
 
-    private void before(int before, int after, StringBuilder word) {
+    private void before(int before, int after, Word word) {
         if (before == 0) {
-            word.append(HINT);
+            word.add(HINT);
             after(after, word);
-            word.delete(word.length() - HINT.length(), word.length());
+            word.remove(HINT);;
         }
         else {
             for (char c : FreeFarea.ALPHABET) {
-                word.append(c);
+                word.add(c);
                 before(before - 1, after, word);
-                word.deleteCharAt(word.length() - 1);
+                word.remove();
             }
         }
     }
 
-    private void after( int after, StringBuilder word) {
+    private void after( int after, Word word) {
         if (after == 0) {
-            boolean isTargetFound = FreeFarea.findTarget(word);
+            boolean isTargetFound = word.findTarget();
 
             if (isTargetFound) {
                 ++count;
@@ -54,9 +55,9 @@ public class FreeFareaOneHint {
         }
         else {
             for (char c : FreeFarea.ALPHABET) {
-                word.append(c);
+                word.add(c);
                 after(after - 1, word);
-                word.deleteCharAt(word.length() - 1);
+                word.remove();
             }
         }
     }

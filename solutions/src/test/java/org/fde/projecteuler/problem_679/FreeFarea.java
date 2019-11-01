@@ -19,7 +19,7 @@ public class FreeFarea {
         Assert.assertEquals(72863, count);
     }
 
-    // Runtime ~ 2min 35 sec
+    // Runtime ~ 2min 25 sec
     @Test
     public void bruteForce_16() {
         int wordLength = 16;
@@ -31,7 +31,7 @@ public class FreeFarea {
         Assert.assertEquals(367804, count);
     }
 
-    // Runtime ~ 10 min 50 sec
+    // Runtime ~ 10 min
     @Test
     public void bruteForce_17() {
         int wordLength = 17;
@@ -77,27 +77,5 @@ public class FreeFarea {
         System.out.println("wordLength = " + wordLength);
         System.out.println("count = " + count);
         Assert.assertEquals(1812443, count);
-    }
-
-    static boolean findTarget(StringBuilder word) {
-        for (String target : FreeFarea.TARGET) {
-            int indexOf = word.indexOf(target);
-
-            if (indexOf < 0) {
-                return false;
-            }
-            else {
-                int nextIndexOf = word.indexOf(target, indexOf + 1);
-
-                if (nextIndexOf < 0) {
-                    continue;
-                }
-                else {
-                    return false;
-                }
-            }
-        }
-
-        return true;
     }
 }

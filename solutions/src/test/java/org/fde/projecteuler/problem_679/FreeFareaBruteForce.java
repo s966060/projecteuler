@@ -10,14 +10,14 @@ public class FreeFareaBruteForce {
     }
 
     public int go() {
-        StringBuilder word = new StringBuilder();
+        Word word = new Word(this.wordLenght);
         go(word, this.wordLenght);
         return this.count;
     }
 
-    private void go(StringBuilder word, int wordLength) {
+    private void go(Word word, int wordLength) {
         if (wordLength <= 0) {
-            boolean isTargetFound = FreeFarea.findTarget(word);
+            boolean isTargetFound = word.findTarget();
 
             if (isTargetFound) {
                 ++count;
@@ -25,9 +25,9 @@ public class FreeFareaBruteForce {
         }
         else {
             for (char a : FreeFarea.ALPHABET) {
-                word.append(a);
+                word.add(a);
                 go(word, wordLength - 1);
-                word.deleteCharAt(word.length() - 1);
+                word.remove();
             }
         }
     }
