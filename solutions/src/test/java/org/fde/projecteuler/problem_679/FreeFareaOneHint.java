@@ -21,8 +21,6 @@ public class FreeFareaOneHint {
         for (int before = 0; before <= free; ++before) {
             int after = free - before;
 
-
-
             Word word = new Word(wordLength);
             before(before, after, word);
         }
