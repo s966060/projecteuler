@@ -48,8 +48,10 @@ public class MachineFreeTest {
     }
 
     private int test(String sentence) {
-        int count = MachineFree.go(sentence);
-        return count;
+        MachineFree machine = new MachineFree();
+        machine.push(sentence);
+        Cursor<MachineFree.State> cursor = machine.getCurrentCursor();
+        return cursor.count;
     }
 }
 

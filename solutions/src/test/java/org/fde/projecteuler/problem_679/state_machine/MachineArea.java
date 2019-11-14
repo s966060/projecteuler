@@ -35,7 +35,7 @@ public class MachineArea {
             }
         }
         else {
-            State state = (State) current.state;
+            final State state = (State) current.state;
 
             switch (state) {
                 case START:

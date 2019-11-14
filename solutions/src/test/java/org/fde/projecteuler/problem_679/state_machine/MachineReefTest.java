@@ -48,8 +48,10 @@ public class MachineReefTest {
     }
 
     private int test(String sentence) {
-        int count = MachineReef.go(sentence);
-        return count;
+        MachineReef  machine = new MachineReef();
+        machine.push(sentence);
+        Cursor<MachineReef.State> cursor = machine.getCurrentCursor();
+        return cursor.count;
     }
 }
 

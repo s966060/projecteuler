@@ -26,7 +26,7 @@ class MachineFare {
             next = current.next(State.F);
         }
         else {
-            State state = (State) current.state;
+            final State state = (State) current.state;
 
             switch (state) {
                 case START:

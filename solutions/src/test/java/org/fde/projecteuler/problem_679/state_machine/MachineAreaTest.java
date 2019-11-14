@@ -33,4 +33,3 @@ public class MachineAreaTest {
         return cursor.count;
     }
 }
-

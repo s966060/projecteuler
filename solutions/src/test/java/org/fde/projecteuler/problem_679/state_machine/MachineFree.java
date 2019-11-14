@@ -5,48 +5,62 @@ class MachineFree {
         START, F, R, E1, E2;
     };
 
-    static int go(String sentence) {
-        State state = State.START;
+    private final CursorList<State> cursorList = new CursorList<>(State.START);
 
-        int count = 0;
+    public Cursor<State> getCurrentCursor() {
+        return this.cursorList.current();
+    }
 
-        for (int index = 0; index < sentence.length(); ++index) {
-            char ch = sentence.charAt(index);
+    public void push(String input) {
+        for(int i = 0; i < input.length(); ++i) {
+            char charAt = input.charAt(i);
+            push(charAt);
+        }
+    }
 
-            if (ch == 'F') {
-                state = State.F;
-            }
-            else {
-                switch (state) {
-                    case F:
-                        if (ch == 'R') {
-                            state = State.R;
-                        }
-                        else {
-                            state = State.START;
-                        }
-                        break;
-                    case R:
-                        if (ch == 'E') {
-                            state = State.E1;
-                        }
-                        else {
-                            state = State.START;
-                        }
-                        break;
-                    case E1:
-                        if (ch == 'E') {
-                            state = State.START;
-                            ++count;
-                        }
-                        else {
-                            state = State.START;
-                        }
-                        break;
-                }
+    void push(char ch) {
+        Cursor<State> current = this.cursorList.current();
+        final Cursor<State> next;
+
+        if (ch == 'F') {
+            next = current.next(State.F);
+        }
+        else {
+            final State state = (State) current.state;
+
+            switch (state) {
+                case START:
+                    next = current.next(State.START);
+                    break;
+                case F:
+                    if (ch == 'R') {
+                        next = current.next(State.R);
+                    }
+                    else {
+                        next = current.next(State.START);
+                    }
+                    break;
+                case R:
+                    if (ch == 'E') {
+                        next = current.next(State.E1);
+                    }
+                    else {
+                        next = current.next(State.START);
+                    }
+                    break;
+                case E1:
+                    if (ch == 'E') {
+                        next = current.nextIncrease(State.START);
+                    }
+                    else {
+                        next = current.next(State.START);
+                    }
+                    break;
+                default:
+                    throw new UnsupportedOperationException();
             }
         }
 
-        return count;
+        this.cursorList.push(next);
     }
 }
