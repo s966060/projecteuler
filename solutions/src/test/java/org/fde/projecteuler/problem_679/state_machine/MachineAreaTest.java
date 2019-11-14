@@ -27,8 +27,10 @@ public class MachineAreaTest {
     }
 
     private int test(String sentence) {
-        int count = MachineArea.go(sentence);
-        return count;
+        MachineArea machine = new MachineArea();
+        machine.push(sentence);
+        Cursor cursor = machine.getCurrentCursor();
+        return cursor.count;
     }
 }
 

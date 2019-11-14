@@ -5,55 +5,75 @@ public class MachineArea {
         START, A1, R, E, A2;
     };
 
-    static int go(String sentence) {
-        State state = State.START;
+    private final CursorList<State> cursorList = new CursorList<>(State.START);
 
-        int count = 0;
+    public Cursor getCurrentCursor() {
+        return this.cursorList.current();
+    }
 
-        for (int index = 0; index < sentence.length(); ++index) {
-            char ch = sentence.charAt(index);
+    public void push(String input) {
+        for(int i = 0; i < input.length(); ++i) {
+            char charAt = input.charAt(i);
+            push(charAt);
+        }
+    }
 
-            if (ch == 'A') {
-                if (state == State.START) {
-                    state = State.A1;
-                }
-                else
-                if (state == State.E) {
-                    ++count;
-                    state = State.A1;
-                }
+    public void push(char input) {
+        Cursor<State> current = this.cursorList.current();
+        final Cursor<State> next;
+
+        if (input == 'A') {
+            if (current.state == State.START) {
+                next = current.next(State.A1);
+            }
+            else
+            if (current.state == State.E) {
+                next = current.nextIncrease(State.A1);
             }
             else {
-                switch (state) {
-                    case A1:
-                        if (ch == 'R') {
-                            state = State.R;
-                        }
-                        else {
-                            state = State.START;
-                        }
-                        break;
-                    case R:
-                        if (ch == 'E') {
-                            state = State.E;
-                        }
-                        else {
-                            state = State.START;
-                        }
-                        break;
-                    case E:
-                        if (ch == 'A') {
-                            state = State.A2;
-                            ++count;
-                        }
-                        else {
-                            state = State.START;
-                        }
-                        break;
-                }
+                next = current.next(State.START);
+            }
+        }
+        else {
+            State state = (State) current.state;
+
+            switch (state) {
+                case START:
+                    next = current.next(State.START);
+                    break;
+                case A1:
+                    if (input == 'R') {
+                        next = current.next(State.R);
+                    }
+                    else {
+                        next = current.next(State.START);
+                    }
+                    break;
+                case R:
+                    if (input == 'E') {
+                        next = current.next(State.E);
+                    }
+                    else {
+                        next = current.next(State.START);
+                    }
+                    break;
+                case E:
+                    if (input == 'A') {
+                        next = current.nextIncrease(State.A2);
+                    }
+                    else {
+                        next = current.next(State.START);
+                    }
+                    break;
+                default:
+                    throw new UnsupportedOperationException();
             }
         }
 
-        return count;
+        this.cursorList.push(next);
+    }
+
+    public void pop() {
+        this.cursorList.pop();
     }
 }
