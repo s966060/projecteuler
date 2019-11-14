@@ -7,7 +7,7 @@ public class MachineArea {
 
     private final CursorList<State> cursorList = new CursorList<>(State.START);
 
-    public Cursor getCurrentCursor() {
+    public Cursor<State> getCurrentCursor() {
         return this.cursorList.current();
     }
 

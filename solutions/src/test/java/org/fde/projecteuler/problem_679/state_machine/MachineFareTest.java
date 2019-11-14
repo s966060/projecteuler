@@ -48,8 +48,10 @@ public class MachineFareTest {
     }
 
     private int test(String sentence) {
-        int count = MachineFare.go(sentence);
-        return count;
+        MachineFare machine = new MachineFare();
+        machine.push(sentence);
+        Cursor<MachineFare.State> cursor = machine.getCurrentCursor();
+        return cursor.count;
     }
 }
 
