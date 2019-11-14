@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class StateMachineWordCountTest {
+public class MachineFreeTest {
     @Test
     public void test_1() {
         String sentence = "FREE FREE FREE FREE FREE";
@@ -31,6 +31,20 @@ public class StateMachineWordCountTest {
         String sentence = "   REEF REEF REEF REEF REEF   ";
         int count = test(sentence);
         assertEquals(0, count);
+    }
+
+    @Test
+    public void test_5() {
+        String sentence = "FREFREEF";
+        int count = test(sentence);
+        assertEquals(1, count);
+    }
+
+    @Test
+    public void test_6() {
+        String sentence = "FREFREEFRE";
+        int count = test(sentence);
+        assertEquals(1, count);
     }
 
     private int test(String sentence) {

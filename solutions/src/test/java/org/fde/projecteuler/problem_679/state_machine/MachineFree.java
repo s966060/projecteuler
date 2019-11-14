@@ -2,13 +2,7 @@ package org.fde.projecteuler.problem_679.state_machine;
 
 class MachineFree {
     enum State {
-        START('X'), F('F'), R('R'), E1('E'), E2('E');
-
-        final char ch;
-
-        State(char ch) {
-            this.ch = ch;
-        }
+        START, F, R, E1, E2;
     };
 
     static int go(String sentence) {
@@ -19,13 +13,13 @@ class MachineFree {
         for (int index = 0; index < sentence.length(); ++index) {
             char ch = sentence.charAt(index);
 
-            if (ch == State.F.ch) {
+            if (ch == 'F') {
                 state = State.F;
             }
             else {
                 switch (state) {
                     case F:
-                        if (ch == State.R.ch) {
+                        if (ch == 'R') {
                             state = State.R;
                         }
                         else {
@@ -33,7 +27,7 @@ class MachineFree {
                         }
                         break;
                     case R:
-                        if (ch == State.E1.ch) {
+                        if (ch == 'E') {
                             state = State.E1;
                         }
                         else {
@@ -41,7 +35,7 @@ class MachineFree {
                         }
                         break;
                     case E1:
-                        if (ch == State.E2.ch) {
+                        if (ch == 'E') {
                             state = State.START;
                             ++count;
                         }
