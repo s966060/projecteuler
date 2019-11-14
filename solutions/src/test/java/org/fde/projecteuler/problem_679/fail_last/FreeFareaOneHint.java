@@ -2,7 +2,6 @@ package org.fde.projecteuler.problem_679.fail_last;
 
 import org.apache.commons.lang3.Validate;
 import org.fde.projecteuler.problem_679.FreeFarea;
-import org.fde.projecteuler.problem_679.Word;
 
 public class FreeFareaOneHint {
     private final static String HINT = "FREE";

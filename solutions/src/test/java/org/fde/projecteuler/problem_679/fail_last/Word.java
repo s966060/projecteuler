@@ -1,6 +1,7 @@
-package org.fde.projecteuler.problem_679;
+package org.fde.projecteuler.problem_679.fail_last;
 
 import org.apache.commons.lang3.StringUtils;
+import org.fde.projecteuler.problem_679.FreeFarea;
 
 public class Word {
     private final StringBuilder word;
