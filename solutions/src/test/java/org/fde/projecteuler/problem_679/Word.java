@@ -6,32 +6,32 @@ public class Word {
     private final StringBuilder word;
     private int cursor;
 
-    Word(int wordLength) {
+    public Word(int wordLength) {
         this.word = new StringBuilder(StringUtils.repeat(' ', wordLength));
         this.cursor = 0;
     }
 
-    void add(char value) {
+    public void add(char value) {
         this.word.setCharAt(this.cursor, value);
         ++this.cursor;
     }
 
-    void add(String value) {
+    public void add(String value) {
         for(int i = 0; i < value.length(); ++i) {
             char ch = value.charAt(i);
             add(ch);
         }
     }
 
-    void remove() {
+    public void remove() {
         --this.cursor;
     }
 
-    void remove(String value) {
+    public void remove(String value) {
         this.cursor -= value.length();
     }
 
-    boolean findTarget() {
+    public boolean findTargets() {
         for (String target : FreeFarea.TARGETS) {
             int indexOf = this.word.indexOf(target);
 

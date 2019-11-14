@@ -1,4 +1,7 @@
-package org.fde.projecteuler.problem_679;
+package org.fde.projecteuler.problem_679.fail_last;
+
+import org.fde.projecteuler.problem_679.FreeFarea;
+import org.fde.projecteuler.problem_679.Word;
 
 public class FreeFareaBruteForce {
     private final int wordLenght;
@@ -17,7 +20,7 @@ public class FreeFareaBruteForce {
 
     private void go(Word word, int wordLength) {
         if (wordLength <= 0) {
-            boolean isTargetFound = word.findTarget();
+            boolean isTargetFound = word.findTargets();
 
             if (isTargetFound) {
                 ++count;
