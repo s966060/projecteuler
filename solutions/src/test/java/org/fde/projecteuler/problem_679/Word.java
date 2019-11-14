@@ -32,7 +32,7 @@ public class Word {
     }
 
     boolean findTarget() {
-        for (String target : FreeFarea.TARGET) {
+        for (String target : FreeFarea.TARGETS) {
             int indexOf = this.word.indexOf(target);
 
             if (indexOf < 0) {

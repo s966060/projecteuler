@@ -5,7 +5,7 @@ import org.junit.Test;
 
 public class FreeFarea {
     static final char [] ALPHABET = { 'F', 'A', 'R', 'E'};
-    static final String [] TARGET = { "FREE", "FARE", "REEF", "AREA"};
+    static final String [] TARGETS = { "FREE", "FARE", "REEF", "AREA"};
 
     // Runtime ~ 35 sec
     @Test
