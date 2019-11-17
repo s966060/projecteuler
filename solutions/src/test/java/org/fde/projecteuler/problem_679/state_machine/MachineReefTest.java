@@ -51,7 +51,7 @@ public class MachineReefTest {
         MachineReef  machine = new MachineReef();
         machine.push(sentence);
         Cursor<MachineReef.State> cursor = machine.getCurrentCursor();
-        return cursor.count;
+        return cursor.getCount();
     }
 }
 

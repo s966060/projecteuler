@@ -23,13 +23,27 @@ public class MachineAreaTest {
     public void test_3() {
         String sentence = "ARAREAREARA";
         int count = test(sentence);
-        assertEquals(1, count);
+        assertEquals(2, count);
+    }
+
+    @Test
+    public void test_4() {
+        String sentence = "AREAAREA";
+        int count = test(sentence);
+        assertEquals(2, count);
+    }
+
+    @Test
+    public void test_5() {
+        String sentence = "AREARAREA";
+        int count = test(sentence);
+        assertEquals(2, count);
     }
 
     private int test(String sentence) {
         MachineArea machine = new MachineArea();
         machine.push(sentence);
         Cursor<MachineArea.State> cursor = machine.getCurrentCursor();
-        return cursor.count;
+        return cursor.getCount();
     }
 }

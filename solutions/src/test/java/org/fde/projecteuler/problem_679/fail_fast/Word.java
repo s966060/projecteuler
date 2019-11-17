@@ -2,19 +2,25 @@ package org.fde.projecteuler.problem_679.fail_fast;
 
 import org.apache.commons.lang3.StringUtils;
 import org.fde.projecteuler.problem_679.FreeFarea;
+import org.fde.projecteuler.problem_679.state_machine.Machines;
 
 public class Word {
     private final StringBuilder word;
     private int cursor;
 
+    private final Machines machines;
+
     public Word(int wordLength) {
         this.word = new StringBuilder(StringUtils.repeat(' ', wordLength));
         this.cursor = 0;
+        this.machines = new Machines();
     }
 
     public void add(char value) {
         this.word.setCharAt(this.cursor, value);
         ++this.cursor;
+
+        machines.push(value);
     }
 
     public void add(String value) {
@@ -26,10 +32,14 @@ public class Word {
 
     public void remove() {
         --this.cursor;
+
+        machines.pop();
     }
 
     public void remove(String value) {
-        this.cursor -= value.length();
+        for(int i = 0; i  < value.length(); ++i) {
+            remove();
+        }
     }
 
     public boolean findTargets() {
@@ -54,4 +64,11 @@ public class Word {
         return true;
     }
 
+    public boolean isDone() {
+        return this.machines.hasAll();
+    }
+
+    public boolean isValid() {
+        return this.machines.isValid();
+    }
 }

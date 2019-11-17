@@ -26,7 +26,7 @@ class MachineReef {
             next = current.next(State.R);
         }
         else {
-            final State state = (State) current.state;
+            final State state = (State) current.getState();
 
             switch (state) {
                 case START:
@@ -61,5 +61,9 @@ class MachineReef {
         }
 
         this.cursorList.push(next);
+    }
+
+    public void pop() {
+        this.cursorList.pop();
     }
 }

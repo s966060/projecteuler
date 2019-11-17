@@ -23,19 +23,27 @@ public class MachineArea {
         final Cursor<State> next;
 
         if (input == 'A') {
-            if (current.state == State.START) {
+            if (current.getState() == State.START) {
                 next = current.next(State.A1);
             }
             else
-            if (current.state == State.E) {
+            if (current.getState() == State.E) {
                 next = current.nextIncrease(State.A1);
+            }
+            else
+            if (current.getState() == State.A1) {
+                next = current.next(State.A1);
+            }
+            else
+            if (current.getState() == State.R) {
+                next = current.next(State.A1);
             }
             else {
                 next = current.next(State.START);
             }
         }
         else {
-            final State state = (State) current.state;
+            final State state = (State) current.getState();
 
             switch (state) {
                 case START:

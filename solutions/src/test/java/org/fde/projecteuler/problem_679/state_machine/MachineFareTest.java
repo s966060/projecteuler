@@ -51,7 +51,7 @@ public class MachineFareTest {
         MachineFare machine = new MachineFare();
         machine.push(sentence);
         Cursor<MachineFare.State> cursor = machine.getCurrentCursor();
-        return cursor.count;
+        return cursor.getCount();
     }
 }
 

@@ -51,7 +51,7 @@ public class MachineFreeTest {
         MachineFree machine = new MachineFree();
         machine.push(sentence);
         Cursor<MachineFree.State> cursor = machine.getCurrentCursor();
-        return cursor.count;
+        return cursor.getCount();
     }
 }
 

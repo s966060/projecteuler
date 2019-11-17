@@ -26,7 +26,7 @@ class MachineFare {
             next = current.next(State.F);
         }
         else {
-            final State state = (State) current.state;
+            final State state = (State) current.getState();
 
             switch (state) {
                 case START:
@@ -62,5 +62,10 @@ class MachineFare {
         }
 
         this.cursorList.push(next);
+    }
+
+
+    public void pop() {
+        this.cursorList.pop();
     }
 }

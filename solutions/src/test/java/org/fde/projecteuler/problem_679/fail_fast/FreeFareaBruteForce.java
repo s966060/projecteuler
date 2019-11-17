@@ -19,17 +19,22 @@ public class FreeFareaBruteForce {
 
     private void go(Word word, int wordLength) {
         if (wordLength <= 0) {
-            boolean isTargetFound = word.findTargets();
-
-            if (isTargetFound) {
-                ++count;
+            if (word.isDone()) {
+                if (word.findTargets()) {
+                    ++count;
+                }
+                else {
+                    throw new IllegalArgumentException();
+                }
             }
         }
         else {
-            for (char a : FreeFarea.ALPHABET) {
-                word.add(a);
-                go(word, wordLength - 1);
-                word.remove();
+            if (word.isValid()) {
+                for (char a : FreeFarea.ALPHABET) {
+                    word.add(a);
+                    go(word, wordLength - 1);
+                    word.remove();
+                }
             }
         }
     }
