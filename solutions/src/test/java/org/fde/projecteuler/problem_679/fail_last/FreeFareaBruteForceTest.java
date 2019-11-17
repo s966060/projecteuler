@@ -6,6 +6,39 @@ import org.junit.Test;
 import static org.fde.projecteuler.problem_679.FreeFarea.*;
 
 public class FreeFareaBruteForceTest {
+    @Test
+    public void bruteForce_10() {
+        int wordLength = 10;
+        FreeFareaBruteForce engine = new FreeFareaBruteForce(wordLength);
+        int count = engine.go();
+
+        System.out.println("wordLength = " + wordLength);
+        System.out.println("count = " + count);
+        Assert.assertEquals(EXPECTED_10, count);
+    }
+
+    @Test
+    public void bruteForce_11() {
+        int wordLength = 11;
+        FreeFareaBruteForce engine = new FreeFareaBruteForce(wordLength);
+        int count = engine.go();
+
+        System.out.println("wordLength = " + wordLength);
+        System.out.println("count = " + count);
+        Assert.assertEquals(EXPECTED_11, count);
+    }
+
+    @Test
+    public void bruteForce_12() {
+        int wordLength = 12;
+        FreeFareaBruteForce engine = new FreeFareaBruteForce(wordLength);
+        int count = engine.go();
+
+        System.out.println("wordLength = " + wordLength);
+        System.out.println("count = " + count);
+        Assert.assertEquals(EXPECTED_12, count);
+    }
+
     // Runtime ~ 9 sec
     @Test
     public void bruteForce_14() {

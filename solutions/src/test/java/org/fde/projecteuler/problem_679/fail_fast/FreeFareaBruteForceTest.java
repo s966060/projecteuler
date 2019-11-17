@@ -42,7 +42,7 @@ public class FreeFareaBruteForceTest {
         Assert.assertEquals(EXPECTED_16, count);
     }
 
-    // Runtime ~ ???
+    // Runtime ~ 24 min 30 sec
     @Test
     public void bruteForce_17() {
         int wordLength = 17;
