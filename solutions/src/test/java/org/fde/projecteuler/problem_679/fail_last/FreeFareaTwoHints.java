@@ -4,11 +4,13 @@ import org.apache.commons.lang3.Validate;
 import org.fde.projecteuler.problem_679.FreeFarea;
 
 public class FreeFareaTwoHints {
-    private final static String HINT_1 = "FREE";
-    private final static String HINT_2 = "AREA";
+    private final static String [] HINTS =  { "FREE", "AREA" };
 
     private final int wordLength;
     private int count;
+
+    private String hint_1;
+    private String hint_2;
 
     public FreeFareaTwoHints(int wordLength) {
         this.count = 0;
@@ -16,16 +18,22 @@ public class FreeFareaTwoHints {
     }
 
     public int go() {
-        int hintLength = HINT_1.length() + HINT_2.length();
+        int hintLength = HINTS[0].length() + HINTS[1].length();
         Validate.isTrue(wordLength >= hintLength);
 
         int free = wordLength - hintLength;
 
-        for (int before = 0; before <= free; ++before) {
-            int after = free - before;
+        for (int i = 0; i < HINTS.length; ++i) {
+            int j = (i + 1) % 2;
+            this.hint_1 = HINTS[i];
+            this.hint_2 = HINTS[j];
 
-            Word word = new Word(wordLength);
-            before_1(before, after, word);
+            for (int before = 0; before <= free; ++before) {
+                int after = free - before;
+
+                Word word = new Word(wordLength);
+                before_1(before, after, word);
+            }
         }
 
         return this.count;
@@ -33,9 +41,9 @@ public class FreeFareaTwoHints {
 
     private void before_1(int before, int after, Word word) {
         if (before == 0) {
-            word.add(HINT_1);
+            word.add(this.hint_1);
             before_2(after, word);
-            word.remove(HINT_1);
+            word.remove(this.hint_1);
         }
         else {
             for (char c : FreeFarea.ALPHABET) {
@@ -48,9 +56,9 @@ public class FreeFareaTwoHints {
 
     private void before_2(int free, Word word) {
         if (free == 0) {
-            word.add(HINT_2);
+            word.add(this.hint_2);
             after(0, word);
-            word.remove(HINT_2);
+            word.remove(this.hint_2);
         }
         else {
             for (int before = 0; before <= free; ++before) {
@@ -63,9 +71,9 @@ public class FreeFareaTwoHints {
 
     private void before_2(int before, int after, Word word) {
         if (before == 0) {
-            word.add(HINT_2);
+            word.add(this.hint_2);
             after(after, word);
-            word.remove(HINT_2);
+            word.remove(this.hint_2);
         }
         else {
             for (char c : FreeFarea.ALPHABET) {

@@ -11,4 +11,7 @@ public class FreeFarea {
     public static final int EXPECTED_15 = 72863;
     public static final int EXPECTED_16 = 367804;
     public static final int EXPECTED_17 = 1812443;
+    public static final int EXPECTED_18 = 8759228;
+    public static final int EXPECTED_19 = 41657663;
+    public static final int EXPECTED_20 = 1812443;
 }

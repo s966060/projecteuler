@@ -74,4 +74,16 @@ public class FreeFareaOneHintTest {
         System.out.println("count = " + count);
         Assert.assertEquals(EXPECTED_17, count);
     }
+
+    // Runtime ~ 5 min 20 sec
+    @Test
+    public void oneHint_18() {
+        int wordLength = 18;
+        FreeFareaOneHint engine = new FreeFareaOneHint(wordLength);
+        int count = engine.go();
+
+        System.out.println("wordLength = " + wordLength);
+        System.out.println("count = " + count);
+        Assert.assertEquals(EXPECTED_18, count);
+    }
 }
