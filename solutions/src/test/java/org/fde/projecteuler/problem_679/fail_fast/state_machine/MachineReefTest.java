@@ -1,22 +1,22 @@
-package org.fde.projecteuler.problem_679.state_machine;
+package org.fde.projecteuler.problem_679.fail_fast.state_machine;
 
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class MachineFreeTest {
+public class MachineReefTest {
     @Test
     public void test_1() {
-        String sentence = "FREE FREE FREE FREE FREE";
+        String sentence = "REEF REEF REEF REEF REEF REEF";
         int count = test(sentence);
-        assertEquals(5, count);
+        assertEquals(6, count);
     }
 
     @Test
     public void test_2() {
-        String sentence = "FREEFREEFREEFREEFREE";
+        String sentence = "REEFREEFREEFREEFREEFREEF";
         int count = test(sentence);
-        assertEquals(5, count);
+        assertEquals(6, count);
     }
 
     @Test
@@ -28,14 +28,14 @@ public class MachineFreeTest {
 
     @Test
     public void test_4() {
-        String sentence = "   REEF REEF REEF REEF REEF   ";
+        String sentence = "   FREE FREE FREE FREE FREE   ";
         int count = test(sentence);
         assertEquals(0, count);
     }
 
     @Test
     public void test_5() {
-        String sentence = "FREFREEF";
+        String sentence = "REEFREE";
         int count = test(sentence);
         assertEquals(1, count);
     }
@@ -48,9 +48,9 @@ public class MachineFreeTest {
     }
 
     private int test(String sentence) {
-        MachineFree machine = new MachineFree();
+        MachineReef  machine = new MachineReef();
         machine.push(sentence);
-        Cursor<MachineFree.State> cursor = machine.getCurrentCursor();
+        Cursor<MachineReef.State> cursor = machine.getCurrentCursor();
         return cursor.getCount();
     }
 }

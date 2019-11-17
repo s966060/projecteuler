@@ -1,27 +1,27 @@
-package org.fde.projecteuler.problem_679.state_machine;
+package org.fde.projecteuler.problem_679.fail_fast.state_machine;
 
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class MachineReefTest {
+public class MachineFareTest {
     @Test
     public void test_1() {
-        String sentence = "REEF REEF REEF REEF REEF REEF";
+        String sentence = "FARE FARE FARE";
         int count = test(sentence);
-        assertEquals(6, count);
+        assertEquals(3, count);
     }
 
     @Test
     public void test_2() {
-        String sentence = "REEFREEFREEFREEFREEFREEF";
+        String sentence = "FAREFAREFAREFAREFAREFAREFARE";
         int count = test(sentence);
-        assertEquals(6, count);
+        assertEquals(7, count);
     }
 
     @Test
     public void test_3() {
-        String sentence = "   FREEREEFREEREEFREEREEF  ";
+        String sentence = "   FREFAREEREEFAREREEREEFAREEREEF  ";
         int count = test(sentence);
         assertEquals(3, count);
     }
@@ -35,22 +35,22 @@ public class MachineReefTest {
 
     @Test
     public void test_5() {
-        String sentence = "REEFREE";
+        String sentence = "FAREEFREEFARE";
         int count = test(sentence);
-        assertEquals(1, count);
+        assertEquals(2, count);
     }
 
     @Test
     public void test_6() {
-        String sentence = "FREFREEFRE";
+        String sentence = "FREEFAREA";
         int count = test(sentence);
         assertEquals(1, count);
     }
 
     private int test(String sentence) {
-        MachineReef  machine = new MachineReef();
+        MachineFare machine = new MachineFare();
         machine.push(sentence);
-        Cursor<MachineReef.State> cursor = machine.getCurrentCursor();
+        Cursor<MachineFare.State> cursor = machine.getCurrentCursor();
         return cursor.getCount();
     }
 }

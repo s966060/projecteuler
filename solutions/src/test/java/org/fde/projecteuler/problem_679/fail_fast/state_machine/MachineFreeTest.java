@@ -1,56 +1,56 @@
-package org.fde.projecteuler.problem_679.state_machine;
+package org.fde.projecteuler.problem_679.fail_fast.state_machine;
 
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class MachineFareTest {
+public class MachineFreeTest {
     @Test
     public void test_1() {
-        String sentence = "FARE FARE FARE";
+        String sentence = "FREE FREE FREE FREE FREE";
         int count = test(sentence);
-        assertEquals(3, count);
+        assertEquals(5, count);
     }
 
     @Test
     public void test_2() {
-        String sentence = "FAREFAREFAREFAREFAREFAREFARE";
+        String sentence = "FREEFREEFREEFREEFREE";
         int count = test(sentence);
-        assertEquals(7, count);
+        assertEquals(5, count);
     }
 
     @Test
     public void test_3() {
-        String sentence = "   FREFAREEREEFAREREEREEFAREEREEF  ";
+        String sentence = "   FREEREEFREEREEFREEREEF  ";
         int count = test(sentence);
         assertEquals(3, count);
     }
 
     @Test
     public void test_4() {
-        String sentence = "   FREE FREE FREE FREE FREE   ";
+        String sentence = "   REEF REEF REEF REEF REEF   ";
         int count = test(sentence);
         assertEquals(0, count);
     }
 
     @Test
     public void test_5() {
-        String sentence = "FAREEFREEFARE";
+        String sentence = "FREFREEF";
         int count = test(sentence);
-        assertEquals(2, count);
+        assertEquals(1, count);
     }
 
     @Test
     public void test_6() {
-        String sentence = "FREEFAREA";
+        String sentence = "FREFREEFRE";
         int count = test(sentence);
         assertEquals(1, count);
     }
 
     private int test(String sentence) {
-        MachineFare machine = new MachineFare();
+        MachineFree machine = new MachineFree();
         machine.push(sentence);
-        Cursor<MachineFare.State> cursor = machine.getCurrentCursor();
+        Cursor<MachineFree.State> cursor = machine.getCurrentCursor();
         return cursor.getCount();
     }
 }

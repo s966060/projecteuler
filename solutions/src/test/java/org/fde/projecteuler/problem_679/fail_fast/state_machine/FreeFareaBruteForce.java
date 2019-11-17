@@ -1,4 +1,4 @@
-package org.fde.projecteuler.problem_679.fail_fast;
+package org.fde.projecteuler.problem_679.fail_fast.state_machine;
 
 import org.fde.projecteuler.problem_679.FreeFarea;
 

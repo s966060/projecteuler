@@ -1,4 +1,4 @@
-package org.fde.projecteuler.problem_679.state_machine;
+package org.fde.projecteuler.problem_679.fail_fast.state_machine;
 
 import org.apache.commons.lang3.Validate;
 

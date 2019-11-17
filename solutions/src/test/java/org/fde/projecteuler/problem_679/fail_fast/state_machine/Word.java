@@ -1,8 +1,8 @@
-package org.fde.projecteuler.problem_679.fail_fast;
+package org.fde.projecteuler.problem_679.fail_fast.state_machine;
 
 import org.apache.commons.lang3.StringUtils;
 import org.fde.projecteuler.problem_679.FreeFarea;
-import org.fde.projecteuler.problem_679.state_machine.Machines;
+import org.fde.projecteuler.problem_679.fail_fast.state_machine.Machines;
 
 public class Word {
     private final StringBuilder word;
