@@ -66,7 +66,7 @@ public class FreeFareaTwoHintsTest {
         Assert.assertEquals(EXPECTED_17, count);
     }
 
-    // Runtime ~ 11 sec
+    // Runtime ~ 11.5 sec
     @Test
     public void twoHints_18() {
         int wordLength = 18;
@@ -78,7 +78,7 @@ public class FreeFareaTwoHintsTest {
         Assert.assertEquals(EXPECTED_18, count);
     }
 
-    // Runtime ~ 2.5 sec
+    // Runtime ~ 57 sec
     @Test
     public void twoHints_19() {
         int wordLength = 19;
@@ -90,7 +90,7 @@ public class FreeFareaTwoHintsTest {
         Assert.assertEquals(EXPECTED_19, count);
     }
 
-    // Runtime ~ 2.5 sec
+    // Runtime ~ 4 min 35 sec
     @Test
     public void twoHints_20() {
         int wordLength = 20;
