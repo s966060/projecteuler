@@ -2,6 +2,10 @@ package org.fde.util;
 
 public class GreatestCommonDivisor {
     public static long gcd(long a, long b) {
+        if (a < 0 || b < 0) {
+            throw new IllegalArgumentException("a = " + a + " b = " + b);
+        }
+
         if (a == b) {
             return a;
         }
