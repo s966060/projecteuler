@@ -1,5 +1,6 @@
 package org.fde.util;
 
+import java.math.BigInteger;
 import java.util.Iterator;
 
 public class Digits implements Iterable<Digit> {
@@ -43,6 +44,16 @@ public class Digits implements Iterable<Digit> {
 
         for (Digit digit : this) {
             total *= 10;
+            total += digit.getValue();
+        }
+
+        return total;
+    }
+
+    public long getSumOfDigits() {
+        long total = 0;
+
+        for (Digit digit : this) {
             total += digit.getValue();
         }
 
@@ -110,6 +121,29 @@ public class Digits implements Iterable<Digit> {
             long digit = newValue % 10;
             newValue /= 10;
             digitList.add(digit);
+        }
+
+        digitList.reverse();
+        return digitList;
+    }
+
+    public static Digits valueOf(final BigInteger value) {
+        Digits digitList = new Digits();
+
+        if (value.equals(BigInteger.ZERO)) {
+            digitList.add(0);
+            return digitList;
+        }
+
+        BigInteger temp = value;
+
+        while (!temp.equals(BigInteger.ZERO)) {
+            BigInteger [] x = temp.divideAndRemainder(BigInteger.TEN);
+
+            int digit = x[1].intValue();
+            digitList.add(digit);
+
+            temp = x[0];
         }
 
         digitList.reverse();

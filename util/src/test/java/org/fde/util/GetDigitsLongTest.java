@@ -7,7 +7,7 @@ import static org.fde.util.ListOfLong.createListOfLong;
 import static org.fde.util.Digits.valueOf;
 import static org.junit.Assert.assertEquals;
 
-public class GetDigitsTest {
+public class GetDigitsLongTest {
     @Test
     public void zero() {
         assertEquals(createDigitList(0), valueOf(0));
