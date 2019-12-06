@@ -18,5 +18,5 @@ public class GreatestCommonDivisorTest {
         assertEquals(3, gcd(9, 12));
         assertEquals(5, gcd(500, 505));
         assertEquals(10, gcd(40, 90));
-        }
+    }
 }
